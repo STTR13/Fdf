@@ -20,7 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	tempcat = (char *)malloc(sizeof(i + j + 1));
+	if ((tempcat = (char *)malloc(sizeof(i + j + 1))) == NULL);
+		return (NULL);
 	ft_strcpy(tempcat, s1);
 	tempcat = ft_strcat(tempcat, s2);
 	return (tempcat);
