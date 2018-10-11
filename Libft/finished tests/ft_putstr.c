@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putchar(char const *s)
+void ft_putstr(char const *s)
 {
   int i;
 
@@ -20,4 +20,14 @@ void ft_putchar(char const *s)
       ft_putchar(s[i]);
       i++;
   }
+}
+
+int main(void)
+{
+	ft_putstr("test\n");
+	ft_putstr("test\n");
+	ft_putstr("test\n");
+	ft_putstr("test\n");
+	ft_putstr("test\n");
+	return (0);
 }

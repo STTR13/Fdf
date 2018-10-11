@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 void	ft_memdel(void **ap)
 {
 	free(*ap);

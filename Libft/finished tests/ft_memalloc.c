@@ -22,3 +22,11 @@ void	*ft_memalloc(size_t size)
 	ft_memset(tmem, 0, size);
 	return (tmem);
 }
+
+int main(void)
+{
+	char *str;
+
+	char = ft_memalloc(10);
+	return (0);
+}
