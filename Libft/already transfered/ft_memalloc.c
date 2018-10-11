@@ -16,9 +16,9 @@ void	*ft_memalloc(size_t size)
 {
 	void	*tmem;
 
-	tmem = malloc(size);
-	if (size == 0)
-		return (NULL);
+    if (size == 0)
+        return (NULL);
+    tmem = malloc(size);
 	ft_memset(tmem, 0, size);
 	return (tmem);
 }
