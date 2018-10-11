@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	int		i;
@@ -19,6 +19,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	substr = ft_strnew(len);
+	if (substr == NULL || s[0] == '\0' || start > len)
+		return (NULL);
 	while (s[start] != '\0' && i < len)
 	{
 		substr[i] = s[start];
@@ -33,7 +35,7 @@ int main(void)
 {
 	char *str, *substr;
 
-	str = "dit is een test, om te zien of de code werkt";
-	substr = ft_strsub(str, 1, 10);
+	str = "test";
+	substr = ft_strsub(str, 13, 10);
 	printf("%s", substr);
 }

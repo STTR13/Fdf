@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	if ((tempcat = (char *)malloc(sizeof(i + j + 1))) == NULL);
+	if ((tempcat = (char *)malloc(sizeof(i + j + 1))) == NULL)
 		return (NULL);
 	ft_strcpy(tempcat, s1);
 	tempcat = ft_strcat(tempcat, s2);
@@ -29,12 +29,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 int main (void)
 {
-	char *str, *str2, str3[];
+	char *str, *str2, *str3;
 
-	str = "test";
-	str2 = "twee";
+	str = "dit test om te zien";
+	str2 = "of de 2 strings samen worden gezet";
 	str3 = ft_strjoin(str, str2);
-	//printf("%s", ft_strjoin(str, str2));
 	printf("%s", str3);
 	return (0);
 }

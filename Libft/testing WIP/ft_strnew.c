@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 12:48:36 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/04 12:56:33 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 13:03:32 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/08 13:19:46 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 #include <stdio.h>
-int		ft_strlen(char *str)
+char	*ft_strnew(size_t size)
 {
-	int i;
+	void	*tmem;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);	
-}
-
-int main(void)
-{
-	char *str;
-	int i;
-
-	str = "Dit is een test";
-	i = ft_strlen(str);
-	printf("%i", i);
-
+	 tmem = (char *)malloc(sizeof(char) * (size + 1));
+	 if (size == 0)
+		 return (NULL);
+	ft_memset(tmem, '\0', size);
+	return (tmem);
 }

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 15:25:31 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/08 15:36:05 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 12:57:17 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/04 13:02:25 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-char	**ft_strsplit(char const *s, char c)
+#include <stdio.h>
+char	*ft_strcpy(char *dest, const char *src)
 {
-	
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

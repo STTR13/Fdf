@@ -15,45 +15,38 @@
 char	*ft_strtrim(char const *s)
 {
 	int		i;
-	int		l;
-    char	*final, *temp;
+	int j;
+	int x;
+  char	*str;
 
 	i = 0;
-	l = 0;
-    final = (char *)s;
-    temp = NULL;
-	while (s[i] != '\0')
+	j = ft_strlen(s);
+	x = 0;
+	if (j == 0)
+		return (NULL);
+	while (s[i] != '\0' \
+	&& (s[i] == ' ' || s[i] == ',' || s[i] == '\n' || s[i] == '\t'))
+      i++;
+	while ((s[j-1] == ' ' || s[j-1] == ',' || s[j-1] == '\n' || s[j-1] == '\t')\
+	 && j-1 > 0)
+			j--;
+	str = ft_strnew(j - i);
+	while (i < j)
 	{
-		if (s[i] != ' ' && s[i] != ',' && s[i] != '\n' && s[i] != '\t')
-        {
-     //       temp[l] = s[i];
-            l++;
-        }
+		str[x] = s[i];
 		i++;
+		x++;
 	}
-    /*if (l == i)
-        temp = "test";*/
-    final = ft_strnew(l);
-	i = 0;
-    l = 0;
-    while (s[i] != '\0')
-    {
-        if (s[i] != ' ' && s[i] != ',' && s[i] != '\n' && s[i] != '\t')
-        {
-            final[l] = s[i];
-            l++;
-        }
-		i++;
-	}
-	final[l] = '\0';
-	return (final);
+	str[x] = '\0';
+	return (str);
 }
 
 int main(void)
 {
 	char *str, *str2;
     int i;
-	str = "   ,,,\n\n\n\t\t\t   dit is een\ntest   ,,, \n\n\n\t\t\t\n";
+	//str = "   ,,,\n\n\n\t\t\t   dit is een test   ,,, \n\n\n\t\t\t\n";
+	str = "dit is een test";
 	str2 = ft_strtrim(str);
     printf("%s\n", str2);
     return (0);

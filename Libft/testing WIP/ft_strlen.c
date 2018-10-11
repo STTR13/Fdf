@@ -19,14 +19,3 @@ int		ft_strlen(char *str)
 		i++;
 	return (i);	
 }
-
-int main(void)
-{
-	char *str;
-	int i;
-
-	str = "Dit is een test";
-	i = ft_strlen(str);
-	printf("%i", i);
-
-}
