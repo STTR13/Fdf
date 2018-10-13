@@ -16,13 +16,13 @@ char	*ft_strnew(size_t size)
 {
 	void	*tmem;
 
-	 tmem = (char *)malloc(sizeof(char) * (size + 1);
+	 tmem = (char *)malloc(sizeof(char) * (size + 1));
 	 if (size == 0)
 		 return (NULL);
 	ft_memset(tmem, '\0', size);
 	return (tmem);
 }
-
+/*
 int main(void)
 {
 	char *temp;
@@ -31,3 +31,4 @@ int main(void)
 	printf("%s\n", temp);
 	return(0);
 }
+*/

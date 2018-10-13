@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void isneg(int *n, int *negative, int *length)
+static void isneg(int *n, int *negative, int *length)
 {
   if (*n < 0)
   {

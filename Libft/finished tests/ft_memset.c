@@ -26,13 +26,14 @@ void	*ft_memset(void *str, int c, size_t n)
 	}
 	return (str);
 }
-
+/*
 int main(void)
 {
 	char str[50];
-	
+
 	ft_strcpy(str, "dit is een test");
     ft_memset(str, '%', 10);
 	ft_putstr(str);
 	return(0);
 }
+*/

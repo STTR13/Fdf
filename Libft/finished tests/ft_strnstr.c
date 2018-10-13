@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <string.h>
-char	*ft_strstr(char *haystack, const char *needle, size_t n)
+char	*ft_strnstr(char *haystack, const char *needle, size_t n)
 {
 	int x;
 	int c;

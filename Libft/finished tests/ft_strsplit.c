@@ -38,7 +38,6 @@ static int	wordcount(char const *s, char c)
 			isword = 0;
 			i++;
 		}
-		i++;
 	}
 	return (words);
 }
