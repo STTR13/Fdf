@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 15:53:55 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/04 16:13:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/13 15:16:50 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/13 15:16:55 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-char	*ft_strnstr(char *hay, const char *needle, size_t n)
-{
-	int x;
-	int c;
+#include "libft.h"
 
-	x = 0;
-	while (haystack[x] && x < n)
-	{
-		c = 0;
-		while (needle[c] == haystack[c + x])
-		{
-			if (needle[c + 1] == '\0')
-			{
-				return (haystack + x);
-			}
-			c++;
-		}
-		x++;
-	}
-	return (NULL);
+t_list *ft_lstnew(void const *content, size_t content_size)
+{
+
 }
 
 int main(void)
 {
-	char *str1, *str2;
-
-	str1 = "dit is een test";
-	str2 = "is";
-	printf("%s", ft_strstr(str1, str2, 7));
-	return (0);
+  
 }
