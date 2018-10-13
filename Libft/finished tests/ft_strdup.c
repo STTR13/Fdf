@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
+#include <unistd.h>
 char	*ft_strdup(char *src)
 {
 	char	*str;
@@ -30,4 +30,12 @@ char	*ft_strdup(char *src)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+int main(void)
+{
+	char *str, *str2;
+	str = "dit is een test";
+	str2 = ft_strdup(str);
+	printf("%s\n%s", str, str2);
 }

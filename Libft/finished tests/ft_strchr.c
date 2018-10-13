@@ -36,3 +36,13 @@ char	*ft_strchr(const char *str, int c)
 	else
 		return (NULL);
 }
+int main(void)
+{
+	char *str, str2, *str3;
+
+	str = "dit is een test.";
+	str2 = 't';
+	str3 = ft_strchr(str, str2);
+	printf("%s", str3);
+	return (0);
+}

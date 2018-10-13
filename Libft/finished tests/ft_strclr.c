@@ -13,21 +13,6 @@
 #include <stdio.h>
 void	ft_strclr(char *s)
 {
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		s[i] = '\0';
-		i++;
-	}
-}
-
-int main(void)
-{
-	char *str = "dit is een test";
-
-	ft_strclr(str);
-	//printf("%s", str);
-	return (0);
+	while (s != NULL && *s)
+			*s++ = 'a';
 }
