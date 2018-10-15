@@ -1,51 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 11:34:30 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/05 11:40:54 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 13:03:32 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/08 13:19:46 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 #include <stdio.h>
-
-char	*ft_strrchr(const char *str, int c)
+char	*ft_strnew(size_t size)
 {
-	int		i;
-	int		j;
-	char	*temp;
+	void	*tmem;
 
-	j = 0;
-	temp = NULL;
-	i = ft_strlen(str);
-	while (str[i] != c && i > 0)
-		i--;
-	if (str[i] == c)
-	{
-		while (str[i] != '\0')
-		{
-			temp[j] = str[i];
-			i++;
-			j++;
-		}
-		temp[j] = '\0';
-		return (temp);
-	}
-	else
-		return (NULL);
+	 tmem = (char *)malloc(sizeof(char) * (size + 1));
+	 if (size == 0)
+		 return (NULL);
+	ft_memset(tmem, '\0', size);
+	return (tmem);
 }
+/*
 int main(void)
 {
-    char *str, str2, *str3;
+	char *temp;
 
-    str = "dit is een test.";
-    str2 = 'd';
-    str3 = ft_strrchr(str, 'd');
-    printf("%s", str3);
-    return (0);
+	temp = ft_strnew(10);
+	printf("%s\n", temp);
+	return(0);
 }
+*/

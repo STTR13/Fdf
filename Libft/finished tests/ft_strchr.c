@@ -11,27 +11,29 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_strchr(const char *str, int c)
 {
 	int		i;
 	int		j;
 	char	*temp;
+	char	*result;
 
 	i = 0;
 	j = 0;
-	while (str[i] != c && str[i] != '\0')
+	temp = (char *)str;
+	while (temp[i] != c && temp[i] != '\0')
 		i++;
-	if (str[i] != '\0')
+	if (temp[i] != '\0')
 	{
-		while (str[i] != '\0')
+		while (temp[i] != '\0')
 		{
-			temp[j] = str[i];
+			result[j] = temp[i];
 			i++;
 			j++;
 		}
-		temp[j] = '\0';
-		return (temp);
+		result[j]  = '\0';
+		return (result);
 	}
 	else
 		return (NULL);
@@ -41,7 +43,7 @@ int main(void)
 	char *str, str2, *str3;
 
 	str = "dit is een test.";
-	str2 = 't';
+	str2 = '.';
 	str3 = ft_strchr(str, str2);
 	printf("%s", str3);
 	return (0);

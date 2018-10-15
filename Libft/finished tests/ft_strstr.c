@@ -31,15 +31,15 @@ char	*ft_strstr(char *haystack, const char *needle)
 		}
 		x++;
 	}
-	return (NULL);
+	return (0);
 }
 
 int main(void)
 {
 	char *str1, *str2;
 
-	str1 = "dit is een test";
-	str2 = "is";
+	str1 = " ";
+	str2 = "    ";
 	printf("%s", ft_strstr(str1, str2));
 	return (0);
 }
