@@ -53,7 +53,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
-size_t				*ft_strlcat(char *dest, const char *src, size_t size);
+size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 int					ft_strlen(const char *str);
 int					ft_strcmp(const char *str1, const char *str2);

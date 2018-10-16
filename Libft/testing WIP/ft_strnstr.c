@@ -14,21 +14,21 @@
 #include <string.h>
 char	*ft_strnstr(const char *hay, const char *needle, size_t n)
 {
-	int x;
-	int c;
-    char *temp;
+	int				x;
+	int				c;
+	char			*temp;
 
-    temp = (char *)hay;
 	x = 0;
-	c = 0;
-	while (temp[x] && x < n)
+	temp = (char *)hay;
+	if (needle[0] == '\0')
+		return ((char *)hay);
+	while (temp[x] && x <= (int)n)
 	{
+		c = 0;
 		while (needle[c] == temp[c + x])
 		{
 			if (needle[c + 1] == '\0')
-			{
 				return (temp + x);
-			}
 			c++;
 		}
 		x++;
@@ -43,7 +43,7 @@ int main(void)
 	str2 = "een test";
 	//str1 = "MZIRIBMZIRIBMZE123";
 	//str2 = "MZIRIBMZE";
-    str3 = ft_strnstr(str1, str2, 7);
+    str3 = ft_strnstr(str1, str2, 30);
 	printf("%s", str3);
 	return (0);
 }

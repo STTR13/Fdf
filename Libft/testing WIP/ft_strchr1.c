@@ -1,49 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 15:53:55 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/04 16:13:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 15:30:10 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/05 11:33:42 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <string.h>
-char	*ft_strnstr(const char *hay, const char *needle, size_t n)
+char	*ft_strchr(const char *str, int c)
 {
-	int x;
-	int c;
-    char *temp;
+	int		i;
+	int		j;
+	char	*temp;
+	char	*result;
 
-    temp = (char *)hay;
-	x = 0;
-	c = 0;
-	while (temp[x] && x < n)
+	i = 0;
+	j = 0;
+	temp = (char *)str;
+	while (temp[i] != c && temp[i] != '\0')
+		i++;
+	if (temp[i] != '\0')
 	{
-		while (needle[c] == temp[c + x])
+		while (temp[i] != '\0')
 		{
-			if (needle[c + 1] == '\0')
-			{
-				return (temp + x);
-			}
-			c++;
+			result[j] = temp[i];
+			i++;
+			j++;
 		}
-		x++;
+		result[j]  = '\0';
+		return (result);
 	}
-	return (NULL);
+	else
+		return (NULL);
 }
-
 int main(void)
 {
-	char *str1, *str2, *str3;
-	str1 = "dit is een test";
-	str2 = "een test";
-	//str1 = "MZIRIBMZIRIBMZE123";
-	//str2 = "MZIRIBMZE";
-    str3 = ft_strnstr(str1, str2, 7);
+	char *str, str2, *str3;
+
+	str = "dit is een test.";
+	str2 = '.';
+	str3 = ft_strchr(str, str2);
 	printf("%s", str3);
 	return (0);
 }

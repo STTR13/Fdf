@@ -12,25 +12,33 @@
 
 #include "libft.h"
 #include <stdio.h>
-char	*ft_strtrim(char const *s)
+static int	iswhitespace(char s)
+{
+	if (s == ' ' || s == ',' || s == '\n' || s == '\t')
+		return (1);
+	else
+		return (0);
+}
+
+char		*ft_strtrim(char const *s)
 {
 	int		i;
-	int j;
-	int x;
-  char	*str;
+	int		j;
+	int		x;
+	char	*str;
 
 	i = 0;
-	j = ft_strlen(s);
 	x = 0;
-	if (j == 0)
+	if ((j = ft_strlen(s)) == 0 || s == NULL)
 		return (NULL);
-	while (s[i] != '\0' \
-	&& (s[i] == ' ' || s[i] == ',' || s[i] == '\n' || s[i] == '\t'))
-      i++;
-	while ((s[j-1] == ' ' || s[j-1] == ',' || s[j-1] == '\n' || s[j-1] == '\t')\
-	 && j-1 > 0)
-			j--;
-	str = ft_strnew(j - i);
+	while (s[i] != '\0' && iswhitespace(s[i]) == 1)
+		i++;
+	while (iswhitespace(s[j - 1]) == 1 && j - 1 > 0)
+		j--;
+	if ((str = ft_strnew(j - i)) == NULL)
+		return (NULL);
+	if (s[i] == '\0')
+		return ((char *)s);
 	while (i < j)
 	{
 		str[x] = s[i];
