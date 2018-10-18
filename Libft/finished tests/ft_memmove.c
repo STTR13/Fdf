@@ -14,22 +14,25 @@
 #include <stdio.h>
 void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
-	int i;
-	unsigned char *tstr;
-	unsigned char *tstr2;
+	size_t i;
+	char *tstr;
+	char *tstr2;
 
 	i = 0;
-	tstr = (unsigned char *) str1;
-	tstr2 = (unsigned char *) str2;
+	tstr = (char *) str1;
+	tstr2 = (char *) str2;
 	if (tstr < tstr2)
+	{
+		tstr = str1 + n - 1;
+		tstr2 = str2 + n - 1;
 		while (n--)
 			*(tstr + n) = *(tstr2 + n);
 	else
 		while (i++ < n)
 			*(tstr + i) = *(tstr2 + i);
 	return (tstr);
+	}
 }
-
 int main(void)
 {
 	char str[17], str2[17];

@@ -15,23 +15,35 @@
 #include "libft.h"
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
 
-	i = ft_strlen(dest);
-	j = -1;
-	while (++j < (int)size && src[j] != '\0')
-		dest[i + j] = src[j];
-	dest[i + j] = '\0';
-	return (i + j);
+	i = 0;
+	j = 0;
+	if (size > 0)
+	{
+	while (dest[i] && i < size)
+		i++;
+	j = i;
+	while (src[i - j] && i < size - 1)
+	{
+		dest[i] = src[i - j];
+		i++;
+	}
 }
+	if (j < size)
+		dest[i] = '\0';
+	return (i + ft_strlen(src));
+}
+
 
 int main(void)
 {
-    char *src = "aaa";
-    char dst1[20];
+    char *src = "the cake is a lie !\0I'm hidden lol\r\n";
+    char dst1[0xF00] = "there is no stars in the sky";
+		size_t max = ft_strlen("the cake is a lie !\0I'm hidden lol\r\n");
 		//test[0] = 'a';
     //test1 = " dit is een test om een zin toe te voegen";
 
-    printf("%zu", ft_strlcat(dst1, src, 20));
+    printf("%zu", ft_strlcat(dst1, src, max));
 }
