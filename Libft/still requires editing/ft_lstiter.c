@@ -6,13 +6,15 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 15:18:04 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/13 15:18:06 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2018/10/19 12:31:10 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-
+	if (lst && f)
+		while (*lst != '\0')
+			f(lst++);
 }
