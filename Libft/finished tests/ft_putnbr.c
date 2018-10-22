@@ -33,8 +33,20 @@ void	ft_putnbr(int n)
 
 int main(void)
 {
-	ft_putnbr(230);
+	ft_putnbr(0);
 	ft_putchar('\n');
-	ft_putnbr(-230);
+	ft_putnbr(1);
+	ft_putchar('\n');
+	ft_putnbr(-1);
+	ft_putchar('\n');
+	ft_putnbr(12300);
+	ft_putchar('\n');
+	ft_putnbr(10203);
+	ft_putchar('\n');
+	ft_putnbr(-56);
+	ft_putchar('\n');
+	ft_putnbr(2147483647);
+	ft_putchar('\n');
+	ft_putnbr(-2147483648);
 	return (0);
 }

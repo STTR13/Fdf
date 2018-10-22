@@ -13,37 +13,38 @@
 #include <stdio.h>
 int		ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int digit;
+	size_t	i;
+	int		sign;
+	char	*temp;
+	int		digit;
 
 	sign = 1;
 	i = 0;
-	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '+'
-			|| *str == '\r' || *str == '\t' || *str == '\v')
-		str++;
-	if (*str == '-')
+	temp = (char *)str;
+	while (*temp == ' ' || *temp == '\f' || *temp == '\n' /*|| *temp == '+'*/
+			|| *temp == '\r' || *temp == '\t' || *temp == '\v')
+		temp++;
+	if (*temp == '-')
 	{
 		sign = -1;
-		str++;
+		temp++;
 	}
-	while (*str != '\n')
+	while (*temp != '\n')
 	{
-		digit = *str - '0';
+		digit = *temp - '0';
 		if (digit > 9 || digit < 0)
 			break ;
 		i = (i * 10) + digit;
-		str++;
+		temp++;
 	}
-	i *= sign;
-	return (i);
+	return (i * sign);
 }
 
 int main(void)
 {
 	char *str;
 
-	str = "-1561613";
-	printf("%i", ft_atoi(str));
+	str = "++876";
+	printf("%i", ft_strcmp(ft_atoi("++876"), atoi("++876"));
 	return (0);
 }

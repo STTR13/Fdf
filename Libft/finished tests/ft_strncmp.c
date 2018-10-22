@@ -14,19 +14,21 @@
 #include <stdio.h>
 int		ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	int i;
-
-	i = 0;
-	while (i < n && str1[i] == str2[i] && str1[i] && str2[i])
-		i++;
-	return (str1[i] - str2[i]);
+	if (n == 0)
+		return ((unsigned char)str1[1] - (unsigned char)str2[1]);
+	while (--n && *str1 == *str2 && *str1 && *str2)
+	{
+			str1++;
+			str2++;
+		}
+	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
 int main(void)
 {
     char *test, *test2;
-    
-    test2 = "dit is een tast";
-    test = "dit is een test";
-    
-    printf("%i", ft_strncmp(test, test2, 15));
+
+    test2 = "qa";
+    test = "a";
+
+    printf("%i", ft_strncmp(test2, test, 0));
 }
