@@ -12,5 +12,7 @@
 
 int	get_next_line(const int fd, char **line)
 {
-	
+	char buf[BUFF_SIZE + 1];
+
+	return (0);
 }
