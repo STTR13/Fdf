@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/05 10:00:32 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 14:53:00 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 13:06:21 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 9999
+#include "libft.h"
 
-# include "fcntl.h"
-# include "sys/types.h"
-# include "sys/uio.h"
-# include "unistd.h"
-# include "stdlib.h"
-# include "libft.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*tempcat;
 
-int		ft_new_line(char **s, char **line, int fd, int ret);
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (s1 && s2)
+	{
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		if ((tempcat = ft_strnew(i + j)) == NULL)
+			return (NULL);
+		else
+		{
+			ft_strcpy(tempcat, s1);
+			return (tempcat = ft_strcat(tempcat, s2));
+		}
+	}
+	return (NULL);
+}

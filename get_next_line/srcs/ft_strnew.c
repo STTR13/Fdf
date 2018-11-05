@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/05 10:00:32 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 13:03:32 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/13 13:34:45 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 9999
+#include "libft.h"
 
-# include "fcntl.h"
-# include "sys/types.h"
-# include "sys/uio.h"
-# include "unistd.h"
-# include "stdlib.h"
-# include "libft.h"
+char	*ft_strnew(size_t size)
+{
+	void	*tmem;
 
-int		ft_new_line(char **s, char **line, int fd, int ret);
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if ((tmem = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
+		return (NULL);
+	else
+		return (ft_memset(tmem, '\0', size + 1));
+}

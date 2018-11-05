@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/05 10:00:32 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 15:30:10 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 09:54:55 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 9999
+#include "libft.h"
 
-# include "fcntl.h"
-# include "sys/types.h"
-# include "sys/uio.h"
-# include "unistd.h"
-# include "stdlib.h"
-# include "libft.h"
+char	*ft_strchr(const char *str, int c)
+{
+	int		i;
 
-int		ft_new_line(char **s, char **line, int fd, int ret);
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	while (str[i] != c && str[i] != '\0')
+		i++;
+	if (c == '\0')
+		return ((char *)&str[i]);
+	if (str[i] != '\0')
+		return ((char *)&str[i]);
+	else
+		return (NULL);
+}

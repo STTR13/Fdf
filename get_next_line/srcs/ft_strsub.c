@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/05 10:00:32 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 14:35:47 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/19 14:45:47 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 9999
+#include "libft.h"
 
-# include "fcntl.h"
-# include "sys/types.h"
-# include "sys/uio.h"
-# include "unistd.h"
-# include "stdlib.h"
-# include "libft.h"
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*substr;
 
-int		ft_new_line(char **s, char **line, int fd, int ret);
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	if (!s || (substr = ft_strnew(len)) == NULL)
+		return (NULL);
+	while (s[start] != '\0' && i < len)
+	{
+		substr[i] = s[start];
+		i++;
+		start++;
+	}
+	substr[i] = '\0';
+	return (substr);
+}
