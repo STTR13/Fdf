@@ -21,9 +21,7 @@ typedef struct			swin_list
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	*title;
-  int x;
-  int y;
-  int z;
+	int color;
 }						twin_list;
 
 int deal_key(int key, twin_list *window);

@@ -15,10 +15,10 @@ NAME = fdf
 SRC_PATH = srcs/
 
 SRC = main.c \
-				$(SRC_PATH)key_mouse_hook.c
+				$(SRC_PATH)key_mouse_hook.c \
 
 OBJ = main.o \
-				$(SRC_PATH)/key_mouse_hook.o
+				$(SRC_PATH)/key_mouse_hook.o \
 
 INCLUDES = -I /includes
 
