@@ -44,10 +44,7 @@ int deal_key(int key, twin_list *window)
 int mouse_key(int key, twin_list *window)
 {
     if (key == 1)
-    {
-        ft_putstr("Right Button");
-        //mlx_pixel_put(window->mlx_ptr, window->win_ptr, 10, 10, 255);
-    }
+        ft_putstr("Left Button");
     if (key == 2)
         ft_putstr("Right Button");
     if (key == 3)
