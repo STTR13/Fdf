@@ -23,7 +23,7 @@ typedef struct			swin_list
 	char	*title;
   int x;
   int y;
-	int z;
+  int z;
 }						twin_list;
 
 int deal_key(int key, twin_list *window);

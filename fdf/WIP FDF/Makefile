@@ -20,7 +20,7 @@ SRC = main.c \
 OBJ = main.o \
 				$(SRC_PATH)/key_mouse_hook.o
 
-INCLUDES = /includes
+INCLUDES = -I /includes
 
 FRAMEW = -framework OpenGL -framework AppKit
 
@@ -31,7 +31,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) -I $(INCLUDES)  $(LIB) $(FRAMEW)
+	gcc -o $(NAME) $(SRC) $(INCLUDES) $(LIB) $(FRAMEW)
 
 clean:
 	rm -f $(OBJ)

@@ -22,8 +22,10 @@ void window_init(twin_list *window)
 	mlx_loop(window->mlx_ptr);
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	twin_list window;
+	/*if (argc != 2)
+		return (0);*/
 	window_init(&window);
 }
