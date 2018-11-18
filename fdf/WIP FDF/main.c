@@ -26,6 +26,9 @@ int main(int argc, char **argv)
 {
 	twin_list window;
 	/*if (argc != 2)
-		return (0);*/
+	{
+		ft_putstr("usage: ./fdf input_file\n");
+		return (1);
+	}*/
 	window_init(&window);
 }
