@@ -4,7 +4,7 @@
 
 typedef struct        s_map
 {
-  char  **map
+  char  **map;
 }                     t_map;
 
 #endif
