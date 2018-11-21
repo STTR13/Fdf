@@ -20,11 +20,13 @@ typedef struct			swin_list
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	char	*title;
+	int helpscr;
 	int color;
 }						twin_list;
 
 int deal_key(int key, twin_list *window);
 int mouse_key(int key, twin_list *window);
+void window_help(twin_list *whelp);
+void window_init(twin_list *window);
 
 #endif

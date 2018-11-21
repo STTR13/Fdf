@@ -35,7 +35,7 @@ int deal_key(int key, twin_list *window)
     else if (key == 124)
         ft_putstr("Right Arrow");
     else if (key == 4)
-        ft_putchar('H');
+        window_help(&window);
     else if (key == 53)
         exit(0);
     return (0);
