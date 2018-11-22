@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h>
+
 int deal_key(int key, twin_list *window)
 {
     if (key == 13)

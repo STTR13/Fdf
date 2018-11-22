@@ -16,6 +16,17 @@
 # include "../minilibx_macos/mlx.h"
 # include <math.h>
 
+typedef struct			s_file
+{
+	char **file;
+}										t_file;
+
+typedef struct			s_coords
+{
+	int x;
+	int y;
+}										t_coords;
+
 typedef struct			swin_list
 {
 	void	*mlx_ptr;
