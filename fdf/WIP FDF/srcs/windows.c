@@ -2,16 +2,19 @@
 
 void window_help(twin_list *whelp)
 {
-  if (whelp->helpscr  = 0)
+  if (whelp->helpscr  == 0)
   {
     whelp->helpscr = 1;
     whelp->mlx_ptr = mlx_init();
-    whelp->win_ptr = mlx_new_window(whelp->mlx_ptr, 1000, 1000, "Help")
-    mlx_key_hook(whelp->win_ptr, deal_key, window);
+    whelp->win_ptr = mlx_new_window(whelp->mlx_ptr, 1000, 1000, "Help");
+    mlx_key_hook(whelp->win_ptr, deal_key, whelp);
     mlx_loop(whelp->mlx_ptr);
   }
   else
+  {
+    whelp->helpscr = 0;
     mlx_destroy_window(whelp->mlx_ptr, whelp->win_ptr);
+  }
 }
 
 void window_init(twin_list *window)

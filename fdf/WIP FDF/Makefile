@@ -19,7 +19,7 @@ SRC = main.c \
 				$(SRC_PATH)key_mouse_hook.c \
 
 OBJ = main.o \
-				$(SRC_PATH)windows.c \
+				$(SRC_PATH)windows.o \
 				$(SRC_PATH)/key_mouse_hook.o \
 
 INCLUDES = -I /includes

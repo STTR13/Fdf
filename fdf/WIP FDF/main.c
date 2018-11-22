@@ -15,6 +15,7 @@
 int main(int argc, char **argv)
 {
 	twin_list window;
+
 	/*if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
