@@ -38,6 +38,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
+char				*ft_strccpy(char *dest, const char *src, const char c);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t n);

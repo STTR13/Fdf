@@ -6,7 +6,7 @@
 #    By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/13 14:22:54 by fabbenbr          #+#    #+#              #
-#    Updated: 2018/10/15 10:45:52 by fabbenbr         ###   ########.fr        #
+#    Updated: 2018/12/02 15:47:16 by fabbenbr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ SRC = ft_atoi.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_strccpy.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -129,6 +130,7 @@ OBJ = ft_atoi.o \
 		ft_lstadd.o \
 		ft_lstiter.o \
 		ft_lstmap.o \
+		ft_strccpy.o \
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -138,6 +140,7 @@ $(NAME):
 		gcc -c $(FLAGS) $(SRC) -I./
 		ar -rcs $(NAME) $(OBJ)
 		ranlib $(NAME)
+		make clean
 
 clean:
 	rm -f $(OBJ)

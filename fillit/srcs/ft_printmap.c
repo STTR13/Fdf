@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   printmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 12:17:57 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/24 21:29:24 by agilmet          ###   ########.fr       */
+/*   Created: 2018/11/27 13:04:21 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/12/01 12:16:21 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/fillit.h"
 
-void	*ft_memalloc(size_t size)
+void	printmap(char **map)
 {
-	void	*tmem;
+	int size;
+	int i;
 
-	if (((tmem = malloc(size)) == NULL) || size == 0)
-		return (NULL);
-	else
-		return (ft_memset(tmem, 0, size));
+	i = 0;
+	size = ft_strlen(map[0]);
+	while (i < size)
+	{
+		ft_putendl(map[i]);
+		i++;
+	}
 }
