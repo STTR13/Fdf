@@ -14,15 +14,15 @@ NAME = fdf
 
 SRC_PATH = srcs/
 
-SRC = main.c \
+SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)windows.c \
 				$(SRC_PATH)key_mouse_hook.c \
 
-OBJ = main.o \
-				$(SRC_PATH)windows.o \
-				$(SRC_PATH)/key_mouse_hook.o \
+OBJ = 			main.o \
+				windows.o \
+				key_mouse_hook.o \
 
-INCLUDES = -I /includes
+INCLUDES = includes/
 
 FRAMEW = -framework OpenGL -framework AppKit
 
@@ -33,12 +33,16 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) $(INCLUDES) $(LIB) $(FRAMEW)
+	@$(MAKE) -C libft/
+	gcc -c $(SRC) -I $(INCLUDES)
+	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:
+	@$(MAKE) -C libft/ clean
 	rm -f $(OBJ)
 
 fclean: clean
+	@$(MAKE) -C libft/ fclean
 	rm -f $(NAME)
 
 re: fclean all

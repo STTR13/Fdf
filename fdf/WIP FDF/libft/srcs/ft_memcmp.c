@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 11:36:50 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/19 14:43:41 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+int		ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	int x;
-	int y;
-}										t_coords;
+	unsigned char	*tstr1;
+	unsigned char	*tstr2;
+	size_t			i;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	i = 0;
+	tstr1 = (unsigned char *)str1;
+	tstr2 = (unsigned char *)str2;
+	while (i < n)
+	{
+		if (*(tstr1 + i) != *(tstr2 + i))
+			return (tstr1[i] - tstr2[i]);
+		i++;
+	}
+	return (0);
+}

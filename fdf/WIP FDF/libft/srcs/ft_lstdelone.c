@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/13 15:17:06 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/22 11:04:39 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	int x;
-	int y;
-}										t_coords;
-
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	if (alst && del && *alst)
+	{
+		del(((*alst)->content), (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
+	}
+}

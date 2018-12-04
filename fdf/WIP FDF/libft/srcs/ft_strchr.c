@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 15:30:10 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 09:54:55 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+char	*ft_strchr(const char *str, int c)
 {
-	int x;
-	int y;
-}										t_coords;
+	int		i;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	i = 0;
+	while (str[i] != c && str[i] != '\0')
+		i++;
+	if (c == '\0')
+		return ((char *)&str[i]);
+	if (str[i] != '\0')
+		return ((char *)&str[i]);
+	else
+		return (NULL);
+}

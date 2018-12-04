@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 14:20:11 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/04 14:24:09 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+int		ft_strcmp(const char *str1, const char *str2)
 {
-	int x;
-	int y;
-}										t_coords;
+	int i;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	i = 0;
+	while (str1[i] == str2[i] && str1[i] && str2[i])
+		i++;
+	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+}

@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/06 11:48:49 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 09:53:12 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
-	int x;
-	int y;
-}										t_coords;
+	char *tstr;
+	char *tstr2;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	tstr = (char *)str1;
+	tstr2 = (char *)str2;
+	if (tstr2 < tstr)
+	{
+		tstr = tstr + n - 1;
+		tstr2 = tstr2 + n - 1;
+		while (n--)
+			*tstr-- = *tstr2--;
+	}
+	else
+	{
+		while (n--)
+			*tstr++ = *tstr2++;
+	}
+	return (str1);
+}

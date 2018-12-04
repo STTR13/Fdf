@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/06 11:22:06 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/19 14:44:37 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+void	*ft_memccpy(void *str1, const void *str2, int c, size_t n)
 {
-	int x;
-	int y;
-}										t_coords;
+	size_t		i;
+	char		*temp;
+	const char	*temp2;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	i = 0;
+	temp = (char *)str1;
+	temp2 = str2;
+	while (i < n)
+	{
+		temp[i] = temp2[i];
+		if (*((unsigned char *)str2 + i) == (unsigned char)c)
+			return ((unsigned char *)str1 + i + 1);
+		i++;
+	}
+	return (NULL);
+}

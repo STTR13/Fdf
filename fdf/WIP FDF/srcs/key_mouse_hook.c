@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int deal_key(int key, twin_list *window)
+int deal_key(int key, twlist *window)
 {
     if (key == 13)
         ft_putchar('W');
@@ -35,13 +35,13 @@ int deal_key(int key, twin_list *window)
     else if (key == 124)
         ft_putstr("Right Arrow");
     else if (key == 4)
-        window_help(window);
+        ft_putchar('H');
     else if (key == 53)
-        exit(0);
+		exit(0);
     return (0);
 }
 
-int mouse_key(int key, twin_list *window)
+int mouse_key(int key, twlist *window)
 {
     if (key == 1)
         ft_putstr("Left Button");

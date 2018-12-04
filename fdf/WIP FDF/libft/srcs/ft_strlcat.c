@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 13:54:01 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/18 16:55:41 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int x;
-	int y;
-}										t_coords;
+	size_t i;
+	size_t j;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	i = 0;
+	j = 0;
+	if (size > 0)
+	{
+		while (dest[i] && i < size)
+			i++;
+		j = i;
+		while (src[i - j] && i < size - 1)
+		{
+			dest[i] = src[i - j];
+			i++;
+		}
+	}
+	if (j < size)
+		dest[i] = '\0';
+	return (ft_strlen(src) + j);
+}

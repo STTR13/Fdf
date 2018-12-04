@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 15:53:55 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/13 16:12:41 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/libft.h"
 
-typedef struct			s_coords
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int x;
-	int y;
-}										t_coords;
+	int		x;
+	int		c;
+	char	*temp;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	x = 0;
+	temp = (char *)haystack;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (temp[x])
+	{
+		c = 0;
+		while (needle[c] == temp[c + x])
+		{
+			if (needle[c + 1] == '\0')
+			{
+				return (temp + x);
+			}
+			c++;
+		}
+		x++;
+	}
+	return (0);
+}

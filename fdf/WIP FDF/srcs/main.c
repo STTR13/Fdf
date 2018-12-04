@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/11/17 16:25:18 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include <math.h>
+#include "../includes/fdf.h"
 
-typedef struct			s_coords
+int main(int argc, char **argv)
 {
-	int x;
-	int y;
-}										t_coords;
+	twlist window;
 
-typedef struct			swlist
-{
-	char *file;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int color;
-}						twlist;
-
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-
-#endif
+	/*if (argc != 2)
+	{
+		ft_putstr("usage: ./fdf input_file\n");
+		return (1);
+	}*/
+	/*if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
+	{
+		ft_putendl("error");
+		return (0);
+	}*/
+	window_init(&window);
+}
