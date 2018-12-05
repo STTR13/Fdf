@@ -6,7 +6,7 @@
 #    By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:20:29 by fabbenbr          #+#    #+#              #
-#    Updated: 2018/12/05 14:39:22 by agilmet          ###   ########.fr        #
+#    Updated: 2018/12/02 15:46:50 by fabbenbr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,11 @@ $(NAME):
 	gcc -o $(NAME) $(OBJ) $(LIB)
 
 clean:
-	@$(MAKE) clean -C Libft
+	@$(MAKE) -C Libft/ clean
 	rm -f $(OBJ)
 
 fclean: clean
-	@$(MAKE) fclean -C Libft/$
+	@$(MAKE) -C Libft/ fclean
 	rm -f $(NAME) $(LIB)
 
 re: fclean all
