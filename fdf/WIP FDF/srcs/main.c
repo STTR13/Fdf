@@ -16,15 +16,16 @@ int main(int argc, char **argv)
 {
 	twlist window;
 
-	/*if (argc != 2)
+	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
-		return (1);
-	}*/
-	/*if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
+		return (0);
+	}
+	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
 		ft_putendl("error");
 		return (0);
-	}*/
-	window_init(&window);
+	}
+
+    window_init(&window);
 }

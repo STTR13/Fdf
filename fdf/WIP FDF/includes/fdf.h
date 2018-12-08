@@ -15,23 +15,30 @@
 # include "../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"
 # include <math.h>
+# include <fcntl.h>
 
-typedef struct			s_coords
+typedef struct			sinput
 {
+	int **file;
+	int color;
+	int counter;
 	int x;
 	int y;
-}										t_coords;
+}										tinput;
 
 typedef struct			swlist
 {
-	char *file;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int color;
+	tinput	*file;
 }						twlist;
 
 int deal_key(int key, twlist *window);
 int mouse_key(int key, twlist *window);
 void window_init(twlist *window);
+tinput	*file_reader(int fd);
+tinput *character_convertor(tinput *lst, char *temp);
+int validinput(char *temp);
+int **filecreator(char *temp, int lines);
 
 #endif

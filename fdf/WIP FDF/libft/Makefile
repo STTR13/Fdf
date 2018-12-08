@@ -75,6 +75,7 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_lstiter.c \
 		$(SRC_PATH)ft_lstmap.c \
 		$(SRC_PATH)get_next_line.c \
+		$(SRC_PATH)ft_iswhitespace.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -135,6 +136,7 @@ OBJ = ft_atoi.o \
 		ft_lstiter.o \
 		ft_lstmap.o \
 		get_next_line.o \
+		ft_iswhitespace.o \
 
 FLAGS = -Wall -Wextra -Werror
 

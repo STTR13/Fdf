@@ -69,6 +69,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
+int		ft_iswhitespace(int c);
 
 typedef struct		s_list
 {

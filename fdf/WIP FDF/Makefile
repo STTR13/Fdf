@@ -17,10 +17,12 @@ SRC_PATH = srcs/
 SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)windows.c \
 				$(SRC_PATH)key_mouse_hook.c \
+				$(SRC_PATH)file_reader.c \
 
 OBJ = 			main.o \
 				windows.o \
 				key_mouse_hook.o \
+				file_reader.o
 
 INCLUDES = includes/
 
