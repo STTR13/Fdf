@@ -12,9 +12,9 @@
 
 NAME = libft.a
 
-INC = includes/
-
 SRC_PATH = srcs/
+
+INCLUDES = -I includes/
 
 SRC = $(SRC_PATH)ft_atoi.c \
 	  $(SRC_PATH)ft_bzero.c \
@@ -74,8 +74,7 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_lstadd.c \
 		$(SRC_PATH)ft_lstiter.c \
 		$(SRC_PATH)ft_lstmap.c \
-		$(SRC_PATH)get_next_line.c \
-		$(SRC_PATH)ft_iswhitespace.c \
+		$(SRC_PATH)ft_strdel_neg.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -135,15 +134,14 @@ OBJ = ft_atoi.o \
 		ft_lstadd.o \
 		ft_lstiter.o \
 		ft_lstmap.o \
-		get_next_line.o \
-		ft_iswhitespace.o \
+		ft_strdel_neg.o \
 
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-		gcc -c $(FLAGS) $(SRC) -I $(INC)
+		gcc -c $(FLAGS) $(SRC) $(INCLUDES)
 		ar -rcs $(NAME) $(OBJ)
 		ranlib $(NAME)
 

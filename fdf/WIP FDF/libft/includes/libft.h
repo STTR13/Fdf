@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 12:17:58 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/13 15:36:35 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2018/12/11 11:10:54 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "get_next_line.h"
 
 void				*ft_memset(void *str, int c, size_t n);
 void				*ft_memcpy(void *str1, const void *str2, size_t n);
@@ -69,7 +68,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
-int		ft_iswhitespace(int c);
+int					ft_strdel_neg(char **as);
 
 typedef struct		s_list
 {
