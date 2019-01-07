@@ -19,11 +19,9 @@
 
 typedef struct			sinput
 {
-	int **file;
-	int color;
-	int counter;
-	int x;
-	int y;
+	int **input;
+	int lines;
+	int linelen;
 }										tinput;
 
 typedef struct			swlist
@@ -39,6 +37,7 @@ void window_init(twlist *window);
 tinput	*file_reader(int fd);
 tinput *character_convertor(tinput *lst, char *temp);
 int validinput(char *temp);
-int **filecreator(char *temp, int lines);
+int **filecreator(char *temp, int lines, int linelen);
+int linecounter(char *str);
 
 #endif

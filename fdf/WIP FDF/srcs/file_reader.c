@@ -6,108 +6,87 @@ int validinput(char *temp)
 	int lines;
 
 	i = 0;
-	lines = 0;
+	lines = 1;
 	while (temp[i] != '\0')
 	{
-		if ((temp[i] == ' ' || temp[i] == '\n' || ft_isdigit(temp[i]) == 1))
-		{
-			if (temp[i] == '\n' && temp[i + 1] != '\0')
+		if (temp[i] == '\n' && temp[i + 1] != '\0')
 				lines++;
 			i++;
-		}
-		else
-			return (0);
 	}
 	return (lines);
 }
 
-int **filecreator(char *temp, int lines)
+int **filecreator(char *temp, int lines, int linelen)
 {
 	int **input;
-	int boolean;
-	int numbers;
-	int *totnumbers;
 	int i;
 	int j;
-	int x = 0;
-	int y = 0;
-	boolean = 0;
+	int x;
+	int tempnb;
+
 	i = 0;
-	j = 0;
-	input = ft_memalloc(sizeof(int **) * lines + 1);
-	totnumbers = ft_memalloc(sizeof(int *) * lines + 1);
-	while (temp[i] != '\0')
+	input = ft_memalloc(sizeof(int **) * lines);
+	while (i < lines)
 	{
-		if (temp[i] == '\n')
-		{
-			input[j] = ft_memalloc(sizeof(int *) * numbers);
-			j++;
-			boolean = 0;
-			totnumbers[x] = numbers;
-			x++;
-			numbers = 0;
-		}
-		else
-		{
-			if (ft_isdigit(temp[i]) == 1 && boolean == 0)
-			{
-				boolean = 1;
-				numbers++;
-			}
-			else if (temp[i] == ' ' || temp[i] == '\n')
-				boolean = 0;
-		}
+		input[i] = ft_memalloc(sizeof(int) * linelen);
 		i++;
 	}
 	i = 0;
-	x = 0;
-	y = 0;
-	int tempn;
-	while (temp[i] != '\0')
+	j = 0;
+	while (temp[x] != '\0')
 	{
-		if (ft_isdigit(temp[i]) == 1)
+		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
 		{
-			tempn = ft_atoi(&temp[i]);
-			if (y < totnumbers[x])
+			printf("TEST1\n");
+			tempnb = ft_atoi(&temp[x]);
+			if (j < linelen)
 			{
-				input[x][y] = tempn;
-				y++;
+				input[i][j] = tempnb;
+				j++;
+				printf("TEST2 j = %i\n", j);
 			}
 			else
 			{
-				x++;
-				y = 0;
-				input[x][y] = tempn;
-				y++;
-			}
-			while (ft_isdigit(temp[i]))
 				i++;
+				j = 0;
+				input[i][j] = tempnb;
+				j++;
+				printf("TEST3 i = %i\n", i);
+			}
+			while (ft_isdigit(temp[x]) && temp[x + 1] != '\0')
+			{
+				printf("TEST4\n");
+				x++;
+			}
 		}
-		i++;
-	}
-	x = 0;
-	y = 0;
-	while (x < lines)
-	{
-		printf("%i\n", totnumbers[x]);
 		x++;
 	}
+	printf("TEST5\n");
 	return(input);
 }
 
-tinput *character_convertor(tinput *lst, char *temp)
+int linecounter(char *str)
 {
 	int i;
+	int counter;
 	int j;
-	int lines;
 
-	if ((lines = validinput(temp)) > 0)
+	i = 0;
+	j = 0;
+	counter = 0;
+	while (str[j] != '\n')
+		j++;
+	while (str[i] != '\n' && i < j)
 	{
-		lst->file = filecreator(temp, lines);
-		return (lst);
+		if (ft_isdigit(str[i]) == 1)
+		{
+			while (ft_isdigit(str[i]) == 1)
+				i++;
+			counter++;
+		}
+		i++;
 	}
-	return (NULL);
-
+	return (counter);
 }
 
 tinput *input_reader(tinput *lst, int fd)
@@ -130,7 +109,9 @@ tinput *input_reader(tinput *lst, int fd)
 		buffer = ft_strnew(counter + 1);
 	}
 	free(buffer);
-	lst = character_convertor(lst, temp);
+	lst->lines = validinput(temp);
+	lst->linelen = linecounter(temp);
+	lst->input = filecreator(temp, lst->lines, lst->linelen);
 	free(temp);
 	return (lst);
 }

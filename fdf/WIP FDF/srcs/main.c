@@ -26,6 +26,6 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-
+printf("lines is: %i\n linelen is:%i\n", window.file->lines, window.file->linelen);
     window_init(&window);
 }
