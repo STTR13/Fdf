@@ -33,6 +33,7 @@ int **filecreator(char *temp, int lines, int linelen)
 	}
 	i = 0;
 	j = 0;
+	x = 0;
 	while (temp[x] != '\0')
 	{
 		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)

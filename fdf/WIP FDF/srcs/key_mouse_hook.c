@@ -12,6 +12,13 @@
 
 #include "../includes/fdf.h"
 
+int windowclose(void *param)
+{
+	(void)param;
+	exit(0);
+	return(0);
+}
+
 int deal_key(int key, twlist *window)
 {
     if (key == 13)
@@ -43,6 +50,7 @@ int deal_key(int key, twlist *window)
 
 int mouse_key(int key, twlist *window)
 {
+	void *param;
     if (key == 1)
         ft_putstr("Left Button");
     if (key == 2)

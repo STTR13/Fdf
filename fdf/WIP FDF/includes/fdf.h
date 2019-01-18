@@ -16,6 +16,7 @@
 # include "../minilibx_macos/mlx.h"
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct			sinput
 {
@@ -39,5 +40,7 @@ tinput *character_convertor(tinput *lst, char *temp);
 int validinput(char *temp);
 int **filecreator(char *temp, int lines, int linelen);
 int linecounter(char *str);
+
+
 
 #endif
