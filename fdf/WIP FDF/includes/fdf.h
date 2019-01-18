@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:44:22 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 15:01:00 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/01/18 12:50:19 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct			sinput
 	int **input;
 	int lines;
 	int linelen;
+	struct sinput *next;
 }										tinput;
 
 typedef struct			swlist
