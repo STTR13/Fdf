@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_intarrclr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 16:25:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/01/28 11:15:51 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/01/28 11:18:46 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-int main(int argc, char **argv)
+int		**ft_intarrclr(int **ap)
 {
-	twlist window;
+	int i;
 
-	if (argc != 2)
+	i = 0;
+	if (ap && *ap)
 	{
-		ft_putstr("usage: ./fdf input_file\n");
-		return (0);
+		while (ap[i])
+		{
+			free(ap[i]);
+			ap[i] = NULL;
+			i++;
+		}
+	free(ap);
+	ap = NULL;
+	return (ap);
 	}
-	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-    window_init(&window);
+	if (ap)
+		free (ap);
+	return (ap);
 }

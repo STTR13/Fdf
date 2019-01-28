@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_reader.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/28 11:57:57 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/01/28 12:00:38 by fabbenbr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
-int validinput(char *temp)
+int		validinput(char *temp)
 {
 	int i;
 	int lines;
@@ -10,13 +22,13 @@ int validinput(char *temp)
 	while (temp[i] != '\0')
 	{
 		if (temp[i] == '\n' && temp[i + 1] != '\0')
-				lines++;
-			i++;
+			lines++;
+		i++;
 	}
 	return (lines);
 }
 
-int **filecreator(char *temp, int lines, int linelen)
+int		**filecreator(char *temp, int lines, int linelen)
 {
 	int **input;
 	int i;
@@ -38,13 +50,11 @@ int **filecreator(char *temp, int lines, int linelen)
 	{
 		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
 		{
-			printf("TEST1\n");
 			tempnb = ft_atoi(&temp[x]);
 			if (j < linelen)
 			{
 				input[i][j] = tempnb;
 				j++;
-				printf("TEST2 j = %i\n", j);
 			}
 			else
 			{
@@ -52,21 +62,17 @@ int **filecreator(char *temp, int lines, int linelen)
 				j = 0;
 				input[i][j] = tempnb;
 				j++;
-				printf("TEST3 i = %i\n", i);
 			}
-			while (ft_isdigit(temp[x]) && temp[x + 1] != '\0')
-			{
-				printf("TEST4\n");
+			while ((temp[x] == '-' || ft_isdigit(temp[x])) \
+					&& temp[x + 1] != '\0')
 				x++;
-			}
 		}
 		x++;
 	}
-	printf("TEST5\n");
-	return(input);
+	return (input);
 }
 
-int linecounter(char *str)
+int		linecounter(char *str)
 {
 	int i;
 	int counter;
@@ -90,12 +96,12 @@ int linecounter(char *str)
 	return (counter);
 }
 
-tinput *input_reader(tinput *lst, int fd)
+tinput	*input_reader(tinput *lst, int fd)
 {
-	char *buffer;
-	int counter;
-	int ret;
-	char *temp;
+	char	*buffer;
+	int		counter;
+	int		ret;
+	char	*temp;
 
 	counter = 1;
 	if ((buffer = ft_strnew(counter + 1)) == NULL)
@@ -125,10 +131,10 @@ tinput	*file_reader(int fd)
 		return (NULL);
 	if ((lst = (tinput *)ft_memalloc(sizeof(tinput))) == NULL)
 	{
-		close (fd);
+		close(fd);
 		return (NULL);
 	}
 	lst = input_reader(lst, fd);
-	close (fd);
+	close(fd);
 	return (lst);
 }

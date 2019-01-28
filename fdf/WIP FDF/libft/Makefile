@@ -75,6 +75,8 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_lstiter.c \
 		$(SRC_PATH)ft_lstmap.c \
 		$(SRC_PATH)ft_strdel_neg.c \
+		$(SRC_PATH)ft_chararrclr.c \
+		$(SRC_PATH)ft_intarrclr.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -135,6 +137,8 @@ OBJ = ft_atoi.o \
 		ft_lstiter.o \
 		ft_lstmap.o \
 		ft_strdel_neg.o \
+		ft_chararrclr.o \
+		ft_intarrclr.o \
 
 FLAGS = -Wall -Wextra -Werror
 

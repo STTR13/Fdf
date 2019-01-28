@@ -12,9 +12,9 @@
 
 #include "../includes/fdf.h"
 
-int windowclose(void *param)
+int windowclose(twlist *window)
 {
-	(void)param;
+	free_list(window);
 	exit(0);
 	return(0);
 }
@@ -44,7 +44,10 @@ int deal_key(int key, twlist *window)
     else if (key == 4)
         ft_putchar('H');
     else if (key == 53)
+	{
+		free_list(window);
 		exit(0);
+	}
     return (0);
 }
 
@@ -62,4 +65,11 @@ int mouse_key(int key, twlist *window)
     if (key == 5)
         ft_putstr("Scroll Down");
     return (0);
+}
+
+int mouse_move(int x, int y, twlist *window)
+{
+	//(void)param;
+	//ft_putstr("moving");
+	return(0);
 }

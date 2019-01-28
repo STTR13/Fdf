@@ -41,7 +41,9 @@ tinput *character_convertor(tinput *lst, char *temp);
 int validinput(char *temp);
 int **filecreator(char *temp, int lines, int linelen);
 int linecounter(char *str);
-
+twlist *free_list(twlist *window);
+int windowclose(twlist *window);
+int mouse_move(int x, int y, twlist *window);
 
 
 #endif

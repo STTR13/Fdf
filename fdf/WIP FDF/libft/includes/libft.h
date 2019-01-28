@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 12:17:58 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/12/11 11:10:54 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/01/28 11:19:49 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
+char				**ft_chararrclr(char **ap);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t				ft_strlen(const char *str);
@@ -69,6 +70,7 @@ int					ft_tolower(int c);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strdel_neg(char **as);
+int					**ft_intarrclr(int **ap);
 
 typedef struct		s_list
 {
