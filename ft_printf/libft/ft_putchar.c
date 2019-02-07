@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/16 15:34:42 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/13 13:48:21 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/13 13:48:48 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx_macos/mlx.h"
+#include "includes/libft.h"
 
-int main()
+void	ft_putchar(char c)
 {
-	void *mlx_ptr;
-	void *win_ptr;
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "Test");
-	mlx_loop(mlx_ptr);
+	ft_putchar_fd(c, 1);
 }

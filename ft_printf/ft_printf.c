@@ -6,8 +6,13 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 12:27:27 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/18 12:27:29 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/02/07 10:42:32 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
+int		ft_printf(const char *format, ...)
+{
+
+}

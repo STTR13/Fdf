@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 12:27:33 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/02/07 10:44:21 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/09 13:03:10 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/09 13:08:17 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <libft/includes/libft.h>
+#include "includes/libft.h"
 
-int		ft_printf(const char *format, ...);
-
-#endif
+void	ft_putnbr(int n)
+{
+	ft_putnbr_fd(n, 1);
+}
