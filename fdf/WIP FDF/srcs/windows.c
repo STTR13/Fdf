@@ -17,7 +17,7 @@ void window_init(twlist *window)
 		pos = 10;
 		while (y < window->file->linelen)
 		{
-			mlx_pixel_put(window->mlx_ptr, window->win_ptr, pos, pos2 + window->file->input[x][y], 255);
+			mlx_pixel_put(window->mlx_ptr, window->win_ptr, pos, pos2 + window->file->input[x][y], COLORWHITE);
 			pos += 10;
 			y++;
 		}
