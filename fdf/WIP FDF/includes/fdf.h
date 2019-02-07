@@ -18,6 +18,9 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+# define WHEIGHT 1280
+# define WWIDTH 2280
+# define COLORWHITE 0xaabbcc
 typedef struct			sinput
 {
 	int **input;

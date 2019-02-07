@@ -16,14 +16,14 @@ char	**ft_chararrclr(char **ap)
 {
 	int i;
 
-	i = 0;
+	i = ft_strlen(ap[0] - 1);
 	if (ap && *ap)
 	{
-		while (ap[i])
+		while (i >= 0)
 		{
 			free(ap[i]);
 			ap[i] = NULL;
-			i++;
+			i--;
 		}
 		free(ap);
 		ap = NULL;

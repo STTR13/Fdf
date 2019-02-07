@@ -4,7 +4,7 @@ void window_init(twlist *window)
 {
 	void *param;
 	window->mlx_ptr = mlx_init();
-	window->win_ptr = mlx_new_window(window->mlx_ptr, 500, 500, "FDF");
+	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int x = 0;
 	int y = 0;
 	int pos;
@@ -17,7 +17,7 @@ void window_init(twlist *window)
 		pos = 10;
 		while (y < window->file->linelen)
 		{
-			mlx_pixel_put(window->mlx_ptr, window->win_ptr, pos, pos2 + window->file->input[x][y], 255255255);
+			mlx_pixel_put(window->mlx_ptr, window->win_ptr, pos, pos2 + window->file->input[x][y], 255);
 			pos += 10;
 			y++;
 		}
