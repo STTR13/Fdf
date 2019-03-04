@@ -33,7 +33,7 @@ typedef struct			swlist
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	ve		*vectors;
+	t_list		*lst;
 }						twlist;
 
 int deal_key(int key, twlist *window);

@@ -28,6 +28,6 @@ int main(int argc, char **argv)
 		return (0);
 	}
 
-	window.vectors = veconvert(file->input, file->lines, file->linelen);
+	window.lst = veconvert(file->input, file->lines, file->linelen);
     window_init(&window);
 }
