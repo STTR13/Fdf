@@ -1,4 +1,4 @@
-#include "../includes/fdf.h"
+/*#include "../includes/fdf.h"
 
 twlist *free_list(twlist *window)
 {
@@ -13,3 +13,4 @@ twlist *free_list(twlist *window)
 	}
 	return (window);
 }
+*/

@@ -9,20 +9,12 @@ void window_init(twlist *window)
 	int y = 0;
 	int pos;
 	int pos2 = 10;
-	if (window->file != NULL)
+	if (window->vectors != NULL)
 	{
-		while (x < window->file->lines)
+		while (window->vectors->next)
 		{
-			y = 0;
-			pos = 10;
-			while (y < window->file->linelen)
-			{
-				mlx_pixel_put(window->mlx_ptr, window->win_ptr, pos, pos2 + window->file->input[x][y], COLORWHITE);
-				pos += 10;
-				y++;
-			}
-			pos2 += 10;
-			x++;
+			mlx_pixel_put(window->mlx_ptr, window->win_ptr, (int)window->vectors->x * 10, (int)window->vectors->y * 10, COLORWHITE);
+			window->vectors = window->vectors->next;
 		}
 	}
 	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);

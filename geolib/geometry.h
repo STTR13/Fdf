@@ -25,6 +25,7 @@ typedef struct			s_ve
 	double	x;
 	double	y;
 	double	z;
+	struct s_ve *next;
 }						ve; //(n)
 
 ve						unit(ve v);
@@ -48,7 +49,7 @@ ve						rot(ve rotation_axis, ve v, double angle);
 typedef struct			s_pl
 {
 	ve		n;
-	pt		p;
+	//pt		p;
 }						pl; //(n)
 
 double					d(pl p);
@@ -63,11 +64,11 @@ ve						conic_projection(ve point, pl plan, ve eye);
 typedef struct			s_li
 {
 	ve		n;
-	pt		p;
+	//pt		p;
 }						li;
 
 ve						inter(pl p, li l);
 
-typedef double[3][3]	matrix;
+typedef double	matrix[3][3];
 
 #endif

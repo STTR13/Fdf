@@ -14,7 +14,7 @@
 
 int windowclose(twlist *window)
 {
-	free_list(window);
+	//free_list(window);
 	exit(0);
 	return(0);
 }

@@ -18,15 +18,18 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)windows.c \
 				$(SRC_PATH)key_mouse_hook.c \
 				$(SRC_PATH)file_reader.c \
-				$(SRC_PATH)free.c
+				$(SRC_PATH)free.c \
+				$(SRC_PATH)vemaker.c \
 
 OBJ = 			main.o \
 				windows.o \
 				key_mouse_hook.o \
 				file_reader.o \
-				free.o
+				free.o \
+				vemaker.o \
 
 INCLUDES = includes/
+
 
 FRAMEW = -framework OpenGL -framework AppKit
 
@@ -38,7 +41,7 @@ all: $(NAME)
 
 $(NAME):
 	@$(MAKE) -C libft/
-	gcc -c $(SRC) -I $(INCLUDES)
+	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:
