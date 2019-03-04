@@ -28,21 +28,13 @@ int		validinput(char *temp)
 	return (lines);
 }
 
-int		**filecreator(char *temp, int lines, int linelen)
+int		**filefiller(int **input, char *temp, int linelen)
 {
-	int **input;
 	int i;
 	int j;
 	int x;
 	int tempnb;
 
-	i = 0;
-	input = ft_memalloc(sizeof(int **) * lines);
-	while (i < lines)
-	{
-		input[i] = ft_memalloc(sizeof(int) * linelen);
-		i++;
-	}
 	i = 0;
 	j = 0;
 	x = 0;
@@ -69,6 +61,22 @@ int		**filecreator(char *temp, int lines, int linelen)
 		}
 		x++;
 	}
+	return (input);
+}
+
+int		**filecreator(char *temp, int lines, int linelen)
+{
+	int **input;
+	int i;
+
+	i = 0;
+	input = ft_memalloc(sizeof(int **) * lines);
+	while (i < lines)
+	{
+		input[i] = ft_memalloc(sizeof(int) * linelen);
+		i++;
+	}
+	input = filefiller(input, temp, linelen);
 	return (input);
 }
 

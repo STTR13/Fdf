@@ -45,7 +45,6 @@ int deal_key(int key, twlist *window)
         ft_putchar('H');
     else if (key == 53)
 	{
-		free_list(window);
 		exit(0);
 	}
     return (0);
