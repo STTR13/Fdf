@@ -25,7 +25,6 @@ typedef struct			s_ve
 	double	x;
 	double	y;
 	double	z;
-	struct s_ve *next;
 }						ve; //(n)
 
 ve						unit(ve v);
