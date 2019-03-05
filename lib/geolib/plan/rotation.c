@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sum.c                                              :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/05 10:09:49 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/05 10:09:50 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/04 18:34:57 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/04 18:34:59 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-ve				minus(ve a, ve b)
+pl				rot_p(m rot_matrix, ve rot_center, pl plan)
 {
-	ve	rv;
-
-	rv->x = a->x - b->x;
-	rv->y = a->y - b->y;
-	rv->z = a->z - b->z;
-	return (rv);
-}
-
-ve				plus(ve a, ve b)
-{
-	ve	rv;
-
-	rv->x = a->x + b->x;
-	rv->y = a->y + b->y;
-	rv->z = a->z + b->z;
-	return (rv);
+	plan.l = dot_mv(rot_matrix, plan.l);
+	plan.m = dot_mv(rot_matrix, plan.m);
+	plan.n = dot_mv(rot_matrix, plan.n);
+	plan.p = plus(
+		rot_center,
+		dot_mv(rot_matrix, minus(plan.p, rot_center))
+	);
+	return (plan);
 }

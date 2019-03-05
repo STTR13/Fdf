@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   ordinatesystem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 18:56:13 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 18:56:14 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/04 18:10:25 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/04 18:10:26 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-ve				ortho_projection(ve point, pl p)
+void	set_lm(pl *p, bool toward_origin)
 {
-	double	t;
-
-	t = dot(p->n, minus(p->p, point)) / dot(p->n, p->n);
-	return((t >= 0) ? nullvector() : plus(point, scal(p->n, t)));
+	(*p).m = unit(cross((*p).n, scal(k(), (toward_origin) ? 1 : -1)));
+	(*p).l = unit(cross((*p).m, (*p).n));
 }
 
-ve				conic_projection(ve point, pl p, ve eye)
+matrix	system_lmn_matrix(pl plan)
 {
-	double	t;
-	ve		nl;
+	matrix m;
 
-	nl = unit(minus(point, eye));
-	t = dot(p->n, minus(p->p, point)) / dot(p->n, nl);
-	return((t >= 0) ? nullvector() : plus(point, scal(nl, t)));
+	m[0][0] = plan.l.x;
+	m[0][1] = plan.l.y;
+	m[0][2] = plan.l.z;
+	m[1][0] = plan.m.x;
+	m[1][1] = plan.m.y;
+	m[1][2] = plan.m.z;
+	m[2][0] = plan.n.x;
+	m[2][1] = plan.n.y;
+	m[2][2] = plan.n.z;
+	return (inv(m));
 }

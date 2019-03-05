@@ -15,6 +15,24 @@
 
 #include <math.h>
 
+typedef enum {false=0, true=1} bool;
+
+/*
+** --- Matrix ---
+*/
+
+typedef double[3][3] matrix;
+
+matrix			I(void);
+matrix			rot(ve rot_axis, double angle);
+
+matrix			adj(matrix M);
+double			det(matrix M);
+matrix			inv(matrix M);
+
+ve				dot_mv(matrix M, ve v);
+matrix			scal_m(matrix M, double s);
+
 /*
 ** --- Vector ---
 */
@@ -44,24 +62,7 @@ ve				scal_v(ve v, double s);
 ve				rot_ve(ve rot_axis, ve v, double angle);
 
 bool			isnullvector(ve v);
-
-typedef enum {false=0, true=1} bool;
-
-/*
-** --- Matrix ---
-*/
-
-typedef double matrix[3][3];
-
-matrix			I(void);
-matrix			rot(ve rot_axis, double angle);
-
-matrix			adj(matrix M);
-double			det(matrix M);
-matrix			inv(matrix M);
-
-ve				dot_mv(matrix M, ve v);
-matrix			scal_m(matrix M, double s);
+bool			equal_v(ve a, ve b);
 
 /*
 ** --- Plan ---

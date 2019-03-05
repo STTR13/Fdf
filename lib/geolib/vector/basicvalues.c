@@ -1,36 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   product.c                                          :+:      :+:    :+:   */
+/*   basicvalues.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/05 10:10:00 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/05 10:10:01 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/04 16:42:59 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/04 16:43:01 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-ve 				cross(ve a, ve b)
+ve				nullvector(void)
 {
-	ve	rv;
+	ve r;
 
-	rv->x = a->y * b->z - a->z * b->y;
-	rv->y = a->z * b->x - a->x * b->z;
-	rv->z = a->x * b->y - a->y * b->x;
-	return (rv);
+	r.x = 0;
+	r.y = 0;
+	r.z = 0;
+	return (r);
 }
 
-double 			dot_vv(ve a, ve b)
+ve				i(void)
 {
-	return (a->x * b->x + a->y * b->y + a->z * b->z);
+	ve r;
+
+	r.x = 1;
+	r.y = 0;
+	r.z = 0;
+	return (r);
 }
 
-ve				scal(ve v, double s)
+ve				j(void)
 {
-	v->x = v->y * s;
-	v->y = v->z * s;
-	v->z = v->x * s;
-	return (v);
+	ve r;
+
+	r.x = 0;
+	r.y = 1;
+	r.z = 0;
+	return (r);
+}
+
+ve				k(void)
+{
+	ve r;
+
+	r.x = 0;
+	r.y = 0;
+	r.z = 1;
+	return (r);
 }

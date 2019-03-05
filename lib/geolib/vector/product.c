@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ordinatesystem.c                                   :+:      :+:    :+:   */
+/*   product.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 18:10:25 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 18:10:26 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/05 10:10:00 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 10:10:01 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-void	set_lm(pl *p, bool toward_origin)
+ve 				cross(ve a, ve b)
 {
-	(*p)->m = unit(cross((*p)->n, scal(k(), (toward_origin) ? 1 : -1)));
-	(*p)->l = unit(cross((*p)->m, (*p)->n));
+	ve	rv;
+
+	rv.x = a.y * b.z - a.z * b.y;
+	rv.y = a.z * b.x - a.x * b.z;
+	rv.z = a.x * b.y - a.y * b.x;
+	return (rv);
 }
 
-matrix	system_lmn_matrix(pl plan)
+double 			dot_vv(ve a, ve b)
 {
-	matrix m;
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
 
-	m[0][0] = plan->l->x;
-	m[0][1] = plan->l->y;
-	m[0][2] = plan->l->z;
-	m[1][0] = plan->m->x;
-	m[1][1] = plan->m->y;
-	m[1][2] = plan->m->z;
-	m[2][0] = plan->n->x;
-	m[2][1] = plan->n->y;
-	m[2][2] = plan->n->z;
-	return (inv(m));
+ve				scal(ve v, double s)
+{
+	v.x = v.y * s;
+	v.y = v.z * s;
+	v.z = v.x * s;
+	return (v);
 }

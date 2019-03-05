@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm.c                                             :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 19:40:28 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 19:40:29 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/05 12:44:29 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 12:44:30 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "../modeling.h"
 
-double 			norm(ve v)
+vertex			*find_vertex(ve v, vertex *grid)
 {
-	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
-}
+	short	i;
+	vertex	t;
 
-ve				unit(ve v)
-{
-	double	norm;
-	ve		rv;
-
-	norm = norm(v);
-	rv->x = v->x / norm;
-	rv->y = v->y / norm;
-	rv->z = v->z / norm;
-	return (rv);
+	if (!grid->done)
+		return (NULL);
+	if (grid->v == v)
+	{
+		reset_vertex(grid);
+		return (grid);
+	}
+	grid->done = true;
+	i = -1;
+	while (++i < 4)
+		if ((t = find_vertex(grid->next[i])))
+			return (t);
+	return (NULL);
 }
