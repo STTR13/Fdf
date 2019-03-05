@@ -10,15 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
 void	set_lm(pl *p, bool toward_origin)
 {
-	(*p).m = unit(cross((*p).n, scal(k(), (toward_origin) ? 1 : -1)));
-	(*p).l = unit(cross((*p).m, (*p).n));
+	ve t[2];
+
+	p->m = *unit(
+		*cross(
+			(*p).n,
+			*scal_v(
+				*k(&t[0]),
+				(toward_origin) ? 1 : -1,
+				&t[1]
+			),
+			&t[0]
+		),
+		&t[1]
+	);
+	p->l = *unit(
+		*cross(
+			(*p).m,
+			(*p).n,
+			&t[0]
+		),
+		&t[1]
+	);
 }
 
-matrix	system_lmn_matrix(pl plan)
+matrix	*system_lmn_matrix(pl plan, matrix *ret)
 {
 	matrix m;
 
@@ -31,5 +51,5 @@ matrix	system_lmn_matrix(pl plan)
 	m[2][0] = plan.n.x;
 	m[2][1] = plan.n.y;
 	m[2][2] = plan.n.z;
-	return (inv(m));
+	return (inv(m, ret));
 }

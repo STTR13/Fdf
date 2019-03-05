@@ -10,24 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
-ve				minus(ve a, ve b)
+ve				*minus(ve a, ve b, ve *ret)
 {
-	ve	rv;
-
-	rv.x = a.x - b.x;
-	rv.y = a.y - b.y;
-	rv.z = a.z - b.z;
-	return (rv);
+	ret->x = a.x - b.x;
+	ret->y = a.y - b.y;
+	ret->z = a.z - b.z;
+	return (ret);
 }
 
-ve				plus(ve a, ve b)
+ve				*plus(ve a, ve b, ve *ret)
 {
-	ve	rv;
-
-	rv.x = a.x + b.x;
-	rv.y = a.y + b.y;
-	rv.z = a.z + b.z;
-	return (rv);
+	ret->x = a.x + b.x;
+	ret->y = a.y + b.y;
+	ret->z = a.z + b.z;
+	return (ret);
 }

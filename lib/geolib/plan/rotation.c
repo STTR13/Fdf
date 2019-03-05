@@ -10,16 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
-pl				rot_p(m rot_matrix, ve rot_center, pl plan)
+pl				rot_p(matrix rot_matrix, ve rot_center, pl plan)
 {
-	plan.l = dot_mv(rot_matrix, plan.l);
-	plan.m = dot_mv(rot_matrix, plan.m);
-	plan.n = dot_mv(rot_matrix, plan.n);
-	plan.p = plus(
+	ve t[2];
+
+	plan.l = *dot_mv(rot_matrix, plan.l, &t[0]);
+	plan.m = *dot_mv(rot_matrix, plan.m, &t[0]);
+	plan.n = *dot_mv(rot_matrix, plan.n, &t[0]);
+	plan.p = *plus(
 		rot_center,
-		dot_mv(rot_matrix, minus(plan.p, rot_center))
+		*dot_mv(
+			rot_matrix,
+			*minus(plan.p, rot_center, &t[0]),
+			&t[1]
+		),
+		&t[0]
 	);
 	return (plan);
 }

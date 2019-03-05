@@ -10,28 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
-ve				dot_mv(matrix m, ve v)
+ve				*dot_mv(matrix m, ve v, ve *ret)
 {
-	ve rv;
-
-	rv.x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z;
-	rv.y = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z;
-	rv.z = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z;
-	return (rv);
+	ret->x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z;
+	ret->y = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z;
+	ret->z = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z;
+	return (ret);
 }
 
-matrix			scal_m(matrix m, double s)
+matrix			*scal_m(matrix m, double s, matrix *ret)
 {
-	m[0][0] *= s;
-	m[0][1] *= s;
-	m[0][2] *= s;
-	m[1][0] *= s;
-	m[1][1] *= s;
-	m[1][2] *= s;
-	m[2][0] *= s;
-	m[2][1] *= s;
-	m[2][2] *= s;
-	return (m);
+	*ret[0][0] = m[0][0] * s;
+	*ret[0][1] = m[0][1] * s;
+	*ret[0][2] = m[0][2] * s;
+	*ret[1][0] = m[1][0] * s;
+	*ret[1][1] = m[1][1] * s;
+	*ret[1][2] = m[1][2] * s;
+	*ret[2][0] = m[2][0] * s;
+	*ret[2][1] = m[2][1] * s;
+	*ret[2][2] = m[2][2] * s;
+	return (ret);
 }

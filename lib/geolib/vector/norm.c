@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
 double 			norm(ve v)
 {
 	return (sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
 }
 
-ve				unit(ve v)
+ve				*unit(ve v, ve *ret)
 {
-	double	norm;
-	ve		rv;
+	double	n;
 
-	norm = norm(v);
-	rv.x = v.x / norm;
-	rv.y = v.y / norm;
-	rv.z = v.z / norm;
-	return (rv);
+	n = norm(v);
+	ret->x = v.x / n;
+	ret->y = v.y / n;
+	ret->z = v.z / n;
+	return (ret);
 }

@@ -10,44 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "geometry.h"
 
-ve				nullvector(void)
+ve				*nullvector(ve *ret)
 {
-	ve r;
-
-	r.x = 0;
-	r.y = 0;
-	r.z = 0;
-	return (r);
+	ret->x = 0;
+	ret->y = 0;
+	ret->z = 0;
+	return (ret);
 }
 
-ve				i(void)
+ve				*i(ve *ret)
 {
-	ve r;
-
-	r.x = 1;
-	r.y = 0;
-	r.z = 0;
-	return (r);
+	ret->x = 1;
+	ret->y = 0;
+	ret->z = 0;
+	return (ret);
 }
 
-ve				j(void)
+ve				*j(ve *ret)
 {
-	ve r;
-
-	r.x = 0;
-	r.y = 1;
-	r.z = 0;
-	return (r);
+	ret->x = 0;
+	ret->y = 1;
+	ret->z = 0;
+	return (ret);
 }
 
-ve				k(void)
+ve				*k(ve *ret)
 {
-	ve r;
-
-	r.x = 0;
-	r.y = 0;
-	r.z = 1;
-	return (r);
+	ret->x = 0;
+	ret->y = 0;
+	ret->z = 1;
+	return (ret);
 }
