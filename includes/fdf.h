@@ -12,10 +12,10 @@
 
 #ifndef FDF_H
 # define FDF_H
-# include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
-# include "../geolib/geometry.h"
-# include "../modeling/modeling.h"
+# include "../lib/libft/includes/get_next_line.h"
+# include "../lib/minilibx_macos/mlx.h"
+# include "../lib/geolib/geometry.h"
+# include "../lib/modeling/modeling.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>

@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-
-	points = veconvert(file->input, file->lines, file->linelen);
+	printf("%i", file->input);
+	//points = veconvert(file->input, file->lines, file->linelen);
     window_init(&window);
 }

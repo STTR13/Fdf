@@ -104,7 +104,7 @@ int		linecounter(char *str)
 	return (counter);
 }
 
-tinput	*input_reader(tinput *lst, int fd)
+/*tinput	*input_reader(tinput *lst, int fd)
 {
 	char	*buffer;
 	int		counter;
@@ -129,20 +129,24 @@ tinput	*input_reader(tinput *lst, int fd)
 	lst->input = filecreator(temp, lst->lines, lst->linelen);
 	free(temp);
 	return (lst);
-}
+}*/
 
 tinput	*file_reader(int fd)
 {
-	tinput *lst;
-
+	char *line;
+	char *str;
+	tinput *lst
 	if (fd == -1)
 		return (NULL);
-	if ((lst = (tinput *)ft_memalloc(sizeof(tinput))) == NULL)
+	while (get_next_line(fd, &line) == 1)
 	{
-		close(fd);
-		return (NULL);
+		str = ft_strjoin(str, line);
+		str = ft_strjoin(str, "\n");
+		free(line);
 	}
-	lst = input_reader(lst, fd);
-	close(fd);
+	close (fd);
+	lst->lines = validinput(str);
+	lst->linelen = linecounter(str);
+	lst->input = filecreator(str, lst->lines, lst->linelen);
 	return (lst);
 }

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vemaker.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/04 16:59:24 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/11/17 17:02:19 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 1
 
-vertex *veconvert(int **input, int lines, int linelen)
-{
+# include "libft.h"
+# include <limits.h>
 
-}
+int		get_next_line(const int fd, char **line);
+
+#endif
