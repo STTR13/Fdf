@@ -12,16 +12,14 @@
 
 #include "../geometry.h"
 
-ve				rot_pl(ve rot_axis, ve rot_center, pl plan, double angle)
+pl				rot_p(m rot_matrix, ve rot_center, pl plan)
 {
-	ve p_prime;
-
-	plan->l = rot_ve(rot_axis, plan->l, angle);
-	plan->m = rot_ve(rot_axis, plan->m, angle);
-	plan->n = rot_ve(rot_axis, plan->n, angle);
+	plan->l = dot_mv(rot_matrix, plan->l);
+	plan->m = dot_mv(rot_matrix, plan->m);
+	plan->n = dot_mv(rot_matrix, plan->n);
 	plan->p = plus(
 		rot_center,
-		rot_ve(rot_axis, minus(p->p, rot_center), angle)
+		dot_mv(rot_matrix, minus(plan->p, rot_center))
 	);
 	return (plan);
 }

@@ -1,65 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   values.c                                           :+:      :+:    :+:   */
+/*   product.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 16:42:59 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 16:43:01 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/05 11:10:07 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 11:10:08 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-ve				nullvector(void)
+ve				dot_mv(matrix m, ve v)
 {
-	ve r;
+	ve rv;
 
-	r->x = 0;
-	r->y = 0;
-	r->z = 0;
-	return (r);
-}
-
-ve				i(void)
-{
-	ve r;
-
-	r->x = 1;
-	r->y = 0;
-	r->z = 0;
-	return (r);
-}
-
-ve				j(void)
-{
-	ve r;
-
-	r->x = 0;
-	r->y = 1;
-	r->z = 0;
-	return (r);
-}
-
-ve				k(void)
-{
-	ve r;
-
-	r->x = 0;
-	r->y = 0;
-	r->z = 1;
-	return (r);
-}
-
-ve				unit(ve v)
-{
-	double	norm;
-	ve		rv;
-
-	norm = norm(v);
-	rv->x = v->x / norm;
-	rv->y = v->y / norm;
-	rv->z = v->z / norm;
+	rv->x = m[0][0] * v->x + m[0][1] * v->y + m[0][2] * v->z;
+	rv->y = m[1][0] * v->x + m[1][1] * v->y + m[1][2] * v->z;
+	rv->z = m[2][0] * v->x + m[2][1] * v->y + m[2][2] * v->z;
 	return (rv);
+}
+
+matrix			scal_m(matrix m, double s)
+{
+	m[0][0] *= s;
+	m[0][1] *= s;
+	m[0][2] *= s;
+	m[1][0] *= s;
+	m[1][1] *= s;
+	m[1][2] *= s;
+	m[2][0] *= s;
+	m[2][1] *= s;
+	m[2][2] *= s;
+	return (m);
 }

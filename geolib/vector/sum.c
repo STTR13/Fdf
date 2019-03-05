@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 16:39:33 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 16:39:34 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/05 10:09:49 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 10:09:50 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../geometry.h"
 
-ve						minus(ve a, ve b)
+ve				minus(ve a, ve b)
 {
 	ve	rv;
 
@@ -22,7 +22,7 @@ ve						minus(ve a, ve b)
 	return (rv);
 }
 
-ve						plus(ve a, ve b)
+ve				plus(ve a, ve b)
 {
 	ve	rv;
 
