@@ -12,74 +12,6 @@
 
 #include "../includes/fdf.h"
 
-int		totallines(char *temp)
-{
-	int i;
-	int lines;
-
-	i = 0;
-	lines = 1;
-	while (temp[i] != '\0')
-	{
-		if (temp[i] == '\n' && temp[i + 1] != '\0')
-			lines++;
-		i++;
-	}
-	return (lines);
-}
-
-int		**filefiller(int **input, char *temp, int linelen)
-{
-	int i;
-	int j;
-	int x;
-	int tempnb;
-
-	i = 0;
-	j = 0;
-	x = 0;
-	while (temp[x] != '\0')
-	{
-		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
-		{
-			tempnb = ft_atoi(&temp[x]);
-			if (j < linelen)
-			{
-				input[i][j] = tempnb;
-				j++;
-			}
-			else
-			{
-				i++;
-				j = 0;
-				input[i][j] = tempnb;
-				j++;
-			}
-			while ((temp[x] == '-' || ft_isdigit(temp[x])) \
-					&& temp[x + 1] != '\0')
-				x++;
-		}
-		x++;
-	}
-	return (input);
-}
-
-int		**filecreator(char *temp, int lines, int linelen)
-{
-	int **input;
-	int i;
-
-	i = 0;
-	input = ft_memalloc(sizeof(int **) * lines);
-	while (i < lines)
-	{
-		input[i] = ft_memalloc(sizeof(int) * linelen);
-		i++;
-	}
-	input = filefiller(input, temp, linelen);
-	return (input);
-}
-
 int		linelen(char *str)
 {
 	int i;
@@ -104,6 +36,75 @@ int		linelen(char *str)
 	return (counter);
 }
 
+int		totallines(char *temp)
+{
+	int i;
+	int lines;
+
+	i = 0;
+	lines = 1;
+	while (temp[i] != '\0')
+	{
+		if (temp[i] == '\n' && temp[i + 1] != '\0')
+			lines++;
+		i++;
+	}
+	return (lines);
+}
+
+int		**filefiller(int **input, char *temp, tinput *lst)
+{
+	int i;
+	int j;
+	int x;
+	int tempnb;
+
+	i = 0;
+	j = -1;
+	x = 0;
+	while (temp[x])
+	{
+
+		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
+		{
+			tempnb = ft_atoi(&temp[x]);
+			if (++j < lst->linelen)
+			{
+				input[i][j] = tempnb;
+				printf("%i\n", tempnb);
+			}
+			else
+			{
+				i++;
+				j = 0;
+				input[i][j] = tempnb;
+				printf("%i\n", tempnb);
+			}
+			while ((temp[x] == '-' || ft_isdigit(temp[x])) \
+					&& temp[x])
+				x++;
+		}
+		x++;
+	}
+	return (input);
+}
+
+int		**filecreator(char *temp, tinput *lst)
+{
+	int **input;
+	int i;
+
+	i = 0;
+	input = ft_memalloc(sizeof(int **) * lst->lines);
+	while (i < lst->lines)
+	{
+		input[i] = ft_memalloc(sizeof(int) * lst->linelen);
+		i++;
+	}
+	input = filefiller(input, temp, lst);
+	return (input);
+}
+
 tinput	*file_reader(int fd)
 {
 	char *line;
@@ -119,8 +120,15 @@ tinput	*file_reader(int fd)
 		free(line);
 	}
 	close(fd);
+	printf("%s\n", str);
+	printf("A\n");
 	lst->lines = totallines(str);
+	printf("B\n");
 	lst->linelen = linelen(str);
-	lst->input = filecreator(str, lst->lines, lst->linelen);
+	printf("C\n");
+	printf("totallines: %i, linelen: %i\n", lst->lines, lst->linelen);
+	lst->input = filecreator(str, lst);
+
+	printf("%i", lst->input[5][5]);
 	return (lst);
 }
