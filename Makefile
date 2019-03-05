@@ -33,7 +33,7 @@ INCLUDES = lib/libft/includes/
 
 FRAMEW = -framework OpenGL -framework AppKit
 
-LIB = minilibx_macos/libmlx.a libft/libft.a
+LIB = lib/minilibx_macos/libmlx.a lib/libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror
 

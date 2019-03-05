@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 16:25:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 14:53:00 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 13:06:21 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strjoinn(char const *s1, char const *s2)
 {
-	twlist window;
-	tinput	*file;
-	vertex *points;
-	if (argc != 2)
+	int		i;
+	int		j;
+	char	*tempcat;
+
+	if (s1 && s2)
 	{
-		ft_putstr("usage: ./fdf input_file\n");
-		return (0);
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		if ((tempcat = ft_strnew(i + j + 1)) == NULL)
+			return (NULL);
+		else
+		{
+			ft_strcpy(tempcat, s1);
+			return (tempcat = ft_strcatnl(tempcat, s2));
+		}
 	}
-	if ((file = file_reader(open(argv[1], O_RDONLY))) == NULL)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	//points = veconvert(file->input, file->lines, file->linelen);
-    //window_init(&window);
+	return (NULL);
 }

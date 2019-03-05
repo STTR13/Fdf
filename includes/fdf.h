@@ -42,12 +42,12 @@ void window_init(twlist *window);
 tinput	*file_reader(int fd);
 tinput *character_convertor(tinput *lst, char *temp);
 int **filecreator(char *temp, int lines, int linelen);
-int linecounter(char *str);
+int linelen(char *str);
 //twlist *free_list(twlist *window);
 int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, int linelen);
-int		validinput(char *temp);
+int		totallines(char *temp);
 vertex *veconvert(int **input, int lines, int linelen);
 
 #endif

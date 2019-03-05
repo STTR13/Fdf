@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int		validinput(char *temp)
+int		totallines(char *temp)
 {
 	int i;
 	int lines;
@@ -80,7 +80,7 @@ int		**filecreator(char *temp, int lines, int linelen)
 	return (input);
 }
 
-int		linecounter(char *str)
+int		linelen(char *str)
 {
 	int i;
 	int counter;
@@ -104,49 +104,23 @@ int		linecounter(char *str)
 	return (counter);
 }
 
-/*tinput	*input_reader(tinput *lst, int fd)
-{
-	char	*buffer;
-	int		counter;
-	int		ret;
-	char	*temp;
-
-	counter = 1;
-	if ((buffer = ft_strnew(counter + 1)) == NULL)
-		return (NULL);
-	if ((temp = ft_strnew(counter + 1)) == NULL)
-		return (NULL);
-	while ((ret = read(fd, buffer, counter)) > 0)
-	{
-		temp = ft_strjoin(temp, buffer);
-		free(buffer);
-		counter++;
-		buffer = ft_strnew(counter + 1);
-	}
-	free(buffer);
-	lst->lines = validinput(temp);
-	lst->linelen = linecounter(temp);
-	lst->input = filecreator(temp, lst->lines, lst->linelen);
-	free(temp);
-	return (lst);
-}*/
-
 tinput	*file_reader(int fd)
 {
 	char *line;
 	char *str;
-	tinput *lst
+	tinput *lst;
+
+	str = "\0";
 	if (fd == -1)
 		return (NULL);
 	while (get_next_line(fd, &line) == 1)
 	{
-		str = ft_strjoin(str, line);
-		str = ft_strjoin(str, "\n");
+		str = ft_strjoinn(str, line);
 		free(line);
 	}
-	close (fd);
-	lst->lines = validinput(str);
-	lst->linelen = linecounter(str);
+	close(fd);
+	lst->lines = totallines(str);
+	lst->linelen = linelen(str);
 	lst->input = filecreator(str, lst->lines, lst->linelen);
 	return (lst);
 }

@@ -24,7 +24,7 @@
 typedef struct	s_vertex
 {
 	ve			v;
-	vertex		*next[4];
+	struct vertex		*next[4];
 	bool		done;
 }				vertex; //(n)
 

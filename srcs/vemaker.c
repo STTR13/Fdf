@@ -14,5 +14,5 @@
 
 vertex *veconvert(int **input, int lines, int linelen)
 {
-
+	return (NULL);
 }
