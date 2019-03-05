@@ -15,6 +15,7 @@
 # include "../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"
 # include "../geolib/geometry.h"
+# include "../modeling/modeling.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -33,7 +34,6 @@ typedef struct			swlist
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_list		*lst;
 }						twlist;
 
 int deal_key(int key, twlist *window);
@@ -48,6 +48,6 @@ int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, int linelen);
 int		validinput(char *temp);
-t_list *veconvert(int **input, int lines, int linelen);
+vertex *veconvert(int **input, int lines, int linelen);
 
 #endif

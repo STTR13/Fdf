@@ -41,7 +41,7 @@ all: $(NAME)
 
 $(NAME):
 	@$(MAKE) -C libft/
-	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h
+	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h -I modeling/modeling.h
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:

@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	twlist window;
 	tinput	*file;
-
+	vertex *points;
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -28,6 +28,6 @@ int main(int argc, char **argv)
 		return (0);
 	}
 
-	window.lst = veconvert(file->input, file->lines, file->linelen);
+	points = veconvert(file->input, file->lines, file->linelen);
     window_init(&window);
 }

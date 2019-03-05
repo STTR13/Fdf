@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vemaker.c                                          :+:      :+:    :+:   */
+/*   booleans.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/04 16:59:24 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/03/05 10:15:54 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 10:15:55 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../geometry.h"
 
-vertex *veconvert(int **input, int lines, int linelen)
+bool			isnullvector(ve v)
 {
-	ve *vectors;
-	int x;
-	int y;
-
-	y = 0;
-	while (y < lines)
-	{
-		x = 0;
-		while (x < linelen)
-		{
-			x++; 
-		}
-		y++;
-	}
+	if (v->x == 0 && v->y == 0 && v->z == 0)
+		return (true);
+	return (false);
 }

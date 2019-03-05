@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vemaker.c                                          :+:      :+:    :+:   */
+/*   norm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/04 16:59:24 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/03/04 19:40:28 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/04 19:40:29 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../geometry.h"
 
-vertex *veconvert(int **input, int lines, int linelen)
+double 			norm(ve v)
 {
-	ve *vectors;
-	int x;
-	int y;
+	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
+}
 
-	y = 0;
-	while (y < lines)
-	{
-		x = 0;
-		while (x < linelen)
-		{
-			x++; 
-		}
-		y++;
-	}
+ve				unit(ve v)
+{
+	double	norm;
+	ve		rv;
+
+	norm = norm(v);
+	rv->x = v->x / norm;
+	rv->y = v->y / norm;
+	rv->z = v->z / norm;
+	return (rv);
 }
