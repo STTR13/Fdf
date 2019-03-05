@@ -21,7 +21,7 @@ typedef enum {false=0, true=1} bool;
 ** --- Matrix ---
 */
 
-typedef double[3][3] matrix;
+typedef double	matrix[3][3];
 
 matrix			I(void);
 matrix			rot(ve rot_axis, double angle);
@@ -59,7 +59,7 @@ ve 				cross(ve a, ve b);
 double 			dot_vv(ve a, ve b);
 ve				scal_v(ve v, double s);
 
-ve				rot_ve(ve rot_axis, ve v, double angle);
+ve				rot_v(ve rot_axis, ve v, double angle);
 
 bool			isnullvector(ve v);
 bool			equal_v(ve a, ve b);

@@ -14,6 +14,7 @@
 # define FDF_H
 # include "../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"
+# include "../geolib/geometry.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -32,7 +33,7 @@ typedef struct			swlist
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	tinput	*file;
+	t_list		*lst;
 }						twlist;
 
 int deal_key(int key, twlist *window);
@@ -42,11 +43,11 @@ tinput	*file_reader(int fd);
 tinput *character_convertor(tinput *lst, char *temp);
 int **filecreator(char *temp, int lines, int linelen);
 int linecounter(char *str);
-twlist *free_list(twlist *window);
+//twlist *free_list(twlist *window);
 int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, int linelen);
 int		validinput(char *temp);
-
+t_list *veconvert(int **input, int lines, int linelen);
 
 #endif

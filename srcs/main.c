@@ -15,16 +15,19 @@
 int main(int argc, char **argv)
 {
 	twlist window;
+	tinput	*file;
 
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
 		return (0);
 	}
-	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
+	if ((file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
 		ft_putendl("error");
 		return (0);
 	}
+
+	window.lst = veconvert(file->input, file->lines, file->linelen);
     window_init(&window);
 }
