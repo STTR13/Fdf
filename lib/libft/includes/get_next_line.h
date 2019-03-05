@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 16:25:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/11/05 10:00:29 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/11/17 17:02:19 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 1
 
-int main(int argc, char **argv)
-{
-	twlist window;
-	tinput	*file;
-	vertex *points;
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fdf input_file\n");
-		return (0);
-	}
-	if ((file = file_reader(open(argv[1], O_RDONLY))) == NULL)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	//points = veconvert(file->input, file->lines, file->linelen);
-    //window_init(&window);
-}
+# include "libft.h"
+# include <limits.h>
+
+int		get_next_line(const int fd, char **line);
+
+#endif

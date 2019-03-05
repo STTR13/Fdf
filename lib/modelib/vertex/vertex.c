@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../modeling.h"
+#include "modeling.h"
 
 vertex			*new_vertex(ve v)
 {
 	vertex *rvert;
 
-	if (!(rvert = (*vertex)malloc(sizeof(vertex))))
+	if (!(rvert = (vertex*)malloc(sizeof(vertex))))
 		return (NULL);
 	rvert->v = v;
 	rvert->next[0] = NULL;
@@ -27,11 +27,11 @@ vertex			*new_vertex(ve v)
 	return (rvert);
 }
 
-bool			add_vertex(vertex *grid, ve new_vertex, ve link)
+bool			add_vertex(vertex *grid, ve new_vert, ve link)
 {
 	vertex *nv;
 
-	if (!(grid = find_vertex(link, grid)) || !(nv = new_vertex(new_vertex)))
+	if (!(grid = find_vertex(link, grid)) || !(nv = new_vertex(new_vert)))
 		return (false);
 	link_vertex(nv, grid);
 	return (true);

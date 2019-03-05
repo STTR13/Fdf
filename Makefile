@@ -28,28 +28,28 @@ OBJ = 			main.o \
 				free.o \
 				vemaker.o \
 
-INCLUDES = includes/
+INCLUDES = lib/libft/includes/
 
 
 FRAMEW = -framework OpenGL -framework AppKit
 
-LIB = minilibx_macos/libmlx.a libft/libft.a
+LIB = lib/minilibx_macos/libmlx.a lib/libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-	@$(MAKE) -C libft/
-	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h
+	@$(MAKE) -C lib/libft/
+	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h -I modeling/modeling.h
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:
-	@$(MAKE) -C libft/ clean
+	@$(MAKE) -C lib/libft/ clean
 	rm -f $(OBJ)
 
 fclean: clean
-	@$(MAKE) -C libft/ fclean
+	@$(MAKE) -C lib/libft/ fclean
 	rm -f $(NAME)
 
 re: fclean all

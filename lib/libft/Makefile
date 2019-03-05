@@ -77,7 +77,9 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_strdel_neg.c \
 		$(SRC_PATH)ft_chararrclr.c \
 		$(SRC_PATH)ft_intarrclr.c \
-		$(SRC_PATH)ft_lstreverse.c \
+		$(SRC_PATH)get_next_line.c \
+		$(SRC_PATH)ft_strcatn.c \
+		$(SRC_PATH)ft_strjoinn.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -140,7 +142,9 @@ OBJ = ft_atoi.o \
 		ft_strdel_neg.o \
 		ft_chararrclr.o \
 		ft_intarrclr.o \
-		ft_lstreverse.o \
+		get_next_line.o \
+		ft_strcatn.o \
+		ft_strjoinn.o \
 
 FLAGS = -Wall -Wextra -Werror
 

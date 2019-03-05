@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../modeling.h"
+#include "modeling.h"
 
 static void		apply_vertex_sub(void (*f)(vertex *vert), vertex *grid)
 {

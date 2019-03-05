@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 
-# include "../geolib/geometry.h"
+# include "geometry.h"
 
 /*
 ** --- Vertex ---
@@ -23,9 +23,9 @@
 
 typedef struct	s_vertex
 {
-	ve			v;
-	vertex		*next[4];
-	bool		done;
+	ve					v;
+	struct s_vertex		*next[4];
+	bool				done;
 }				vertex; //(n)
 
 vertex			*new_vertex(ve v);

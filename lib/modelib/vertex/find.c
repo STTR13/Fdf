@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../modeling.h"
+#include "modeling.h"
 
 vertex			*find_vertex(ve v, vertex *grid)
 {
 	short	i;
-	vertex	t;
+	vertex	*t;
 
 	if (!grid->done)
 		return (NULL);
-	if (grid->v == v)
+	if (equal_v(grid->v, v))
 	{
 		reset_vertex(grid);
 		return (grid);
@@ -27,7 +27,7 @@ vertex			*find_vertex(ve v, vertex *grid)
 	grid->done = true;
 	i = -1;
 	while (++i < 4)
-		if ((t = find_vertex(grid->next[i])))
+		if ((t = find_vertex(v, grid->next[i])))
 			return (t);
 	return (NULL);
 }

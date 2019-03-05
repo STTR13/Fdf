@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../modeling.h"
+#include "modeling.h"
 
 void			link_vertex(vertex *a, vertex *b)
 {

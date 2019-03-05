@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 15:30:43 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/11/17 16:25:18 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/04 13:09:42 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/04 13:40:13 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strcatnl(char *dest, const char *src)
 {
-	twlist window;
-	tinput	*file;
-	vertex *points;
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fdf input_file\n");
-		return (0);
-	}
-	if ((file = file_reader(open(argv[1], O_RDONLY))) == NULL)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	//points = veconvert(file->input, file->lines, file->linelen);
-    //window_init(&window);
+	int i;
+	int j;
+
+	i = ft_strlen(dest);
+	j = -1;
+	while (src[++j])
+		dest[i + j] = src[j];
+	dest[i + j] = '\n';
+	return (dest);
 }
