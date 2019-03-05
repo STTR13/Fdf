@@ -62,6 +62,7 @@ ve				scal_v(ve v, double s);
 ve				rot_ve(ve rot_axis, ve v, double angle);
 
 bool			isnullvector(ve v);
+bool			equal_v(ve a, ve b);
 
 /*
 ** --- Plan ---

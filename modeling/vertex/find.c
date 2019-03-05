@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sum.c                                              :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/05 10:09:49 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/05 10:09:50 by staeter          ###   ########.fr       */
+/*   Created: 2019/03/05 12:44:29 by staeter           #+#    #+#             */
+/*   Updated: 2019/03/05 12:44:30 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../geometry.h"
+#include "../modeling.h"
 
-ve				minus(ve a, ve b)
+vertex			*find_vertex(ve v, vertex *grid)
 {
-	ve	rv;
+	short	i;
+	vertex	t;
 
-	rv.x = a.x - b.x;
-	rv.y = a.y - b.y;
-	rv.z = a.z - b.z;
-	return (rv);
-}
-
-ve				plus(ve a, ve b)
-{
-	ve	rv;
-
-	rv.x = a.x + b.x;
-	rv.y = a.y + b.y;
-	rv.z = a.z + b.z;
-	return (rv);
+	if (!grid->done)
+		return (NULL);
+	if (grid->v == v)
+	{
+		reset_vertex(grid);
+		return (grid);
+	}
+	grid->done = true;
+	i = -1;
+	while (++i < 4)
+		if ((t = find_vertex(grid->next[i])))
+			return (t);
+	return (NULL);
 }

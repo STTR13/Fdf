@@ -13,6 +13,8 @@
 #ifndef MODELING_H
 # define MODELING_H
 
+# include <stdlib.h>
+
 # include "../geolib/geometry.h"
 
 /*
@@ -26,13 +28,16 @@ typedef struct	s_vertex
 	bool		done;
 }				vertex; //(n)
 
-vertex			new_vertex(ve v);
+vertex			*new_vertex(ve v);
 bool			add_vertex(vertex *grid, ve new_vertex, ve link);
-bool			rm_vertex(vertex *to_rm);
+void			rm_vertex(vertex *to_rm);
 
-void			reset_vertex(vertex *vert);
-void			link_vertex(vertex *a, vertex *b);
 void			apply_vertex(void (*f)(vertex *vert), vertex *grid);
-vertex			find_vertex(ve v, vertex *grid);
+void			reset_vertex(vertex *grid);
+
+void			link_vertex(vertex *a, vertex *b);
+void			rmlink_vertex(vertex *a, vertex *b);
+
+vertex			*find_vertex(ve v, vertex *grid);
 
 #endif

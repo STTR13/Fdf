@@ -16,9 +16,9 @@ ve				nullvector(void)
 {
 	ve r;
 
-	r->x = 0;
-	r->y = 0;
-	r->z = 0;
+	r.x = 0;
+	r.y = 0;
+	r.z = 0;
 	return (r);
 }
 
@@ -26,9 +26,9 @@ ve				i(void)
 {
 	ve r;
 
-	r->x = 1;
-	r->y = 0;
-	r->z = 0;
+	r.x = 1;
+	r.y = 0;
+	r.z = 0;
 	return (r);
 }
 
@@ -36,9 +36,9 @@ ve				j(void)
 {
 	ve r;
 
-	r->x = 0;
-	r->y = 1;
-	r->z = 0;
+	r.x = 0;
+	r.y = 1;
+	r.z = 0;
 	return (r);
 }
 
@@ -46,8 +46,8 @@ ve				k(void)
 {
 	ve r;
 
-	r->x = 0;
-	r->y = 0;
-	r->z = 1;
+	r.x = 0;
+	r.y = 0;
+	r.z = 1;
 	return (r);
 }

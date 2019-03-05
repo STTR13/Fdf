@@ -16,8 +16,8 @@ ve				ortho_projection(ve point, pl p)
 {
 	double	t;
 
-	t = dot(p->n, minus(p->p, point)) / dot(p->n, p->n);
-	return((t >= 0) ? nullvector() : plus(point, scal(p->n, t)));
+	t = dot(p.n, minus(p.p, point)) / dot(p.n, p.n);
+	return((t >= 0) ? nullvector() : plus(point, scal(p.n, t)));
 }
 
 ve				conic_projection(ve point, pl p, ve eye)
@@ -26,6 +26,6 @@ ve				conic_projection(ve point, pl p, ve eye)
 	ve		nl;
 
 	nl = unit(minus(point, eye));
-	t = dot(p->n, minus(p->p, point)) / dot(p->n, nl);
+	t = dot(p.n, minus(p.p, point)) / dot(p.n, nl);
 	return((t >= 0) ? nullvector() : plus(point, scal(nl, t)));
 }

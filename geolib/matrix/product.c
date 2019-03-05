@@ -16,9 +16,9 @@ ve				dot_mv(matrix m, ve v)
 {
 	ve rv;
 
-	rv->x = m[0][0] * v->x + m[0][1] * v->y + m[0][2] * v->z;
-	rv->y = m[1][0] * v->x + m[1][1] * v->y + m[1][2] * v->z;
-	rv->z = m[2][0] * v->x + m[2][1] * v->y + m[2][2] * v->z;
+	rv.x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z;
+	rv.y = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z;
+	rv.z = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z;
 	return (rv);
 }
 

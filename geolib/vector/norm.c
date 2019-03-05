@@ -14,7 +14,7 @@
 
 double 			norm(ve v)
 {
-	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
+	return (sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
 }
 
 ve				unit(ve v)
@@ -23,8 +23,8 @@ ve				unit(ve v)
 	ve		rv;
 
 	norm = norm(v);
-	rv->x = v->x / norm;
-	rv->y = v->y / norm;
-	rv->z = v->z / norm;
+	rv.x = v.x / norm;
+	rv.y = v.y / norm;
+	rv.z = v.z / norm;
 	return (rv);
 }
