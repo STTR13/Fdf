@@ -3,18 +3,20 @@
 void window_init(twlist *window)
 {
 	void *param;
+	ve *vector;
 	window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int x = 0;
 	int y = 0;
 	int pos;
 	int pos2 = 10;
-	if (window->vectors != NULL)
+	if (window->lst != NULL)
 	{
-		while (window->vectors->next)
+		while (window->lst != NULL)
 		{
-			mlx_pixel_put(window->mlx_ptr, window->win_ptr, (int)window->vectors->x * 10, (int)window->vectors->y * 10, COLORWHITE);
-			window->vectors = window->vectors->next;
+			vector = window->lst->content;
+			mlx_pixel_put(window->mlx_ptr, window->win_ptr, (int)vector->x * 10, (int)vector->y * 10, COLORWHITE);
+			window->lst = window->lst->next;
 		}
 	}
 	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);

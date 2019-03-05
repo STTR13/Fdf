@@ -6,7 +6,7 @@ void ft_lstrev(t_list **alst)
   t_list *current;
   t_list *next;
 
-  prev = NULL;
+  previous = NULL;
   current = *alst;
   while (current != NULL)
   {

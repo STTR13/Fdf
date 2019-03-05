@@ -48,6 +48,6 @@ int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, int linelen);
 int		validinput(char *temp);
-ve *veconvert(int **input, int lines, int linelen);
+t_list *veconvert(int **input, int lines, int linelen);
 
 #endif
