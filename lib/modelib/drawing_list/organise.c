@@ -47,22 +47,21 @@ drawing_list	*organise(vertex *grid)
 	return (r);
 }
 
-static void		reorganise_sub(drawing_list *dl, bool done)
+static void		reorganise_sub(drawing_list *dl, bool *done)
 {
 	drawing_list *t;
 
 	if (!dl->next || !dl->next->next)
 		return ;
-	if (dl->next->next->vert->v->x < dl->next->vert->v->x)
+	if (dl->next->next->vert->v.x < dl->next->vert->v.x)
 	{
 		t = dl->next;
 		dl->next = t->next;
 		t->next = dl->next->next;
 		dl->next->next = t;
-		reorganise_sub(dl->next, false);
+		*done = false;
 	}
-	else
-		reorganise_sub(dl->next, done);
+	reorganise_sub(dl->next, done);
 }
 
 void			reorganise(drawing_list **dl)
@@ -76,13 +75,13 @@ void			reorganise(drawing_list **dl)
 	while (!b)
 	{
 		b = true;
-		if (*dl->next && *dl->vert->v->x > *dl->next->vert->v->x)
+		if ((*dl)->next && (*dl)->vert->v.x > (*dl)->next->vert->v.x)
 		{
 			b = false;
 			t = *dl;
 			*dl = t->next;
-			t->next = *dl->next;
-			*dl->next = t;
+			t->next = (*dl)->next;
+			(*dl)->next = t;
 		}
 		reorganise_sub(*dl, &b);
 	}
