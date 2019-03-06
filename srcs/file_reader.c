@@ -69,16 +69,12 @@ int		**filefiller(int **input, char *temp, tinput *lst)
 		{
 			tempnb = ft_atoi(&temp[x]);
 			if (++j < lst->linelen)
-			{
 				input[i][j] = tempnb;
-				printf("%i\n", tempnb);
-			}
 			else
 			{
 				i++;
 				j = 0;
 				input[i][j] = tempnb;
-				printf("%i\n", tempnb);
 			}
 			while ((temp[x] == '-' || ft_isdigit(temp[x])) \
 					&& temp[x])
@@ -120,15 +116,8 @@ tinput	*file_reader(int fd)
 		free(line);
 	}
 	close(fd);
-	printf("%s\n", str);
-	printf("A\n");
 	lst->lines = totallines(str);
-	printf("B\n");
 	lst->linelen = linelen(str);
-	printf("C\n");
-	printf("totallines: %i, linelen: %i\n", lst->lines, lst->linelen);
 	lst->input = filecreator(str, lst);
-
-	printf("%i", lst->input[5][5]);
 	return (lst);
 }

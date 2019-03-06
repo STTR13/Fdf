@@ -14,8 +14,8 @@
 # define FDF_H
 # include "../lib/libft/includes/get_next_line.h"
 # include "../lib/minilibx_macos/mlx.h"
-# include "../lib/geolib/geometry.h"
-# include "../lib/modelib/modeling.h"
+# include "../lib/geolib/includes//geometry.h"
+# include "../lib/modelib/includes//modeling.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
