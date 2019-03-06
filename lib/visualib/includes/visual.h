@@ -14,8 +14,13 @@
 # define VISUAL_H
 
 # include <math.h>
+# include <stdlib.h>
 
 # include "mlx.h"
+
+typedef enum {false=0, true=1} bool;
+
+typedef int	(*key[256])(void *param);
 
 typedef struct	s_image
 {
@@ -37,19 +42,25 @@ typedef struct	s_rgb
 }				rgb; //(n) rename to t_rgb
 
 /*
+** --- Key ---
+*/
+
+void			new_key(key *k);
+
+/*
 ** --- Image ---
 */
 
 image			*new_img(void *mlx_ptr, int width, int height);
 void			free_img(image *img);
 
-bool			set_pxl(image *img, int x, int y, unsigned int color);
+bool			set_pxl(image *img, int x, int y, int color);
 
 /*
 ** --- RedGreenBlue ---
 */
 
-int				get_color(rgb rgb_color);
+int				get_color(rgb rgb_color, int bytes_per_pixel);
 
 rgb				shadowed(double angle);
 

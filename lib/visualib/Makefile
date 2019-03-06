@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = geolib.a
+NAME = visualib.a
 
 
 
@@ -21,26 +21,19 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = ./includes
 
-MATRIX_PATH = matrix/
-MATRIX =	inverse.o \
-			product.o \
-			specialvalues.o
+IMAGE_PATH = image/
+IMAGE =		image.o \
+			pixel.o
 
-PLAN_PATH = plan/
-PLAN =		ordinatesystem.o \
-			projection.o \
-			rotation.o
+RGB_PATH = rgb/
+RGB =
 
-VECTOR_PATH = vector/
-VECTOR =	basicvalues.o \
-			booleans.o \
-			norm.o \
-			product.o \
-			sum.o
+KEY_PATH = key/
+KEY =		key.o
 
-OBJ =	$(addprefix $(MATRIX_PATH), $(MATRIX)) \
-		$(addprefix $(PLAN_PATH), $(PLAN)) \
-		$(addprefix $(VECTOR_PATH), $(VECTOR))
+OBJ =	$(addprefix $(IMAGE_PATH), $(IMAGE)) \
+		$(addprefix $(RGB_PATH), $(RGB)) \
+		$(addprefix $(KEY_PATH), $(KEY))
 
 
 
@@ -63,7 +56,7 @@ $(NAME):	$(OBJ)
 all:		$(NAME)
 
 %.o:        %.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDES)
+			$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDES)
 
 clean:
 			@rm -f $(OBJ)

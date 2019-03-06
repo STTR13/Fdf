@@ -14,17 +14,18 @@
 
 image		*new_img(void *mlx_ptr, int width, int height)
 {
-	imgage *r;
+	image *r;
 
-	if ((img->width = width) < 0 ||
-		(img->height = height) < 0 ||
-		!(r = (image*)malloc(sizeof(image))) ||
-		!(r->img_ptr = mlx_new_image(mlx_ptr, width, height)))
+	if (!(r = (image*)malloc(sizeof(image))) ||
+		!(r->img_ptr = mlx_new_image(mlx_ptr, width, height)) ||
+		(r->width = width) < 0 ||
+		(r->height = height) < 0)
 		return (NULL);
 	r->mlx_ptr = mlx_ptr;
 	r->data = mlx_get_data_addr(r->img_ptr,
 		&r->bytes_per_pixel, &r->size_line, &r->edian);
 	r->bytes_per_pixel /= 8;
+	return (r);
 }
 
 void			free_img(image *img)
