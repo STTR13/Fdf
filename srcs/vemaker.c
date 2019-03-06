@@ -66,8 +66,8 @@ vertex *veconverter(tinput *file, int x, int y, vertex *grid)
 	if (y < file->lines)
 		return (grid);
 	curr = createv(file, x, y);
-	printf("\n\n%i\n\n", file->input[y][x]);
-printf("\nx: %f\ny: %f\nz: %f\n",curr.x,curr.y,curr.z);
+	/*printf("\n\n%i\n\n", file->input[y][x]);
+printf("\nx: %f\ny: %f\nz: %f\n",curr.x,curr.y,curr.z);*/
 	prev = grid->v;
 	return(add_vertex(grid, curr, prev));
 
@@ -77,11 +77,18 @@ vertex	*veconvertstart(tinput *file, int x, int y)
 {
 	ve curr;
 	vertex	*vect;
-	bool ret;
-	ret = 0;
-	curr = createv(file, x, y);
-	vect = new_vertex(curr);
-	ret = veconverter(file, x + 1, y, vect);
-	printf("%i\n", ret);
+	int j;
+
+	j = 0;
+	if (x == linelen && y == lines)
+		return (vect = new_vertex(createv(file, x, y)));
+	vect = new_vertex(createv(file, x, y));
+	if (x < linelen)
+	{
+		vect->next[j] = veconvertstart(file, x + 1, y);
+		j++;
+	}
+	if (y < lines)
+		vect->next[j] = veconvertstart(file, x, y + 1);
 	return (vect);
 }
