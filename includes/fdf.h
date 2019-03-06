@@ -49,6 +49,6 @@ int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, tinput *lst, int x);
 int		totallines(char *temp);
-vertex *veconvert(int **input, int lines, int linelen);
+vertex *veconvert(twlist *file);
 
 #endif
