@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	int x = 0, y = 0;
+	/*int x = 0, y = 0;
 	while (y < window.file->lines)
 	{
 		x = 0;
@@ -37,9 +37,17 @@ int main(int argc, char **argv)
 		}
 		printf("\n");
 		y++;
-	}
-	if ((v = veconvert(&window, 0, 0)) == 0)
+	}*/
+	int i = 0;
+
+	if ((v = veconvertstart(window.file, 0, 0)) == 0)
 		printf("error");
-	printf("x:%f,y: %f,z: %f",v->v.x, v->v.y, v->v.z);
+	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
+	while (v->next[i])
+		{
+	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
+	i++;
+	v = v->next[i];
+}
     //window_init(&window);
 }
