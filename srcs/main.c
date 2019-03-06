@@ -38,7 +38,8 @@ int main(int argc, char **argv)
 		printf("\n");
 		y++;
 	}
-	if ((v = veconvert(&window)) == 0)
+	if ((v = veconvert(&window, 0, 0)) == 0)
 		printf("error");
+	printf("x:%f,y: %f,z: %f",v->v.x, v->v.y, v->v.z);
     //window_init(&window);
 }
