@@ -6,15 +6,16 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/04 16:59:24 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:37:16 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-vertex *ampos(twlist *file, int x, int y)
+vertex	*ampos(twlist *file, int x, int y)
 {
-	vertex *vn;
+	vertex	*vn;
+
 	if ((vn = ft_memalloc(sizeof(vertex))) == NULL)
 		return ((void *)NULL);
 	if (x - 1 >= 0)
@@ -30,9 +31,10 @@ vertex *ampos(twlist *file, int x, int y)
 	return (vn);
 }
 
-vertex *veconvertprev(twlist *file, int x, int y)
+vertex	*veconvertprev(twlist *file, int x, int y)
 {
-	vertex *vect;
+	vertex	*vect;
+
 	if ((vect = ft_memalloc(sizeof(vertex))) == NULL)
 		return (NULL);
 	vect->v.x = x;
@@ -41,9 +43,10 @@ vertex *veconvertprev(twlist *file, int x, int y)
 	return (vect);
 }
 
-vertex *veconvert(twlist *file, int x, int y)
+vertex	*veconvert(twlist *file, int x, int y)
 {
-	vertex *vect;
+	vertex	*vect;
+
 	if ((vect = ft_memalloc(sizeof(vertex))) == NULL)
 		return (NULL);
 	vect->v.x = x;
