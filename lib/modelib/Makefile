@@ -22,12 +22,18 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = ./includes
 
 VERTEX_PATH = vertex/
-VERTEX =	apply.o \
-			find.o \
-			linking.o \
-			vertex.o
+VERTEX =		apply.o \
+				find.o \
+				linking.o \
+				vertex.o
 
-OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX))
+DRAWING_LIST_PATH = drawing_list/
+DRAWING_LIST =	draw.o \
+				drawing_list.o \
+				organise.o
+
+OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
+		$(addprefix $(DRAWING_LIST_PATH), $(DRAWING_LIST))
 
 
 
@@ -45,7 +51,7 @@ UNDERLINE_E = \033[4m
 
 $(NAME):	$(OBJ)
 			@ar -rcs $@ $^
-			@echo "$(GREEN_E)End compilation $(NAME)$(END_E)"
+			@echo "$(GREEN_E)$(NAME)\tcompile$(END_E)"
 
 all:		$(NAME)
 
@@ -54,11 +60,11 @@ all:		$(NAME)
 
 clean:
 			@rm -f $(OBJ)
-			@echo "$(PURPLE_E)End clean $(NAME)$(END_E)"
+			@echo "$(PURPLE_E)$(NAME)\tclean$(END_E)"
 
 fclean:		clean
 			@rm -f $(NAME)
-			@echo "$(RED_E)end fclean $(NAME)$(END_E)"
+			@echo "$(RED_E)$(NAME)\tfclean$(END_E)"
 
 re: 		fclean all
 

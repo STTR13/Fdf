@@ -57,8 +57,9 @@ bool			insert_drawing_list(drawing_list **dl, vertex *vert);
 void			free_drawing_list(drawing_list **dl);
 
 drawing_list	*organise(vertex *grid);
-drawing_list	*reorganise(drawing_list *dl);
+void			reorganise(drawing_list **dl);
 
-void			draw(drawing_list *dl, double img_width, double img_height);
+void			draw(image *img, drawing_list *dl,
+					double modeled_width, double modeled_height, rgb color);
 
 #endif

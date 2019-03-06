@@ -26,7 +26,7 @@ drawing_list	*new_drawing_list(vertex *vert)
 static bool		insert_drawing_list_sub(drawing_list **dl,
 	drawing_list **ndl, vertex *vert)
 {
-	if (!(*nld = new_drawing_list(vert)))
+	if (!(*ndl = new_drawing_list(vert)))
 	{
 		free_drawing_list(dl);
 		return (false);
@@ -39,31 +39,31 @@ bool			insert_drawing_list(drawing_list **dl, vertex *vert)
 	drawing_list *ndl;
 	drawing_list *run;
 
-	if (*dl->vert->v->x > vert->v->x)
+	if ((*dl)->vert->v.x > vert->v.x)
 	{
-		if (!insert_drawing_list_sub(dl, &nld, vert))
+		if (!insert_drawing_list_sub(dl, &ndl, vert))
 			return (false);
-		nld->next = *dl;
-		*dl = nld;
+		ndl->next = *dl;
+		*dl = ndl;
 	}
 	else
 	{
 		run = *dl;
 		while (1)
-			if (!run->next || run->next->vert->v->x > vert->v->x)
+			if (!run->next || run->next->vert->v.x > vert->v.x)
 				break ;
-		if (!insert_drawing_list_sub(dl, &nld, vert))
+		if (!insert_drawing_list_sub(dl, &ndl, vert))
 			return (false);
-		nld->next = run->next;
-		run->next = nld;
+		ndl->next = run->next;
+		run->next = ndl;
 	}
 	return (true);
 }
 
 void			free_drawing_list(drawing_list **dl)
 {
-	if (*dl->next)
-		free_drawing_list(&(*dl->next));
+	if ((*dl)->next)
+		free_drawing_list(&((*dl)->next));
 	free(*dl);
 	dl = NULL;
 }
