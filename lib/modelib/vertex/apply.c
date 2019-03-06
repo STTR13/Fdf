@@ -16,8 +16,9 @@ static void		apply_vertex_sub(void (*f)(vertex *vert), vertex *grid)
 {
 	short	i;
 
-	if (!grid->done)
+	if (!grid || grid->done)
 		return ;
+	(*f)(grid);
 	grid->done = true;
 	i = -1;
 	while (++i < 4)
