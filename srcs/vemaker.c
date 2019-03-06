@@ -12,29 +12,43 @@
 
 #include "../includes/fdf.h"
 
-vertex ampos(tinput *file, int x, int y)
+vertex *ampos(twlist *file, int x, int y)
 {
-	int points;
-
-	points = 0;
+	vertex *vn;
+	if ((vn = ft_memalloc(sizeof(vertex))) == NULL)
+		return ((void *)NULL);
 	if (x - 1 >= 0)
-		points++;
-	if (x + 1 < file->linelen)
-		points++;
+		vn->next[0] = veconvertprev(file, x - 1, y);
+	if (x + 1 < file->file->linelen)
+		vn->next[1] = veconvert(file, x + 1, y);
 	if (y - 1 >= 0)
-		points++;
-	if (y + 1 < file->lines)
-		points++;
-	if ()
-	return (points);
+		vn->next[0] = veconvertprev(file, x, y - 1);
+	if (y + 1 < file->file->lines)
+		vn->next[1] = veconvert(file, x, y + 1);
+	if (x == file->file->linelen && y == file->file->lines)
+		return (vn);
+	return (vn);
 }
-vertex *veconvert(twlist *file)
-{
-	vertex *v;
-	int positions;
 
-	if ((v = ft_memalloc(sizeof(vertex))) == NULL)
-		return (0);
-	positions = ampos(file->file, 0, 0);
-	return (NULL);
+vertex *veconvertprev(twlist *file, int x, int y)
+{
+	vertex *vect;
+	if ((vect = ft_memalloc(sizeof(vertex))) == NULL)
+		return (NULL);
+	vect->v.x = x;
+	vect->v.y = y;
+	vect->v.z = file->file->input[y][x];
+	return (vect);
+}
+
+vertex *veconvert(twlist *file, int x, int y)
+{
+	vertex *vect;
+	if ((vect = ft_memalloc(sizeof(vertex))) == NULL)
+		return (NULL);
+	vect->v.x = x;
+	vect->v.y = y;
+	vect->v.z = file->file->input[y][x];
+	vect = ampos(file, x, y);
+	return (vect);
 }
