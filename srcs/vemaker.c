@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-vertex	*ampos(tinput *file, int x, int y)
+/*vertex	*ampos(tinput *file, int x, int y)
 {
 	vertex	*vn;
 
@@ -30,9 +30,9 @@ vertex	*ampos(tinput *file, int x, int y)
 		vn->next[1] = veconvert(file, x, y + 1);
 
 	return (vn);
-}
+}*/
 
-vertex	*veconvertprev(tinput *file, int x, int y)
+/*vertex	*veconvertprev(tinput *file, int x, int y)
 {
 	vertex	*vect;
 
@@ -42,17 +42,46 @@ vertex	*veconvertprev(tinput *file, int x, int y)
 	vect->v.y = y;
 	vect->v.z = file->input[y][x];
 	return (vect);
+}*/
+
+ve createv(tinput *file, int x, int y)
+{
+	ve v;
+
+	v.x = x;
+	v.y = y;
+	v.z = file->input[y][x];
+	return (v);
 }
 
-vertex	*veconvert(tinput *file, int x, int y)
+vertex *veconverter(tinput *file, int x, int y, vertex *grid)
 {
-	vertex	*vect;
+	ve curr;
+	ve prev;
+	if (x < file->linelen)
+	{
+		x = 0;
+		y++;
+	}
+	if (y < file->lines)
+		return (grid);
+	curr = createv(file, x, y);
+	printf("\n\n%i\n\n", file->input[y][x]);
+printf("\nx: %f\ny: %f\nz: %f\n",curr.x,curr.y,curr.z);
+	prev = grid->v;
+	return(add_vertex(grid, curr, prev));
 
-	if ((vect = ft_memalloc(sizeof(vertex))) == NULL)
-		return (NULL);
-	vect->v.x = x;
-	vect->v.y = y;
-	vect->v.z = file->input[y][x];
-	vect = ampos(file, x, y);
+}
+
+vertex	*veconvertstart(tinput *file, int x, int y)
+{
+	ve curr;
+	vertex	*vect;
+	bool ret;
+	ret = 0;
+	curr = createv(file, x, y);
+	vect = new_vertex(curr);
+	ret = veconverter(file, x + 1, y, vect);
+	printf("%i\n", ret);
 	return (vect);
 }
