@@ -15,18 +15,28 @@
 int main(int argc, char **argv)
 {
 	twlist window;
-	tinput	*file;
-	vertex *points;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
 		return (0);
 	}
-	if ((file = file_reader(open(argv[1], O_RDONLY))) == NULL)
+	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
 		ft_putendl("error");
 		return (0);
 	}
-	//points = veconvert(file->input, file->lines, file->linelen);
+	int i = 0, j = 0;
+	while (i < window.file->lines)
+	{
+		j = 0;
+		while (j < window.file->linelen)
+		{
+			printf("%i, ", window.file->input[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
     //window_init(&window);
 }

@@ -34,6 +34,7 @@ typedef struct			swlist
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	tinput	*file;
 }						twlist;
 
 int deal_key(int key, twlist *window);
@@ -46,7 +47,7 @@ int linelen(char *str);
 //twlist *free_list(twlist *window);
 int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
-int		**filefiller(int **input, char *temp, tinput *lst);
+int		**filefiller(int **input, char *temp, tinput *lst, int x);
 int		totallines(char *temp);
 vertex *veconvert(int **input, int lines, int linelen);
 

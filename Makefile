@@ -28,7 +28,7 @@ OBJ = 			main.o \
 				free.o \
 				vemaker.o \
 
-INCLUDES = lib/libft/includes/
+INCLUDES = includes/
 
 
 FRAMEW = -framework OpenGL -framework AppKit
@@ -48,7 +48,7 @@ $(NAME):
 	@$(MAKE) -C lib/geolib/
 	@$(MAKE) -C lib/minilibx_macos/
 	@$(MAKE) -C lib/modelib/
-	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h -I modeling/modeling.h
+	gcc -c $(SRC) -I $(INCLUDES)
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:57:57 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/28 12:00:38 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/06 09:58:40 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,27 @@ int		totallines(char *temp)
 	return (lines);
 }
 
-int		**filefiller(int **input, char *temp, tinput *lst)
+int		**filefiller(int **input, char *temp, tinput *lst, int x)
 {
 	int i;
 	int j;
-	int x;
 	int tempnb;
 
 	i = 0;
 	j = -1;
-	x = 0;
 	while (temp[x])
 	{
-
 		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
 		{
 			tempnb = ft_atoi(&temp[x]);
 			if (++j < lst->linelen)
 				input[i][j] = tempnb;
-			else
+			else if (j >= lst->linelen && i++ < lst->lines)
 			{
-				i++;
 				j = 0;
 				input[i][j] = tempnb;
 			}
-			while ((temp[x] == '-' || ft_isdigit(temp[x])) \
-					&& temp[x])
+			while ((temp[x] == '-' || ft_isdigit(temp[x])) && temp[x])
 				x++;
 		}
 		x++;
@@ -97,15 +92,16 @@ int		**filecreator(char *temp, tinput *lst)
 		input[i] = ft_memalloc(sizeof(int) * lst->linelen);
 		i++;
 	}
-	input = filefiller(input, temp, lst);
+	i = 0;
+	input = filefiller(input, temp, lst, i);
 	return (input);
 }
 
 tinput	*file_reader(int fd)
 {
-	char *line;
-	char *str;
-	tinput *lst;
+	char	*line;
+	char	*str;
+	tinput	*lst;
 
 	str = "\0";
 	if (fd == -1)
