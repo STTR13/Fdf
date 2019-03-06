@@ -33,7 +33,11 @@ INCLUDES = lib/libft/includes/
 
 FRAMEW = -framework OpenGL -framework AppKit
 
-LIB = lib/minilibx_macos/libmlx.a lib/libft/libft.a
+LIB = 	lib/minilibx_macos/libmlx.a \
+		lib/libft/libft.a \
+		lib/geolib/geolib.a \
+		lib/modelib/modelib.a \
+
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -41,15 +45,24 @@ all: $(NAME)
 
 $(NAME):
 	@$(MAKE) -C lib/libft/
+	@$(MAKE) -C lib/geolib/
+	@$(MAKE) -C lib/minilibx_macos/
+	@$(MAKE) -C lib/modelib/
 	gcc -c $(SRC) -I $(INCLUDES) -I geolib/geometry.h -I modeling/modeling.h
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:
 	@$(MAKE) -C lib/libft/ clean
+	@$(MAKE) -C lib/minilibx_macos/ clean
+	@$(MAKE) -C lib/geolib/ clean
+	@$(MAKE) -C lib/modelib/ clean
 	rm -f $(OBJ)
 
 fclean: clean
 	@$(MAKE) -C lib/libft/ fclean
+	@$(MAKE) -C lib/geolib/ fclean
+	@$(MAKE) -C lib/modelib/ fclean
+	@$(MAKE) -C lib/minilibx_macos/ fclean
 	rm -f $(NAME)
 
 re: fclean all
