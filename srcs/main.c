@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	twlist window;
 	vertex *v;
+	int i;
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -38,16 +39,6 @@ int main(int argc, char **argv)
 		printf("\n");
 		y++;
 	}*/
-	int i = 0;
-
-	if ((v = veconvertstart(window.file, 0, 0)) == 0)
-		printf("error");
-	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
-	while (v->next[i])
-		{
-	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
-	i++;
-	v = v->next[i];
-}
-    //window_init(&window);
+	v = veconvertstart(window.file, 0, 0);
+	//window_init(&window);
 }
