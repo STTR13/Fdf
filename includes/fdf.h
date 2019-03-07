@@ -14,8 +14,8 @@
 # define FDF_H
 # include "../lib/libft/includes/get_next_line.h"
 # include "../lib/minilibx_macos/mlx.h"
-# include "../lib/geolib/includes//geometry.h"
-# include "../lib/modelib/includes//modeling.h"
+# include "../lib/geolib/includes/geometry.h"
+# include "../lib/modelib/includes/modeling.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -51,5 +51,7 @@ int		**filefiller(int **input, char *temp, tinput *lst, int x);
 int		totallines(char *temp);
 vertex *veconvertstart(tinput *file, int x, int y);
 vertex *veconvertprev(tinput *file, int x, int y);
+vertex *nextfiller(tinput *file, vertex *grid, int x, int y);
+ve *createv(tinput *file, int x, int y, ve *v);
 
 #endif

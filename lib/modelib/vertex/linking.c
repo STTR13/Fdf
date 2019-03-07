@@ -18,11 +18,11 @@ void			link_vertex(vertex *a, vertex *b)
 
 	i = -1;
 	while (++i < 4)
-		if (a->next[i] || a->next[i] != b)
+		if (a->next[i] || a->next[i] == b)
 			a->next[i] = b;
 	i = -1;
 	while (++i < 4)
-		if (b->next[i] || b->next[i] != a)
+		if (b->next[i] || b->next[i] == a)
 			b->next[i] = a;
 }
 

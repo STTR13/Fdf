@@ -44,51 +44,80 @@
 	return (vect);
 }*/
 
-ve createv(tinput *file, int x, int y)
+ve *createv(tinput *file, int x, int y, ve *v)
 {
-	ve v;
-
-	v.x = x;
-	v.y = y;
-	v.z = file->input[y][x];
+	v->x = x;
+	v->y = y;
+	v->z = file->input[y][x];
 	return (v);
 }
 
-vertex *veconverter(tinput *file, int x, int y, vertex *grid)
+vertex *backfiller(tinput *file, vertex *grid, int x, int y)
 {
-	ve curr;
-	ve prev;
+	vertex *temp;
+
+	if (x > 0)
+	{
+	temp = grid - 1;
+	grid->next[2] = temp;
+	backfiller(file, grid->next[2], x - 1, y);
+	}
+	if (y > 0)
+	{
+	temp = grid - file->linelen;
+	grid->next[3] = temp;
+	backfiller(file, grid->next[3], x, y - 1);
+	}
+	return (grid);
+}
+
+vertex *nextfiller(tinput *file, vertex *grid, int x, int y)
+{
+	vertex *temp;
+
 	if (x < file->linelen)
 	{
-		x = 0;
-		y++;
+	temp = grid + 1;
+	grid->next[0] = temp;
+	nextfiller(file, grid->next[0], x + 1, y);
 	}
 	if (y < file->lines)
-		return (grid);
-	curr = createv(file, x, y);
-	/*printf("\n\n%i\n\n", file->input[y][x]);
-printf("\nx: %f\ny: %f\nz: %f\n",curr.x,curr.y,curr.z);*/
-	prev = grid->v;
-	return(add_vertex(grid, curr, prev));
-
+	{
+	temp = grid + file->linelen;
+	grid->next[1] = temp;
+	nextfiller(file, grid->next[1], x, y + 1);
+	}
+	/*if (grid->v.x > 0)
+	{
+	temp = grid - 1;
+	grid->next[2] = temp;
+	//nextfiller(file, grid->next[2], x - 1, y);
+	}
+	if (grid->v.y > 0)
+	{
+	temp = grid - file->linelen;
+	grid->next[3] = temp;
+}*/
+	return (grid);
 }
 
 vertex	*veconvertstart(tinput *file, int x, int y)
 {
-	ve curr;
+	ve v;
 	vertex	*vect;
-	int j;
-
-	j = 0;
-	if (x == linelen && y == lines)
-		return (vect = new_vertex(createv(file, x, y)));
-	vect = new_vertex(createv(file, x, y));
-	if (x < linelen)
+	vertex *temp;
+	while (y < file->lines)
 	{
-		vect->next[j] = veconvertstart(file, x + 1, y);
-		j++;
+		x = 0;
+		while (x < file->linelen)
+		{
+			vect = new_vertex(*createv(file, x, y, &v));
+			x++;
+		}
+		y++;
 	}
-	if (y < lines)
-		vect->next[j] = veconvertstart(file, x, y + 1);
+	int i = file->lines * file->linelen;
+	while (--i > 0)
+		vect--;
 	return (vect);
 }

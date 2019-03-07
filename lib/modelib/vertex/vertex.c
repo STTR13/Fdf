@@ -18,7 +18,9 @@ vertex			*new_vertex(ve v)
 
 	if (!(rvert = (vertex*)malloc(sizeof(vertex))))
 		return (NULL);
-	rvert->v = v;
+	rvert->v.x = v.x;
+	rvert->v.y = v.y;
+	rvert->v.z = v.z;
 	rvert->next[0] = NULL;
 	rvert->next[1] = NULL;
 	rvert->next[2] = NULL;
