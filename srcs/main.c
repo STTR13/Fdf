@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
+
 	//v += window.file->linelen + 1;
 	printf("PREVIOUS POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 	v += 1;
@@ -52,5 +53,6 @@ int main(int argc, char **argv)
 		v++;
 		i++;
 	}*/
+	free_tinput(window.file);
 	//window_init(&window);
 }

@@ -44,7 +44,7 @@ tinput	*file_reader(int fd);
 tinput *character_convertor(tinput *lst, char *temp);
 int **filecreator(char *temp, tinput *lst);
 int linelen(char *str);
-//twlist *free_list(twlist *window);
+void free_tinput(tinput *file);
 int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
 int		**filefiller(int **input, char *temp, tinput *lst, int x);

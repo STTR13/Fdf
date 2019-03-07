@@ -10,19 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/fdf.h"
+#include "../includes/fdf.h"
 
-twlist *free_list(twlist *window)
+void free_tinput(tinput *file)
 {
-	int i;
-
-	i = 0;
-	if (window != NULL)
-	{
-		window->file->input = ft_intarrclr(window->file->input);
-		ft_memdel(window->mlx_ptr);
-		ft_memdel(window->win_ptr);
-	}
-	return (window);
+	ft_intarrclr(file->input);
+	file->lines = 0;
+	file->linelen = 0;
+	free(file);
 }
-*/
