@@ -15,12 +15,14 @@
 int windowclose(twlist *window)
 {
 	//free_list(window);
+	(void)window;
 	exit(0);
 	return(0);
 }
 
 int deal_key(int key, twlist *window)
 {
+	(void)window;
     if (key == 13)
         ft_putchar('W');
     else if (key == 0)
@@ -52,7 +54,7 @@ int deal_key(int key, twlist *window)
 
 int mouse_key(int key, twlist *window)
 {
-	void *param;
+	(void)window;
     if (key == 1)
         ft_putstr("Left Button");
     if (key == 2)
@@ -68,7 +70,9 @@ int mouse_key(int key, twlist *window)
 
 int mouse_move(int x, int y, twlist *window)
 {
-	//(void)param;
+	(void)window;
+	(void)x;
+	(void)y;
 	//ft_putstr("moving");
 	return(0);
 }

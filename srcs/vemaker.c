@@ -6,13 +6,13 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/06 13:37:16 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:54:36 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-ve createv(tinput *file, int x, int y, ve v)
+ve			createv(tinput *file, int x, int y, ve v)
 {
 	v.x = x;
 	v.y = y;
@@ -20,60 +20,63 @@ ve createv(tinput *file, int x, int y, ve v)
 	return (v);
 }
 
-vertex *gridmaker(tinput *file)
+void		xlink(vertex *grid, tinput *file)
 {
-	vertex *rvert;
+	vertex	*temp;
 
-	if (!(rvert = (vertex*)malloc(sizeof(vertex) * (file->lines * file->linelen))))
-		return (NULL);
-	return (rvert);
+	if (0 < grid->v.x)
+	{
+		temp = grid - 1;
+		grid->next[2] = temp;
+	}
+	if (grid->v.x == 0 || grid->v.x < file->linelen)
+	{
+		temp = grid + 1;
+		grid->next[0] = temp;
+	}
 }
 
-vertex	*veconvertstart(tinput *file, int x, int y)
+void		ylink(vertex *grid, tinput *file)
 {
-	ve v;
+	vertex	*temp;
+
+	if (grid->v.y > 0)
+	{
+		temp = grid - file->linelen;
+		grid->next[3] = temp;
+	}
+	if (grid->v.y == 0 || grid->v.y < file->lines)
+	{
+		temp = grid + file->linelen;
+		grid->next[1] = temp;
+	}
+}
+
+vertex		*veconvertstart(tinput *file, int x, int y)
+{
+	ve		v;
 	vertex	*vect;
-	vertex *temp;
-	//vect = gridmaker(file);
-	int j = 0;
+	int		i;
+
 	while (y < file->lines)
 	{
 		x = 0;
 		while (x < file->linelen)
 		{
-			vect = new_vertex(createv(file, x, y, v));
+			v = createv(file, x, y, v);
+			if (!(vect = new_vertex(v)))
+				return (NULL);
 			vect++;
 			x++;
 		}
 		y++;
 	}
-/*if (0 < x)
-{
-	temp = vect - 1;
-	vect->next[0] = temp;
-}
-if (x == 0)
-{
-	temp = vect + 1;
-	vect->next[0] = temp;
-}
-if (y > 0 && y < file->lines)
-{
-	temp = vect - file->linelen;
-	vect->next[1] = temp;
-}
-if (y == 0)
-{
-	temp = vect + file->linelen;
-	vect->next[1] = temp;
-}*/
-	int i = file->lines * file->linelen;
-	while (--i >= 1)
+	i = file->lines * file->linelen;
+	while (--i >= 0)
 	{
-		//link_vertex(vect, vect-1);
+		xlink(vect, file);
+		ylink(vect, file);
 		vect--;
 	}
-	/*vect += file->linelen * 80;
-printf("\n%i\n", j);*/
 	return (vect);
 }

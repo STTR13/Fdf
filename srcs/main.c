@@ -16,8 +16,7 @@ int main(int argc, char **argv)
 {
 	twlist window;
 	vertex *v;
-	ve ve;
-	int i;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -28,27 +27,18 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	int x = 0, y = 0;
-	while (y < window.file->lines)
+	if (!(v = veconvertstart(window.file, 0, 0)))
 	{
-		x = 0;
-		while (x < window.file->linelen)
-		{
-			printf("%i, ", window.file->input[y][x]);
-			x++;
-		}
-		printf("\n");
-		y++;
+		ft_putendl("error");
+		return (0);
 	}
-	v = veconvertstart(window.file, 0, 0);
-//
-/*while (i < window.file->lines * window.file->linelen)
+	/*int i;
+	i = 0;
+	while (i < window.file->lines * window.file->linelen)
 	{
-		printf("\nx: %f, y: %f, z: %f\n", v->v.x, v->v.y, v->v.z);
+		printf("X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 		v++;
 		i++;
 	}*/
-//
-
-	//window_init(&window);
+	window_init(&window);
 }

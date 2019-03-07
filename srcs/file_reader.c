@@ -104,6 +104,8 @@ tinput	*file_reader(int fd)
 	tinput	*lst;
 
 	str = "\0";
+	if (!(lst = ft_memalloc(sizeof(tinput))))
+		return (NULL);
 	if (fd == -1)
 		return (NULL);
 	while (get_next_line(fd, &line) == 1)
