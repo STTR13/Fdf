@@ -58,11 +58,13 @@ vertex		*veconvertstart(tinput *file, int x, int y)
 	vertex	*vect;
 	int		i;
 
+	i = 0;
 	while (y < file->lines)
 	{
 		x = 0;
 		while (x < file->linelen)
 		{
+			i++;
 			v = createv(file, x, y, v);
 			if (!(vect = new_vertex(v)))
 				return (NULL);
@@ -71,7 +73,7 @@ vertex		*veconvertstart(tinput *file, int x, int y)
 		}
 		y++;
 	}
-	i = file->lines * file->linelen;
+
 	while (--i >= 0)
 	{
 		xlink(vect, file);
