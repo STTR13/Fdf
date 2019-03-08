@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-void window_init(t_wlist *window)
+void	window_init(t_wlist *window)
 {
 	window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");

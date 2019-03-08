@@ -119,6 +119,6 @@ t_input			*file_reader(int fd)
 	close(fd);
 	lst->lines = totallines(str);
 	lst->linelen = linelen(str);
-	lst->input = filecreator(str, lst)
+	lst->input = filecreator(str, lst);
 	return (lst);
 }
