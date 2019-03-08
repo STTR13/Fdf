@@ -38,6 +38,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_intarrprint(int **arr, int max_x, int max_y);
 void				ft_memdell(void *ap);
+void				ft_intarrclr(int **ap, int y);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
@@ -74,7 +75,6 @@ int					ft_tolower(int c);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strdel_neg(char **as);
-int					**ft_intarrclr(int **ap);
 
 typedef struct		s_list
 {

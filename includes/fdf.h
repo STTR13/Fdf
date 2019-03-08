@@ -41,17 +41,11 @@ int deal_key(int key, twlist *window);
 int mouse_key(int key, twlist *window);
 void window_init(twlist *window);
 tinput	*file_reader(int fd);
-tinput *character_convertor(tinput *lst, char *temp);
-int **filecreator(char *temp, tinput *lst);
-int linelen(char *str);
-void free_tinput(tinput *file);
+void free_all(vertex *v, tinput *file);
 int windowclose(twlist *window);
 int mouse_move(int x, int y, twlist *window);
-int		**filefiller(int **input, char *temp, tinput *lst, int x);
-int		totallines(char *temp);
-vertex *veconvertstart(tinput *file, int x, int y);
-vertex *veconvertprev(tinput *file, int x, int y);
-vertex *nextfiller(tinput *file, vertex *grid, int x, int y);
-ve createv(tinput *file, int x, int y);
+vertex		*veconvertstart(tinput *file, int x, int y);
+
+
 
 #endif

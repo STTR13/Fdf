@@ -12,24 +12,17 @@
 
 #include "../includes/libft.h"
 
-int		**ft_intarrclr(int **ap)
+void		ft_intarrclr(int **ap, int y)
 {
-	int i;
-
-	i = 0;
 	if (ap && *ap)
 	{
-		while (ap[i])
+		while (--y >= 0)
 		{
-			free(ap[i]);
-			ap[i] = NULL;
-			i++;
+			ft_memdell(ap[y]);
 		}
 	free(ap);
 	ap = NULL;
-	return (ap);
 	}
 	if (ap)
 		free (ap);
-	return (ap);
 }

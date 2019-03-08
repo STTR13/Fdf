@@ -17,7 +17,8 @@ int main(int argc, char **argv)
 	twlist window;
 	vertex *v;
 
-
+while(1)
+{
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -56,6 +57,10 @@ int main(int argc, char **argv)
 	}*/
 
 	//window_init(&window);
-	ft_memdell(window.file);
+
+	free_all(v, window.file);
+	/*v += 1;
+	printf("CURRENT POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);*/
+}
 	return (0);
 }

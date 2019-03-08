@@ -12,10 +12,31 @@
 
 #include "../includes/fdf.h"
 
-void free_tinput(tinput *file)
+static void free_v(vertex *v, tinput *file)
 {
-	ft_intarrclr(file->input);
+	int i;
+
+	i = file->lines * file->linelen;
+	v += i;
+	while (--i >= 0)
+	{
+		v->v.x = (int)NULL;
+		v->v.y = (int)NULL;
+		v->v.z = (int)NULL;
+		v->next[0] = NULL;
+		v->next[1] = NULL;
+		v->next[2] = NULL;
+		v->next[3] = NULL;
+		v--;
+	}
+	ft_memdell(v);
+}
+
+void free_all(vertex *v, tinput *file)
+{
+	free_v(v, file);
+	ft_intarrclr(file->input, file->lines);
 	file->lines = 0;
 	file->linelen = 0;
-	//free(file);
+	ft_memdell(file);
 }

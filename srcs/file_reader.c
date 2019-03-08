@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int		linelen(char *str)
+static int		linelen(char *str)
 {
 	int i;
 	int counter;
@@ -36,7 +36,7 @@ int		linelen(char *str)
 	return (counter);
 }
 
-int		totallines(char *temp)
+static int		totallines(char *temp)
 {
 	int i;
 	int lines;
@@ -52,7 +52,7 @@ int		totallines(char *temp)
 	return (lines);
 }
 
-int		**filefiller(int **input, char *temp, tinput *lst, int x)
+static int		**filefiller(int **input, char *temp, tinput *lst, int x)
 {
 	int i;
 	int j;
@@ -80,7 +80,7 @@ int		**filefiller(int **input, char *temp, tinput *lst, int x)
 	return (input);
 }
 
-int		**filecreator(char *temp, tinput *lst)
+static int		**filecreator(char *temp, tinput *lst)
 {
 	int **input;
 	int i;
