@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strdell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 14:53:00 by fabbenbr          #+#    #+#             */
-/*   Updated: 2018/10/15 13:06:21 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/03/08 13:42:09 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/03/08 13:42:11 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strjoinn(char *s1, char const *s2)
+void	ft_strdell(char *as)
 {
-	int		i;
-	int		j;
-	char	*tempcat;
-
-	if (s1 && s2)
+	if (as)
 	{
-		i = ft_strlen(s1);
-		j = ft_strlen(s2);
-		if ((tempcat = ft_strnew(i + j + 1)) == NULL)
-			return (NULL);
-		else
-		{
-			ft_strcpy(tempcat, s1);
-			ft_strdell(s1);
-			return (tempcat = ft_strcatnl(tempcat, s2));
-		}
+		free(as);
+		as = NULL;
 	}
-	return (NULL);
 }

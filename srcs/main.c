@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	twlist window;
 	vertex *v;
 
-while(1)
+while (1)
 {
 	if (argc != 2)
 	{
@@ -35,8 +35,8 @@ while(1)
 		return (0);
 	}
 
-	//v += window.file->linelen + 1;
-	/*printf("PREVIOUS POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
+	v += window.file->linelen + 1;
+	printf("PREVIOUS POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 	v += 1;
 	printf("CURRENT POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 	if (v->next[0])
@@ -46,7 +46,8 @@ while(1)
 	if (v->next[2])
 		printf("VECTOR TO THE LEFT X: %f, Y: %f, Z: %f\n", v->next[2]->v.x, v->next[2]->v.y, v->next[2]->v.z);
 	if (v->next[3])
-		printf("VECTOR TO THE TOP X: %f, Y: %f, Z: %f\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);*/
+		printf("VECTOR TO THE TOP X: %f, Y: %f, Z: %f\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);
+	v -= (window.file->linelen + 2);
 	/*int i;
 	i = 0;*/
 	/*while (i < window.file->lines * window.file->linelen)

@@ -103,8 +103,10 @@ tinput	*file_reader(int fd)
 	char	*str;
 	tinput	*lst;
 
-	str = "\0";
+	//str = "\0";
 	if (!(lst = ft_memalloc(sizeof(tinput))))
+		return (NULL);
+	if (!(str = ft_strnew(0)))
 		return (NULL);
 	if (fd == -1)
 		return (NULL);
