@@ -86,7 +86,8 @@ static int		**filecreator(char *temp, t_input *lst)
 	int i;
 
 	i = 0;
-	input = ft_memalloc(sizeof(int *) * lst->lines);
+	if (!(input = ft_memalloc(sizeof(int *) * lst->lines)))
+		return (NULL);
 	while (i < lst->lines)
 	{
 		input[i] = ft_memalloc(sizeof(int) * lst->linelen);
@@ -103,12 +104,13 @@ t_input			*file_reader(int fd)
 	char	*str;
 	t_input	*lst;
 
-	if (!(lst = ft_memalloc(sizeof(t_input))))
+	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))))
 		return (NULL);
 	if (!(str = ft_strnew(0)))
+	{
+		ft_memdell(lst);
 		return (NULL);
-	if (fd == -1)
-		return (NULL);
+	}
 	while (get_next_line(fd, &line) == 1)
 	{
 		str = ft_strjoinn(str, line);
@@ -117,6 +119,6 @@ t_input			*file_reader(int fd)
 	close(fd);
 	lst->lines = totallines(str);
 	lst->linelen = linelen(str);
-	lst->input = filecreator(str, lst);
+	lst->input = filecreator(str, lst)
 	return (lst);
 }

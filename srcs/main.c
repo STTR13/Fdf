@@ -12,12 +12,11 @@
 
 #include "../includes/fdf.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_wlist window;
-	vertex *v;
-	while (1)
-	{
+	t_wlist	window;
+	vertex	*v;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -25,17 +24,18 @@ int main(int argc, char **argv)
 	}
 	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
+		if (window.file != NULL)
+			ft_memdell(window.file);
 		ft_putendl("error");
 		return (0);
 	}
 	if (!(v = veconvertstart(window.file, 0, 0)))
 	{
+		free_all(v, window.file);
 		ft_putendl("error");
 		return (0);
 	}
-	//window_init(&window);
-	//ft_intarrprint(window.file->input, window.file->linelen, window.file->lines);
+	window_init(&window);
 	free_all(v, window.file);
-}
 	return (0);
 }

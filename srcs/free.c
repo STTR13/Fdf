@@ -34,9 +34,14 @@ static void		free_v(vertex *v, t_input *file)
 
 void			free_all(vertex *v, t_input *file)
 {
-	free_v(v, file);
-	ft_intarrclr(file->input, file->lines);
-	file->lines = 0;
-	file->linelen = 0;
-	ft_memdell(file);
+	if (v && file)
+		free_v(v, file);
+	if (file && file->input)
+		ft_intarrclr(file->input, file->lines);
+	if (file)
+	{
+		file->lines = 0;
+		file->linelen = 0;
+		ft_memdell(file);
+	}
 }
