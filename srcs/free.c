@@ -17,5 +17,5 @@ void free_tinput(tinput *file)
 	ft_intarrclr(file->input);
 	file->lines = 0;
 	file->linelen = 0;
-	free(file);
+	//free(file);
 }
