@@ -6,13 +6,13 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:59:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/07 14:54:36 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/08 14:47:26 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static ve			createv(tinput *file, int x, int y)
+static ve		createv(tinput *file, int x, int y)
 {
 	ve v;
 
@@ -54,7 +54,7 @@ static void		ylink(vertex *grid, tinput *file)
 	}
 }
 
-static vertex		*new_grid(tinput *file)
+static vertex	*new_grid(tinput *file)
 {
 	vertex *rvert;
 
@@ -65,12 +65,13 @@ static vertex		*new_grid(tinput *file)
 	return (rvert);
 }
 
-vertex		*veconvertstart(tinput *file, int x, int y)
+vertex			*veconvertstart(tinput *file, int x, int y)
 {
 	vertex	*vect;
 	int		i;
 
-	vect = new_grid(file);
+	if (!(vect = new_grid(file)))
+		return (NULL);
 	while (y < file->lines)
 	{
 		x = 0;

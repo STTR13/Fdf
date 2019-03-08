@@ -23,29 +23,28 @@
 # define WHEIGHT 1280
 # define WWIDTH 2280
 # define COLORWHITE 0xaabbcc
-typedef struct			sinput
+
+typedef struct			s_input
 {
 	int **input;
 	int lines;
 	int linelen;
-}										tinput;
+}						t_input;
 
-typedef struct			swlist
+typedef struct			s_wlist
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	tinput	*file;
-}						twlist;
+}						t_wlist;
 
-int deal_key(int key, twlist *window);
-int mouse_key(int key, twlist *window);
-void window_init(twlist *window);
-tinput	*file_reader(int fd);
-void free_all(vertex *v, tinput *file);
-int windowclose(twlist *window);
-int mouse_move(int x, int y, twlist *window);
-vertex		*veconvertstart(tinput *file, int x, int y);
-
-
+int						deal_key(int key, twlist *window);
+int						mouse_key(int key, twlist *window);
+void					window_init(twlist *window);
+tinput					*file_reader(int fd);
+void					free_all(vertex *v, tinput *file);
+int						windowclose(twlist *window);
+int						mouse_move(int x, int y, twlist *window);
+vertex					*veconvertstart(tinput *file, int x, int y);
 
 #endif

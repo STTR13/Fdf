@@ -17,12 +17,10 @@ void		ft_intarrclr(int **ap, int y)
 	if (ap && *ap)
 	{
 		while (--y >= 0)
-		{
 			ft_memdell(ap[y]);
-		}
-	free(ap);
-	ap = NULL;
+		free(ap);
+		ap = NULL;
 	}
 	if (ap)
-		free (ap);
+		free(ap);
 }

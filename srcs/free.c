@@ -6,13 +6,13 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 09:58:48 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/06 09:58:55 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/08 14:48:40 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void free_v(vertex *v, tinput *file)
+static void		free_v(vertex *v, tinput *file)
 {
 	int i;
 
@@ -32,7 +32,7 @@ static void free_v(vertex *v, tinput *file)
 	ft_memdell(v);
 }
 
-void free_all(vertex *v, tinput *file)
+void			free_all(vertex *v, tinput *file)
 {
 	free_v(v, file);
 	ft_intarrclr(file->input, file->lines);

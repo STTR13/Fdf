@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:57:57 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/06 09:58:40 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/08 14:48:07 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,12 @@ static int		**filecreator(char *temp, tinput *lst)
 	return (input);
 }
 
-tinput	*file_reader(int fd)
+tinput			*file_reader(int fd)
 {
 	char	*line;
 	char	*str;
 	tinput	*lst;
 
-	//str = "\0";
 	if (!(lst = ft_memalloc(sizeof(tinput))))
 		return (NULL);
 	if (!(str = ft_strnew(0)))

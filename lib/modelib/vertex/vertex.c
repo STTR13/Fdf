@@ -30,7 +30,8 @@ bool			add_vertex(vertex *grid, ve new_vert, ve link)
 	vertex *nv;
 
 	nv = NULL;
-	if (!(grid = find_vertex(link, grid)) || !(nv = new_vertex(new_vert, nv)))
+	if (!(grid = find_vertex(link, grid)) || \
+	!(nv = new_vertex(new_vert, nv)))
 		return (false);
 	link_vertex(nv, grid);
 	return (true);
