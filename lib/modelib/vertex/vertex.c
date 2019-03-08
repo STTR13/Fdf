@@ -14,10 +14,6 @@
 
 vertex			*new_vertex(ve v, vertex *rvert)
 {
-	//vertex *rvert;
-
-	/*if (!(rvert = (vertex*)malloc(sizeof(vertex))))
-		return (NULL);*/
 	rvert->v.x = v.x;
 	rvert->v.y = v.y;
 	rvert->v.z = v.z;
@@ -25,7 +21,7 @@ vertex			*new_vertex(ve v, vertex *rvert)
 	rvert->next[1] = NULL;
 	rvert->next[2] = NULL;
 	rvert->next[3] = NULL;
-	rvert->done = false;
+	rvert->done = true;
 	return (rvert);
 }
 
