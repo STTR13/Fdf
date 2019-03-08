@@ -53,6 +53,6 @@ int main(int argc, char **argv)
 		v++;
 		i++;
 	}*/
-	free_tinput(window.file);
+	//free_tinput(window.file);
 	//window_init(&window);
 }

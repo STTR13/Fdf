@@ -12,12 +12,12 @@
 
 #include "modeling.h"
 
-vertex			*new_vertex(ve v)
+vertex			*new_vertex(ve v, vertex *rvert)
 {
-	vertex *rvert;
+	//vertex *rvert;
 
-	if (!(rvert = (vertex*)malloc(sizeof(vertex))))
-		return (NULL);
+	/*if (!(rvert = (vertex*)malloc(sizeof(vertex))))
+		return (NULL);*/
 	rvert->v.x = v.x;
 	rvert->v.y = v.y;
 	rvert->v.z = v.z;
@@ -33,7 +33,8 @@ bool			add_vertex(vertex *grid, ve new_vert, ve link)
 {
 	vertex *nv;
 
-	if (!(grid = find_vertex(link, grid)) || !(nv = new_vertex(new_vert)))
+	nv = NULL;
+	if (!(grid = find_vertex(link, grid)) || !(nv = new_vertex(new_vert, nv)))
 		return (false);
 	link_vertex(nv, grid);
 	return (true);

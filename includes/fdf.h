@@ -52,6 +52,6 @@ int		totallines(char *temp);
 vertex *veconvertstart(tinput *file, int x, int y);
 vertex *veconvertprev(tinput *file, int x, int y);
 vertex *nextfiller(tinput *file, vertex *grid, int x, int y);
-ve createv(tinput *file, int x, int y, ve v);
+ve createv(tinput *file, int x, int y);
 
 #endif

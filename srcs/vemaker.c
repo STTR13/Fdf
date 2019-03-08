@@ -12,8 +12,10 @@
 
 #include "../includes/fdf.h"
 
-ve			createv(tinput *file, int x, int y, ve v)
+ve			createv(tinput *file, int x, int y)
 {
+	ve v;
+
 	v.x = x;
 	v.y = y;
 	v.z = file->input[y][x];
@@ -52,19 +54,29 @@ void		ylink(vertex *grid, tinput *file)
 	}
 }
 
+vertex		*new_grid(tinput *file)
+{
+	vertex *rvert;
+
+	rvert = NULL;
+	if (!(rvert = (vertex*)malloc(sizeof(vertex) \
+		* (file->lines * file->linelen))))
+		return (NULL);
+	return (rvert);
+}
+
 vertex		*veconvertstart(tinput *file, int x, int y)
 {
-	ve		v;
 	vertex	*vect;
 	int		i;
 
+	vect = new_grid(file);
 	while (y < file->lines)
 	{
 		x = 0;
 		while (x < file->linelen)
 		{
-			v = createv(file, x, y, v);
-			if (!(vect = new_vertex(v)))
+			if (!(vect = new_vertex(createv(file, x, y), vect)))
 				return (NULL);
 			vect++;
 			x++;
