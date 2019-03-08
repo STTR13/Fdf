@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	twlist window;
 	vertex *v;
 
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
 	}
 
 	//v += window.file->linelen + 1;
-	printf("PREVIOUS POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
+	/*printf("PREVIOUS POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 	v += 1;
 	printf("CURRENT POSITION X: %f, Y: %f, Z: %f\n", v->v.x, v->v.y, v->v.z);
 	if (v->next[0])
@@ -44,7 +45,7 @@ int main(int argc, char **argv)
 	if (v->next[2])
 		printf("VECTOR TO THE LEFT X: %f, Y: %f, Z: %f\n", v->next[2]->v.x, v->next[2]->v.y, v->next[2]->v.z);
 	if (v->next[3])
-		printf("VECTOR TO THE TOP X: %f, Y: %f, Z: %f\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);
+		printf("VECTOR TO THE TOP X: %f, Y: %f, Z: %f\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);*/
 	/*int i;
 	i = 0;*/
 	/*while (i < window.file->lines * window.file->linelen)
@@ -53,6 +54,8 @@ int main(int argc, char **argv)
 		v++;
 		i++;
 	}*/
-	//free_tinput(window.file);
+
 	//window_init(&window);
+	ft_memdell(window.file);
+	return (0);
 }

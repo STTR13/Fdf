@@ -81,6 +81,7 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_strcatn.c \
 		$(SRC_PATH)ft_strjoinn.c \
 		$(SRC_PATH)ft_intarrprint.c \
+		$(SRC_PATH)ft_memdell.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -147,6 +148,7 @@ OBJ = ft_atoi.o \
 		ft_strcatn.o \
 		ft_strjoinn.o \
 		ft_intarrprint.o \
+		ft_memdell.o \
 
 FLAGS = -Wall -Wextra -Werror
 
