@@ -14,9 +14,10 @@
 
 int main(int argc, char **argv)
 {
-	twlist window;
+	t_wlist window;
 	vertex *v;
-
+	while (1)
+	{
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -32,7 +33,9 @@ int main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	window_init(&window);
+	//window_init(&window);
+	//ft_intarrprint(window.file->input, window.file->linelen, window.file->lines);
 	free_all(v, window.file);
+}
 	return (0);
 }

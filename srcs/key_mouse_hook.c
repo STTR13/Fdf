@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int windowclose(twlist *window)
+int windowclose(t_wlist *window)
 {
 	//free_list(window);
 	(void)window;
@@ -20,7 +20,7 @@ int windowclose(twlist *window)
 	return(0);
 }
 
-int deal_key(int key, twlist *window)
+int deal_key(int key, t_wlist *window)
 {
 	(void)window;
     if (key == 13)
@@ -52,7 +52,7 @@ int deal_key(int key, twlist *window)
     return (0);
 }
 
-int mouse_key(int key, twlist *window)
+int mouse_key(int key, t_wlist *window)
 {
 	(void)window;
     if (key == 1)
@@ -68,7 +68,7 @@ int mouse_key(int key, twlist *window)
     return (0);
 }
 
-int mouse_move(int x, int y, twlist *window)
+int mouse_move(int x, int y, t_wlist *window)
 {
 	(void)window;
 	(void)x;

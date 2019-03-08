@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static ve		createv(tinput *file, int x, int y)
+static ve		createv(t_input *file, int x, int y)
 {
 	ve v;
 
@@ -22,7 +22,7 @@ static ve		createv(tinput *file, int x, int y)
 	return (v);
 }
 
-static void		xlink(vertex *grid, tinput *file)
+static void		xlink(vertex *grid, t_input *file)
 {
 	vertex	*temp;
 
@@ -38,7 +38,7 @@ static void		xlink(vertex *grid, tinput *file)
 	}
 }
 
-static void		ylink(vertex *grid, tinput *file)
+static void		ylink(vertex *grid, t_input *file)
 {
 	vertex	*temp;
 
@@ -54,7 +54,7 @@ static void		ylink(vertex *grid, tinput *file)
 	}
 }
 
-static vertex	*new_grid(tinput *file)
+static vertex	*new_grid(t_input *file)
 {
 	vertex *rvert;
 
@@ -65,7 +65,7 @@ static vertex	*new_grid(tinput *file)
 	return (rvert);
 }
 
-vertex			*veconvertstart(tinput *file, int x, int y)
+vertex			*veconvertstart(t_input *file, int x, int y)
 {
 	vertex	*vect;
 	int		i;
