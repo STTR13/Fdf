@@ -31,7 +31,7 @@ static void		xlink(vertex *grid, t_input *file)
 		temp = grid - 1;
 		grid->next[2] = temp;
 	}
-	if (grid->v.x == 0 || grid->v.x < file->linelen)
+	if (grid->v.x == 0 || grid->v.x < file->linelen - 1)
 	{
 		temp = grid + 1;
 		grid->next[0] = temp;
@@ -47,7 +47,7 @@ static void		ylink(vertex *grid, t_input *file)
 		temp = grid - file->linelen;
 		grid->next[3] = temp;
 	}
-	if (grid->v.y == 0 || grid->v.y < file->lines)
+	if (grid->v.y == 0 || grid->v.y < file->lines - 1)
 	{
 		temp = grid + file->linelen;
 		grid->next[1] = temp;
@@ -65,21 +65,38 @@ static vertex	*new_grid(t_input *file)
 	return (rvert);
 }
 
-static void color_endian(char *str, vertex *grid)
+static void color_endian(int value, vertex *grid)
 {
-	int temp;
-
-	temp = ft_hexaconverter(str);
-	grid->color = temp;
+	grid->color = value;
 }
 
+static vertex *vertex_link(t_input *file, vertex *vect)
+{
+	int i;
+
+	i = file->lines * file->linelen;
+	while (--i >= 0)
+		vect--;
+	i = file->lines * file->linelen;
+	while (--i >= 0)
+	{
+		xlink(vect, file);
+		ylink(vect, file);
+		vect++;
+	}
+	i = file->lines * file->linelen;
+	while (--i >= 0)
+		vect--;
+	return (vect);
+}
 vertex			*veconvertstart(t_input *file, int x, int y)
 {
 	vertex	*vect;
-	int		i;
+	int i;
 
 	if (!(vect = new_grid(file)))
 		return (NULL);
+	i = 0;
 	while (y < file->lines)
 	{
 		x = 0;
@@ -87,18 +104,13 @@ vertex			*veconvertstart(t_input *file, int x, int y)
 		{
 			if (!(vect = new_vertex(createv(file, x, y), vect)))
 				return (NULL);
+			color_endian(file->color[i], vect);
+			i++;
 			vect++;
 			x++;
 		}
 		y++;
 	}
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-	{
-		xlink(vect, file);
-		ylink(vect, file);
-		//color_endian(file->color[i], vect);
-		vect--;
-	}
+	vect = vertex_link(file, vect);
 	return (vect);
 }

@@ -98,6 +98,40 @@ static int		**filecreator(char *temp, t_input *lst)
 	return (input);
 }
 
+static int *colorreader(char *str, t_input *lst)
+{
+	int *values;
+	int i;
+	int x;
+	int temp;
+
+	values = ft_memalloc(sizeof(int *) * (lst->linelen * lst->lines));
+	i = 0;
+	x = 0;
+	while (str[i] != '\0')
+	{
+
+		if (ft_isdigit(str[i]) && (str[i + 1] == ' ' || str[i + 1] == '\n' || str[i + 1] == '\0'))
+		{
+			values[x] = 0;
+			x++;
+		}
+		else if (ft_isdigit(str[i]) && str[i + 1] == ',')
+		{
+			i += 2;
+			values[x] = ft_hexaconverter(&str[i]);
+			//printf("%i\n", values[x]);
+			//values[x] = temp;
+			temp = 0;
+			/*while (str[i] != ' '|| str[i] != '\n' || str[i] != '\0')
+				i++;*/
+			x++;
+		}
+		i++;
+	}
+	return (values);
+}
+
 t_input			*file_reader(int fd)
 {
 	char	*line;
@@ -120,5 +154,6 @@ t_input			*file_reader(int fd)
 	lst->lines = totallines(str);
 	lst->linelen = linelen(str);
 	lst->input = filecreator(str, lst);
+	lst->color = colorreader(str, lst);
 	return (lst);
 }

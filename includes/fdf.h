@@ -27,7 +27,7 @@
 typedef struct			s_input
 {
 	int		**input;
-	char	**color;
+	int 	*color;
 	int		lines;
 	int		linelen;
 }						t_input;

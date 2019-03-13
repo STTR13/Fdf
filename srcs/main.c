@@ -36,9 +36,18 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	int i = window.file->linelen * window.file->lines;
-	while (--i)
+	while (--i >= 0)
 	{
-		printf("x: %f\ny: %f\nz: %f\ncolor: %i\n", v->v.x, v->v.y, v->v.z, v->color);
+		printf("color: %i\n", v->color);
+		/*printf("x: %f\ny: %f\nz: %f\ncolor: %i\n", v->v.x, v->v.y, v->v.z, v->color);
+		if (v->next[0])
+			printf("Vector to the right: x: %f, y: %f, z: %f\n", v->next[0]->v.x, v->next[0]->v.y, v->next[0]->v.z);
+		if (v->next[1])
+			printf("Vector to the bottom: x: %f, y: %f, z: %f\n", v->next[1]->v.x, v->next[1]->v.y, v->next[1]->v.z);
+		if (v->next[2])
+			printf("Vector to the left: x: %f, y: %f, z: %f\n", v->next[2]->v.x, v->next[2]->v.y, v->next[2]->v.z);
+		if (v->next[3])
+			printf("Vector to the top: x: %f, y: %f, z: %f\n\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);*/
 		v++;
 	}
 	//window_init(&window);
