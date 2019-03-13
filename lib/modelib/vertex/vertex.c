@@ -21,6 +21,7 @@ vertex			*new_vertex(ve v, vertex *rvert)
 	rvert->next[1] = NULL;
 	rvert->next[2] = NULL;
 	rvert->next[3] = NULL;
+	rvert->color = (int)NULL;
 	rvert->done = true;
 	return (rvert);
 }

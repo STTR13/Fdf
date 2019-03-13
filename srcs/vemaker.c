@@ -65,6 +65,14 @@ static vertex	*new_grid(t_input *file)
 	return (rvert);
 }
 
+static void color_endian(char *str, vertex *grid)
+{
+	int temp;
+
+	temp = ft_hexaconverter(str);
+	grid->color = temp;
+}
+
 vertex			*veconvertstart(t_input *file, int x, int y)
 {
 	vertex	*vect;
@@ -89,6 +97,7 @@ vertex			*veconvertstart(t_input *file, int x, int y)
 	{
 		xlink(vect, file);
 		ylink(vect, file);
+		//color_endian(file->color[i], vect);
 		vect--;
 	}
 	return (vect);

@@ -22,6 +22,7 @@ typedef struct	s_vertex
 {
 	ve					v;
 	struct s_vertex		*next[4];
+	int					color;
 	bool				done;
 }				vertex; //(n)
 

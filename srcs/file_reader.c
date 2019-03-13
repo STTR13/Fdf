@@ -27,7 +27,7 @@ static int		linelen(char *str)
 	{
 		if (ft_isdigit(str[i]) == 1)
 		{
-			while (ft_isdigit(str[i]) == 1)
+			while (ft_isalnum(str[i]) == 1 && str[i] != ' ')
 				i++;
 			counter++;
 		}
@@ -72,7 +72,7 @@ static int		**filefiller(int **input, char *temp, t_input *lst, int x)
 				j = 0;
 				input[i][j] = tempnb;
 			}
-			while ((temp[x] == '-' || ft_isdigit(temp[x])) && temp[x])
+			while ((temp[x] == '-' || ft_isalnum(temp[x])) && temp[x])
 				x++;
 		}
 		x++;

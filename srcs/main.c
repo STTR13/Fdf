@@ -35,7 +35,13 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	window_init(&window);
-	free_all(v, window.file);
+	int i = window.file->linelen * window.file->lines;
+	while (--i)
+	{
+		printf("x: %f\ny: %f\nz: %f\ncolor: %i\n", v->v.x, v->v.y, v->v.z, v->color);
+		v++;
+	}
+	//window_init(&window);
+	//free_all(v, window.file);
 	return (0);
 }

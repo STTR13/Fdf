@@ -26,9 +26,10 @@
 
 typedef struct			s_input
 {
-	int **input;
-	int lines;
-	int linelen;
+	int		**input;
+	char	**color;
+	int		lines;
+	int		linelen;
 }						t_input;
 
 typedef struct			s_wlist

@@ -16,6 +16,7 @@ void	window_init(t_wlist *window)
 {
 	window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
+	mlx_pixel_put(window->mlx_ptr, window->win_ptr, 10, 10, 15357666);
 	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);
 	mlx_hook(window->win_ptr, 4, (1L << 2), mouse_key, window);
 	mlx_hook(window->win_ptr, 6, (1L << 13), mouse_move, window);
