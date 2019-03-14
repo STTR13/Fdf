@@ -85,18 +85,22 @@ static vertex	*vertex_link(t_input *file, vertex *vect)
 	return (vect);
 }
 
-int				hexaconv(char *str)
+char			*hexaconv(char *str)
 {
 	int i;
+	char *temp;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == ',')
-			return (ft_hexaconverter(&str[i + 1]));
+		{
+			temp = ft_strnew(ft_strlen(&str[i + 1]));
+			return (ft_strcpy(temp, &str[i + 1]));
+		}
 		i++;
 	}
-	return ((int)NULL);
+	return (NULL);
 }
 
 vertex			*gridfiller(t_input *file, int x, int y, vertex *vect)

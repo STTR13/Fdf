@@ -48,7 +48,7 @@ $(NAME):
 	@$(MAKE) -C lib/geolib/
 	@$(MAKE) -C lib/minilibx_macos/
 	@$(MAKE) -C lib/modelib/
-	gcc -c $(SRC) -I $(INCLUDES)
+	gcc -c $(SRC) -I $(INCLUDES) $(FLAGS)
 	gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 
 clean:

@@ -23,6 +23,7 @@ static void		free_v(vertex *v, t_input *file)
 		v->v.x = (int)NULL;
 		v->v.y = (int)NULL;
 		v->v.z = (int)NULL;
+		v->color = NULL;
 		v->next[0] = NULL;
 		v->next[1] = NULL;
 		v->next[2] = NULL;

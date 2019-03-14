@@ -36,6 +36,7 @@ typedef struct			s_wlist
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_input	*file;
+	vertex	*v;
 }						t_wlist;
 
 int						deal_key(int key, t_wlist *window);

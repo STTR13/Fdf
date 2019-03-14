@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_wlist	window;
-	vertex	*v;
+	//vertex	*v;
 
 	if (argc != 2)
 	{
@@ -29,14 +29,15 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	if (!(v = veconvertstart(window.file, 0, 0)))
+	if (!(window.v = veconvertstart(window.file, 0, 0)))
 	{
-		free_all(v, window.file);
+		free_all(window.v, window.file);
 		ft_putendl("error");
 		return (0);
 	}
-	int i = -1;
-	while (++i >= window.file->linelen * window.file->lines)
+	/*int i;
+	i = -1;
+	while (++i < window.file->linelen * window.file->lines)
 	{
 		printf("x: %f\ny: %f\nz: %f\ncolor: %i\n", v->v.x, v->v.y, v->v.z, v->color);
 		if (v->next[0])
@@ -49,8 +50,8 @@ int	main(int argc, char **argv)
 			printf("Vector to the top: x: %f, y: %f, z: %f\n", v->next[3]->v.x, v->next[3]->v.y, v->next[3]->v.z);
 		printf("\n");
 		v++;
-	}
-	//window_init(&window);
-	//free_all(v, window.file);
+	}*/
+	window_init(&window);
+	//free_all(window.v, window.file);
 	return (0);
 }
