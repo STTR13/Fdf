@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "stdio.h"
+#include "../includes/get_next_line.h"
+
 static int		hexavalue(char str)
 {
 	int		i;
@@ -37,21 +37,7 @@ static int		hexavalue(char str)
 	return (0);
 }
 
-/*static int		inputchecker(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != ' ' || str[i] != '\n' || str[i] != '\0')
-	{
-		if (!(ft_isdigit(str[i]) || !(str[i] >= 'A' && str[i] <= 'F') || \
-		!(str[i] >= 'a' && str[i] <= 'f') || str[i] != 'x' || str[i] != 'X'))
-			return (0);
-		i++;
-	}
-	return (1);
-}*/
-
+#include <stdio.h>
 int				ft_hexaconverter(char *str)
 {
 	int		deci;
@@ -60,18 +46,11 @@ int				ft_hexaconverter(char *str)
 
 	if (!(str))
 		return (0);
-		//printf("A\n");
-	/*if (inputchecker(str) == 0)
-		return (0);*/
 	i = 0;
 	if (str[0] == 0 && (str[1] == 'x' || str[1] == 'X'))
 		i = 2;
-	//printf("A\n");
 	deci = 0;
-//	printf("%s\n", str);
-	while (str[i] != ' ')
-		i++;
-//	printf("A\n");
+	i = ft_strlen(str);
 	i--;
 	base = 1;
 	while (i >= 0)
@@ -80,6 +59,5 @@ int				ft_hexaconverter(char *str)
 		i--;
 		base *= 16;
 	}
-//	printf("AFINAL\n");
 	return (deci);
 }

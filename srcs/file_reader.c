@@ -21,13 +21,13 @@ static int		linelen(char *str)
 	i = 0;
 	j = 0;
 	counter = 0;
-	while (str[j] != '\n')
+	while (str[j] != '\0')
 		j++;
-	while (str[i] != '\n' && i < j)
+	while (str[i] != '\0' && i < j)
 	{
 		if (ft_isdigit(str[i]) == 1)
 		{
-			while (ft_isalnum(str[i]) == 1 && str[i] != ' ')
+			while ((ft_isalnum(str[i]) == 1 || str[i] == ',') && str[i] != ' ')
 				i++;
 			counter++;
 		}
@@ -36,100 +36,55 @@ static int		linelen(char *str)
 	return (counter);
 }
 
-static int		totallines(char *temp)
+static char		*charfiller(char *str, int i)
 {
-	int i;
-	int lines;
+	char *temp;
 
-	i = 0;
-	lines = 1;
-	while (temp[i] != '\0')
-	{
-		if (temp[i] == '\n' && temp[i + 1] != '\0')
-			lines++;
-		i++;
-	}
-	return (lines);
+	temp = ft_strnew(i);
+	temp = ft_strncpy(temp, str, i);
+	return (temp);
 }
 
-static int		**filefiller(int **input, char *temp, t_input *lst, int x)
+static char		**filefiller(char **input, char *str, int x)
 {
 	int i;
-	int j;
-	int tempnb;
+	int pos;
 
-	i = 0;
-	j = -1;
-	while (temp[x])
+	pos = 0;
+	while (str[x] != '\0')
 	{
-		if (temp[x] == '-' || ft_isdigit(temp[x]) == 1)
+		i = 0;
+		while (str[x] == ' ')
+			x++;
+		while ((ft_isalnum(str[x]) == 1 || str[x] == ',') && str[x] != '\0')
 		{
-			tempnb = ft_atoi(&temp[x]);
-			if (++j < lst->linelen)
-				input[i][j] = tempnb;
-			else if (j >= lst->linelen && i++ < lst->lines)
-			{
-				j = 0;
-				input[i][j] = tempnb;
-			}
-			while ((temp[x] == '-' || ft_isalnum(temp[x])) && temp[x])
-				x++;
+			i++;
+			x++;
+		}
+		if ((str[x] == ' ' || str[x] == '\n') && str[x + 1] != '\0' && pos == 0)
+			input[pos] = charfiller(&str[x - i], i);
+		if ((str[x] == ' ' || str[x] == '\n') && str[x] != '\0')
+		{
+			input[pos] = charfiller(&str[x - i], i);
+			i = 0;
+			pos++;
 		}
 		x++;
 	}
 	return (input);
 }
 
-static int		**filecreator(char *temp, t_input *lst)
+static char		**filecreator(char *temp, t_input *lst)
 {
-	int **input;
-	int i;
+	char	**input;
+	int		i;
 
 	i = 0;
-	if (!(input = ft_memalloc(sizeof(int *) * lst->lines)))
+	if (!(input = ft_memalloc(sizeof(char **) * (lst->lines * lst->linelen))))
 		return (NULL);
-	while (i < lst->lines)
-	{
-		input[i] = ft_memalloc(sizeof(int) * lst->linelen);
-		i++;
-	}
 	i = 0;
-	input = filefiller(input, temp, lst, i);
+	input = filefiller(input, temp, i);
 	return (input);
-}
-
-static int *colorreader(char *str, t_input *lst)
-{
-	int *values;
-	int i;
-	int x;
-	int temp;
-
-	values = ft_memalloc(sizeof(int *) * (lst->linelen * lst->lines));
-	i = 0;
-	x = 0;
-	while (str[i] != '\0')
-	{
-
-		if (ft_isdigit(str[i]) && (str[i + 1] == ' ' || str[i + 1] == '\n' || str[i + 1] == '\0'))
-		{
-			values[x] = 0;
-			x++;
-		}
-		else if (ft_isdigit(str[i]) && str[i + 1] == ',')
-		{
-			i += 2;
-			values[x] = ft_hexaconverter(&str[i]);
-			//printf("%i\n", values[x]);
-			//values[x] = temp;
-			temp = 0;
-			/*while (str[i] != ' '|| str[i] != '\n' || str[i] != '\0')
-				i++;*/
-			x++;
-		}
-		i++;
-	}
-	return (values);
 }
 
 t_input			*file_reader(int fd)
@@ -138,22 +93,19 @@ t_input			*file_reader(int fd)
 	char	*str;
 	t_input	*lst;
 
-	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))))
+	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))) || \
+	(!(str = ft_strnew(0))))
 		return (NULL);
-	if (!(str = ft_strnew(0)))
-	{
-		ft_memdell(lst);
-		return (NULL);
-	}
+	lst->lines = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		str = ft_strjoinn(str, line);
+		if (lst->lines == 0)
+			lst->linelen = linelen(str);
+		lst->lines += 1;
 		free(line);
 	}
 	close(fd);
-	lst->lines = totallines(str);
-	lst->linelen = linelen(str);
 	lst->input = filecreator(str, lst);
-	lst->color = colorreader(str, lst);
 	return (lst);
 }

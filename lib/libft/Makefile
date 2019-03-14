@@ -84,6 +84,8 @@ SRC = $(SRC_PATH)ft_atoi.c \
 		$(SRC_PATH)ft_memdell.c \
 		$(SRC_PATH)ft_strdell.c \
 		$(SRC_PATH)ft_hexaconverter.c \
+		$(SRC_PATH)ft_ishexa.c \
+		$(SRC_PATH)ft_strjoinspace.c \
 
 OBJ = ft_atoi.o \
 	  ft_bzero.o \
@@ -153,6 +155,8 @@ OBJ = ft_atoi.o \
 		ft_memdell.o \
 		ft_strdell.o \
 		ft_hexaconverter.o \
+		ft_ishexa.o \
+		ft_strjoinspace.o \
 
 FLAGS = -Wall -Wextra -Werror
 

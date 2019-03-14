@@ -37,7 +37,7 @@ void			free_all(vertex *v, t_input *file)
 	if (v && file)
 		free_v(v, file);
 	if (file && file->input)
-		ft_intarrclr(file->input, file->lines);
+		ft_chararrclr(file->input);
 	if (file)
 	{
 		file->lines = 0;

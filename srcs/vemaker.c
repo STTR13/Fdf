@@ -12,13 +12,13 @@
 
 #include "../includes/fdf.h"
 
-static ve		createv(t_input *file, int x, int y)
+static ve		createv(int z, int x, int y)
 {
 	ve v;
 
 	v.x = x;
 	v.y = y;
-	v.z = file->input[y][x];
+	v.z = z;
 	return (v);
 }
 
@@ -65,12 +65,7 @@ static vertex	*new_grid(t_input *file)
 	return (rvert);
 }
 
-static void color_endian(int value, vertex *grid)
-{
-	grid->color = value;
-}
-
-static vertex *vertex_link(t_input *file, vertex *vect)
+static vertex	*vertex_link(t_input *file, vertex *vect)
 {
 	int i;
 
@@ -89,28 +84,52 @@ static vertex *vertex_link(t_input *file, vertex *vect)
 		vect--;
 	return (vect);
 }
-vertex			*veconvertstart(t_input *file, int x, int y)
+
+int				hexaconv(char *str)
 {
-	vertex	*vect;
 	int i;
 
-	if (!(vect = new_grid(file)))
-		return (NULL);
 	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ',')
+			return (ft_hexaconverter(&str[i + 1]));
+		i++;
+	}
+	return ((int)NULL);
+}
+
+vertex			*gridfiller(t_input *file, int x, int y, vertex *vect)
+{
+	int pos;
+	int temp;
+
+	pos = 0;
 	while (y < file->lines)
 	{
 		x = 0;
 		while (x < file->linelen)
 		{
-			if (!(vect = new_vertex(createv(file, x, y), vect)))
+			temp = ft_atoi(file->input[pos]);
+			if (!(vect = new_vertex(createv(temp, x, y), vect)))
 				return (NULL);
-			color_endian(file->color[i], vect);
-			i++;
+			vect->color = hexaconv(file->input[pos]);
+			pos++;
 			vect++;
 			x++;
 		}
 		y++;
 	}
+	return (vect);
+}
+
+vertex			*veconvertstart(t_input *file, int x, int y)
+{
+	vertex	*vect;
+
+	if (!(vect = new_grid(file)))
+		return (NULL);
+	vect = gridfiller(file, x, y, vect);
 	vect = vertex_link(file, vect);
 	return (vect);
 }
