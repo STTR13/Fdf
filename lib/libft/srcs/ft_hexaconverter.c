@@ -37,7 +37,6 @@ static int		hexavalue(char str)
 	return (0);
 }
 
-#include <stdio.h>
 int				ft_hexaconverter(char *str)
 {
 	int		deci;

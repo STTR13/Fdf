@@ -20,29 +20,41 @@ static void		free_v(vertex *v, t_input *file)
 	v += i;
 	while (--i >= 0)
 	{
-		v->v.x = (int)NULL;
-		v->v.y = (int)NULL;
-		v->v.z = (int)NULL;
-		v->color = NULL;
-		v->next[0] = NULL;
-		v->next[1] = NULL;
-		v->next[2] = NULL;
-		v->next[3] = NULL;
-		v--;
+		if (v)
+		{
+			v->v.x = (int)NULL;
+			v->v.y = (int)NULL;
+			v->v.z = (int)NULL;
+			if (v->color != NULL)
+				ft_strdel(&v->color);
+			v->next[0] = NULL;
+			v->next[1] = NULL;
+			v->next[2] = NULL;
+			v->next[3] = NULL;
+			v--;
+		}
 	}
-	ft_memdell(v);
+	free(v);
 }
 
-void			free_all(vertex *v, t_input *file)
+static void 	free_i(t_input *file)
 {
-	if (v && file)
-		free_v(v, file);
-	if (file && file->input)
-		ft_chararrclr(file->input);
-	if (file)
+	if (file->input)
+		ft_chararrclr(file->input, file->linelen * file->lines);
+	file->lines = 0;
+	file->linelen = 0;
+	free(file);
+}
+
+void			free_all(t_wlist *w)
+{
+	int i;
+
+	i = 0;
+	if (w->v && w->file)
+		free_v(w->v, w->file);
+	if (w->file != NULL)
 	{
-		file->lines = 0;
-		file->linelen = 0;
-		ft_memdell(file);
+		free_i(w->file);
 	}
 }

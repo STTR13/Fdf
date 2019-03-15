@@ -61,8 +61,6 @@ static char		**filefiller(char **input, char *str, int x)
 			i++;
 			x++;
 		}
-		if ((str[x] == ' ' || str[x] == '\n') && str[x + 1] != '\0' && pos == 0)
-			input[pos] = charfiller(&str[x - i], i);
 		if ((str[x] == ' ' || str[x] == '\n') && str[x] != '\0')
 		{
 			input[pos] = charfiller(&str[x - i], i);
@@ -80,7 +78,7 @@ static char		**filecreator(char *temp, t_input *lst)
 	int		i;
 
 	i = 0;
-	if (!(input = ft_memalloc(sizeof(char **) * (lst->lines * lst->linelen))))
+	if (!(input = ft_memalloc(sizeof(char **) * (lst->lines * lst->linelen + 1))))
 		return (NULL);
 	i = 0;
 	input = filefiller(input, temp, i);
@@ -107,5 +105,6 @@ t_input			*file_reader(int fd)
 	}
 	close(fd);
 	lst->input = filecreator(str, lst);
+	ft_strdel(&str);
 	return (lst);
 }

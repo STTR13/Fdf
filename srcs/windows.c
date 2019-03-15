@@ -35,9 +35,9 @@ void	window_init(t_wlist *window)
 		x = 0;
 		i++;
 	}
-	/*mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);
+	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);
 	mlx_hook(window->win_ptr, 4, (1L << 2), mouse_key, window);
 	mlx_hook(window->win_ptr, 6, (1L << 13), mouse_move, window);
-	mlx_hook(window->win_ptr, 17, (1L << 17), windowclose, window);*/
+	mlx_hook(window->win_ptr, 17, (1L << 17), windowclose, window);
 	mlx_loop(window->mlx_ptr);
 }

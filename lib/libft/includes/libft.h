@@ -60,7 +60,7 @@ char				*ft_strjoinspace(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
-char				**ft_chararrclr(char **ap);
+char				**ft_chararrclr(char **ap, int length);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t				ft_strlen(const char *str);

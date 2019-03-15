@@ -60,7 +60,7 @@ static vertex	*new_grid(t_input *file)
 
 	rvert = NULL;
 	if (!(rvert = (vertex*)malloc(sizeof(vertex) \
-		* (file->lines * file->linelen))))
+		* (file->lines * file->linelen + 1))))
 		return (NULL);
 	return (rvert);
 }

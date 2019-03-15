@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_wlist	window;
-	//vertex	*v;
 
 	if (argc != 2)
 	{
@@ -25,13 +24,13 @@ int	main(int argc, char **argv)
 	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
 		if (window.file != NULL)
-			ft_memdell(window.file);
+			free_all(&window);
 		ft_putendl("error");
 		return (0);
 	}
-	if (!(window.v = veconvertstart(window.file, 0, 0)))
+	if ((window.v = veconvertstart(window.file, 0, 0)) == NULL)
 	{
-		free_all(window.v, window.file);
+		free_all(&window);
 		ft_putendl("error");
 		return (0);
 	}
@@ -52,6 +51,6 @@ int	main(int argc, char **argv)
 		v++;
 	}*/
 	window_init(&window);
-	//free_all(window.v, window.file);
+	free_all(&window);
 	return (0);
 }

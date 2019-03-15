@@ -11,23 +11,22 @@
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
-char	**ft_chararrclr(char **ap)
+#include <stdio.h>
+char	**ft_chararrclr(char **ap, int length)
 {
 	int i;
 
-	i = ft_strlen(ap[0] - 1);
+	length = 0;
+	i = 0;
 	if (ap && *ap)
 	{
-		while (i >= 0)
+		while (ap[i])
 		{
-			free(ap[i]);
-			ap[i] = NULL;
-			i--;
+			ft_strdel(&ap[i]);
+			i++;
 		}
 		free(ap);
-		ap = NULL;
-		return ((ap));
+		return (ap);
 	}
 	if (ap)
 		free(ap);

@@ -14,8 +14,8 @@
 
 int windowclose(t_wlist *window)
 {
-	//free_list(window);
 	(void)window;
+	//free_all(window);
 	exit(0);
 	return(0);
 }
@@ -48,6 +48,7 @@ int deal_key(int key, t_wlist *window)
     else if (key == 53)
 	{
 		exit(0);
+		return (0);
 	}
     return (0);
 }
