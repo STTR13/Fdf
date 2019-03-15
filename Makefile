@@ -20,6 +20,7 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)file_reader.c \
 				$(SRC_PATH)free.c \
 				$(SRC_PATH)vemaker.c \
+				$(SRC_PATH)vemaker2.c \
 
 OBJ = 			main.o \
 				windows.o \
@@ -27,6 +28,7 @@ OBJ = 			main.o \
 				file_reader.o \
 				free.o \
 				vemaker.o \
+				vemaker2.o \
 
 INCLUDES = includes/
 

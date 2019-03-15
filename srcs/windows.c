@@ -24,9 +24,9 @@ void	window_init(t_wlist *window)
 		while (x < window->file->linelen)
 		{
 			if (window->v->color == NULL)
-				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 10, window->v->v.y * 10, 255);
+				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 2, window->v->v.y * 2, 255);
 			else
-				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 10, window->v->v.y * 10, ft_hexaconverter(window->v->color));
+				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 2, window->v->v.y * 2, ft_hexaconverter(window->v->color));
 			x++;
 			i++;
 			window->v++;

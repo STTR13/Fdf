@@ -12,49 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static ve		createv(int z, int x, int y)
-{
-	ve v;
-
-	v.x = x;
-	v.y = y;
-	v.z = z;
-	return (v);
-}
-
-static void		xlink(vertex *grid, t_input *file)
-{
-	vertex	*temp;
-
-	if (0 < grid->v.x)
-	{
-		temp = grid - 1;
-		grid->next[2] = temp;
-	}
-	if (grid->v.x == 0 || grid->v.x < file->linelen - 1)
-	{
-		temp = grid + 1;
-		grid->next[0] = temp;
-	}
-}
-
-static void		ylink(vertex *grid, t_input *file)
-{
-	vertex	*temp;
-
-	if (grid->v.y > 0)
-	{
-		temp = grid - file->linelen;
-		grid->next[3] = temp;
-	}
-	if (grid->v.y == 0 || grid->v.y < file->lines - 1)
-	{
-		temp = grid + file->linelen;
-		grid->next[1] = temp;
-	}
-}
-
-static vertex	*new_grid(t_input *file)
+static vertex		*new_grid(t_input *file)
 {
 	vertex *rvert;
 
@@ -65,7 +23,7 @@ static vertex	*new_grid(t_input *file)
 	return (rvert);
 }
 
-static vertex	*vertex_link(t_input *file, vertex *vect)
+static vertex		*vertex_link(t_input *file, vertex *vect)
 {
 	int i;
 
@@ -85,25 +43,7 @@ static vertex	*vertex_link(t_input *file, vertex *vect)
 	return (vect);
 }
 
-char			*hexaconv(char *str)
-{
-	int i;
-	char *temp;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ',')
-		{
-			temp = ft_strnew(ft_strlen(&str[i + 1]));
-			return (ft_strcpy(temp, &str[i + 1]));
-		}
-		i++;
-	}
-	return (NULL);
-}
-
-vertex			*gridfiller(t_input *file, int x, int y, vertex *vect)
+static vertex		*gridfiller(t_input *file, int x, int y, vertex *vect)
 {
 	int pos;
 	int temp;
@@ -127,7 +67,7 @@ vertex			*gridfiller(t_input *file, int x, int y, vertex *vect)
 	return (vect);
 }
 
-vertex			*veconvertstart(t_input *file, int x, int y)
+vertex				*veconvertstart(t_input *file, int x, int y)
 {
 	vertex	*vect;
 

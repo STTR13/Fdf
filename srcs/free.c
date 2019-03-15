@@ -37,7 +37,7 @@ static void		free_v(vertex *v, t_input *file)
 	free(v);
 }
 
-static void 	free_i(t_input *file)
+static void		free_i(t_input *file)
 {
 	if (file->input)
 		ft_chararrclr(file->input, file->linelen * file->lines);

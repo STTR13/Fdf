@@ -78,7 +78,8 @@ static char		**filecreator(char *temp, t_input *lst)
 	int		i;
 
 	i = 0;
-	if (!(input = ft_memalloc(sizeof(char **) * (lst->lines * lst->linelen + 1))))
+	if (!(input = ft_memalloc(sizeof(char **) * \
+	(lst->lines * lst->linelen + 1))))
 		return (NULL);
 	i = 0;
 	input = filefiller(input, temp, i);
