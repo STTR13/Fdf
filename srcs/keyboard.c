@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-void key_move(int key, t_wlist *window)
+void	key_move(int key, t_wlist *window)
 {
 	(void)window;
 	if (key == 13)
@@ -29,7 +29,7 @@ void key_move(int key, t_wlist *window)
 		ft_putchar('E');
 }
 
-void key_zoom(int key, t_wlist *window)
+void	key_zoom(int key, t_wlist *window)
 {
 	(void)window;
 	if (key == 78)
