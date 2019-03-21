@@ -12,21 +12,26 @@
 
 #include "visual.h"
 
-bool		set_pxl(image *img, int x, int y, int color)
+bool		set_pxl_img(window *w, int x, int y, int color)
 {
 	char			*img_ptr;
 	unsigned int	nc;
 	char			*nc_ptr;
 	int				i;
 
-	if (x < 0 || y < 0 || x > img->width || y > img->height)
+	if (x < 0 || y < 0 || x > w->img->width || y > w->img->height)
 		return (false);
-	img_ptr = img->data;
-	img_ptr += y * img->size_line + img->bytes_per_pixel * x;
-	nc = mlx_get_color_value(img->mlx_ptr, color);
+	img_ptr = w->img->data;
+	img_ptr += y * w->img->size_line + w->img->bytes_per_pixel * x;
+	nc = mlx_get_color_value(w->img->mlx_ptr, color);
 	nc_ptr = (char *)&nc;
-	i = img->bytes_per_pixel;
+	i = w->img->bytes_per_pixel;
 	while (i--)
-		img_ptr[i] = nc_ptr[sizeof(unsigned int) - img->bytes_per_pixel + i];
+		img_ptr[i] = nc_ptr[sizeof(unsigned int) - w->img->bytes_per_pixel + i];
 	return (true);
+}
+
+void		clear_img(window *w)
+{
+
 }

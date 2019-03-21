@@ -12,26 +12,22 @@
 
 #include "visual.h"
 
-image		*new_img(void *mlx_ptr, int width, int height)
+image		*new_img(window *w)
 {
 	image *r;
 
 	if (!(r = (image*)malloc(sizeof(image))) ||
-		!(r->img_ptr = mlx_new_image(mlx_ptr, width, height)) ||
-		(r->width = width) < 0 ||
-		(r->height = height) < 0)
+		!(r->img_ptr = mlx_new_image(w->mlx_ptr, w->width, w->height)))
 		return (NULL);
-	r->mlx_ptr = mlx_ptr;
 	r->data = mlx_get_data_addr(r->img_ptr,
 		&r->bytes_per_pixel, &r->size_line, &r->edian);
 	r->bytes_per_pixel /= 8;
 	return (r);
 }
 
-void			free_img(image *img)
+void			free_img(window *w)
 {
-	free(img->img_ptr);
-	free(img->data);
-	free(img);
-	img = NULL;
+	mlx_destroy_image(w->mlx_ptr, w->img->img_ptr);
+	free(w->img);
+	(w->img) = NULL;
 }
