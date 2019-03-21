@@ -28,12 +28,12 @@ IMAGE =		image.o \
 RGB_PATH = rgb/
 RGB =
 
-KEY_PATH = key/
-KEY =		key.o
+#KEY_PATH = key/
+#KEY =		key.o
 
 OBJ =	$(addprefix $(IMAGE_PATH), $(IMAGE)) \
 		$(addprefix $(RGB_PATH), $(RGB)) \
-		$(addprefix $(KEY_PATH), $(KEY))
+		#$(addprefix $(KEY_PATH), $(KEY))
 
 
 

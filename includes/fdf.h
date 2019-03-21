@@ -16,6 +16,7 @@
 # include "../lib/minilibx_macos/mlx.h"
 # include "../lib/geolib/includes/geometry.h"
 # include "../lib/modelib/includes/modeling.h"
+# include "../lib/visualib/includes/visual.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>

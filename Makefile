@@ -65,6 +65,8 @@ $(NAME):
 	@$(MAKE) -C lib/minilibx_macos/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling modelib$(END_E)"
 	@$(MAKE) -C lib/modelib/
+	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
+	@$(MAKE) -C lib/visualib/
 	@gcc -c $(SRC) -I $(INCLUDES) $(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
@@ -75,6 +77,7 @@ clean:
 	@$(MAKE) -C lib/minilibx_macos/ clean
 	@$(MAKE) -C lib/geolib/ clean
 	@$(MAKE) -C lib/modelib/ clean
+	@$(MAKE) -C lib/visualib/ clean
 	rm -f $(OBJ)
 	@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
 
@@ -83,6 +86,7 @@ fclean: clean
 	@$(MAKE) -C lib/geolib/ fclean
 	@$(MAKE) -C lib/modelib/ fclean
 	@$(MAKE) -C lib/minilibx_macos/ fclean
+	@$(MAKE) -C lib/visualib/ fclean
 	@echo "$(RED_E)$(NAME)\tfclean$(END_E)"
 	rm -f $(NAME)
 

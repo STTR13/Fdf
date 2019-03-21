@@ -19,11 +19,11 @@ bool		set_pxl_img(window *w, int x, int y, int color)
 	char			*nc_ptr;
 	int				i;
 
-	if (x < 0 || y < 0 || x > w->img->width || y > w->img->height)
+	if (x < 0 || y < 0 || x > w/*->img*/->width || y > w/*->img*/->height)
 		return (false);
 	img_ptr = w->img->data;
 	img_ptr += y * w->img->size_line + w->img->bytes_per_pixel * x;
-	nc = mlx_get_color_value(w->img->mlx_ptr, color);
+	nc = mlx_get_color_value(w/*->img*/->mlx_ptr, color);
 	nc_ptr = (char *)&nc;
 	i = w->img->bytes_per_pixel;
 	while (i--)
@@ -33,5 +33,5 @@ bool		set_pxl_img(window *w, int x, int y, int color)
 
 void		clear_img(window *w)
 {
-
+	(void)w;
 }

@@ -137,6 +137,15 @@ typedef struct	s_event_hook
 	void		*param;
 }				event_hook;
 
+typedef struct	s_image
+{
+	void 		*img_ptr;
+	char		*data;
+	int			bytes_per_pixel;
+	int			size_line;
+	int			edian; // 0 = litle edian | 1 = big edian
+}				image;
+
 typedef struct	s_window
 {
 	char		*name;
@@ -147,15 +156,6 @@ typedef struct	s_window
 	image		*img;
 	event_hook	hook;
 }				window;
-
-typedef struct	s_image
-{
-	void 		*img_ptr;
-	char		*data;
-	int			bytes_per_pixel;
-	int			size_line;
-	int			edian; // 0 = litle edian | 1 = big edian
-}				image;
 
 typedef struct	s_rgb
 {
@@ -178,7 +178,7 @@ void			loop(window *w);
 */
 
 image			*new_img(window *w);
-void			free_img(image **img);
+void			free_img(window *w);
 
 bool			set_pxl_img(window *w, int x, int y, int color);
 void			clear_img(window *w);
