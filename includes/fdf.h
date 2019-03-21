@@ -43,7 +43,6 @@ ve						createv(int z, int x, int y);
 int						deal_key(int key, t_wlist *window);
 int						mouse_key(int key, t_wlist *window);
 int						windowclose(t_wlist *window);
-int						mouse_move(int x, int y, t_wlist *window);
 char					*hexaconv(char *str);
 void					window_init(t_wlist *window);
 void					free_all(t_wlist *w);
@@ -51,5 +50,7 @@ void					xlink(vertex *grid, t_input *file);
 void					ylink(vertex *grid, t_input *file);
 vertex					*veconvertstart(t_input *file, int x, int y);
 t_input					*file_reader(int fd);
+void					key_move(int key, t_wlist *window);
+void					key_zoom(int key, t_wlist *window);
 
 #endif
