@@ -169,7 +169,7 @@ typedef struct	s_rgb
 */
 
 window			*new_window(char *name, int width, int height);
-void			free_window(window **w);
+void			free_window(window *w);
 
 void			loop(window *w);
 

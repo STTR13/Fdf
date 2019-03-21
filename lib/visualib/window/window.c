@@ -17,13 +17,13 @@ window			*new_window(char *name, int width, int height)
 	window *rw;
 
 	if (!name || width < 0 || height < 0 ||
-		!(rw = (*window)malloc(sizeof(window))))
+		!(rw = (window*)malloc(sizeof(window))))
 		return (NULL);
 	if (!(rw->mlx_ptr = mlx_init()) ||
-		!(rw->win_ptr = mlx_new_window(rw->mlx_ptr, width, height, name))
+		!(rw->win_ptr = mlx_new_window(rw->mlx_ptr, width, height, name)) ||
 		!(rw->img = new_img(rw)))
 	{
-		free_window(&rw);
+		free_window(rw);
 		return (NULL);
 	}
 	rw->hook.key_press = NULL;
@@ -37,11 +37,11 @@ window			*new_window(char *name, int width, int height)
 	return (rw);
 }
 
-void			free_window(window **w)
+void			free_window(window *w)
 {
-	free((*w)->name);
+	free(w->name);
 	free_img(w);
 	mlx_destroy_window(w->mlx_ptr, w->win_ptr);
-	free((*w));
-	(*w) = NULL;
+	free(w);
+	w = NULL;
 }
