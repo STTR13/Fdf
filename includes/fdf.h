@@ -53,5 +53,6 @@ t_input					*file_reader(int fd);
 void					key_move(int key, t_wlist *window);
 void					key_zoom(int key, t_wlist *window);
 void					change_view(int key, t_wlist *window);
+void					z_valuechange(int key, t_wlist *window);
 
 #endif

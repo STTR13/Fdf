@@ -48,3 +48,12 @@ void	change_view(int key, t_wlist *window)
 	else if (key == 20)
 		ft_putchar('3');
 }
+
+void	z_valuechange(int key, t_wlist *window)
+{
+	(void)window;
+	if (key == 126)
+		ft_putstr("increasing y value");
+	else if (key == 125)
+		ft_putstr("decreasing y value");
+}

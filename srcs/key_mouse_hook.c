@@ -27,6 +27,8 @@ int	deal_key(int key, t_wlist *window)
 		change_view(key, window);
 	else if (key == 78 || key == 69)
 		key_zoom(key, window);
+	else if (key == 126 || key == 125)
+		z_valuechange(key, window);
 	else if (key == 4)
 		ft_putchar('H');
 	else if (key == 53)
