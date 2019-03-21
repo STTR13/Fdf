@@ -12,28 +12,31 @@
 
 #include "../includes/fdf.h"
 
-void window_init(twlist *window)
+void	window_init(t_wlist *window)
 {
-	/*void *param;
-	ve *vector;
 	window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
+	int i = 0;
 	int x = 0;
-	int y = 0;
-	int pos;
-	int pos2 = 10;
-	if (window->lst != NULL)
+	int j = 10;
+	while (i <= window->file->lines * window->file->linelen)
 	{
-		while (window->lst != NULL)
+		while (x < window->file->linelen)
 		{
-			vector = window->lst->content;
-			mlx_pixel_put(window->mlx_ptr, window->win_ptr, (int)vector->x * 10, (int)vector->y * 10, COLORWHITE);
-			window->lst = window->lst->next;
+			if (window->v->color == NULL)
+				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 2, window->v->v.y * 2, 255);
+			else
+				mlx_pixel_put(window->mlx_ptr, window->win_ptr, window->v->v.x * 2, window->v->v.y * 2, ft_hexaconverter(window->v->color));
+			x++;
+			i++;
+			window->v++;
 		}
+		j += 1;
+		x = 0;
+		i++;
 	}
 	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);
 	mlx_hook(window->win_ptr, 4, (1L << 2), mouse_key, window);
-	mlx_hook(window->win_ptr, 6, (1L << 13), mouse_move, window);
 	mlx_hook(window->win_ptr, 17, (1L << 17), windowclose, window);
-	mlx_loop(window->mlx_ptr);*/
+	mlx_loop(window->mlx_ptr);
 }

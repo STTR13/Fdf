@@ -6,23 +6,55 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 09:58:48 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/03/06 09:58:55 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/08 14:48:40 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/fdf.h"
+#include "../includes/fdf.h"
 
-twlist *free_list(twlist *window)
+static void		free_v(vertex *v, t_input *file)
+{
+	int i;
+
+	i = file->lines * file->linelen;
+	v += i;
+	while (--i >= 0)
+	{
+		if (v)
+		{
+			v->v.x = (int)NULL;
+			v->v.y = (int)NULL;
+			v->v.z = (int)NULL;
+			if (v->color != NULL)
+				ft_strdel(&v->color);
+			v->next[0] = NULL;
+			v->next[1] = NULL;
+			v->next[2] = NULL;
+			v->next[3] = NULL;
+			v--;
+		}
+	}
+	free(v);
+}
+
+static void		free_i(t_input *file)
+{
+	if (file->input)
+		ft_chararrclr(file->input, file->linelen * file->lines);
+	file->lines = 0;
+	file->linelen = 0;
+	free(file);
+}
+
+void			free_all(t_wlist *w)
 {
 	int i;
 
 	i = 0;
-	if (window != NULL)
+	if (w->v && w->file)
+		free_v(w->v, w->file);
+	if (w->file != NULL)
 	{
-		window->file->input = ft_intarrclr(window->file->input);
-		ft_memdel(window->mlx_ptr);
-		ft_memdel(window->win_ptr);
+		free_i(w->file);
 	}
-	return (window);
 }
-*/

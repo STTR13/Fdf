@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrclr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 11:04:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/28 11:09:28 by fabbenbr         ###   ########.fr       */
+/*   Created: 2018/10/08 14:53:00 by fabbenbr          #+#    #+#             */
+/*   Updated: 2018/10/15 13:06:21 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
-char	**ft_chararrclr(char **ap, int length)
-{
-	int i;
 
-	length = 0;
-	i = 0;
-	if (ap && *ap)
+char	*ft_strjoinspace(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*tempcat;
+
+	if (s1 && s2)
 	{
-		while (ap[i])
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		if ((tempcat = ft_strnew(i + j)) == NULL)
+			return (NULL);
+		else
 		{
-			ft_strdel(&ap[i]);
-			i++;
+			ft_strcpy(tempcat, s1);
+			tempcat = ft_strcat(tempcat, s2);
+			i = ft_strlen(tempcat);
+			tempcat[i] = ' ';
+			return (tempcat);
 		}
-		free(ap);
-		return (ap);
 	}
-	if (ap)
-		free(ap);
-	return (ap);
+	return (NULL);
 }

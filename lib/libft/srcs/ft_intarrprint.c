@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrclr.c                                        :+:      :+:    :+:   */
+/*   ft_intarrprint.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 11:04:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/28 11:09:28 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/03/07 15:34:25 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/03/07 15:38:19 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
-char	**ft_chararrclr(char **ap, int length)
+
+void	ft_intarrprint(int **arr, int max_x, int max_y)
 {
 	int i;
+	int j;
 
-	length = 0;
-	i = 0;
-	if (ap && *ap)
+	j = 0;
+	while (j < max_y)
 	{
-		while (ap[i])
+		i = 0;
+		while (i < max_x)
 		{
-			ft_strdel(&ap[i]);
+			ft_putnbr(arr[j][i]);
+			if (i + 1 != max_x)
+				ft_putstr(", ");
 			i++;
 		}
-		free(ap);
-		return (ap);
+		ft_putendl("");
+		j++;
 	}
-	if (ap)
-		free(ap);
-	return (ap);
 }

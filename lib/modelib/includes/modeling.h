@@ -22,6 +22,7 @@ typedef struct	s_vertex
 {
 	ve					v;
 	struct s_vertex		*next[4];
+	char				*color;
 	bool				done;
 }				vertex; //(n)
 
@@ -35,7 +36,7 @@ typedef struct	s_drawing_list
 ** --- Vertex ---
 */
 
-vertex			*new_vertex(ve v);
+vertex			*new_vertex(ve v, vertex *rvert);
 bool			add_vertex(vertex *grid, ve new_vertex, ve link);
 void			rm_vertex(vertex *to_rm);
 void			free_vertex(vertex *grid); //(ni)

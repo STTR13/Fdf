@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrclr.c                                        :+:      :+:    :+:   */
+/*   ft_ishexa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 11:04:21 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/28 11:09:28 by fabbenbr         ###   ########.fr       */
+/*   Created: 2019/03/14 09:39:25 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/03/14 09:39:27 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-#include <stdio.h>
-char	**ft_chararrclr(char **ap, int length)
+#include "../includes/get_next_line.h"
+
+int		ft_ishexa(char *str)
 {
 	int i;
 
-	length = 0;
 	i = 0;
-	if (ap && *ap)
+	while (str[i] != '\0')
 	{
-		while (ap[i])
-		{
-			ft_strdel(&ap[i]);
+		if ((str[i] >= 48 && str[i] <= 57) || \
+		(str[i] >= 65 && str[i] <= 90) || \
+		(str[i] >= 97 && str[i] <= 122))
 			i++;
-		}
-		free(ap);
-		return (ap);
+		else
+			return (0);
 	}
-	if (ap)
-		free(ap);
-	return (ap);
+	return (1);
 }

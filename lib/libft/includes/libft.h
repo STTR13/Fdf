@@ -6,7 +6,7 @@
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 12:17:58 by fabbenbr          #+#    #+#             */
-/*   Updated: 2019/01/28 11:19:49 by fabbenbr         ###   ########.fr       */
+/*   Updated: 2019/03/07 15:44:01 by fabbenbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_intarrprint(int **arr, int max_x, int max_y);
+void				ft_memdell(void *ap);
+void				ft_intarrclr(int **ap, int y);
+void				ft_strdell(char *as);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
@@ -51,11 +55,12 @@ char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strjoinn(char const *s1, char const *s2);
+char				*ft_strjoinn(char *s1, char const *s2);
+char				*ft_strjoinspace(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
-char				**ft_chararrclr(char **ap);
+char				**ft_chararrclr(char **ap, int length);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t				ft_strlen(const char *str);
@@ -69,10 +74,11 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_ishexa(char *str);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strdel_neg(char **as);
-int					**ft_intarrclr(int **ap);
+int					ft_hexaconverter(char *str);
 
 typedef struct		s_list
 {
@@ -87,6 +93,6 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void ft_lstrev(t_list **alst);
+void				ft_lstrev(t_list **alst);
 
 #endif

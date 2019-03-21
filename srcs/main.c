@@ -12,10 +12,10 @@
 
 #include "../includes/fdf.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	twlist window;
-	vertex *v;
+	t_wlist	window;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
@@ -23,31 +23,18 @@ int main(int argc, char **argv)
 	}
 	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
+		if (window.file != NULL)
+			free_all(&window);
 		ft_putendl("error");
 		return (0);
 	}
-	/*int x = 0, y = 0;
-	while (y < window.file->lines)
+	if ((window.v = veconvertstart(window.file, 0, 0)) == NULL)
 	{
-		x = 0;
-		while (x < window.file->linelen)
-		{
-			printf("%i, ", window.file->input[y][x]);
-			x++;
-		}
-		printf("\n");
-		y++;
-	}*/
-	int i = 0;
-
-	if ((v = veconvertstart(window.file, 0, 0)) == 0)
-		printf("error");
-	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
-	while (v->next[i])
-		{
-	printf("\nx: %f\ny: %f\nz: %f\n",v->v.x,v->v.y,v->v.z);
-	i++;
-	v = v->next[i];
-}
-    //window_init(&window);
+		free_all(&window);
+		ft_putendl("error");
+		return (0);
+	}
+	window_init(&window);
+	free_all(&window);
+	return (0);
 }

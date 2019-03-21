@@ -12,63 +12,42 @@
 
 #include "../includes/fdf.h"
 
-int windowclose(twlist *window)
+int	windowclose(t_wlist *window)
 {
-	//free_list(window);
+	(void)window;
 	exit(0);
-	return(0);
+	return (0);
 }
 
-int deal_key(int key, twlist *window)
+int	deal_key(int key, t_wlist *window)
 {
-    if (key == 13)
-        ft_putchar('W');
-    else if (key == 0)
-        ft_putchar('A');
-    else if (key == 1)
-        ft_putchar('S');
-    else if (key == 2)
-        ft_putchar('D');
-    else if (key == 78)
-        ft_putchar('-');
-    else if (key == 69)
-        ft_putchar('+');
-    else if (key == 126)
-        ft_putstr("Up Arrow");
-    else if (key == 125)
-        ft_putstr("Down Arrow");
-    else if (key == 123)
-        ft_putstr("Left Arrow");
-    else if (key == 124)
-        ft_putstr("Right Arrow");
-    else if (key == 4)
-        ft_putchar('H');
-    else if (key == 53)
-	{
+	if (key == 13 || key == 0 || key == 1 || key == 2 || key == 12 || key == 14)
+		key_move(key, window);
+	else if (key == 18 || key == 19 || key == 20)
+		change_view(key, window);
+	else if (key == 78 || key == 69)
+		key_zoom(key, window);
+	else if (key == 126 || key == 125)
+		z_valuechange(key, window);
+	else if (key == 4)
+		ft_putchar('H');
+	else if (key == 53)
 		exit(0);
-	}
-    return (0);
+	return (0);
 }
 
-int mouse_key(int key, twlist *window)
+int	mouse_key(int key, t_wlist *window)
 {
-	void *param;
-    if (key == 1)
-        ft_putstr("Left Button");
-    if (key == 2)
-        ft_putstr("Right Button");
-    if (key == 3)
-        ft_putstr("Middle Button");
-    if (key == 4)
-        ft_putstr("Scroll Up");
-    if (key == 5)
-        ft_putstr("Scroll Down");
-    return (0);
-}
-
-int mouse_move(int x, int y, twlist *window)
-{
-	//(void)param;
-	//ft_putstr("moving");
-	return(0);
+	(void)window;
+	if (key == 1)
+		ft_putstr("Left Button");
+	else if (key == 2)
+		ft_putstr("Right Button");
+	else if (key == 3)
+		ft_putstr("Middle Button");
+	else if (key == 4)
+		ft_putstr("Scroll Up");
+	else if (key == 5)
+		ft_putstr("Scroll Down");
+	return (0);
 }
