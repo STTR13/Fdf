@@ -33,7 +33,13 @@ OBJ = 			main.o \
 				vemaker2.o \
 				keyboard.o \
 
-INCLUDES = includes/
+INCLUDES = 	-I includes/fdf.h \
+			-I lib/libft/includes/get_next_line.h \
+			-I lib/minilibx_macos/mlx.h \
+			-I lib/geolib/includes/geometry.h \
+			-I lib/modelib/includes/modeling.h \
+			-I lib/visualib/includes/visual.h \
+
 
 
 FRAMEW = -framework OpenGL -framework AppKit
@@ -42,6 +48,7 @@ LIB = 	lib/minilibx_macos/libmlx.a \
 		lib/libft/libft.a \
 		lib/geolib/geolib.a \
 		lib/modelib/modelib.a \
+		lib/visualib/visualib.a \
 
 END_E       = \033[00m
 RED_E       = \033[01;31m
@@ -67,7 +74,7 @@ $(NAME):
 	@$(MAKE) -C lib/modelib/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
 	@$(MAKE) -C lib/visualib/
-	@gcc -c $(SRC) -I $(INCLUDES) $(FLAGS)
+	@gcc -c $(SRC) $(INCLUDES) $(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"

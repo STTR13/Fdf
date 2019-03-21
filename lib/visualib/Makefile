@@ -28,11 +28,16 @@ IMAGE =		image.o \
 RGB_PATH = rgb/
 RGB =
 
+WIN_PATH = window/
+WIN = 	loop.o \
+		window.o
+
 #KEY_PATH = key/
 #KEY =		key.o
 
 OBJ =	$(addprefix $(IMAGE_PATH), $(IMAGE)) \
 		$(addprefix $(RGB_PATH), $(RGB)) \
+		$(addprefix $(WIN_PATH), $(WIN)) \
 		#$(addprefix $(KEY_PATH), $(KEY))
 
 
