@@ -37,3 +37,14 @@ void	key_zoom(int key, t_wlist *window)
 	else if (key == 69)
 		ft_putchar('+');
 }
+
+void	change_view(int key, t_wlist *window)
+{
+	(void)window;
+	if (key == 18)
+		ft_putchar('1');
+	else if (key == 19)
+		ft_putchar('2');
+	else if (key == 20)
+		ft_putchar('3');
+}

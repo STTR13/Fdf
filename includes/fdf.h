@@ -52,5 +52,6 @@ vertex					*veconvertstart(t_input *file, int x, int y);
 t_input					*file_reader(int fd);
 void					key_move(int key, t_wlist *window);
 void					key_zoom(int key, t_wlist *window);
+void					change_view(int key, t_wlist *window);
 
 #endif

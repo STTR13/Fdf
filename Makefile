@@ -65,7 +65,7 @@ $(NAME):
 	@$(MAKE) -C lib/minilibx_macos/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling modelib$(END_E)"
 	@$(MAKE) -C lib/modelib/
-	@gcc -c $(SRC) -I $(INCLUDES)
+	@gcc -c $(SRC) -I $(INCLUDES) $(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"

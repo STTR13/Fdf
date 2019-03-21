@@ -23,6 +23,8 @@ int	deal_key(int key, t_wlist *window)
 {
 	if (key == 13 || key == 0 || key == 1 || key == 2 || key == 12 || key == 14)
 		key_move(key, window);
+	else if (key == 18 || key == 19 || key == 20)
+		change_view(key, window);
 	else if (key == 78 || key == 69)
 		key_zoom(key, window);
 	else if (key == 4)
