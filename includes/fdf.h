@@ -17,6 +17,7 @@
 # include "../lib/geolib/includes/geometry.h"
 # include "../lib/modelib/includes/modeling.h"
 # include "../lib/visualib/includes/visual.h"
+# include "struct.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -24,21 +25,6 @@
 # define WHEIGHT 1280
 # define WWIDTH 2280
 # define COLORWHITE 0xaabbcc
-
-typedef struct			s_input
-{
-	char	**input;
-	int		lines;
-	int		linelen;
-}						t_input;
-
-typedef struct			s_wlist
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_input	*file;
-	vertex	*v;
-}						t_wlist;
 
 ve						createv(int z, int x, int y);
 int						deal_key(int key, t_wlist *window);
