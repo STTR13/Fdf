@@ -12,22 +12,27 @@
 
 #include "visual.h"
 
-image		*new_img(window *w)
+bool		new_img(window *w)
 {
-	image *r;
-
-	if (!(r = (image*)malloc(sizeof(image))) ||
-		!(r->img_ptr = mlx_new_image(w->mlx_ptr, w->width, w->height)))
-		return (NULL);
-	r->data = mlx_get_data_addr(r->img_ptr,
-		&r->bytes_per_pixel, &r->size_line, &r->edian);
-	r->bytes_per_pixel /= 8;
-	return (r);
+	if (!(w->img = (image*)malloc(sizeof(image))) ||
+		!(w->img->img_ptr = mlx_new_image(w->mlx_ptr, w->width, w->height)))
+		return (0);
+	w->img->data = mlx_get_data_addr(w->img->img_ptr,
+		&w->img->bytes_per_pixel, &w->img->size_line, &w->img->edian);
+	w->img->bytes_per_pixel /= 8;
+	return (1);
 }
 
-void			free_img(window *w)
+void		free_img(window *w)
 {
 	mlx_destroy_image(w->mlx_ptr, w->img->img_ptr);
 	free(w->img);
 	(w->img) = NULL;
+}
+
+bool		re_img(window *w)
+{
+	if (w->img)
+		free_img(w);
+	return (new_img(w));
 }

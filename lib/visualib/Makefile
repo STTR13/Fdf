@@ -61,7 +61,7 @@ $(NAME):	$(OBJ)
 all:		$(NAME)
 
 %.o:        %.c
-			$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDES)
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDES)
 
 clean:
 			@rm -f $(OBJ)

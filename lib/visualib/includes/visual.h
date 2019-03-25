@@ -16,7 +16,7 @@
 # include <math.h>
 # include <stdlib.h>
 
-# include "mlx.h"
+# include "symlink_mlx.h"
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
@@ -122,9 +122,6 @@
 # define PDOWN_KEY 121
 # define CLR_KEY 71
 
-typedef enum {false=0, true=1}
-				bool;
-
 typedef struct	s_event_hook
 {
 	int			(*key_press)(int keycode, void *param);
@@ -177,11 +174,11 @@ void			loop(window *w);
 ** --- Image ---
 */
 
-image			*new_img(window *w);
+bool			new_img(window *w);
 void			free_img(window *w);
+bool			re_img(window *w);
 
 bool			set_pxl_img(window *w, int x, int y, int color);
-void			clear_img(window *w);
 
 /*
 ** --- RedGreenBlue ---
