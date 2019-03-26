@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 SRC_PATH = srcs/
 SRC = 			$(SRC_PATH)main.c \
@@ -33,12 +33,7 @@ OBJ = 			main.o \
 				vemaker2.o \
 				keyboard.o \
 
-INCLUDES = 	-I includes/fdf.h \
-			-I lib/libft/includes/get_next_line.h \
-			-I lib/minilibx_macos/mlx.h \
-			-I lib/geolib/includes/geometry.h \
-			-I lib/modelib/includes/modeling.h \
-			-I lib/visualib/includes/visual.h \
+INCLUDES = 	-I includes/
 
 
 

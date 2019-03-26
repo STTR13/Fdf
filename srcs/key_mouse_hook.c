@@ -15,11 +15,12 @@
 int	windowclose(t_wlist *window)
 {
 	(void)window;
+	ft_putstr("exiting");
 	exit(0);
 	return (0);
 }
 
-int	deal_key(int key, t_wlist *window)
+/*int	deal_key(int key, t_wlist *window)
 {
 	if (key == 13 || key == 0 || key == 1 || key == 2 || key == 12 || key == 14)
 		key_move(key, window);
@@ -34,7 +35,7 @@ int	deal_key(int key, t_wlist *window)
 	else if (key == 53)
 		exit(0);
 	return (0);
-}
+}*/
 
 int	mouse_key(int key, t_wlist *window)
 {

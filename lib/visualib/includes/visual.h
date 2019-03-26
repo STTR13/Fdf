@@ -17,6 +17,7 @@
 # include <stdlib.h>
 
 # include "symlink_mlx.h"
+# include "symlink_geolib_includes/geometry.h"
 
 # define KEYPRESS 2
 # define KEYRELEASE 3

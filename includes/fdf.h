@@ -13,10 +13,9 @@
 #ifndef FDF_H
 # define FDF_H
 # include "../lib/libft/includes/get_next_line.h"
-# include "../lib/minilibx_macos/mlx.h"
-# include "../lib/geolib/includes/geometry.h"
-# include "../lib/modelib/includes/modeling.h"
-# include "../lib/visualib/includes/visual.h"
+# include "symlink_geolib_includes/geometry.h"
+# include "symlink_modelib_includes/modeling.h"
+# include "symlink_visualib_includes/visual.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -34,10 +33,9 @@ typedef struct			s_input
 
 typedef struct			s_wlist
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
 	t_input	*file;
 	vertex	*v;
+	window *test;
 }						t_wlist;
 
 ve						createv(int z, int x, int y);
@@ -55,5 +53,6 @@ void					key_move(int key, t_wlist *window);
 void					key_zoom(int key, t_wlist *window);
 void					change_view(int key, t_wlist *window);
 void					z_valuechange(int key, t_wlist *window);
+int key_press_all(int key, void *window);
 
 #endif
