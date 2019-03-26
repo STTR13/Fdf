@@ -35,7 +35,7 @@ typedef struct			s_wlist
 {
 	t_input	*file;
 	vertex	*v;
-	window *test;
+	window *w;
 }						t_wlist;
 
 ve						createv(int z, int x, int y);
@@ -53,7 +53,8 @@ void					key_move(int key, t_wlist *window);
 void					key_zoom(int key, t_wlist *window);
 void					change_view(int key, t_wlist *window);
 void					z_valuechange(int key, t_wlist *window);
-int key_press_all(int key, void *window);
-int mouse_move(int x, int y, void *window);
+int						key_press_all(int key, void *window);
+int						mouse_move(int x, int y, void *window);
+
 
 #endif

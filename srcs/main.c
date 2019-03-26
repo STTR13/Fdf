@@ -15,12 +15,14 @@
 int	main(int argc, char **argv)
 {
 	t_wlist	window;
-	(void)argv;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
 		return (0);
 	}
+	while(1)
+	{
 	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
 	{
 		if (window.file != NULL)
@@ -34,7 +36,8 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	window_init_load(&window);
+	//window_init_load(&window);
 	free_all(&window);
+	}
 	return (0);
 }

@@ -20,37 +20,20 @@ int	windowclose(void *window)
 	return (0);
 }
 
-/*int	deal_key(int key, t_wlist *window)
-{
-	if (key == 13 || key == 0 || key == 1 || key == 2 || key == 12 || key == 14)
-		key_move(key, window);
-	else if (key == 18 || key == 19 || key == 20)
-		change_view(key, window);
-	else if (key == 78 || key == 69)
-		key_zoom(key, window);
-	else if (key == 126 || key == 125)
-		z_valuechange(key, window);
-	else if (key == 4)
-		ft_putchar('H');
-	else if (key == 53)
-		exit(0);
-	return (0);
-}*/
-
 int	mouse_key(int key, int x, int y, void *window)
 {
 	(void)window;
 	(void)x;
 	(void)y;
-	if (key == 1)
+	if (key == BUT1_KEY)
 		ft_putstr("Left Button");
-	else if (key == 2)
+	else if (key == BUT2_KEY)
 		ft_putstr("Right Button");
-	else if (key == 3)
+	else if (key == BUT3_KEY)
 		ft_putstr("Middle Button");
-	else if (key == 4)
+	else if (key == SCROLLUP_KEY)
 		ft_putstr("Scroll Up");
-	else if (key == 5)
+	else if (key == SCROLLDOWN_KEY)
 		ft_putstr("Scroll Down");
 	return (0);
 }

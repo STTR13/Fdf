@@ -48,13 +48,8 @@ static void		free_i(t_input *file)
 
 void			free_all(t_wlist *w)
 {
-	int i;
-
-	i = 0;
 	if (w->v && w->file)
 		free_v(w->v, w->file);
 	if (w->file != NULL)
-	{
 		free_i(w->file);
-	}
 }

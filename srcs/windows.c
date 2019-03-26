@@ -14,13 +14,13 @@
 
 void	window_init_load(t_wlist *window)
 {
-	window->test = new_window("FDF", 1000, 1000);
-	window->test->hook.param = &window;
-	window->test->hook.key_release = &key_press_all;
-	window->test->hook.mouse_press = &mouse_key;
-	window->test->hook.close = &windowclose;
-	window->test->hook.mouse_move = &mouse_move;
-	loop(window->test);
+	window->w = new_window("FDF", 1000, 1000);
+	window->w->hook.param = &window;
+	window->w->hook.key_release = &key_press_all;
+	window->w->hook.mouse_press = &mouse_key;
+	window->w->hook.close = &windowclose;
+	window->w->hook.mouse_move = &mouse_move;
+	loop(window->w);
 	/*window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int i = 0;

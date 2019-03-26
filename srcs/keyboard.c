@@ -24,19 +24,21 @@ int key_press_all(int key, void *window)
 void	key_move(int key, t_wlist *window)
 {
 	(void)window;
-	if (key == 13)
+	if (key == W_KEY)
 		ft_putchar('W');
-	else if (key == 0)
+	else if (key == A_KEY)
 		ft_putchar('A');
-	else if (key == 1)
+	else if (key == S_KEY)
 		ft_putchar('S');
-	else if (key == 2)
+	else if (key == D_KEY)
 		ft_putchar('D');
-	else if (key == 12)
+	else if (key == Q_KEY)
 		ft_putchar('Q');
-	else if (key == 14)
+	else if (key == E_KEY)
 		ft_putchar('E');
-	else if (key == 53)
+	else if (key == H_KEY)
+		ft_putchar('H');
+	else if (key == ESC_KEY)
 		windowclose(window);
 }
 
@@ -63,8 +65,12 @@ void	change_view(int key, t_wlist *window)
 void	z_valuechange(int key, t_wlist *window)
 {
 	(void)window;
-	if (key == 126)
-		ft_putstr("increasing z value");
-	else if (key == 125)
-		ft_putstr("decreasing z value");
+	if (key == UP_KEY)
+		ft_putstr("up arrow");
+	else if (key == DOWN_KEY)
+		ft_putstr("down arrow");
+	else if (key == LEFT_KEY)
+		ft_putstr("left key");
+	else if (key == RIGHT_KEY)
+		ft_putstr("right key");
 }

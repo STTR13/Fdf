@@ -17,7 +17,7 @@ FLAGS = -Wall -Wextra
 SRC_PATH = srcs/
 SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)windows.c \
-				$(SRC_PATH)key_mouse_hook.c \
+				$(SRC_PATH)mouse_hook.c \
 				$(SRC_PATH)file_reader.c \
 				$(SRC_PATH)free.c \
 				$(SRC_PATH)vemaker.c \
@@ -26,7 +26,7 @@ SRC = 			$(SRC_PATH)main.c \
 
 OBJ = 			main.o \
 				windows.o \
-				key_mouse_hook.o \
+				mouse_hook.o \
 				file_reader.o \
 				free.o \
 				vemaker.o \
