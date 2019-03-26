@@ -12,8 +12,15 @@
 
 #include "../includes/fdf.h"
 
-void	window_init(t_wlist *window)
+void	window_init_load(t_wlist *window)
 {
+	window->test = new_window("FDF", 1000, 1000);
+	window->test->hook.param = &window;
+	window->test->hook.key_release = &key_press_all;
+	window->test->hook.mouse_press = &mouse_key;
+	window->test->hook.close = &windowclose;
+	window->test->hook.mouse_move = &mouse_move;
+	loop(window->test);
 	/*window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int i = 0;

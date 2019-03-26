@@ -40,10 +40,10 @@ typedef struct			s_wlist
 
 ve						createv(int z, int x, int y);
 int						deal_key(int key, t_wlist *window);
-int						mouse_key(int key, t_wlist *window);
-int						windowclose(t_wlist *window);
+int						mouse_key(int key,  int x, int y, void *window);
+int						windowclose(void *window);
 char					*hexaconv(char *str);
-void					window_init(t_wlist *window);
+void					window_init_load(t_wlist *window);
 void					free_all(t_wlist *w);
 void					xlink(vertex *grid, t_input *file);
 void					ylink(vertex *grid, t_input *file);
@@ -54,5 +54,6 @@ void					key_zoom(int key, t_wlist *window);
 void					change_view(int key, t_wlist *window);
 void					z_valuechange(int key, t_wlist *window);
 int key_press_all(int key, void *window);
+int mouse_move(int x, int y, void *window);
 
 #endif

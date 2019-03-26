@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int	windowclose(t_wlist *window)
+int	windowclose(void *window)
 {
 	(void)window;
 	ft_putstr("exiting");
@@ -37,9 +37,11 @@ int	windowclose(t_wlist *window)
 	return (0);
 }*/
 
-int	mouse_key(int key, t_wlist *window)
+int	mouse_key(int key, int x, int y, void *window)
 {
 	(void)window;
+	(void)x;
+	(void)y;
 	if (key == 1)
 		ft_putstr("Left Button");
 	else if (key == 2)
@@ -50,5 +52,16 @@ int	mouse_key(int key, t_wlist *window)
 		ft_putstr("Scroll Up");
 	else if (key == 5)
 		ft_putstr("Scroll Down");
+	return (0);
+}
+
+int mouse_move(int x, int y, void *window)
+{
+	(void)window;
+	ft_putendl("Mouse_move");
+	ft_putnbr(x);
+	ft_putendl("");
+	ft_putnbr(y);
+	ft_putendl("");
 	return (0);
 }
