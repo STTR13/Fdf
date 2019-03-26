@@ -64,7 +64,8 @@ char	*hexaconv(char *str)
 	{
 		if (str[i] == ',')
 		{
-			temp = ft_strnew(ft_strlen(&str[i + 1]));
+			if (!(temp = ft_strnew(ft_strlen(&str[i + 1]))))
+				return (NULL);
 			return (ft_strcpy(temp, &str[i + 1]));
 		}
 		i++;

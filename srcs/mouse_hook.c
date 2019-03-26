@@ -38,7 +38,7 @@ int	mouse_key(int key, int x, int y, void *window)
 	return (0);
 }
 
-int mouse_move(int x, int y, void *window)
+int	mouse_move(int x, int y, void *window)
 {
 	(void)window;
 	ft_putendl("Mouse_move");

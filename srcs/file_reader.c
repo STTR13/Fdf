@@ -40,7 +40,8 @@ static char		*charfiller(char *str, int i)
 {
 	char *temp;
 
-	temp = ft_strnew(i);
+	if (!(temp = ft_strnew(i)))
+		return (NULL);
 	temp = ft_strncpy(temp, str, i);
 	return (temp);
 }
@@ -63,7 +64,8 @@ static char		**filefiller(char **input, char *str, int x)
 		}
 		if ((str[x] == ' ' || str[x] == '\n') && str[x] != '\0')
 		{
-			input[pos] = charfiller(&str[x - i], i);
+			if (!(input[pos] = charfiller(&str[x - i], i)))
+				return (NULL);
 			i = 0;
 			pos++;
 		}
@@ -105,7 +107,8 @@ t_input			*file_reader(int fd)
 		free(line);
 	}
 	close(fd);
-	lst->input = filecreator(str, lst);
+	if (!(lst->input = filecreator(str, lst)))
+		return (NULL);
 	ft_strdel(&str);
 	return (lst);
 }

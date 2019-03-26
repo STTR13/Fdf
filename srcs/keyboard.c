@@ -12,13 +12,13 @@
 
 #include "../includes/fdf.h"
 
-int key_press_all(int key, void *window)
+int		key_press_all(int key, void *window)
 {
 	key_move(key, (t_wlist *)window);
 	key_zoom(key, (t_wlist *)window);
 	change_view(key, (t_wlist *)window);
 	z_valuechange(key, (t_wlist *)window);
-	return(0);
+	return (0);
 }
 
 void	key_move(int key, t_wlist *window)
