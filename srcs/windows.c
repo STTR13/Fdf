@@ -14,7 +14,7 @@
 
 void	window_init(t_wlist *window)
 {
-	window->mlx_ptr = mlx_init();
+	/*window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int i = 0;
 	int x = 0;
@@ -38,5 +38,5 @@ void	window_init(t_wlist *window)
 	mlx_hook(window->win_ptr, 2, (1L << 0), deal_key, window);
 	mlx_hook(window->win_ptr, 4, (1L << 2), mouse_key, window);
 	mlx_hook(window->win_ptr, 17, (1L << 17), windowclose, window);
-	mlx_loop(window->mlx_ptr);
+	mlx_loop(window->mlx_ptr);*/
 }

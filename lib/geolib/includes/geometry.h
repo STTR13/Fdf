@@ -67,8 +67,6 @@ ve 				*cross(ve a, ve b, ve *ret);
 double 			dot_vv(ve a, ve b);
 ve				*scal_v(ve v, double s, ve *ret);
 
-ve				*rot_v(ve rot_axis, ve v, double angle, ve *ret);
-
 bool			isnullvector(ve v);
 bool			equal_v(ve a, ve b);
 

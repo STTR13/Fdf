@@ -21,7 +21,7 @@ window			*new_window(char *name, int width, int height)
 		return (NULL);
 	if (!(rw->mlx_ptr = mlx_init()) ||
 		!(rw->win_ptr = mlx_new_window(rw->mlx_ptr, width, height, name)) ||
-		!(rw->img = new_img(rw)))
+		!new_img(rw))
 	{
 		free_window(rw);
 		return (NULL);

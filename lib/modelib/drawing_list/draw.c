@@ -12,15 +12,15 @@
 
 #include "modeling.h"
 
-void			draw(image *img, drawing_list *dl,
+void			draw(window *w, drawing_list *dl,
 					double modeled_width, double modeled_height, rgb color)
 {
 	int	i, count;
 	double x, x_prop, y_prop, m, p;
 	drawing_list	*run;
 
-	x_prop = modeled_width / (double)(img->width);
-	y_prop = modeled_height / (double)(img->height);
+	x_prop = modeled_width / (double)(w->width);
+	y_prop = modeled_height / (double)(w->height);
 	x = 0;
 	while (x < modeled_width)
 	{
@@ -40,8 +40,8 @@ void			draw(image *img, drawing_list *dl,
 				m = (run->vert->next[i]->v.y - run->vert->v.y)
 					/ (run->vert->next[i]->v.x - run->vert->v.x);
 				p = run->vert->v.y - m * run->vert->v.x;
-				set_pxl(img, (int)(x / x_prop), (int)((m * x + p) / y_prop),
-					get_color(color, img->bytes_per_pixel));
+				set_pxl_img(w, (int)(x / x_prop), (int)((m * x + p) / y_prop),
+					get_color(color, w->img->bytes_per_pixel));
 			}
 			if (count == 4 && run == dl)
 				dl = dl->next;

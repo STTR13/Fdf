@@ -15,8 +15,8 @@
 
 # include <stdlib.h>
 
-# include "geometry.h"
-# include "visual.h"
+# include "symlink_geolib_includes/geometry.h"
+# include "symlink_visualib_includes/visual.h"
 
 typedef struct	s_vertex
 {
@@ -60,7 +60,7 @@ void			free_drawing_list(drawing_list **dl);
 drawing_list	*organise(vertex *grid);
 void			reorganise(drawing_list **dl);
 
-void			draw(image *img, drawing_list *dl,
+void			draw(window *w, drawing_list *dl,
 					double modeled_width, double modeled_height, rgb color);
 
 #endif
