@@ -33,9 +33,10 @@ typedef struct			s_input
 
 typedef struct			s_wlist
 {
-	t_input	*file;
-	vertex	*v;
-	window *w;
+	t_input			*file;
+	vertex			*v;
+	drawing_list	*dl;
+	window 			*w;
 }						t_wlist;
 
 ve						createv(int z, int x, int y);

@@ -17,12 +17,16 @@ vertex			*new_vertex(ve v, vertex *rvert)
 	rvert->v.x = v.x;
 	rvert->v.y = v.y;
 	rvert->v.z = v.z;
+	rvert->vprime.x = v.x;
+	rvert->vprime.y = v.y;
+	rvert->vprime.z = v.z;
+	nullvector(&rvert->vprime);
 	rvert->next[0] = NULL;
 	rvert->next[1] = NULL;
 	rvert->next[2] = NULL;
 	rvert->next[3] = NULL;
 	rvert->color = NULL;
-	rvert->done = true;
+	rvert->done = false;
 	return (rvert);
 }
 

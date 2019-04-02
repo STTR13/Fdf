@@ -13,7 +13,7 @@
 #include "modeling.h"
 
 void			draw(window *w, drawing_list *dl,
-					double modeled_width, double modeled_height, rgb color)
+					double modeled_width, double modeled_height, int color)
 {
 	int	i, count;
 	double x, x_prop, y_prop, m, p;
@@ -25,7 +25,7 @@ void			draw(window *w, drawing_list *dl,
 	while (x < modeled_width)
 	{
 		run = dl;
-		while (run && x > run->vert->v.x)
+		while (run && x > run->vert->vprime.x)
 		{
 			i = -1;
 			count = 0;
@@ -37,11 +37,11 @@ void			draw(window *w, drawing_list *dl,
 					count++;
 					continue ;
 				}
-				m = (run->vert->next[i]->v.y - run->vert->v.y)
-					/ (run->vert->next[i]->v.x - run->vert->v.x);
-				p = run->vert->v.y - m * run->vert->v.x;
+				m = (run->vert->next[i]->vprime.y - run->vert->vprime.y)
+					/ (run->vert->next[i]->vprime.x - run->vert->vprime.x);
+				p = run->vert->vprime.y - m * run->vert->vprime.x;
 				set_pxl_img(w, (int)(x / x_prop), (int)((m * x + p) / y_prop),
-					get_color(color, w->img->bytes_per_pixel));
+					color);
 			}
 			if (count == 4 && run == dl)
 				dl = dl->next;
