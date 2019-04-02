@@ -23,27 +23,27 @@ static vertex		*new_grid(t_input *file)
 	return (rvert);
 }
 
-static vertex		*vertex_link(t_input *file, vertex *vect)
+static vertex		*vertex_link(t_input *file, vertex *vert)
 {
 	int i;
 
 	i = file->lines * file->linelen;
 	while (--i >= 0)
-		vect--;
+		vert--;
 	i = file->lines * file->linelen;
 	while (--i >= 0)
 	{
-		xlink(vect, file);
-		ylink(vect, file);
-		vect++;
+		xlink(vert, file);
+		ylink(vert, file);
+		vert++;
 	}
 	i = file->lines * file->linelen;
 	while (--i >= 0)
-		vect--;
-	return (vect);
+		vert--;
+	return (vert);
 }
 
-static vertex		*gridfiller(t_input *file, int x, int y, vertex *vect)
+static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 {
 	int pos;
 	int temp;
@@ -55,25 +55,25 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vect)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
-			if (!(vect = new_vertex(createv(temp, x, y), vect)))
+			if (!(vert = new_vertex(createv(temp, x, y), vert)))
 				return (NULL);
-			vect->color = hexaconv(file->input[pos]);
+			vert->color = hexaconv(file->input[pos]);
 			pos++;
-			vect++;
+			vert++;
 			x++;
 		}
 		y++;
 	}
-	return (vect);
+	return (vert);
 }
 
 vertex				*veconvertstart(t_input *file, int x, int y)
 {
-	vertex	*vect;
+	vertex	*vert;
 
-	if (!(vect = new_grid(file)))
+	if (!(vert = new_grid(file)))
 		return (NULL);
-	vect = gridfiller(file, x, y, vect);
-	vect = vertex_link(file, vect);
-	return (vect);
+	vert = gridfiller(file, x, y, vert);
+	vert = vertex_link(file, vert);
+	return (vert);
 }

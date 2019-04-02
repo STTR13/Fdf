@@ -21,6 +21,7 @@
 typedef struct	s_vertex
 {
 	ve					v;
+	ve					vprime;
 	struct s_vertex		*next[4];
 	char				*color;
 	bool				done;
@@ -61,6 +62,6 @@ drawing_list	*organise(vertex *grid);
 void			reorganise(drawing_list **dl);
 
 void			draw(window *w, drawing_list *dl,
-					double modeled_width, double modeled_height, rgb color);
+					double modeled_width, double modeled_height, int color);
 
 #endif
