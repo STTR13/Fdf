@@ -69,6 +69,7 @@ ve				*scal_v(ve v, double s, ve *ret);
 
 bool			isnullvector(ve v);
 bool			equal_v(ve a, ve b);
+void			copy_v(ve origin, ve *dest);
 
 /*
 ** --- Plan ---

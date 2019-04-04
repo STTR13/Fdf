@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = visualib.a
+NAME = modelib.a
 
 
 
@@ -21,21 +21,19 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = ./includes
 
-IMAGE_PATH = image/
-IMAGE =		image.o \
-			pixel.o
+VERTEX_PATH = vertex/
+VERTEX =		apply.o \
+				find.o \
+				linking.o \
+				vertex.o
 
-WIN_PATH = window/
-WIN = 	loop.o \
-		window.o
+DRAWING_LIST_PATH = drawing_list/
+DRAWING_LIST =	draw.o \
+				drawing_list.o \
+				organise.o
 
-#KEY_PATH = key/
-#KEY =		key.o
-
-OBJ =	$(addprefix $(IMAGE_PATH), $(IMAGE)) \
-		$(addprefix $(RGB_PATH), $(RGB)) \
-		$(addprefix $(WIN_PATH), $(WIN)) \
-		#$(addprefix $(KEY_PATH), $(KEY))
+OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
+		$(addprefix $(DRAWING_LIST_PATH), $(DRAWING_LIST))
 
 
 
@@ -62,7 +60,7 @@ all:		$(NAME)
 
 clean:
 			@rm -f $(OBJ)
-			@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
+			@echo "$(PURPLE_E)$(NAME)\tclean$(END_E)"
 
 fclean:		clean
 			@rm -f $(NAME)

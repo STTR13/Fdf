@@ -155,13 +155,6 @@ typedef struct	s_window
 	event_hook	hook;
 }				window;
 
-typedef struct	s_rgb
-{
-	unsigned short		r;
-	unsigned short		g;
-	unsigned short		b;
-}				rgb; //(n) rename to t_rgb
-
 /*
 ** --- Window ---
 */
@@ -180,11 +173,6 @@ void			free_img(window *w);
 bool			re_img(window *w);
 
 bool			set_pxl_img(window *w, int x, int y, int color);
-
-/*
-** --- RedGreenBlue ---
-*/
-
-int				get_color(rgb rgb_color, int bytes_per_pixel);
+bool			draw_line_img(window *w, int coord[2][2]/*, int color[2]*/);
 
 #endif

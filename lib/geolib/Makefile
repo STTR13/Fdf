@@ -36,7 +36,8 @@ VECTOR =	basicvalues.o \
 			booleans.o \
 			norm.o \
 			product.o \
-			sum.o
+			sum.o \
+			manip.o
 
 OBJ =	$(addprefix $(MATRIX_PATH), $(MATRIX)) \
 		$(addprefix $(PLAN_PATH), $(PLAN)) \

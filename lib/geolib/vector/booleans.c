@@ -25,3 +25,10 @@ bool			equal_v(ve a, ve b)
 		return (true);
 	return (false);
 }
+
+void	copy_v(ve origin, ve *dest)
+{
+	dest->x = origin.x;
+	dest->y = origin.y;
+	dest->z = origin.z;
+}

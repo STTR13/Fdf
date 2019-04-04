@@ -5,26 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 16:17:45 by staeter           #+#    #+#             */
-/*   Updated: 2019/04/04 16:17:47 by staeter          ###   ########.fr       */
+/*   Created: 2019/04/04 16:53:55 by staeter           #+#    #+#             */
+/*   Updated: 2019/04/04 16:53:56 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "modeling.h"
 
-void			apply_vertex(void (*f)(vertex *vert), vertex *list)
+void		apply_edge(void (*f)(edge *vert, void *param), edge *list, void *param)
 {
 	if (!list)
 		return ;
-	(*f)(list);
-	apply_vertex(f, list->next);
+	(*f)(list, param);
+	apply_edge(f, list->next, param);
 }
 
-vertex			*find_vertex(vertex *list, ve coord)
+void		draw_edge(window *w, edge *ed)
 {
-	if (!list)
-		return (NULL);
-	if (equal_v(list->coord, coord))
-		return (list);
-	return (find_vertex(list->next, coord));
+	int coord[2][2];
+
+	coord[0][0] = ed->vert1->prime.x;
+	coord[0][1] = ed->vert1->prime.y;
+	coord[1][0] = ed->vert2->prime.x;
+	coord[1][1] = ed->vert2->prime.y;
+	draw_line_img(w, coord);
+}
+
+static void	draw_edge_s(edge *ed, void *param)
+{
+	draw_edge((window*)param, ed);
+}
+
+void		draw_model(window *w, edge *list)
+{
+	apply_edge(&draw_edge_s, list, (void*)w);
 }

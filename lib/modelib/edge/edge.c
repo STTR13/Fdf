@@ -1,51 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vertex.c                                           :+:      :+:    :+:   */
+/*   edge.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 15:56:03 by staeter           #+#    #+#             */
-/*   Updated: 2019/04/04 15:56:05 by staeter          ###   ########.fr       */
+/*   Created: 2019/04/04 16:47:33 by staeter           #+#    #+#             */
+/*   Updated: 2019/04/04 16:47:35 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "modeling.h"
 
-vertex			*new_vertex(ve coord)
+edge			*new_edge(vertex *vert1, vertex *vert2)
 {
-	vertex *r;
+	edge *r;
 
-	if (!(r = (vertex*)malloc(sizeof(vertex))))
+	if (!(r = (edge*)malloc(sizeof(edge))))
 		return (NULL);
-	copy_v(coord, &r->coord);
-	copy_v(coord, &r->prime);
+	r->vert1 = vert1;
+	r->vert2 = vert2;
 	r->next = NULL;
-	r->color = 255;
 	return (r);
 }
 
-vertex			*add_vertex(vertex *list, ve coord)
+edge			*add_edge(edge *list, vertex *vert1, vertex *vert2)
 {
-	vertex *r;
+	edge *r;
 
-	if (!(r = new_vertex(coord)))
+	if (!(r = new_edge(vert1, vert2)))
 	{
-		free_vertex(&list);
+		free_edge(&list);
 		return (NULL);
 	}
 	r->next = list;
 	return (r);
 }
 
-void			free_vertex(vertex **list)
+void			free_edge(edge **list)
 {
-	vertex *run;
+	edge *run;
 
 	if (!list || !*list)
 		return ;
 	run = (*list)->next;
 	free(*list);
 	*list = NULL;
-	free_vertex(&run);
+	free_edge(&run);
 }

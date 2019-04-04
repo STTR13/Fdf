@@ -23,17 +23,14 @@ INCLUDES = ./includes
 
 VERTEX_PATH = vertex/
 VERTEX =		apply.o \
-				find.o \
-				linking.o \
 				vertex.o
 
-DRAWING_LIST_PATH = drawing_list/
-DRAWING_LIST =	draw.o \
-				drawing_list.o \
-				organise.o
+EDGE_PATH = edge/
+EDGE =			apply.o \
+				edge.o
 
 OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
-		$(addprefix $(DRAWING_LIST_PATH), $(DRAWING_LIST))
+		$(addprefix $(EDGE_PATH), $(EDGE))
 
 
 

@@ -12,19 +12,15 @@
 
 #include "modeling.h"
 
-#include <stdio.h> //(t)
-
-static bool		organise_sub(drawing_list *dl, vertex *grid)
+static bool		organise_sub(drawing_list **dl, vertex *grid)
 {
 	short i;
 
-	printf("org_sub\n");
 	if (!grid || grid->done)
 		return (true);
 	grid->done = true;
-	if (!insert_drawing_list(&dl, grid))
+	if (!insert_drawing_list(dl, grid))
 		return (false);
-	printf("org_sub insert\n");
 	i = -1;
 	while (++i < 4)
 		if (!organise_sub(dl, grid->next[i]))
@@ -35,22 +31,14 @@ static bool		organise_sub(drawing_list *dl, vertex *grid)
 drawing_list	*organise(vertex *grid)
 {
 	drawing_list *r;
-	short i;
 
-	printf("reset_vert before\n");
 	reset_vertex(grid);
-	printf("reset_vert after\n");
-	if (!grid)
-		printf("grid null\n");
 	if (!(r = new_drawing_list(grid)))
 		return (NULL);
-	printf("newdl\n");
-	grid->done = true;
-	i = -1;
-	while (++i < 4)
-		if (!organise_sub(r, grid->next[i]))
-			return (NULL);
-	return (r);
+	if (organise_sub(&r, grid))
+		return (r);
+	else
+		return (NULL);
 }
 
 static void		reorganise_sub(drawing_list *dl, bool *done)

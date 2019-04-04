@@ -20,41 +20,48 @@
 
 typedef struct	s_vertex
 {
-	ve					coord;
-	ve					prime;
-	struct s_vertex		*next;
-	int					color;
+	ve					v;
+	ve					vprime;
+	struct s_vertex		*next[4];
+	char				*color;
+	bool				done;
 }				vertex; //(n)
 
-typedef struct	s_edge
+typedef struct	s_drawing_list
 {
-	vertex				*vert1;
-	vertex				*vert2;
-	struct s_edge		*next;
-}				edge;
+	struct s_vertex			*vert;
+	struct s_drawing_list	*next;
+}				drawing_list; //(n)
 
 /*
 ** --- Vertex ---
 */
 
-vertex			*new_vertex(ve coord);
-vertex			*add_vertex(vertex *list, ve coord);
-void			free_vertex(vertex **list);
+vertex			*new_vertex(ve v, vertex *rvert);
+bool			add_vertex(vertex *grid, ve new_vertex, ve link);
+void			rm_vertex(vertex *to_rm);
+void			free_vertex(vertex *grid); //(ni)
 
-void			apply_vertex(void (*f)(vertex *vert), vertex *list);
-vertex			*find_vertex(vertex *list, ve coord);
+void			apply_vertex(void (*f)(vertex *vert), vertex *grid);
+void			reset_vertex(vertex *grid);
+
+void			link_vertex(vertex *a, vertex *b);
+void			rmlink_vertex(vertex *a, vertex *b);
+
+vertex			*find_vertex(ve v, vertex *grid);
 
 /*
-** --- Edge ---
+** --- DrowingList ---
 */
 
-edge			*new_edge(vertex *vert1, vertex *vert2);
-edge			*add_edge(edge *list, vertex *vert1, vertex *vert2);
-void			free_edge(edge **list);
+drawing_list	*new_drawing_list(vertex *vert);
+bool			insert_drawing_list(drawing_list **dl, vertex *vert);
+void			free_drawing_list(drawing_list **dl);
 
-void			apply_edge(void (*f)(edge *vert, void *param),
-					edge *list, void *param);
-void			draw_edge(window *w, edge *ed);
-void			draw_model(window *w, edge *list);
+drawing_list	*organise(vertex *grid);
+void			reorganise(drawing_list **dl);
+
+void			draw(window *w, drawing_list *dl,
+					double modeled_width, double modeled_height, int color);
 
 #endif

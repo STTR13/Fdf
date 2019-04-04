@@ -11,10 +11,12 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
 #include <stdio.h> //(t)
 
 int	expose(void *window)
 {
+	printf("expose\n");
 	if (!(((t_wlist*)(window))->dl = organise(((t_wlist*)(window))->v)))
 		return (1);
 	draw(((t_wlist*)(window))->w, ((t_wlist*)(window))->dl, 1000, 1700, 255);
@@ -24,17 +26,12 @@ int	expose(void *window)
 void	window_init_load(t_wlist *window)
 {
 	window->w = new_window("FDF", 1000, 1000);
-<<<<<<< HEAD
-	window->w->hook.param = &window;
-	window->w->hook.key_press = &key_press_all;
-=======
 	window->w->hook.expose = &expose;
 	window->w->hook.param = (void *)window;
 	window->w->hook.key_release = &key_press_all;
->>>>>>> stater
 	window->w->hook.mouse_press = &mouse_key;
 	window->w->hook.close = &windowclose;
-	window->w->hook.mouse_move = &mouse_move;
+	//window->w->hook.mouse_move = &mouse_move;
 	loop(window->w);
 	/*window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
