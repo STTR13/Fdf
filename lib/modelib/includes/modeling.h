@@ -41,7 +41,8 @@ vertex			*new_vertex(ve coord);
 vertex			*add_vertex(vertex *list, ve coord);
 void			free_vertex(vertex **list);
 
-void			apply_vertex(void (*f)(vertex *vert), vertex *list);
+void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
+					void *param);
 vertex			*find_vertex(vertex *list, ve coord);
 
 /*

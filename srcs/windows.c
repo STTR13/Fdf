@@ -16,10 +16,8 @@
 
 int	expose(void *window)
 {
-/*	printf("expose\n");
-	if (!(((t_wlist*)(window))->dl = organise(((t_wlist*)(window))->v)))
-		return (1);
-	draw(((t_wlist*)(window))->w, ((t_wlist*)(window))->dl, 1000, 1700, 255);*/
+	printf("expose\n");
+	draw_model(((t_wlist*)(window))->w, ((t_wlist*)(window))->e);
 	return (0);
 }
 

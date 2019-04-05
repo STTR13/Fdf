@@ -25,9 +25,9 @@ void		draw_edge(window *w, edge *ed)
 	int coord[2][2];
 
 	coord[0][0] = ed->vert1->prime.x;
-	coord[0][1] = ed->vert1->prime.y;
+	coord[0][1] = ed->vert1->prime.z;
 	coord[1][0] = ed->vert2->prime.x;
-	coord[1][1] = ed->vert2->prime.y;
+	coord[1][1] = ed->vert2->prime.z;
 	draw_line_img(w, coord);
 }
 

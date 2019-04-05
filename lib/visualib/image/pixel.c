@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "visual.h"
+#include <stdio.h> //(t)
 
 bool		set_pxl_img(window *w, int x, int y, int color)
 {
@@ -49,6 +50,7 @@ static int	abs_s(int nb)
 bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 {
 	int a, b, x;
+	int tx, ty, t[10];
 
 	if (coord[0][0] < 0 || coord[0][1] < 0 ||
 		coord[0][0] > w->width || coord[0][1] > w->height ||
@@ -57,6 +59,7 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 		return (false);
 	if (abs_s(coord[0][0] - coord[1][0]) > abs_s(coord[0][1] - coord[1][1]))
 	{
+		printf("print over x\n");
 		if (coord[0][0] < coord[1][0])
 		{
 			a = 0;
@@ -69,12 +72,16 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 		}
 		x = coord[a][0] - 1;
 		while (++x <= coord[b][0])
+		{
+			printf("setting pxl\n");
 			set_pxl_img(w, x, coord[a][1] +
 				((coord[b][1] - coord[a][1]) * (x - coord[a][0]))
 				/ (coord[b][0] - coord[a][0]), 255);
+		}
 	}
 	else
 	{
+		printf("print over y\n");
 		if (coord[0][1] < coord[1][1])
 		{
 			a = 0;
@@ -86,10 +93,20 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 			b = 0;
 		}
 		x = coord[a][1] - 1;
-		while (++x <= coord[b][0])
-			set_pxl_img(w, coord[a][1] +
-				((coord[b][1] - coord[a][1]) * (x - coord[a][0]))
-				/ (coord[b][0] - coord[a][0]), x, 255);
+		while (++x <= coord[b][1])
+		{
+			printf("setting pxl\n");
+			t[0] = coord[a][1];
+			t[1] = x - coord[a][1];
+			t[2] = coord[b][0] - coord[a][0];
+			t[3] = coord[b][1] - coord[a][1];
+			tx = coord[a][1] + (x - coord[a][1]) *
+				((coord[b][1] == coord[a][1]) ? abs_s((coord[b][0] - coord[a][0])
+				/ (coord[b][1] - coord[a][1])) : 0);
+			ty = x;
+			printf("(%d = %d + %d * (%d / %d), %d)\n", tx, t[0], t[1], t[2], t[3], ty);
+			//set_pxl_img(w, tx, x, 255);
+		}
 	}
 	return(0);
 }

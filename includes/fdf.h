@@ -36,7 +36,6 @@ typedef struct			s_wlist
 	t_input			*file;
 	vertex			*v;
 	edge			*e;
-	//drawing_list	*dl;
 	window 			*w;
 	ve 				mouse_last_pos;
 }						t_wlist;

@@ -12,19 +12,20 @@
 
 # include "modeling.h"
 
-void			apply_vertex(void (*f)(vertex *vert), vertex *list)
+void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
+						void *param)
 {
 	if (!list)
 		return ;
-	(*f)(list);
-	apply_vertex(f, list->next);
+	(*f)(list, param);
+	apply_vertex(f, list->next, param);
 }
 
 vertex			*find_vertex(vertex *list, ve coord)
 {
 	if (!list)
 		return (NULL);
-	if (equal_x_y(list->coord, coord))
+	if (list->coord.x == coord.x && list->coord.y == coord.y)
 		return (list);
 	return (find_vertex(list->next, coord));
 }
