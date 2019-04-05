@@ -37,26 +37,50 @@ static int		hexavalue(char str)
 	return (0);
 }
 
+static char		*hexaconv(char *str)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ',')
+		{
+			if (!(temp = ft_strnew(ft_strlen(&str[i + 1]))))
+				return (NULL);
+			return (ft_strcpy(temp, &str[i + 1]));
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+
 int				ft_hexaconverter(char *str)
 {
 	int		deci;
 	int		base;
 	int		i;
+	char	*temp;
 
 	if (!(str))
-		return (0);
+		return (255);
+	if (!(temp = hexaconv(str)))
+		return (255);
 	i = 0;
 	if (str[0] == 0 && (str[1] == 'x' || str[1] == 'X'))
 		i = 2;
 	deci = 0;
-	i = ft_strlen(str);
+	i = ft_strlen(temp);
 	i--;
 	base = 1;
 	while (i >= 0)
 	{
-		deci += hexavalue(str[i]) * base;
+		deci += hexavalue(temp[i]) * base;
 		i--;
 		base *= 16;
 	}
+	ft_strdel(&temp);
 	return (deci);
 }

@@ -22,15 +22,14 @@ static void		free_v(vertex *v, t_input *file)
 	{
 		if (v)
 		{
-			v->v.x = 0;
-			v->v.y = 0;
-			v->v.z = 0;
-			if (v->color != NULL)
-				ft_strdel(&v->color);
-			v->next[0] = NULL;
+			v->coord.x = 0;
+			v->coord.y = 0;
+			v->coord.z = 0;
+			v->color = 0;
+			/*v->next[0] = NULL;
 			v->next[1] = NULL;
 			v->next[2] = NULL;
-			v->next[3] = NULL;
+			v->next[3] = NULL;*/
 			v--;
 		}
 	}

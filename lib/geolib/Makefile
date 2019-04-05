@@ -37,7 +37,7 @@ VECTOR =	basicvalues.o \
 			norm.o \
 			product.o \
 			sum.o \
-			manip.o
+			#manip.o
 
 OBJ =	$(addprefix $(MATRIX_PATH), $(MATRIX)) \
 		$(addprefix $(PLAN_PATH), $(PLAN)) \

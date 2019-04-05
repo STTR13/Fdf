@@ -69,7 +69,7 @@ $(NAME):
 	@$(MAKE) -C lib/modelib/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
 	@$(MAKE) -C lib/visualib/
-	@gcc -c $(SRC) $(INCLUDES) $(FLAGS)
+	@gcc -c $(SRC) $(INCLUDES) #$(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"

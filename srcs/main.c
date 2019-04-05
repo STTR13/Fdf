@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fdf input_file\n");
+		ft_putendl("usage: ./fdf input_file");
 		return (0);
 	}
 	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
@@ -34,7 +34,8 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
+	printf("%f\n%i\n",window.v->next->coord.x, window.v->color);
 	window_init_load(&window);
-	free_all(&window);
+	//free_all(&window);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static vertex		*new_grid(t_input *file)
+/*static vertex		*new_grid(t_input *file)
 {
 	vertex *rvert;
 
@@ -21,7 +21,7 @@ static vertex		*new_grid(t_input *file)
 		* (file->lines * file->linelen + 1))))
 		return (NULL);
 	return (rvert);
-}
+}*/
 
 static vertex		*vertex_link(t_input *file, vertex *vert)
 {
@@ -55,11 +55,10 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
-			if (!(vert = new_vertex(createv(temp, x, y), vert)))
+			if (!(vert = add_vertex(vert, createv(temp, x, y))))
 				return (NULL);
-			vert->color = hexaconv(file->input[pos]);
+			vert->color = ft_hexaconverter(file->input[pos]);
 			pos++;
-			vert++;
 			x++;
 		}
 		y++;
@@ -71,9 +70,8 @@ vertex				*veconvertstart(t_input *file, int x, int y)
 {
 	vertex	*vert;
 
-	if (!(vert = new_grid(file)))
-		return (NULL);
+	vert = NULL;
 	vert = gridfiller(file, x, y, vert);
-	vert = vertex_link(file, vert);
+	//vert = vertex_link(file, vert);
 	return (vert);
 }

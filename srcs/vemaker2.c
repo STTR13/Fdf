@@ -22,7 +22,7 @@ ve		createv(int z, int x, int y)
 	return (v);
 }
 
-void	xlink(vertex *grid, t_input *file)
+/*void	xlink(vertex *grid, t_input *file)
 {
 	vertex	*temp;
 
@@ -52,23 +52,4 @@ void	ylink(vertex *grid, t_input *file)
 		temp = grid + file->linelen;
 		grid->next[1] = temp;
 	}
-}
-
-char	*hexaconv(char *str)
-{
-	int		i;
-	char	*temp;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ',')
-		{
-			if (!(temp = ft_strnew(ft_strlen(&str[i + 1]))))
-				return (NULL);
-			return (ft_strcpy(temp, &str[i + 1]));
-		}
-		i++;
-	}
-	return (NULL);
-}
+}*/

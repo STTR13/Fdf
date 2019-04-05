@@ -35,7 +35,7 @@ typedef struct			s_wlist
 {
 	t_input			*file;
 	vertex			*v;
-	drawing_list	*dl;
+	//drawing_list	*dl;
 	window 			*w;
 	ve 				mouse_last_pos;
 }						t_wlist;
@@ -44,7 +44,6 @@ ve						createv(int z, int x, int y);
 int						deal_key(int key, t_wlist *window);
 int						mouse_key(int key,  int x, int y, void *window);
 int						windowclose(void *window);
-char					*hexaconv(char *str);
 void					window_init_load(t_wlist *window);
 void					free_all(t_wlist *w);
 void					xlink(vertex *grid, t_input *file);

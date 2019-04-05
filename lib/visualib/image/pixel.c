@@ -91,4 +91,5 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 				((coord[b][1] - coord[a][1]) * (x - coord[a][0]))
 				/ (coord[b][0] - coord[a][0]), x, 255);
 	}
+	return(0);
 }
