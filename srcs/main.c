@@ -28,13 +28,13 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	if ((window.v = veconvertstart(window.file, 0, 0)) == NULL)
+	if (!(window.v = veconvertstart(window.file, 0, 0)) \
+	|| !(window.e = edgefiller(window.file, window.v, 0, 0)))
 	{
 		free_all(&window);
 		ft_putendl("error");
 		return (0);
 	}
-	printf("%f\n%i\n",window.v->next->coord.x, window.v->color);
 	window_init_load(&window);
 	//free_all(&window);
 	return (0);

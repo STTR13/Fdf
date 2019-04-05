@@ -35,12 +35,12 @@ typedef struct			s_wlist
 {
 	t_input			*file;
 	vertex			*v;
+	edge			*e;
 	//drawing_list	*dl;
 	window 			*w;
 	ve 				mouse_last_pos;
 }						t_wlist;
 
-ve						createv(int z, int x, int y);
 int						deal_key(int key, t_wlist *window);
 int						mouse_key(int key,  int x, int y, void *window);
 int						windowclose(void *window);
@@ -56,6 +56,8 @@ void					change_view(int key, t_wlist *window);
 void					z_valuechange(int key, t_wlist *window);
 int						key_press_all(int key, void *window);
 int						mouse_move(int x, int y, void *window);
+edge					*edgefiller(t_input *f, vertex *v, int x, int y);
+ve						createv(int z, int x, int y);
 
 
 #endif

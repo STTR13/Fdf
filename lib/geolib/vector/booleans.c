@@ -26,6 +26,13 @@ bool			equal_v(ve a, ve b)
 	return (false);
 }
 
+bool			equal_x_y(ve a, ve b)
+{
+	if (a.x == b.x && a.y == b.y)
+		return (true);
+	return (false);
+}
+
 void	copy_v(ve origin, ve *dest)
 {
 	dest->x = origin.x;

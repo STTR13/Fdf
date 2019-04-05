@@ -12,15 +12,7 @@
 
 #include "../includes/fdf.h"
 
-ve		createv(int z, int x, int y)
-{
-	ve v;
 
-	v.x = x;
-	v.y = y;
-	v.z = z;
-	return (v);
-}
 
 /*void	xlink(vertex *grid, t_input *file)
 {
@@ -53,3 +45,35 @@ void	ylink(vertex *grid, t_input *file)
 		grid->next[1] = temp;
 	}
 }*/
+
+
+edge	*edgefiller(t_input *f, vertex *v, int x, int y)
+{
+	edge *e;
+
+	e = NULL;
+	while (y < f->lines)
+	{
+		x = 0;
+		while (x < f->linelen - 1)
+		{
+			e = add_edge(e, find_vertex(v, createv(0, x, y)), \
+			find_vertex(v, createv(0, x + 1, y)));
+			x++;
+		}
+		y++;
+	}
+	x = 0;
+	while (x < f->linelen)
+	{
+		y = 0;
+		while (y < f->lines - 1)
+		{
+			e = add_edge(e, find_vertex(v, createv(0, x, y)), \
+			find_vertex(v, createv(0, x , y + 1)));
+			y++;
+		}
+		x++;
+	}
+	return (e);
+}

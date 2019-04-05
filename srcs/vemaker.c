@@ -23,6 +23,16 @@
 	return (rvert);
 }*/
 
+ve					createv(int z, int x, int y)
+{
+	ve v;
+
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	return (v);
+}
+
 static vertex		*vertex_link(t_input *file, vertex *vert)
 {
 	int i;

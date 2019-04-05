@@ -24,7 +24,7 @@ vertex			*find_vertex(vertex *list, ve coord)
 {
 	if (!list)
 		return (NULL);
-	if (equal_v(list->coord, coord))
+	if (equal_x_y(list->coord, coord))
 		return (list);
 	return (find_vertex(list->next, coord));
 }

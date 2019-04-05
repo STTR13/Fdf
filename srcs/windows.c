@@ -25,14 +25,14 @@ int	expose(void *window)
 
 void	window_init_load(t_wlist *window)
 {
-/*	window->w = new_window("FDF", 1000, 1000);
+	window->w = new_window("FDF", 1000, 1000);
 	window->w->hook.expose = &expose;
 	window->w->hook.param = (void *)window;
 	window->w->hook.key_release = &key_press_all;
 	window->w->hook.mouse_press = &mouse_key;
-	window->w->hook.close = &windowclose;*/
+	window->w->hook.close = &windowclose;
 	//window->w->hook.mouse_move = &mouse_move;
-	//loop(window->w);
+	loop(window->w);
 	/*window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WWIDTH, WHEIGHT, "FDF");
 	int i = 0;
