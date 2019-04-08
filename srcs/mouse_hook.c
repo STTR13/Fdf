@@ -22,11 +22,21 @@ int	windowclose(void *window)
 
 int	mouse_key(int key, int x, int y, void *window)
 {
+	static int coord[2][2];
+
 	(void)window;
 	(void)x;
 	(void)y;
 	if (key == BUT1_KEY)
+	{
 		ft_putstr("Left Button");
+		coord[0][0] = coord[1][0];
+		coord[0][1] = coord[1][1];
+		coord[1][0] = x;
+		coord[1][1] = y;
+		draw_line_img(((t_wlist*)(window))->w, coord);
+		put_img(((t_wlist*)(window))->w);
+	}
 	else if (key == BUT2_KEY)
 		ft_putstr("Right Button");
 	else if (key == BUT3_KEY)

@@ -35,7 +35,7 @@ bool		set_pxl_img(window *w, int x, int y, int color)
 static int	abs_s(int nb)
 {
 	if (nb < 0)
-		return (-nb);
+		return (-1 * nb);
 	return (nb);
 }
 
@@ -49,64 +49,36 @@ static int	abs_s(int nb)
 */
 bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 {
-	int a, b, x;
-	int tx, ty, t[10];
+	int a, runaxis, i, d[2];
+	double pxl[2];
+	//int tx, ty, t[10];
 
 	if (coord[0][0] < 0 || coord[0][1] < 0 ||
 		coord[0][0] > w->width || coord[0][1] > w->height ||
 		coord[1][0] < 0 || coord[1][1] < 0 ||
 		coord[1][0] > w->width || coord[1][1] > w->height)
 		return (false);
-	if (abs_s(coord[0][0] - coord[1][0]) > abs_s(coord[0][1] - coord[1][1]))
-	{
-		printf("print over x\n");
-		if (coord[0][0] < coord[1][0])
-		{
-			a = 0;
-			b = 1;
-		}
-		else
-		{
-			a = 1;
-			b = 0;
-		}
-		x = coord[a][0] - 1;
-		while (++x <= coord[b][0])
-		{
-			printf("setting pxl\n");
-			set_pxl_img(w, x, coord[a][1] +
-				((coord[b][1] - coord[a][1]) * (x - coord[a][0]))
-				/ (coord[b][0] - coord[a][0]), 255);
-		}
-	}
+	d[0] = abs_s(coord[0][0] - coord[1][0]);
+	d[1] = abs_s(coord[0][1] - coord[1][1]);
+	if (d[0] >= d[1])
+		runaxis = 0;
 	else
+		runaxis = 1;
+	a = coord[0][runaxis] > coord[1][runaxis];
+	d[0] = coord[!a][0] - coord[a][0];
+	d[1] = coord[!a][1] - coord[a][1];
+	printf("\nDRAW_LINE_IMG CALL :\nA (%d, %d) -> B(%d, %d)\ndx = %d, dy = %d\n",
+			coord[0][0], coord[0][1], coord[1][0], coord[1][1], d[0], d[1]);
+	i = 0;
+	while (i <= d[runaxis])
 	{
-		printf("print over y\n");
-		if (coord[0][1] < coord[1][1])
-		{
-			a = 0;
-			b = 1;
-		}
-		else
-		{
-			a = 1;
-			b = 0;
-		}
-		x = coord[a][1] - 1;
-		while (++x <= coord[b][1])
-		{
-			printf("setting pxl\n");
-			t[0] = coord[a][1];
-			t[1] = x - coord[a][1];
-			t[2] = coord[b][0] - coord[a][0];
-			t[3] = coord[b][1] - coord[a][1];
-			tx = coord[a][1] + (x - coord[a][1]) *
-				((coord[b][1] == coord[a][1]) ? abs_s((coord[b][0] - coord[a][0])
-				/ (coord[b][1] - coord[a][1])) : 0);
-			ty = x;
-			printf("(%d = %d + %d * (%d / %d), %d)\n", tx, t[0], t[1], t[2], t[3], ty);
-			//set_pxl_img(w, tx, x, 255);
-		}
+		printf("----- setting pxl %d -----\n", i);
+		pxl[0] = i + coord[a][runaxis];
+		pxl[1] = (d[runaxis] ? ((double)(d[!runaxis]) / d[runaxis]) : 0) * i
+						+ (double)coord[a][!runaxis];
+		printf("\t(%f, %f)\n", pxl[runaxis], pxl[!runaxis]);
+		set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis], 255);
+		i++;
 	}
-	return(0);
+	return (true);
 }
