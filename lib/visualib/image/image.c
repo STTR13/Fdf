@@ -41,6 +41,6 @@ bool		put_img(window *w)
 {
 	if (!w->img)
 		return (false);
-	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->img->img_ptr, w->width, w->height);
+	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->img->img_ptr, 0, 0);
 	return (true);
 }

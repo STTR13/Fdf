@@ -29,7 +29,8 @@ int	mouse_key(int key, int x, int y, void *window)
 	(void)y;
 	if (key == BUT1_KEY)
 	{
-		ft_putstr("Left Button");
+		ft_putstr("Left Button\n");
+		//set_pxl_img(((t_wlist*)(window))->w, x, y, 255);
 		coord[0][0] = coord[1][0];
 		coord[0][1] = coord[1][1];
 		coord[1][0] = x;
