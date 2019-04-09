@@ -12,17 +12,6 @@
 
 #include "../includes/fdf.h"
 
-/*static vertex		*new_grid(t_input *file)
-{
-	vertex *rvert;
-
-	rvert = NULL;
-	if (!(rvert = (vertex*)malloc(sizeof(vertex) \
-		* (file->lines * file->linelen + 1))))
-		return (NULL);
-	return (rvert);
-}*/
-
 ve					createv(int z, int x, int y)
 {
 	ve v;
@@ -33,32 +22,15 @@ ve					createv(int z, int x, int y)
 	return (v);
 }
 
-static vertex		*vertex_link(t_input *file, vertex *vert)
-{
-	int i;
-
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-		vert--;
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-	{
-		xlink(vert, file);
-		ylink(vert, file);
-		vert++;
-	}
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-		vert--;
-	return (vert);
-}
-
-static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
+static vertex		*gridfiller(t_input *file, vertex *vert)
 {
 	int pos;
 	int temp;
+	int x;
+	int y;
 
 	pos = 0;
+	y = 0;
 	while (y < file->lines)
 	{
 		x = 0;
@@ -76,12 +48,11 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 	return (vert);
 }
 
-vertex				*veconvertstart(t_input *file, int x, int y)
+vertex				*veconvertstart(t_input *file)
 {
 	vertex	*vert;
 
 	vert = NULL;
-	vert = gridfiller(file, x, y, vert);
-	//vert = vertex_link(file, vert);
+	vert = gridfiller(file, vert);
 	return (vert);
 }
