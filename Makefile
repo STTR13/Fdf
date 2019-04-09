@@ -23,6 +23,7 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)vemaker.c \
 				$(SRC_PATH)vemaker2.c \
 				$(SRC_PATH)keyboard.c \
+				$(SRC_PATH)mouse_draw.c \
 
 OBJ = 			main.o \
 				windows.o \
@@ -32,6 +33,7 @@ OBJ = 			main.o \
 				vemaker.o \
 				vemaker2.o \
 				keyboard.o \
+				mouse_draw.o \
 
 INCLUDES = 	-I includes/
 

@@ -28,8 +28,8 @@ int	main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	if (!(window.v = veconvertstart(window.file, 0, 0)) \
-	|| !(window.e = edgefiller(window.file, window.v, 0, 0)))
+	if (!(window.v = veconvertstart(window.file)) \
+	|| !(window.e = edgefiller(window.file, window.v)))
 	{
 		free_all(&window);
 		ft_putendl("error");
