@@ -56,7 +56,6 @@ static char		*hexaconv(char *str)
 	return (NULL);
 }
 
-
 int				ft_hexaconverter(char *str)
 {
 	int		deci;

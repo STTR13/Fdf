@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
+
 char	**ft_chararrclr(char **ap, int length)
 {
 	int i;

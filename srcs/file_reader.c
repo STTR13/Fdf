@@ -12,6 +12,12 @@
 
 #include "../includes/fdf.h"
 
+/*
+** These functions will read the file that has been sent with the
+** executable. The information will be stored in a structure named
+** t_input, which mallocs a char**.
+*/
+
 static int		linelen(char *str)
 {
 	int i;
@@ -36,7 +42,7 @@ static int		linelen(char *str)
 	return (counter);
 }
 
-static char		*charfiller(char *str, int i)
+static char		*strfiller(char *str, int i)
 {
 	char *temp;
 
@@ -64,7 +70,7 @@ static char		**filefiller(char **input, char *str, int x)
 		}
 		if ((str[x] == ' ' || str[x] == '\n') && str[x] != '\0')
 		{
-			if (!(input[pos] = charfiller(&str[x - i], i)))
+			if (!(input[pos] = strfiller(&str[x - i], i)))
 				return (NULL);
 			i = 0;
 			pos++;

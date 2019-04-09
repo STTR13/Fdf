@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse_draw.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 09:57:51 by fabbenbr          #+#    #+#             */
+/*   Updated: 2019/04/09 09:57:53 by fabbenbr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
-void mouse_draw_line(void *window, int x, int y)
+void	mouse_draw_line(void *window, int x, int y)
 {
 	static int coord[2][2];
 

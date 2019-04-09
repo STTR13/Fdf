@@ -12,6 +12,11 @@
 
 #include "../includes/fdf.h"
 
+/*
+** createv will take the read information together with positions x
+** and y in order to create a new vector
+*/
+
 ve					createv(int z, int x, int y)
 {
 	ve v;
@@ -21,6 +26,17 @@ ve					createv(int z, int x, int y)
 	v.z = z;
 	return (v);
 }
+
+/*
+** veconvertstart and gridfiller work together. veconvertstart
+** will launch gridfiller in order to make a structured list
+** with all of the information from file_reader. gridfiller makes
+** use of 2 while loops in order to decide the x and y positions
+** and uses ft_atoi in order to convert the string to an int.
+** it will also use a hexadecimal converter in case of color input
+** in the read file. if there is no color input, a base value of
+** 255 will be given, which is the color blue.
+*/
 
 static vertex		*gridfiller(t_input *file, vertex *vert)
 {

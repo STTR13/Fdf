@@ -12,6 +12,9 @@
 
 #include "../includes/fdf.h"
 
+/*
+** frees every malloc we made
+*/
 
 static void	free_i(t_input *file)
 {
@@ -22,7 +25,7 @@ static void	free_i(t_input *file)
 	free(file);
 }
 
-void			free_all(t_wlist *w)
+void		free_all(t_wlist *w)
 {
 	if (w->w)
 		free_window(w->w);
