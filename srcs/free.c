@@ -12,31 +12,8 @@
 
 #include "../includes/fdf.h"
 
-static void		free_v(vertex *v, t_input *file)
-{
-	int i;
 
-	i = file->lines * file->linelen;
-	v += i;
-	while (--i >= 0)
-	{
-		if (v)
-		{
-			v->coord.x = 0;
-			v->coord.y = 0;
-			v->coord.z = 0;
-			v->color = 0;
-			/*v->next[0] = NULL;
-			v->next[1] = NULL;
-			v->next[2] = NULL;
-			v->next[3] = NULL;*/
-			v--;
-		}
-	}
-	free(v);
-}
-
-static void		free_i(t_input *file)
+static void	free_i(t_input *file)
 {
 	if (file->input)
 		ft_chararrclr(file->input, file->linelen * file->lines);
@@ -47,8 +24,10 @@ static void		free_i(t_input *file)
 
 void			free_all(t_wlist *w)
 {
-	if (w->v && w->file)
-		free_v(w->v, w->file);
-	if (w->file != NULL)
+	if (w->e)
+		free_edge(&w->e);
+	if (w->v)
+		free_vertex(&w->v);
+	if (w->file)
 		free_i(w->file);
 }

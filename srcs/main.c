@@ -21,21 +21,15 @@ int	main(int argc, char **argv)
 		ft_putendl("usage: ./fdf input_file");
 		return (0);
 	}
-	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
+	if (!(window.file = file_reader(open(argv[1], O_RDONLY))) || \
+	!(window.v = veconvertstart(window.file))  || \
+	!(window.e = edgefiller(window.file, window.v)))
 	{
 		if (window.file != NULL)
 			free_all(&window);
 		ft_putendl("error");
 		return (0);
 	}
-	if (!(window.v = veconvertstart(window.file)) \
-	|| !(window.e = edgefiller(window.file, window.v)))
-	{
-		free_all(&window);
-		ft_putendl("error");
-		return (0);
-	}
 	window_init_load(&window);
-	//free_all(&window);
 	return (0);
 }

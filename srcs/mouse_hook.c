@@ -15,7 +15,7 @@
 int	windowclose(void *window)
 {
 	(void)window;
-	ft_putstr("exiting");
+	free_all(&window);
 	exit(0);
 	return (0);
 }

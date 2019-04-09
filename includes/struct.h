@@ -21,14 +21,6 @@ typedef struct	s_pl
 	ve		n;
 }				pl; //(n)
 
-/*typedef struct	s_vertex
-{
-	ve					v;
-	struct s_vertex		*next[4];
-	char				*color;
-	bool				done;
-}				vertex; //(n)*/
-
 typedef struct	s_drawing_list
 {
 	struct s_vertex			*vert;
