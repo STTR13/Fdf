@@ -25,7 +25,6 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)keyboard.c \
 				$(SRC_PATH)mouse_draw.c \
 				$(SRC_PATH)line_grad.c \
-				$(SRC_PATH)error.c \
 
 OBJ = 			main.o \
 				windows.o \
@@ -37,7 +36,6 @@ OBJ = 			main.o \
 				keyboard.o \
 				mouse_draw.o \
 				line_grad.o \
-				error.o \
 
 INCLUDES = 	-I includes/
 
