@@ -24,6 +24,8 @@ static void	free_i(t_input *file)
 
 void			free_all(t_wlist *w)
 {
+	if (w->w)
+		free_window(w->w);
 	if (w->e)
 		free_edge(&w->e);
 	if (w->v)
