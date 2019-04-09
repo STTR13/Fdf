@@ -24,6 +24,7 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)vemaker2.c \
 				$(SRC_PATH)keyboard.c \
 				$(SRC_PATH)mouse_draw.c \
+				$(SRC_PATH)line_grad.c \
 
 OBJ = 			main.o \
 				windows.o \
@@ -34,6 +35,7 @@ OBJ = 			main.o \
 				vemaker2.o \
 				keyboard.o \
 				mouse_draw.o \
+				line_grad.o \
 
 INCLUDES = 	-I includes/
 

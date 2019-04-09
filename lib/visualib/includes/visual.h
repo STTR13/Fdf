@@ -172,6 +172,7 @@ bool			new_img(window *w);
 void			free_img(window *w);
 bool			re_img(window *w);
 bool			put_img(window *w);
+int				line_grad(int c1, int c2, double current);
 
 bool			set_pxl_img(window *w, int x, int y, int color);
 bool			draw_line_img(window *w, int coord[2][2]/*, int color[2]*/);
