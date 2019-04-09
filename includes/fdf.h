@@ -56,6 +56,7 @@ edge					*edgefiller(t_input *f, vertex *v);
 ve						createv(int z, int x, int y);
 void					mouse_draw_line(void *window, int x, int y);
 int get_color_grad(double percent, edge *e);
+void errormessage(int i, t_wlist *window);
 
 
 #endif
