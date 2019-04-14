@@ -18,17 +18,14 @@
 # include "symlink_visualib_includes/visual.h"
 # include <math.h>
 # include <fcntl.h>
-# include <stdio.h>
-
 # define WHEIGHT 1280
 # define WWIDTH 2280
-# define COLORWHITE 0xaabbcc
 
 typedef struct			s_input
 {
-	char	**input;
-	int		lines;
-	int		linelen;
+	char				**input;
+	int					lines;
+	int					linelen;
 }						t_input;
 
 /*
@@ -55,7 +52,7 @@ void					window_init_load(t_wlist *window);
 void					free_all(t_wlist *w);
 void					xlink(vertex *grid, t_input *file);
 void					ylink(vertex *grid, t_input *file);
-vertex					*veconvertstart(t_input *file, int x, int y);
+vertex					*veconvertstart(t_input *file);
 t_input					*file_reader(int fd);
 void					key_move(int key, t_wlist *window);
 void					key_zoom(int key, t_wlist *window);
@@ -66,6 +63,9 @@ int						mouse_move(int x, int y, void *window);
 edge					*edgefiller(t_input *f, vertex *v, int x, int y);
 ve						*createv(int z, int x, int y, ve *ret);
 void					refresh_win(t_wlist *wl);
+void					mouse_draw_line(void *window, int x, int y);
+int						get_color_grad(double percent, edge *e);
+void					errormessage(int i, t_wlist *window);
 
 
 #endif

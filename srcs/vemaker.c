@@ -12,16 +12,10 @@
 
 #include "../includes/fdf.h"
 
-/*static vertex		*new_grid(t_input *file)
-{
-	vertex *rvert;
-
-	rvert = NULL;
-	if (!(rvert = (vertex*)malloc(sizeof(vertex) \
-		* (file->lines * file->linelen + 1))))
-		return (NULL);
-	return (rvert);
-}*/
+/*
+** createv will take the read information together with positions x
+** and y in order to create a new vector
+*/
 
 ve					*createv(int z, int x, int y, ve *ret)
 {
@@ -31,33 +25,27 @@ ve					*createv(int z, int x, int y, ve *ret)
 	return (ret);
 }
 
-static vertex		*vertex_link(t_input *file, vertex *vert)
-{
-	int i;
+/*
+** veconvertstart and gridfiller work together. veconvertstart
+** will launch gridfiller in order to make a structured list
+** with all of the information from file_reader. gridfiller makes
+** use of 2 while loops in order to decide the x and y positions
+** and uses ft_atoi in order to convert the string to an int.
+** it will also use a hexadecimal converter in case of color input
+** in the read file. if there is no color input, a base value of
+** 255 will be given, which is the color blue.
+*/
 
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-		vert--;
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-	{
-		xlink(vert, file);
-		ylink(vert, file);
-		vert++;
-	}
-	i = file->lines * file->linelen;
-	while (--i >= 0)
-		vert--;
-	return (vert);
-}
-
-static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
+static vertex		*gridfiller(t_input *file, vertex *vert)
 {
 	int pos;
 	int temp;
 	ve v;
+	int x;
+	int y;
 
 	pos = 0;
+	y = 0;
 	while (y < file->lines)
 	{
 		x = 0;
@@ -75,12 +63,11 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 	return (vert);
 }
 
-vertex				*veconvertstart(t_input *file, int x, int y)
+vertex				*veconvertstart(t_input *file)
 {
 	vertex	*vert;
 
 	vert = NULL;
-	vert = gridfiller(file, x, y, vert);
-	//vert = vertex_link(file, vert);
+	vert = gridfiller(file, vert);
 	return (vert);
 }

@@ -17,25 +17,12 @@ int	main(int argc, char **argv)
 	t_wlist	window;
 
 	if (argc != 2)
-	{
-		ft_putendl("usage: ./fdf input_file");
-		return (0);
-	}
-	if ((window.file = file_reader(open(argv[1], O_RDONLY))) == NULL)
-	{
-		if (window.file != NULL)
-			free_all(&window);
-		ft_putendl("error");
-		return (0);
-	}
-	if (!(window.v = veconvertstart(window.file, 0, 0)) \
-	|| !(window.e = edgefiller(window.file, window.v, 0, 0)))
-	{
-		free_all(&window);
-		ft_putendl("error");
-		return (0);
-	}
+		errormessage(1, &window);
+	if (!(window.file = file_reader(open(argv[1], O_RDONLY)))\
+	|| !(window.v = veconvertstart(window.file))\
+	|| !(window.e = edgefiller(window.file, window.v)))
+		errormessage(2, &window);
 	window_init_load(&window);
-	//free_all(&window);
+	free_all(&window);
 	return (0);
 }

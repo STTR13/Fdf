@@ -23,11 +23,11 @@ INCLUDES = ./includes
 
 IMAGE_PATH = image/
 IMAGE =		image.o \
-			pixel.o
+			pixel.o \
 
 WIN_PATH = window/
 WIN = 	loop.o \
-		window.o
+		window.o \
 
 #KEY_PATH = key/
 #KEY =		key.o

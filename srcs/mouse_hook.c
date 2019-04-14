@@ -15,32 +15,18 @@
 int				windowclose(void *window)
 {
 	(void)window;
-	ft_putstr("exiting");
+	free_all(window);
 	exit(0);
 	return (0);
 }
 
 int				mouse_key(int key, int x, int y, void *window)
 {
-	int coord[2][2];
-
 	(void)window;
 	(void)x;
 	(void)y;
 	if (key == BUT1_KEY)
-	{
-		ft_putstr("Left Button\n");/*
-		//set_pxl_img(((t_wlist*)(window))->w, x, y, 255);
-		coord[0][0] = ((t_wlist*)(window))->mouse_last_pos[0];
-		coord[0][1] = ((t_wlist*)(window))->mouse_last_pos[1];
-		coord[1][0] = x;
-		coord[1][1] = y;
-		((t_wlist*)(window))->mouse_last_pos[0] = x;
-		((t_wlist*)(window))->mouse_last_pos[1] = y;
-		draw_line_img(((t_wlist*)(window))->w, coord);*/
-		((t_wlist*)(window))->mode = !((t_wlist*)(window))->mode;
-		refresh_win((t_wlist*)(window));
-	}
+		mouse_draw_line(window, x, y);
 	else if (key == BUT2_KEY)
 		ft_putstr("Right Button");
 	else if (key == BUT3_KEY)
