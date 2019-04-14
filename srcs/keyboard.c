@@ -23,23 +23,58 @@ int		key_press_all(int key, void *window)
 
 void	key_move(int key, t_wlist *window)
 {
-	(void)window;
+	matrix m;
+
 	if (key == W_KEY)
+	{
 		ft_putchar('W');
+		plus(&window->p.p, &window->p.n, &window->p.p);
+	}
 	else if (key == A_KEY)
+	{
 		ft_putchar('A');
+		minus(&window->p.p, &window->p.m, &window->p.p);
+	}
 	else if (key == S_KEY)
+	{
 		ft_putchar('S');
+		minus(&window->p.p, &window->p.n, &window->p.p);
+	}
 	else if (key == D_KEY)
+	{
 		ft_putchar('D');
-	else if (key == Q_KEY)
-		ft_putchar('Q');
+		plus(&window->p.p, &window->p.m, &window->p.p);
+	}
+	else if (key == R_KEY)
+	{
+		ft_putchar('R');
+		plus(&window->p.p, &window->p.l, &window->p.p);
+	}
+	else if (key == F_KEY)
+	{
+		ft_putchar('F');
+		minus(&window->p.p, &window->p.l, &window->p.p);
+	}
+	else if (key == V_KEY)
+	{
+		ft_putchar('V');
+		((t_wlist*)(window))->mode = !((t_wlist*)(window))->mode;
+	}
 	else if (key == E_KEY)
+	{
 		ft_putchar('E');
-	else if (key == H_KEY)
-		ft_putchar('H');
+		rot(&((t_wlist*)(window))->p.n, 0.1, &m);
+		rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
+	}
+	else if (key == Q_KEY)
+	{
+		ft_putchar('Q');
+		rot(&((t_wlist*)(window))->p.n, -0.1, &m);
+		rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
+	}
 	else if (key == ESC_KEY)
 		windowclose(window);
+	refresh_win((t_wlist*)(window));
 }
 
 void	key_zoom(int key, t_wlist *window)

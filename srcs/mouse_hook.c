@@ -12,6 +12,8 @@
 
 #include "../includes/fdf.h"
 
+#include <stdio.h> //(t)
+
 int				windowclose(void *window)
 {
 	(void)window;
@@ -48,9 +50,9 @@ int				mouse_move(int x, int y, void *window)
 	ft_putendl("");
 	ft_putnbr(y);
 	ft_putendl("");
-	rot(k(&v), -(x / 600.00), &m);
+	rot(&((t_wlist*)(window))->p.l, ((x - ((t_wlist*)(window))->mouse_last_pos[0]) / 1000.00), &m);
 	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
-	rot(&((t_wlist*)(window))->p.m, -(y / 600.00), &m);
+	rot(&((t_wlist*)(window))->p.m, ((y - ((t_wlist*)(window))->mouse_last_pos[1]) / 1000.00), &m);
 	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
 	((t_wlist*)(window))->mouse_last_pos[0] = x;
 	((t_wlist*)(window))->mouse_last_pos[1] = y;

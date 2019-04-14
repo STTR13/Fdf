@@ -60,7 +60,7 @@ void					change_view(int key, t_wlist *window);
 void					z_valuechange(int key, t_wlist *window);
 int						key_press_all(int key, void *window);
 int						mouse_move(int x, int y, void *window);
-edge					*edgefiller(t_input *f, vertex *v, int x, int y);
+edge					*edgefiller(t_input *f, vertex *v);
 ve						*createv(int z, int x, int y, ve *ret);
 void					refresh_win(t_wlist *wl);
 void					mouse_draw_line(void *window, int x, int y);

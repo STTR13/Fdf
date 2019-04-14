@@ -25,6 +25,4 @@ void	mouse_draw_line(void *window, int x, int y)
 	((t_wlist*)(window))->mouse_last_pos[0] = x;
 	((t_wlist*)(window))->mouse_last_pos[1] = y;
 	draw_line_img(((t_wlist*)(window))->w, coord);*/
-	((t_wlist*)(window))->mode = !((t_wlist*)(window))->mode;
-	refresh_win((t_wlist*)(window));
 }

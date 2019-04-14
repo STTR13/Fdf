@@ -42,14 +42,16 @@ static void		f2(vertex *vert, void *param)
 void			refresh_win(t_wlist *wl)
 {
 	printf("refresh\n");
-	//system_lmn_matrix(&wl->p, &wl->sysmat);
+	if (!re_img(wl->w))
+		return ;
+	system_lmn_matrix(&wl->p, &wl->sysmat);
 	//printf("lmn ok %d\n", wl->mode);
 	(wl->mode) ?
 		apply_vertex(&f2, wl->v, (void*)wl) :
 		apply_vertex(&f1, wl->v, (void*)wl);
-	printf("apply vertex done\n");
+	//printf("apply vertex done\n");
 	draw_model(wl->w, wl->e);
-	printf("draw model done\n");
+	//printf("draw model done\n");
 	put_img(wl->w);
-	printf("put img done\n");
+	//printf("put img done\n");
 }

@@ -44,6 +44,7 @@ static void	edgefiller_ver(t_input *f, vertex *v, edge **e)
 {
 	int x;
 	int y;
+	ve tv;
 
 	x = 0;
 	while (x < f->linelen)
