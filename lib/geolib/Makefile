@@ -29,7 +29,8 @@ MATRIX =	inverse.o \
 PLAN_PATH = plan/
 PLAN =		ordinatesystem.o \
 			projection.o \
-			rotation.o
+			rotation.o \
+			basicvalues.o
 
 VECTOR_PATH = vector/
 VECTOR =	basicvalues.o \
@@ -37,7 +38,7 @@ VECTOR =	basicvalues.o \
 			norm.o \
 			product.o \
 			sum.o \
-			#manip.o
+			rotation.o
 
 OBJ =	$(addprefix $(MATRIX_PATH), $(MATRIX)) \
 		$(addprefix $(PLAN_PATH), $(PLAN)) \

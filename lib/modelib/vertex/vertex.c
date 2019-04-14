@@ -12,20 +12,20 @@
 
 # include "modeling.h"
 
-vertex			*new_vertex(ve coord)
+vertex			*new_vertex(ve *coord)
 {
 	vertex *r;
 
 	if (!(r = (vertex*)malloc(sizeof(vertex))))
 		return (NULL);
-	copy_v(coord, &r->coord);
-	copy_v(coord, &r->prime);
+	r->coord = *coord;
+	r->prime = *coord;
 	r->next = NULL;
 	r->color = 255;
 	return (r);
 }
 
-vertex			*add_vertex(vertex *list, ve coord)
+vertex			*add_vertex(vertex *list, ve *coord)
 {
 	vertex *r;
 

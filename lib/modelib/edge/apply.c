@@ -24,10 +24,12 @@ void		draw_edge(window *w, edge *ed)
 {
 	int coord[2][2];
 
+	if (ed->vert1->prime.z < 0 || ed->vert2->prime.z < 0)
+		return ;
 	coord[0][0] = ed->vert1->prime.x;
-	coord[0][1] = ed->vert1->prime.z;
+	coord[0][1] = ed->vert1->prime.y;
 	coord[1][0] = ed->vert2->prime.x;
-	coord[1][1] = ed->vert2->prime.z;
+	coord[1][1] = ed->vert2->prime.y;
 	draw_line_img(w, coord);
 }
 

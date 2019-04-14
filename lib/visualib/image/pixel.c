@@ -52,6 +52,13 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 	int a, runaxis, i, d[2];
 	double pxl[2];
 
+	if (!w->img ||
+		((coord[0][0] < 0 || coord[0][1] < 0
+			|| coord[0][0] > w->width || coord[0][1] > w->height)
+		&&
+		(coord[1][0] < 0 || coord[1][1] < 0
+			|| coord[1][0] > w->width || coord[1][1] > w->height)))
+		return (false);
 	d[0] = abs_s(coord[0][0] - coord[1][0]);
 	d[1] = abs_s(coord[0][1] - coord[1][1]);
 	if (d[0] >= d[1])
@@ -67,8 +74,7 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 		pxl[0] = i + coord[a][runaxis];
 		pxl[1] = (d[runaxis] ? ((double)(d[!runaxis]) / d[runaxis]) : 0) * i
 						+ (double)coord[a][!runaxis];
-		if (!set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis], 255))
-			return (false);
+		set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis], 255);
 		i++;
 	}
 	return (true);

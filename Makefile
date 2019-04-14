@@ -6,13 +6,13 @@
 #    By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 16:14:57 by fabbenbr          #+#    #+#              #
-#    Updated: 2019/01/18 11:05:53 by fabbenbr         ###   ########.fr        #
+#    Updated: 2019/04/09 18:04:27 by staeter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-FLAGS = -Wall -Wextra
+FLAGS = -g -v -Wall -Wextra
 
 SRC_PATH = srcs/
 SRC = 			$(SRC_PATH)main.c \
@@ -23,6 +23,7 @@ SRC = 			$(SRC_PATH)main.c \
 				$(SRC_PATH)vemaker.c \
 				$(SRC_PATH)vemaker2.c \
 				$(SRC_PATH)keyboard.c \
+				$(SRC_PATH)refresh.c
 
 OBJ = 			main.o \
 				windows.o \
@@ -32,6 +33,7 @@ OBJ = 			main.o \
 				vemaker.o \
 				vemaker2.o \
 				keyboard.o \
+				refresh.o
 
 INCLUDES = 	-I includes/
 

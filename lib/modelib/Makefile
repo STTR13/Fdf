@@ -57,7 +57,7 @@ all:		$(NAME)
 
 clean:
 			@rm -f $(OBJ)
-			@echo "$(PURPLE_E)$(NAME)\tclean$(END_E)"
+			@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
 
 fclean:		clean
 			@rm -f $(NAME)

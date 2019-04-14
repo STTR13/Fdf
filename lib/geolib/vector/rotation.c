@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm.c                                             :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 19:40:28 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/04 19:40:29 by staeter          ###   ########.fr       */
+/*   Created: 2019/04/09 12:02:18 by staeter           #+#    #+#             */
+/*   Updated: 2019/04/09 12:02:26 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 
-double 			norm(ve *v)
+ve				*rot_v(matrix *rot_matrix, ve *rot_center, ve *coord)
 {
-	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
-}
+	ve t[2];
 
-ve				*unit(ve *v, ve *ret)
-{
-	double	n;
-
-	n = norm(v);
-	ret->x = v->x / n;
-	ret->y = v->y / n;
-	ret->z = v->z / n;
-	return (ret);
+	*coord = *plus(
+		rot_center,
+		dot_mv(
+			rot_matrix,
+			*minus(coord, rot_center, &t[0]),
+			&t[1]
+		),
+		&t[0]
+	);
+	return (coord);
 }

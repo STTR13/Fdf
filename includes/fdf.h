@@ -31,13 +31,21 @@ typedef struct			s_input
 	int		linelen;
 }						t_input;
 
+/*
+** ortho -> mode = 0
+** conic -> mode = 1
+*/
 typedef struct			s_wlist
 {
 	t_input			*file;
 	vertex			*v;
 	edge			*e;
 	window 			*w;
-	ve 				mouse_last_pos;
+	int				mouse_last_pos[2];
+	pl				p;
+	ve				eye;
+	matrix			sysmat;
+	bool			mode;
 }						t_wlist;
 
 int						deal_key(int key, t_wlist *window);
@@ -56,7 +64,8 @@ void					z_valuechange(int key, t_wlist *window);
 int						key_press_all(int key, void *window);
 int						mouse_move(int x, int y, void *window);
 edge					*edgefiller(t_input *f, vertex *v, int x, int y);
-ve						createv(int z, int x, int y);
+ve						*createv(int z, int x, int y, ve *ret);
+void					refresh_win(t_wlist *wl);
 
 
 #endif

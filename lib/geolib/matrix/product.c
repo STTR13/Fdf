@@ -12,24 +12,24 @@
 
 #include "geometry.h"
 
-ve				*dot_mv(matrix m, ve v, ve *ret)
+ve				*dot_mv(matrix *m, ve v, ve *ret)
 {
-	ret->x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z;
-	ret->y = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z;
-	ret->z = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z;
+	ret->x = m->ai * v.x + m->aj * v.y + m->ak * v.z;
+	ret->y = m->bi * v.x + m->bj * v.y + m->bk * v.z;
+	ret->z = m->ci * v.x + m->cj * v.y + m->ck * v.z;
 	return (ret);
 }
 
-matrix			*scal_m(matrix m, double s, matrix *ret)
+matrix			*scal_m(matrix *m, double s, matrix *ret)
 {
-	*ret[0][0] = m[0][0] * s;
-	*ret[0][1] = m[0][1] * s;
-	*ret[0][2] = m[0][2] * s;
-	*ret[1][0] = m[1][0] * s;
-	*ret[1][1] = m[1][1] * s;
-	*ret[1][2] = m[1][2] * s;
-	*ret[2][0] = m[2][0] * s;
-	*ret[2][1] = m[2][1] * s;
-	*ret[2][2] = m[2][2] * s;
+	ret->ai = m->ai * s;
+	ret->aj = m->aj * s;
+	ret->ak = m->ak * s;
+	ret->bi = m->bi * s;
+	ret->bj = m->bj * s;
+	ret->bk = m->bk * s;
+	ret->ci = m->ci * s;
+	ret->cj = m->cj * s;
+	ret->ck = m->ck * s;
 	return (ret);
 }

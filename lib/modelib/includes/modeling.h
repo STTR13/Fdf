@@ -37,13 +37,13 @@ typedef struct	s_edge
 ** --- Vertex ---
 */
 
-vertex			*new_vertex(ve coord);
-vertex			*add_vertex(vertex *list, ve coord);
+vertex			*new_vertex(ve *coord);
+vertex			*add_vertex(vertex *list, ve *coord);
 void			free_vertex(vertex **list);
 
 void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
 					void *param);
-vertex			*find_vertex(vertex *list, ve coord);
+vertex			*find_vertex(vertex *list, ve *coord);
 
 /*
 ** --- Edge ---

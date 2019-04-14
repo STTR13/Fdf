@@ -12,22 +12,22 @@
 
 #include "geometry.h"
 
-ve				*ortho_projection(ve point, pl p, ve *ret)
+ve				*ortho_projection(ve *point, pl *p, ve *ret)
 {
 	double	t;
 	ve		tv;
 
-	t = dot_vv(p.n, *minus(p.p, point, &tv)) / dot_vv(p.n, p.n);
-	return((t >= 0) ? nullvector(ret) : plus(point, *scal_v(p.n, t, &tv), ret));
+	t = dot_vv(&p->n, minus(&p->p, point, &tv)) / dot_vv(&p->n, &p->n); //(ni)
+	return((t >= 0) ? nullvector(ret) : plus(point, scal_v(&p->n, t, &tv), ret));
 }
 
-ve				*conic_projection(ve point, pl p, ve eye, ve *ret)
+ve				*conic_projection(ve *point, pl *p, ve *eye, ve *ret)
 {
 	double	t;
 	ve		nl;
 	ve		tv;
 
-	unit(*minus(point, eye, &tv), &nl);
-	t = dot_vv(p.n, *minus(p.p, point, &tv)) / dot_vv(p.n, nl);
-	return((t >= 0) ? nullvector(ret) : plus(point, *scal_v(nl, t, &tv), ret));
+	unit(minus(point, eye, &tv), &nl);
+	t = dot_vv(&p->n, minus(&p->p, point, &tv)) / dot_vv(&p->n, &nl);
+	return((t >= 0) ? nullvector(ret) : plus(point, scal_v(&nl, t, &tv), ret));
 }

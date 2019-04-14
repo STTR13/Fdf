@@ -12,18 +12,18 @@
 
 #include "geometry.h"
 
-ve				*minus(ve a, ve b, ve *ret)
+ve				*minus(ve *a, ve *b, ve *ret)
 {
-	ret->x = a.x - b.x;
-	ret->y = a.y - b.y;
-	ret->z = a.z - b.z;
+	ret->x = a->x - b->x;
+	ret->y = a->y - b->y;
+	ret->z = a->z - b->z;
 	return (ret);
 }
 
-ve				*plus(ve a, ve b, ve *ret)
+ve				*plus(ve *a, ve *b, ve *ret)
 {
-	ret->x = a.x + b.x;
-	ret->y = a.y + b.y;
-	ret->z = a.z + b.z;
+	ret->x = a->x + b->x;
+	ret->y = a->y + b->y;
+	ret->z = a->z + b->z;
 	return (ret);
 }

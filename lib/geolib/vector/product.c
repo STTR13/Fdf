@@ -12,23 +12,29 @@
 
 #include "geometry.h"
 
-ve 				*cross(ve a, ve b, ve *ret)
+/*
+** (a != ret && b != ret) need to be true
+*/
+ve 				*cross(ve *a, ve *b, ve *ret)
 {
-	ret->x = a.y * b.z - a.z * b.y;
-	ret->y = a.z * b.x - a.x * b.z;
-	ret->z = a.x * b.y - a.y * b.x;
+	ret->x = a->y * b->z - a->z * b->y;
+	ret->y = a->z * b->x - a->x * b->z;
+	ret->z = a->x * b->y - a->y * b->x;
 	return (ret);
 }
 
-double 			dot_vv(ve a, ve b)
+double 			dot_vv(ve *a, ve *b)
 {
-	return (a.x * b.x + a.y * b.y + a.z * b.z);
+	return (a->x * b->x + a->y * b->y + a->z * b->z);
 }
 
-ve				*scal(ve v, double s, ve *ret)
+/*
+** (v != ret) need to be true
+*/
+ve				*scal_v(ve *v, double s, ve *ret)
 {
-	ret->x = v.y * s;
-	ret->y = v.z * s;
-	ret->z = v.x * s;
+	ret->x = v->y * s;
+	ret->y = v->z * s;
+	ret->z = v->x * s;
 	return (ret);
 }

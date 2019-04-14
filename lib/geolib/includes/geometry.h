@@ -17,7 +17,18 @@
 
 typedef enum {false=0, true=1} bool;
 
-typedef double	matrix[3][3];
+typedef struct	s_matrix
+{
+	double	ai;
+	double	aj;
+	double	ak;
+	double	bi;
+	double	bj;
+	double	bk;
+	double	ci;
+	double	cj;
+	double	ck;
+}				matrix;
 
 typedef struct	s_ve
 {
@@ -39,14 +50,14 @@ typedef struct	s_pl
 */
 
 matrix			*I(matrix *ret);
-matrix			*rot(ve rot_axis, double angle, matrix *ret);
+matrix			*rot(ve *rot_axis, double angle, matrix *ret);
 
-matrix			*adj(matrix m, matrix *ret);
-double			det(matrix m);
-matrix			*inv(matrix m, matrix *ret);
+matrix			*adj(matrix *m, matrix *ret);
+double			det(matrix *m);
+matrix			*inv(matrix *m, matrix *ret);
 
-ve				*dot_mv(matrix m, ve v, ve *ret);
-matrix			*scal_m(matrix m, double s, matrix *ret);
+ve				*dot_mv(matrix *m, ve v, ve *ret);
+matrix			*scal_m(matrix *m, double s, matrix *ret);
 
 /*
 ** --- Vector ---
@@ -57,31 +68,34 @@ ve				*i(ve *ret);
 ve				*j(ve *ret);
 ve				*k(ve *ret);
 
-ve				*unit(ve v, ve *ret);
-double 			norm(ve v);
+ve				*unit(ve *v, ve *ret);
+double 			norm(ve *v);
 
-ve				*minus(ve a, ve b, ve *ret);
-ve				*plus(ve a, ve b, ve *ret);
+ve				*minus(ve *a, ve *b, ve *ret);
+ve				*plus(ve *a, ve *b, ve *ret);
 
-ve 				*cross(ve a, ve b, ve *ret);
-double 			dot_vv(ve a, ve b);
-ve				*scal_v(ve v, double s, ve *ret);
+ve 				*cross(ve *a, ve *b, ve *ret);
+double 			dot_vv(ve *a, ve *b);
+ve				*scal_v(ve *v, double s, ve *ret);
 
-bool			isnullvector(ve v);
-bool			equal_v(ve a, ve b);
-bool			equal_x_y(ve a, ve b);
-void			copy_v(ve origin, ve *dest);
+ve				*rot_v(matrix *rot_matrix, ve *rot_center, ve *coord);
+
+bool			isnullvector(ve *v);
+bool			equal_v(ve *a, ve *b);
+bool			equal_x_y(ve *a, ve *b);
 
 /*
 ** --- Plan ---
 */
 
+pl				*originsystem(pl *ret);
+
 void			set_lm(pl *p, bool toward_origin);
-matrix			*system_lmn_matrix(pl plan, matrix *ret);
+matrix			*system_lmn_matrix(pl *plan, matrix *ret);
 
-ve				*rot_pl(ve rot_axis, ve rot_center, pl p, double angle, matrix *ret);
+pl				*rot_p(matrix *rot_matrix, ve *rot_center, pl *plan);
 
-ve				*ortho_projection(ve point, pl plan, ve *ret);
-ve				*conic_projection(ve point, pl plan, ve eye, ve *ret);
+ve				*ortho_projection(ve *point, pl *plan, ve *ret);
+ve				*conic_projection(ve *point, pl *plan, ve *eye, ve *ret);
 
 #endif

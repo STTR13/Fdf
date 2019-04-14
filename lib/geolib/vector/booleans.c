@@ -12,30 +12,23 @@
 
 #include "geometry.h"
 
-bool			isnullvector(ve v)
+bool			isnullvector(ve *v)
 {
-	if (v.x == 0 && v.y == 0 && v.z == 0)
+	if (v->x == 0 && v->y == 0 && v->z == 0)
 		return (true);
 	return (false);
 }
 
-bool			equal_v(ve a, ve b)
+bool			equal_v(ve *a, ve *b)
 {
-	if (a.x == b.x && a.y == b.y && a.z == b.z)
+	if (a->x == b->x && a->y == b->y && a->z == b->z)
 		return (true);
 	return (false);
 }
 
-bool			equal_x_y(ve a, ve b)
+bool			equal_x_y(ve *a, ve *b)
 {
-	if (a.x == b.x && a.y == b.y)
+	if (a->x == b->x && a->y == b->y)
 		return (true);
 	return (false);
-}
-
-void	copy_v(ve origin, ve *dest)
-{
-	dest->x = origin.x;
-	dest->y = origin.y;
-	dest->z = origin.z;
 }

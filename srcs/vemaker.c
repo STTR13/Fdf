@@ -23,14 +23,12 @@
 	return (rvert);
 }*/
 
-ve					createv(int z, int x, int y)
+ve					*createv(int z, int x, int y, ve *ret)
 {
-	ve v;
-
-	v.x = x;
-	v.y = y;
-	v.z = z;
-	return (v);
+	ret->x = x;
+	ret->y = y;
+	ret->z = z;
+	return (ret);
 }
 
 static vertex		*vertex_link(t_input *file, vertex *vert)
@@ -57,6 +55,7 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 {
 	int pos;
 	int temp;
+	ve v;
 
 	pos = 0;
 	while (y < file->lines)
@@ -65,7 +64,7 @@ static vertex		*gridfiller(t_input *file, int x, int y, vertex *vert)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
-			if (!(vert = add_vertex(vert, createv(temp, x, y))))
+			if (!(vert = add_vertex(vert, createv(temp, x, y, &v))))
 				return (NULL);
 			vert->color = ft_hexaconverter(file->input[pos]);
 			pos++;

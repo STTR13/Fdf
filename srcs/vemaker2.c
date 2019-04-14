@@ -50,6 +50,7 @@ void	ylink(vertex *grid, t_input *file)
 edge	*edgefiller(t_input *f, vertex *v, int x, int y)
 {
 	edge *e;
+	ve tv;
 
 	e = NULL;
 	while (y < f->lines)
@@ -57,8 +58,8 @@ edge	*edgefiller(t_input *f, vertex *v, int x, int y)
 		x = 0;
 		while (x < f->linelen - 1)
 		{
-			e = add_edge(e, find_vertex(v, createv(0, x, y)), \
-			find_vertex(v, createv(0, x + 1, y)));
+			e = add_edge(e, find_vertex(v, createv(0, x, y, &tv)), \
+			find_vertex(v, createv(0, x + 1, y, &tv)));
 			x++;
 		}
 		y++;
@@ -69,8 +70,8 @@ edge	*edgefiller(t_input *f, vertex *v, int x, int y)
 		y = 0;
 		while (y < f->lines - 1)
 		{
-			e = add_edge(e, find_vertex(v, createv(0, x, y)), \
-			find_vertex(v, createv(0, x , y + 1)));
+			e = add_edge(e, find_vertex(v, createv(0, x, y, &tv)), \
+			find_vertex(v, createv(0, x , y + 1, &tv)));
 			y++;
 		}
 		x++;
