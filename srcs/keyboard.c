@@ -30,15 +30,15 @@ void	key_move(int key, t_wlist *window)
 		ft_putchar('W');
 		plus(&window->p.p, &window->p.n, &window->p.p);
 	}
-	else if (key == A_KEY)
-	{
-		ft_putchar('A');
-		minus(&window->p.p, &window->p.m, &window->p.p);
-	}
 	else if (key == S_KEY)
 	{
 		ft_putchar('S');
 		minus(&window->p.p, &window->p.n, &window->p.p);
+	}
+	else if (key == A_KEY)
+	{
+		ft_putchar('A');
+		minus(&window->p.p, &window->p.m, &window->p.p);
 	}
 	else if (key == D_KEY)
 	{
