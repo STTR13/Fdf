@@ -22,9 +22,9 @@
 
 static void	edgefiller_hor(t_input *f, vertex *v, edge **e)
 {
-	int x;
-	int y;
-	ve tv;
+	int	x;
+	int	y;
+	ve	tv;
 
 	y = 0;
 	while (y < f->lines)
@@ -42,9 +42,9 @@ static void	edgefiller_hor(t_input *f, vertex *v, edge **e)
 
 static void	edgefiller_ver(t_input *f, vertex *v, edge **e)
 {
-	int x;
-	int y;
-	ve tv;
+	int	x;
+	int	y;
+	ve	tv;
 
 	x = 0;
 	while (x < f->linelen)
@@ -53,7 +53,7 @@ static void	edgefiller_ver(t_input *f, vertex *v, edge **e)
 		while (y < f->lines - 1)
 		{
 			*e = add_edge(*e, find_vertex(v, createv(0, x, y, &tv)),\
-			find_vertex(v, createv(0, x , y + 1, &tv)));
+			find_vertex(v, createv(0, x, y + 1, &tv)));
 			y++;
 		}
 		x++;

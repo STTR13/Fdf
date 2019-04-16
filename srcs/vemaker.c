@@ -36,13 +36,11 @@ ve					*createv(int z, int x, int y, ve *ret)
 ** 255 will be given, which is the color blue.
 */
 
-static vertex		*gridfiller(t_input *file, vertex *vert)
+static vertex		*gridfiller(t_input *file, vertex *vert, int x, int y)
 {
 	int pos;
 	int temp;
-	ve v;
-	int x;
-	int y;
+	ve	v;
 
 	pos = 0;
 	y = 0;
@@ -66,8 +64,12 @@ static vertex		*gridfiller(t_input *file, vertex *vert)
 vertex				*veconvertstart(t_input *file)
 {
 	vertex	*vert;
+	int		x;
+	int		y;
 
+	x = 0;
+	y = 0;
 	vert = NULL;
-	vert = gridfiller(file, vert);
+	vert = gridfiller(file, vert, x, y);
 	return (vert);
 }
