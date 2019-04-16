@@ -14,34 +14,34 @@
 
 int		key_press_all(int key, void *window)
 {
-	key_move(key, (t_wlist *)window);
-	key_zoom(key, (t_wlist *)window);
-	change_view(key, (t_wlist *)window);
+	key_move(key, (warehouse *)window);
+	key_zoom(key, (warehouse *)window);
+	change_view(key, (warehouse *)window);
 	return (0);
 }
 
-void	key_move2(int key, t_wlist *window)
+void	key_move2(int key, warehouse *window)
 {
 	matrix m;
 
 	if (key == V_KEY)
-		((t_wlist*)(window))->mode = !((t_wlist*)(window))->mode;
+		((warehouse*)(window))->mode = !((warehouse*)(window))->mode;
 	else if (key == E_KEY)
 	{
-		rot(&((t_wlist*)(window))->p.n, 0.1, &m);
-		rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
+		rot(&((warehouse*)(window))->p.n, 0.1, &m);
+		rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
 	}
 	else if (key == Q_KEY)
 	{
-		rot(&((t_wlist*)(window))->p.n, -0.1, &m);
-		rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
+		rot(&((warehouse*)(window))->p.n, -0.1, &m);
+		rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
 	}
 	else if (key == ESC_KEY)
 		windowclose(window);
-	refresh_win((t_wlist*)(window));
+	refresh_win((warehouse*)(window));
 }
 
-void	key_move(int key, t_wlist *window)
+void	key_move(int key, warehouse *window)
 {
 	if (key == W_KEY)
 		minus(&window->p.p, &window->p.n, &window->p.p);
@@ -57,10 +57,10 @@ void	key_move(int key, t_wlist *window)
 		minus(&window->p.p, &window->p.l, &window->p.p);
 	else
 		key_move2(key, window);
-	refresh_win((t_wlist*)(window));
+	refresh_win((warehouse*)(window));
 }
 
-void	key_zoom(int key, t_wlist *window)
+void	key_zoom(int key, warehouse *window)
 {
 	(void)window;
 	if (key == 78)
@@ -69,7 +69,7 @@ void	key_zoom(int key, t_wlist *window)
 		ft_putchar('+');
 }
 
-void	change_view(int key, t_wlist *window)
+void	change_view(int key, warehouse *window)
 {
 	(void)window;
 	if (key == 18)

@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_wlist	window;
+	warehouse	window;
 
 	if (argc != 2)
 		errormessage(1, &window);

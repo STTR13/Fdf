@@ -17,8 +17,8 @@ static void		f1(vertex *vert, void *param)
 	ve t;
 
 	//printf("f1\n");
-	minus(&vert->coord, &((t_wlist*)(param))->p.p, &t);
-	dot_mv(&((t_wlist*)(param))->sysmat, t, &vert->prime);
+	minus(&vert->coord, &((warehouse*)(param))->p.p, &t);
+	dot_mv(&((warehouse*)(param))->sysmat, t, &vert->prime);
 }
 
 static void		f2(vertex *vert, void *param)
@@ -27,16 +27,16 @@ static void		f2(vertex *vert, void *param)
 	ve tv;
 
 	//printf("f2\n");
-	minus(&vert->coord, &((t_wlist*)(param))->p.p, &tv);
-	dot_mv(&((t_wlist*)(param))->sysmat, tv, &tv);
+	minus(&vert->coord, &((warehouse*)(param))->p.p, &tv);
+	dot_mv(&((warehouse*)(param))->sysmat, tv, &tv);
 	conic_projection(
 		&tv,
 		originsystem(&tp),
-		&((t_wlist*)(param))->eye,
+		&((warehouse*)(param))->eye,
 		&vert->prime);
 }
 
-void			refresh_win(t_wlist *wl)
+void			refresh_win(warehouse *wl)
 {
 	if (!re_img(wl->w))
 		return ;
