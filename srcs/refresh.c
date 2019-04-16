@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fdf.h"
-
-#include <stdio.h> //(t)
+#include "fdf.h"
 
 static void		f1(vertex *vert, void *param)
 {
@@ -35,23 +33,17 @@ static void		f2(vertex *vert, void *param)
 		&tv,
 		originsystem(&tp),
 		&((t_wlist*)(param))->eye,
-		&vert->prime
-	);
+		&vert->prime);
 }
 
 void			refresh_win(t_wlist *wl)
 {
-	printf("refresh\n");
 	if (!re_img(wl->w))
 		return ;
 	system_lmn_matrix(&wl->p, &wl->sysmat);
-	//printf("lmn ok %d\n", wl->mode);
 	(wl->mode) ?
 		apply_vertex(&f2, wl->v, (void*)wl) :
 		apply_vertex(&f1, wl->v, (void*)wl);
-	//printf("apply vertex done\n");
 	draw_model(wl->w, wl->e);
-	//printf("draw model done\n");
 	put_img(wl->w);
-	//printf("put img done\n");
 }
