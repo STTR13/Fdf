@@ -19,39 +19,11 @@
 # include <math.h>
 # include <fcntl.h>
 
-typedef struct			s_input
-{
-	char				**input;
-	int					lines;
-	int					linelen;
-}						t_input;
-
-/*
-** ortho -> mode = 0
-** conic -> mode = 1
-*/
-typedef struct			s_warehouse
-{
-	t_input			*file;
-	vertex			*v;
-	edge			*e;
-	window 			*w;
-	int				mouse_last_pos[2];
-	pl				p;
-	ve				eye;
-	matrix			sysmat;
-	bool			mode;
-}						warehouse;
-
 /*
 ** --- File reader and date organization ---
 */
+
 t_input					*file_reader(int fd);
-vertex					*veconvertstart(t_input *file);
-void					xlink(vertex *grid, t_input *file);
-void					ylink(vertex *grid, t_input *file);
-edge					*edgefiller(t_input *f, vertex *v);
-ve						*createv(int z, int x, int y, ve *ret);
 void					errormessage(int i, warehouse *window);
 int						get_color_grad(double percent, edge *e);
 void					free_all(warehouse *w);
@@ -59,6 +31,7 @@ void					free_all(warehouse *w);
 /*
 ** --- Window ---
 */
+
 void					window_init_load(warehouse *window);
 int						windowclose(void *window);
 void					refresh_win(warehouse *wl);
@@ -66,6 +39,7 @@ void					refresh_win(warehouse *wl);
 /*
 ** --- Keys and Mouse ---
 */
+
 int						deal_key(int key, warehouse *window);
 int						mouse_key(int key,  int x, int y, void *window);
 void					key_move(int key, warehouse *window);

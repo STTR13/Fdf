@@ -29,8 +29,13 @@ EDGE_PATH = edge/
 EDGE =			apply.o \
 				edge.o
 
+FO_PATH = file_organizer/
+FO =			vemaker.o \
+				vemaker2.o
+
 OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
-		$(addprefix $(EDGE_PATH), $(EDGE))
+		$(addprefix $(EDGE_PATH), $(EDGE)) \
+		$(addprefix $(FO_PATH), $(FO)) \
 
 
 

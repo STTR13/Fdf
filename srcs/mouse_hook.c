@@ -12,14 +12,6 @@
 
 #include "../includes/fdf.h"
 
-int				windowclose(void *window)
-{
-	(void)window;
-	free_all(window);
-	exit(0);
-	return (0);
-}
-
 int				mouse_key(int key, int x, int y, void *window)
 {
 	(void)window;

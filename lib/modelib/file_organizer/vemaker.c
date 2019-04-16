@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "modeling.h"
 
 /*
 ** createv will take the read information together with positions x

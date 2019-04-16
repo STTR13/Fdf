@@ -17,6 +17,7 @@
 
 # include "symlink_geolib_includes/geometry.h"
 # include "symlink_visualib_includes/visual.h"
+# include "../../libft/includes/get_next_line.h"
 
 typedef struct	s_vertex
 {
@@ -32,6 +33,34 @@ typedef struct	s_edge
 	vertex				*vert2;
 	struct s_edge		*next;
 }				edge;
+
+typedef struct			s_input
+{
+	char				**input;
+	int					lines;
+	int					linelen;
+}						t_input;
+
+typedef struct			s_warehouse
+{
+	t_input			*file;
+	vertex			*v;
+	edge			*e;
+	window 			*w;
+	int				mouse_last_pos[2];
+	pl				p;
+	ve				eye;
+	matrix			sysmat;
+	bool			mode;
+}						warehouse;
+
+/*
+** --- File Organizer ---
+*/
+
+vertex					*veconvertstart(t_input *file);
+edge					*edgefiller(t_input *f, vertex *v);
+ve						*createv(int z, int x, int y, ve *ret);
 
 /*
 ** --- Vertex ---
