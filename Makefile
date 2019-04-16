@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FLAGS = -g -v -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = srcs/
 SRC = 			$(SRC_PATH)main.c \
@@ -75,7 +75,7 @@ $(NAME):
 	@$(MAKE) -C lib/modelib/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
 	@$(MAKE) -C lib/visualib/
-	@gcc -c $(SRC) $(INCLUDES) #$(FLAGS)
+	@gcc -c $(SRC) $(INCLUDES) $(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
 	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"
@@ -86,7 +86,7 @@ clean:
 	@$(MAKE) -C lib/geolib/ clean
 	@$(MAKE) -C lib/modelib/ clean
 	@$(MAKE) -C lib/visualib/ clean
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 	@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
 
 fclean: clean
@@ -96,7 +96,7 @@ fclean: clean
 	@$(MAKE) -C lib/minilibx_macos/ fclean
 	@$(MAKE) -C lib/visualib/ fclean
 	@echo "$(RED_E)$(NAME)\tfclean$(END_E)"
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

@@ -44,13 +44,13 @@ void	key_move2(int key, t_wlist *window)
 void	key_move(int key, t_wlist *window)
 {
 	if (key == W_KEY)
-		plus(&window->p.p, &window->p.n, &window->p.p);
-	else if (key == S_KEY)
 		minus(&window->p.p, &window->p.n, &window->p.p);
+	else if (key == S_KEY)
+		plus(&window->p.p, &window->p.n, &window->p.p);
 	else if (key == A_KEY)
-		minus(&window->p.p, &window->p.m, &window->p.p);
-	else if (key == D_KEY)
 		plus(&window->p.p, &window->p.m, &window->p.p);
+	else if (key == D_KEY)
+		minus(&window->p.p, &window->p.m, &window->p.p);
 	else if (key == R_KEY)
 		plus(&window->p.p, &window->p.l, &window->p.p);
 	else if (key == F_KEY)

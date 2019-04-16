@@ -22,7 +22,6 @@ int			get_color_grad(double percent, edge *e)
 	int		red;
 	int		green;
 	int		blue;
-	double	percentage;
 
 	if (e->vert1->color == e->vert2->color)
 		return (e->vert1->color);

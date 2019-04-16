@@ -1,7 +1,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef enum {false=0, true=1}
+typedef enum {	false = 0, true = 1}
 				bool;
 
 typedef double	matrix[3][3];

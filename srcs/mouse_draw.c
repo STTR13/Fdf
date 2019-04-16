@@ -16,7 +16,6 @@ void	mouse_draw_line(void *window, int x, int y)
 {
 	static int coord[2][2];
 
-	ft_putstr("Left Button\n");
 	coord[0][0] = ((t_wlist*)(window))->mouse_last_pos[0];
 	coord[0][1] = ((t_wlist*)(window))->mouse_last_pos[1];
 	coord[1][0] = x;

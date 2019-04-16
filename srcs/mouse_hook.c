@@ -41,7 +41,6 @@ int				mouse_key(int key, int x, int y, void *window)
 int				mouse_move(int x, int y, void *window)
 {
 	matrix	m;
-	ve		v;
 
 	if (x - ((t_wlist*)(window))->mouse_last_pos[0] > 300 ||\
 	y - ((t_wlist*)(window))->mouse_last_pos[1] > 300)

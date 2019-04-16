@@ -29,7 +29,7 @@ void	window_init_load(t_wlist *window)
 	window->eye.z = 0;
 	window->w->hook.expose = &expose;
 	window->w->hook.param = (void *)window;
-	window->w->hook.key_release = &key_press_all;
+	window->w->hook.key_press = &key_press_all;
 	window->w->hook.mouse_press = &mouse_key;
 	window->w->hook.close = &windowclose;
 	window->w->hook.mouse_move = &mouse_move;
