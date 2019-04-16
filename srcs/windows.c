@@ -11,17 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h> //(t)
 
 int		expose(void *window)
 {
-	printf("expose\n");
 	originsystem(&((t_wlist*)(window))->p);
 	refresh_win((t_wlist*)window);
 	return (0);
 }
-
-// window->w->hook.mouse_move = &mouse_move;
 
 void	window_init_load(t_wlist *window)
 {

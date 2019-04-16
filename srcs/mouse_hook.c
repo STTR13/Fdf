@@ -45,7 +45,8 @@ int				mouse_move(int x, int y, void *window)
 	matrix m;
 	ve v;
 
-	if (x - ((t_wlist*)(window))->mouse_last_pos[0] > 300 || y - ((t_wlist*)(window))->mouse_last_pos[1] > 300)
+	if (x - ((t_wlist*)(window))->mouse_last_pos[0] > 300 ||\
+	y - ((t_wlist*)(window))->mouse_last_pos[1] > 300)
 	{
 		((t_wlist*)(window))->mouse_last_pos[0] = x;
 		((t_wlist*)(window))->mouse_last_pos[1] = y;
@@ -56,9 +57,11 @@ int				mouse_move(int x, int y, void *window)
 	ft_putendl("");
 	ft_putnbr(y);
 	ft_putendl("");
-	rot(&((t_wlist*)(window))->p.l, ((x - ((t_wlist*)(window))->mouse_last_pos[0]) / 1000.00), &m);
+	rot(&((t_wlist*)(window))->p.l,\
+	((x - ((t_wlist*)(window))->mouse_last_pos[0]) / 1000.00), &m);
 	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
-	rot(&((t_wlist*)(window))->p.m, ((((t_wlist*)(window))->mouse_last_pos[1] - y) / 1000.00), &m);
+	rot(&((t_wlist*)(window))->p.m,\
+	((((t_wlist*)(window))->mouse_last_pos[1] - y) / 1000.00), &m);
 	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
 	((t_wlist*)(window))->mouse_last_pos[0] = x;
 	((t_wlist*)(window))->mouse_last_pos[1] = y;
