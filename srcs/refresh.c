@@ -19,20 +19,20 @@ static void		f1(vertex *vert, void *param)
 	ve t;
 
 	//printf("f1\n");
-	dot_mv(&((t_wlist*)(param))->sysmat, vert->coord, &t);
-	minus(&t, &((t_wlist*)(param))->p.p, &vert->prime);
+	minus(&vert->coord, &((t_wlist*)(param))->p.p, &t);
+	dot_mv(&((t_wlist*)(param))->sysmat, t, &vert->prime);
 }
 
 static void		f2(vertex *vert, void *param)
 {
 	pl tp;
-	ve tv[2];
+	ve tv;
 
 	//printf("f2\n");
-	dot_mv(&((t_wlist*)(param))->sysmat, vert->coord, &tv[0]);
-	minus(&tv[0], &((t_wlist*)(param))->p.p, &tv[1]);
+	minus(&vert->coord, &((t_wlist*)(param))->p.p, &tv);
+	dot_mv(&((t_wlist*)(param))->sysmat, tv, &tv);
 	conic_projection(
-		&tv[1],
+		&tv,
 		originsystem(&tp),
 		&((t_wlist*)(param))->eye,
 		&vert->prime

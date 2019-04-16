@@ -26,11 +26,17 @@ int		expose(void *window)
 void	window_init_load(t_wlist *window)
 {
 	window->w = new_window("FDF", 1000, 1000);
-	originsystem(&window->p);
+	window->p.n.x = 1;
+	window->p.n.y = 1;
+	window->p.n.z = -1;
+	unit(&window->p.n, &window->p.n);
+	window->p.p.x = 0;
+	window->p.p.y = 0;
+	window->p.p.z = 5;
+	set_lm(&window->p, 1);
 	window->eye.x = 0;
 	window->eye.y = 0;
-	window->eye.z = -10;
-	window->eye.z = 0;
+	window->eye.z = -7;
 	window->w->hook.expose = &expose;
 	window->w->hook.param = (void *)window;
 	window->w->hook.key_release = &key_press_all;
