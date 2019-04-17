@@ -50,4 +50,10 @@ void		errormessage(int i, warehouse *window)
 		ft_putendl("error");
 		exit(0);
 	}
+	else if (i == 3)
+	{
+		free_all(window);
+		ft_putendl("wrong file type");
+		exit(0);
+	}
 }

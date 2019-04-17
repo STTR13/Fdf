@@ -25,7 +25,8 @@ SRC = 			main.o \
 				mouse_draw.o \
 				line_grad.o \
 				refresh.o \
-				windows.o
+				windows.o \
+				#file_reader_obj.o \
 
 OBJ = 			$(addprefix $(SRC_PATH), $(SRC))
 
