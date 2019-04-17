@@ -25,7 +25,7 @@ static void	free_i(t_input *file)
 	free(file);
 }
 
-void		free_all(t_wlist *w)
+void		free_all(warehouse *w)
 {
 	if (w->w)
 		free_window(w->w);
@@ -37,7 +37,7 @@ void		free_all(t_wlist *w)
 		free_i(w->file);
 }
 
-void		errormessage(int i, t_wlist *window)
+void		errormessage(int i, warehouse *window)
 {
 	if (i == 1)
 	{

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "modeling.h"
 
 /*
 ** edgefiller will launch edgefiller_hor and edgefiller_ver.

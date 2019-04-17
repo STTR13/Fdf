@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "modeling.h"
 
 /*
 ** createv will take the read information together with positions x
@@ -50,7 +50,7 @@ static vertex		*gridfiller(t_input *file, vertex *vert, int x, int y)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
-			if (!(vert = add_vertex(vert, createv(temp, x, y, &v))))
+			if (!(vert = add_vertex(vert, createv(temp, x, y, &v), 0)))
 				return (NULL);
 			vert->color = ft_hexaconverter(file->input[pos]);
 			pos++;

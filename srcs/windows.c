@@ -12,13 +12,21 @@
 
 #include "../includes/fdf.h"
 
-int		expose(void *window)
+int			windowclose(void *window)
 {
-	refresh_win((t_wlist*)window);
+	free_all(window);
+	exit(0);
 	return (0);
 }
 
-void	window_init_load(t_wlist *window)
+static int	expose(void *window)
+{
+	originsystem(&((warehouse*)(window))->p);
+	refresh_win((warehouse*)window);
+	return (0);
+}
+
+void		window_init_load(warehouse *window)
 {
 	window->w = new_window("FDF", 1000, 1000);
 	window->p.n.x = 1;

@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 static void		f1(vertex *vert, void *param)
 {
 	ve t;
 
 	//printf("f1\n");
-	minus(&vert->coord, &((t_wlist*)(param))->p.p, &t);
-	dot_mv(&((t_wlist*)(param))->sysmat, t, &vert->prime);
+	minus(&vert->coord, &((warehouse*)(param))->p.p, &t);
+	dot_mv(&((warehouse*)(param))->sysmat, t, &vert->prime);
 }
 
 static void		f2(vertex *vert, void *param)
@@ -39,7 +39,7 @@ static void		f2(vertex *vert, void *param)
 		vert->prime = ((t_wlist*)(param))->eye;
 }
 
-void			refresh_win(t_wlist *wl)
+void			refresh_win(warehouse *wl)
 {
 	if (!re_img(wl->w))
 		return ;

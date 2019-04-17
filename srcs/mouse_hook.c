@@ -12,14 +12,6 @@
 
 #include "../includes/fdf.h"
 
-int				windowclose(void *window)
-{
-	(void)window;
-	free_all(window);
-	exit(0);
-	return (0);
-}
-
 int				mouse_key(int key, int x, int y, void *window)
 {
 	(void)window;
@@ -42,11 +34,11 @@ int				mouse_move(int x, int y, void *window)
 {
 	matrix	m;
 
-	if (x - ((t_wlist*)(window))->mouse_last_pos[0] > 300 ||\
-	y - ((t_wlist*)(window))->mouse_last_pos[1] > 300)
+	if (x - ((warehouse*)(window))->mouse_last_pos[0] > 300 ||\
+	y - ((warehouse*)(window))->mouse_last_pos[1] > 300)
 	{
-		((t_wlist*)(window))->mouse_last_pos[0] = x;
-		((t_wlist*)(window))->mouse_last_pos[1] = y;
+		((warehouse*)(window))->mouse_last_pos[0] = x;
+		((warehouse*)(window))->mouse_last_pos[1] = y;
 		return (0);
 	}
 	ft_putendl("Mouse_move");
@@ -54,12 +46,12 @@ int				mouse_move(int x, int y, void *window)
 	ft_putendl("");
 	ft_putnbr(y);
 	ft_putendl("");
-	rot(&((t_wlist*)(window))->p.l, ((x - ((t_wlist*)(window))->mouse_last_pos[0]) / 700.00), &m);
-	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
-	rot(&((t_wlist*)(window))->p.m, ((((t_wlist*)(window))->mouse_last_pos[1] - y) / 700.00), &m);
-	rot_p(&m, &((t_wlist*)(window))->p.p, &((t_wlist*)(window))->p);
-	((t_wlist*)(window))->mouse_last_pos[0] = x;
-	((t_wlist*)(window))->mouse_last_pos[1] = y;
-	refresh_win((t_wlist*)window);
+	rot(&((warehouse*)(window))->p.l, ((x - ((warehouse*)(window))->mouse_last_pos[0]) / 700.00), &m);
+	rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
+	rot(&((warehouse*)(window))->p.m, ((((warehouse*)(window))->mouse_last_pos[1] - y) / 700.00), &m);
+	rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
+	((warehouse*)(window))->mouse_last_pos[0] = x;
+	((warehouse*)(window))->mouse_last_pos[1] = y;
+	refresh_win((warehouse*)window);
 	return (0);
 }

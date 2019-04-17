@@ -12,36 +12,24 @@
 
 NAME = fdf
 
+CC = gcc
+
 FLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = srcs/
-SRC = 			$(SRC_PATH)main.c \
-				$(SRC_PATH)windows.c \
-				$(SRC_PATH)mouse_hook.c \
-				$(SRC_PATH)file_reader.c \
-				$(SRC_PATH)free.c \
-				$(SRC_PATH)vemaker.c \
-				$(SRC_PATH)vemaker2.c \
-				$(SRC_PATH)keyboard.c \
-				$(SRC_PATH)refresh.c \
-				$(SRC_PATH)mouse_draw.c \
-				$(SRC_PATH)line_grad.c \
-
-OBJ = 			main.o \
-				windows.o \
+SRC = 			main.o \
 				mouse_hook.o \
-				file_reader.o \
+				file_reader_fdf.o \
 				free.o \
-				vemaker.o \
-				vemaker2.o \
 				keyboard.o \
-				refresh.o \
 				mouse_draw.o \
 				line_grad.o \
+				refresh.o \
+				windows.o
+
+OBJ = 			$(addprefix $(SRC_PATH), $(SRC))
 
 INCLUDES = 	-I includes/
-
-
 
 FRAMEW = -framework OpenGL -framework AppKit
 
@@ -61,10 +49,7 @@ WHITE_E     = \033[01;37m
 BOLD_E      = \033[1m
 UNDERLINE_E = \033[4m
 
-
-all: $(NAME)
-
-$(NAME):
+$(NAME): $(OBJ)
 	@echo "$(PURPLE_E)$(NAME)\tCompiling libft$(END_E)"
 	@$(MAKE) -C lib/libft/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling geolib$(END_E)"
@@ -75,10 +60,14 @@ $(NAME):
 	@$(MAKE) -C lib/modelib/
 	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
 	@$(MAKE) -C lib/visualib/
-	@gcc -c $(SRC) $(INCLUDES) $(FLAGS)
 	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
-	@gcc -o $(NAME) $(OBJ) $(LIB) $(FRAMEW)
+	$(CC) -o $@ $^ $(LIB) $(FRAMEW)
 	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"
+
+all: $(NAME)
+
+%.o:        %.c
+	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 clean:
 	@$(MAKE) -C lib/libft/ clean
