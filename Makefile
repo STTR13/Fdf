@@ -68,7 +68,7 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 %.o:        %.c
-	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	@$(CC) -c -o $@ $< $(INCLUDES) #$(CFLAGS)
 
 clean:
 	@$(MAKE) -C lib/libft/ clean

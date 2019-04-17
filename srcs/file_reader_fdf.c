@@ -109,6 +109,11 @@ t_input			*file_reader_fdf(int fd)
 		str = ft_strjoinn(str, line);
 		if (lst->lines == 0)
 			lst->linelen = linelen(str);
+		if (ft_strlen(line) != lst->linelen)
+		{
+			free(line);
+			return (NULL);
+		}
 		lst->lines += 1;
 		free(line);
 	}
