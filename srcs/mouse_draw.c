@@ -15,6 +15,7 @@
 void	mouse_draw_line(void *window, int x, int y)
 {
 	static int coord[2][2];
+	int color[2];
 
 	coord[0][0] = ((warehouse*)(window))->mouse_last_pos[0];
 	coord[0][1] = ((warehouse*)(window))->mouse_last_pos[1];
@@ -22,5 +23,7 @@ void	mouse_draw_line(void *window, int x, int y)
 	coord[1][1] = y;
 	((warehouse*)(window))->mouse_last_pos[0] = x;
 	((warehouse*)(window))->mouse_last_pos[1] = y;
-	draw_line_img(((warehouse*)(window))->w, coord);
+	color[0] = (240 << 16) | (59 << 8) | 59;
+	color[1] = (240 << 16) | (137 << 8) | 68;
+	draw_line_img(((warehouse*)(window))->w, coord, color);
 }

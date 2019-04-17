@@ -17,8 +17,16 @@ static void		f1(vertex *vert, void *param)
 	ve t;
 
 	//printf("f1\n");
-	minus(&vert->coord, &((warehouse*)(param))->p.p, &t);
-	dot_mv(&((warehouse*)(param))->sysmat, t, &vert->prime);
+	minus(
+		&vert->coord,
+		&((warehouse*)(param))->p.p,
+		&t
+	);
+	dot_mv(
+		&((warehouse*)(param))->sysmat,
+		t,
+		&vert->prime
+	);
 }
 
 static void		f2(vertex *vert, void *param)

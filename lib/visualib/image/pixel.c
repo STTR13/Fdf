@@ -39,6 +39,11 @@ static int	abs_s(int nb)
 	return (nb);
 }
 
+static int	get_light(int start, int end, double percentage)
+{
+	return ((1 - percentage) * start + percentage * end);
+}
+
 /*
 ** coord x of A = coord[0][0]
 ** coord y of A = coord[0][1]
@@ -47,9 +52,9 @@ static int	abs_s(int nb)
 ** color on A = color[0]
 ** color on B = color[1]
 */
-bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
+bool		draw_line_img(window *w, int coord[2][2], int color[2])
 {
-	int a, runaxis, i, d[2];
+	int a, runaxis, i, d[2], c;
 	double pxl[2];
 
 	if (!w->img ||
@@ -68,13 +73,16 @@ bool		draw_line_img(window *w, int coord[2][2]/*, int color[2]*/)
 	a = coord[0][runaxis] > coord[1][runaxis];
 	d[0] = coord[!a][0] - coord[a][0];
 	d[1] = coord[!a][1] - coord[a][1];
+	c = get_light(color[a], color[!a],
+		(double)(coord[a][runaxis]) /
+		(coord[a][runaxis] + coord[!a][runaxis]));
 	i = 0;
 	while (i <= d[runaxis])
 	{
 		pxl[0] = i + coord[a][runaxis];
 		pxl[1] = (d[runaxis] ? ((double)(d[!runaxis]) / d[runaxis]) : 0) * i
 						+ (double)coord[a][!runaxis];
-		set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis], 255);
+		set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis], c);
 		i++;
 	}
 	return (true);

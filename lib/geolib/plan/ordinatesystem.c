@@ -45,22 +45,14 @@ matrix	*system_lmn_matrix(pl *plan, matrix *ret)
 {
 	matrix m;
 
-	printf("system_lmn_matrix start\n");
 	m.ai = plan->l.x;
-	m.aj = plan->l.y;
-	m.ak = plan->l.z;
-	m.bi = plan->m.x;
+	m.bi = plan->l.y;
+	m.ci = plan->l.z;
+	m.aj = plan->m.x;
 	m.bj = plan->m.y;
-	m.bk = plan->m.z;
-	m.ci = plan->n.x;
-	m.cj = plan->n.y;
+	m.cj = plan->m.z;
+	m.ak = plan->n.x;
+	m.bk = plan->n.y;
 	m.ck = plan->n.z;
-	//	printf("system_lmn_matrix end {{%f, %f, %f}{%f, %f ,%f}{%f, %f ,%f}}\n", m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2]);
-	//printf("system_lmn_matrix end %p  \n",&m);
-
-	inv(&m, ret);
-	//printf("system_lmn_matrix end {{%f, %f, %f}{%f, %f ,%f}{%f, %f ,%f}}\n", m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2]);
-
-	//write(1, "inv done\n", 9);
-	return (ret);
+	return (inv(&m, ret));
 }

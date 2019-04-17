@@ -23,6 +23,7 @@ void		apply_edge(void (*f)(edge *vert, void *param), edge *list, void *param)
 void		draw_edge(window *w, edge *ed)
 {
 	int coord[2][2];
+	int color[2];
 
 	if (ed->vert1->prime.z < 0 || ed->vert2->prime.z < 0)
 		return ;
@@ -30,7 +31,9 @@ void		draw_edge(window *w, edge *ed)
 	coord[0][1] = ed->vert1->prime.x * -10 + w->height / 2;
 	coord[1][0] = ed->vert2->prime.y * 10 + w->width / 2;
 	coord[1][1] = ed->vert2->prime.x * -10 + w->height / 2;
-	draw_line_img(w, coord);
+	color[0] = ed->vert1->color;
+	color[1] = ed->vert2->color;
+	draw_line_img(w, coord, color);
 }
 
 static void	draw_edge_s(edge *ed, void *param)

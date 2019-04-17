@@ -32,7 +32,7 @@ void		window_init_load(warehouse *window)
 	window->p.n.y = 1;
 	window->p.n.z = -1;
 	unit(&window->p.n, &window->p.n);
-	window->p.p.x = 0;
+	window->p.p.x = -3;
 	window->p.p.y = 0;
 	window->p.p.z = 5;
 	set_lm(&window->p, 1);
