@@ -43,7 +43,7 @@ int			main(int argc, char **argv)
 	}
 	else
 	{
-		//window.v = file_reader_obj(open(argv[1], O_RDONLY));
+		window.v = file_reader_obj(open(argv[1], O_RDONLY));
 	}
 	window_init_load(&window);
 	free_all(&window);
