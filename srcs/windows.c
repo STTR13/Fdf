@@ -14,7 +14,6 @@
 
 int			windowclose(void *window)
 {
-	(void)window;
 	free_all(window);
 	exit(0);
 	return (0);
@@ -40,7 +39,7 @@ void		window_init_load(warehouse *window)
 	set_lm(&window->p, 1);
 	window->eye.x = 0;
 	window->eye.y = 0;
-	window->eye.z = -7;
+	window->eye.z = -100;
 	window->w->hook.expose = &expose;
 	window->w->hook.param = (void *)window;
 	window->w->hook.key_press = &key_press_all;

@@ -27,13 +27,16 @@ static void		f2(vertex *vert, void *param)
 	ve tv;
 
 	//printf("f2\n");
-	minus(&vert->coord, &((warehouse*)(param))->p.p, &tv);
-	dot_mv(&((warehouse*)(param))->sysmat, tv, &tv);
-	conic_projection(
-		&tv,
-		originsystem(&tp),
-		&((warehouse*)(param))->eye,
-		&vert->prime);
+	minus(&vert->coord, &((t_wlist*)(param))->p.p, &tv);
+	dot_mv(&((t_wlist*)(param))->sysmat, tv, &tv);
+	if (tv.z >= 0)
+		conic_projection(
+			&tv,
+			originsystem(&tp),
+			&((t_wlist*)(param))->eye,
+			&vert->prime);
+	else
+		vert->prime = ((t_wlist*)(param))->eye;
 }
 
 void			refresh_win(warehouse *wl)
