@@ -19,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror
 SRC_PATH = srcs/
 SRC = 			main.o \
 				mouse_hook.o \
-				file_reader.o \
+				file_reader_fdf.o \
 				free.o \
 				keyboard.o \
 				mouse_draw.o \

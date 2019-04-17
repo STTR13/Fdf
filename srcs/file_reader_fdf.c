@@ -94,7 +94,7 @@ static char		**filecreator(char *temp, t_input *lst)
 	return (input);
 }
 
-t_input			*file_reader(int fd)
+t_input			*file_reader_fdf(int fd)
 {
 	char	*line;
 	char	*str;

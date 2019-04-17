@@ -21,6 +21,7 @@
 
 typedef struct	s_vertex
 {
+	int					pos;
 	ve					coord;
 	ve					prime;
 	struct s_vertex		*next;
@@ -67,7 +68,7 @@ ve						*createv(int z, int x, int y, ve *ret);
 */
 
 vertex			*new_vertex(ve *coord);
-vertex			*add_vertex(vertex *list, ve *coord);
+vertex			*add_vertex(vertex *list, ve *coord, int i);
 void			free_vertex(vertex **list);
 
 void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,

@@ -12,12 +12,19 @@
 
 #include "../includes/fdf.h"
 
+/*int file_read_select(char *str)
+{
+	if (ft_strcmp)
+}*/
+
 int	main(int argc, char **argv)
 {
 	warehouse	window;
+	int			filetype;
 
 	if (argc != 2)
 		errormessage(1, &window);
+	//filetype = file_read_select(argv[1]);
 	if (!(window.file = file_reader(open(argv[1], O_RDONLY)))\
 	|| !(window.v = veconvertstart(window.file))\
 	|| !(window.e = edgefiller(window.file, window.v)))
