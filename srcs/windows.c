@@ -21,7 +21,6 @@ int			windowclose(void *window)
 
 static int	expose(void *window)
 {
-	originsystem(&((warehouse*)(window))->p);
 	refresh_win((warehouse*)window);
 	return (0);
 }
