@@ -12,7 +12,7 @@
 
 # include "modeling.h"
 
-vertex			*new_vertex(ve *coord)
+vertex			*new_vertex(ve *coord, int i)
 {
 	vertex *r;
 
@@ -22,14 +22,15 @@ vertex			*new_vertex(ve *coord)
 	r->prime = *coord;
 	r->next = NULL;
 	r->color = 255;
+	r->pos = i;
 	return (r);
 }
 
-vertex			*add_vertex(vertex *list, ve *coord)
+vertex			*add_vertex(vertex *list, ve *coord, int i)
 {
 	vertex *r;
 
-	if (!(r = new_vertex(coord)))
+	if (!(r = new_vertex(coord, i)))
 	{
 		free_vertex(&list);
 		return (NULL);

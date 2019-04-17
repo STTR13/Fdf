@@ -67,7 +67,7 @@ ve						*createv(int z, int x, int y, ve *ret);
 ** --- Vertex ---
 */
 
-vertex			*new_vertex(ve *coord);
+vertex			*new_vertex(ve *coord, int i);
 vertex			*add_vertex(vertex *list, ve *coord, int i);
 void			free_vertex(vertex **list);
 
