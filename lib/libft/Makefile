@@ -88,6 +88,9 @@ SRC = ft_atoi.o \
 		ft_hexaconverter.o \
 		ft_ishexa.o \
 		ft_strjoinspace.o \
+		ft_iswhitespace.o \
+		ft_atof.o \
+
 
 OBJ = $(addprefix $(SRC_PATH), $(SRC))
 

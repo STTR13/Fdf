@@ -62,6 +62,7 @@ typedef struct			s_warehouse
 vertex					*veconvertstart(t_input *file);
 edge					*edgefiller(t_input *f, vertex *v);
 ve						*createv(int z, int x, int y, ve *ret);
+edge					*edgefiller_obj(int fd, vertex *v);
 
 /*
 ** --- Vertex ---
@@ -74,6 +75,7 @@ void			free_vertex(vertex **list);
 void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
 					void *param);
 vertex			*find_vertex(vertex *list, ve *coord);
+vertex			*find_vertex_pos(vertex *list, int pos);
 
 /*
 ** --- Edge ---

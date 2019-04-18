@@ -12,56 +12,32 @@
 
 #include "../includes/fdf.h"
 
-static char **initobjvertfill(char **temp)
+static vertex	*objvertfill(vertex *v, char *line, int i)
 {
-	int nr;
-
-	nr = 0;
-	if (!(temp = ft_memalloc(sizeof(char **) * (4 * 15))))
-		return (NULL);
-	while (nr < 3)
-	{
-		if (!(temp[nr] = ft_strnew(15)))
-			return (NULL);
-		nr++;
-	}
-	return (temp);
-}
-
-vertex *objvertfill(vertex *v, char *line, int i)
-{
-	int		j;
+	int		y;
 	int		x;
-	int		nr;
-	char	**temp;
+	int		z;
+	ve		ret;
 
-	j = 2;
-	nr = 0;
-	temp = initobjvertfill(temp);
-	if (line[0] == 'v')
-	{
-		printf("%s\n", line);
-		while (line[j] != '\0')
-		{
-			x = j;
-			while ((ft_isdigit(line[j]) || line[j] == '-' || line[j] == '.') && line[j] != '\0')
-				j++;
-			if ((line[j] == ' ' && ft_isdigit(line[j - 1])) || line[j] == '\0')
-			{
-				temp[nr] = ft_strncpy(temp[nr], &line[j], j - x + 1);
-				printf("res: %s, %i\n", temp[nr], nr);
-				nr++;
-			}
-			j++;
-		}
-	}
+	x = -1;
+
+		while (line[++x] != '\0')
+			if (line[x] == '-' || ft_isdigit(line[x]))
+				break;
+		y = x + 1;
+		while (line[y] != ' ')
+			y++;
+		z = y + 1;
+		while (line[z] != ' ')
+			z++;
+		v = add_vertex(v, createv(ft_atof(&line[z]), ft_atof(&line[x]), \
+		ft_atof(&line[y]), &ret), i);
 	return (v);
 }
 
 vertex			*file_reader_obj(int fd)
 {
 	char	*line;
-	char	*str;
 	vertex	*lst;
 	int		i;
 
@@ -71,13 +47,14 @@ vertex			*file_reader_obj(int fd)
 	i = 1;
 	while (get_next_line(fd, &line) == 1)
 	{
-		/*if (!(lst = objvertfill(lst, line, i)))
-			return (NULL);*/
-		lst = objvertfill(lst, line, i);
+		if (line[0] == 'v')
+		{
+			if (!(lst = objvertfill(lst, line, i)))
+				return (NULL);
+		}
 		free(line);
 		i++;
 	}
 	close(fd);
-	ft_strdel(&str);
 	return (lst);
 }

@@ -29,3 +29,12 @@ vertex			*find_vertex(vertex *list, ve *coord)
 		return (list);
 	return (find_vertex(list->next, coord));
 }
+
+vertex			*find_vertex_pos(vertex *list, int pos)
+{
+	if (!list)
+		return (NULL);
+	if (list->pos == pos)
+		return(list);
+	return (find_vertex_pos(list->next, pos));
+}

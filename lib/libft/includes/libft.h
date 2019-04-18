@@ -79,6 +79,7 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strdel_neg(char **as);
 int					ft_hexaconverter(char *str);
+double				ft_atof(const char *str);
 
 typedef struct		s_list
 {

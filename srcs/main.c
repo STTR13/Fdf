@@ -43,7 +43,9 @@ int			main(int argc, char **argv)
 	}
 	else
 	{
-		window.v = file_reader_obj(open(argv[1], O_RDONLY));
+		if (!(window.v = file_reader_obj(open(argv[1], O_RDONLY)))\
+		|| !(window.e = edgefiller_obj(open(argv[1], O_RDONLY), window.v)))
+			errormessage(2, &window);
 	}
 	window_init_load(&window);
 	free_all(&window);
