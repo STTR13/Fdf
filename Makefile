@@ -23,8 +23,6 @@ SRC = 			main.o \
 				free.o \
 				keyboard.o \
 				mouse_draw.o \
-				line_grad.o \
-				refresh.o \
 				windows.o \
 				file_reader_obj.o \
 

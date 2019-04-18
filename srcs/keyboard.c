@@ -26,6 +26,8 @@ void	key_move2(int key, warehouse *window)
 
 	if (key == V_KEY)
 		((warehouse*)(window))->mode = !((warehouse*)(window))->mode;
+	if (key == M_KEY)
+		((warehouse*)(window))->mouse = !((warehouse*)(window))->mouse;
 	else if (key == E_KEY)
 	{
 		rot(&((warehouse*)(window))->p.n, 0.1, &m);

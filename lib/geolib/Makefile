@@ -28,7 +28,6 @@ MATRIX =	inverse.o \
 
 PLAN_PATH = plan/
 PLAN =		ordinatesystem.o \
-			projection.o \
 			rotation.o \
 			basicvalues.o
 

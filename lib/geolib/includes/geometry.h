@@ -95,7 +95,4 @@ matrix			*system_lmn_matrix(pl *plan, matrix *ret);
 
 pl				*rot_p(matrix *rot_matrix, ve *rot_center, pl *plan);
 
-ve				*ortho_projection(ve *point, pl *plan, ve *ret);
-ve				*conic_projection(ve *point, pl *plan, ve *eye, ve *ret);
-
 #endif

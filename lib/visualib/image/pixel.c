@@ -20,7 +20,7 @@ bool		set_pxl_img(window *w, int x, int y, int color)
 	char			*nc_ptr;
 	int				i;
 
-	if (!w->img || x < 0 || y < 0 || x > w->width || y > w->height)
+	if (!w->img || x < 0 || y < 0 || x >= w->width || y >= w->height)
 		return (false);
 	img_ptr = w->img->data;
 	img_ptr += y * w->img->size_line + w->img->bytes_per_pixel * x;

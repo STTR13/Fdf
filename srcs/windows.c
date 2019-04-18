@@ -21,29 +21,21 @@ int			windowclose(void *window)
 
 static int	expose(void *window)
 {
+	//mlx_mouse_get_pos(???mlx_win_list_t *win???,
+	//	((warehouse*)window)->mouse_last_pos[0],
+	//	((warehouse*)window)->mouse_last_pos[1]);
 	refresh_win((warehouse*)window);
 	return (0);
 }
 
-void		window_init_load(warehouse *window)
+void		window_init_load(warehouse *wh)
 {
-	window->w = new_window("FDF", 1000, 1000);
-	window->p.n.x = 1;
-	window->p.n.y = 1;
-	window->p.n.z = -1;
-	unit(&window->p.n, &window->p.n);
-	window->p.p.x = -3;
-	window->p.p.y = 0;
-	window->p.p.z = 5;
-	set_lm(&window->p, 1);
-	window->eye.x = 0;
-	window->eye.y = 0;
-	window->eye.z = -100;
-	window->w->hook.expose = &expose;
-	window->w->hook.param = (void *)window;
-	window->w->hook.key_press = &key_press_all;
-	window->w->hook.mouse_press = &mouse_key;
-	window->w->hook.close = &windowclose;
-	window->w->hook.mouse_move = &mouse_move;
-	loop(window->w);
+	init_warehouse(wh);
+	wh->w->hook.expose = &expose;
+	wh->w->hook.param = (void *)wh;
+	wh->w->hook.key_press = &key_press_all;
+	wh->w->hook.mouse_press = &mouse_key;
+	wh->w->hook.close = &windowclose;
+	wh->w->hook.mouse_move = &mouse_move;
+	loop(wh->w);
 }
