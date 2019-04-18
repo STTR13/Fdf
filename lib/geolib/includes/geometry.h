@@ -67,6 +67,7 @@ ve				*nullvector(ve *ret);
 ve				*i(ve *ret);
 ve				*j(ve *ret);
 ve				*k(ve *ret);
+ve				*set_ve(double z, double x, double y, ve *ret);
 
 ve				*unit(ve *v, ve *ret);
 double 			norm(ve *v);

@@ -43,3 +43,11 @@ ve				*k(ve *ret)
 	ret->z = 1;
 	return (ret);
 }
+
+ve				*set_ve(double z, double x, double y, ve *ret)
+{
+	ret->x = x;
+	ret->y = y;
+	ret->z = z;
+	return (ret);
+}

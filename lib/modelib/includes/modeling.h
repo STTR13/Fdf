@@ -88,7 +88,6 @@ void			draw_model(window *w, edge *list);
 
 vertex			*veconvertstart(t_input *file);
 edge			*edgefiller(t_input *f, vertex *v);
-ve				*createv(double z, double x, double y, ve *ret);
 
 /*
 ** --- Warehouse ---
