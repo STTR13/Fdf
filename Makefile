@@ -26,7 +26,7 @@ SRC = 			main.o \
 				line_grad.o \
 				refresh.o \
 				windows.o \
-				#file_reader_obj.o \
+				file_reader_obj.o \
 
 OBJ = 			$(addprefix $(SRC_PATH), $(SRC))
 
@@ -68,7 +68,7 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 %.o:        %.c
-	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	@$(CC) -c -o $@ $< $(INCLUDES) #$(CFLAGS)
 
 clean:
 	@$(MAKE) -C lib/libft/ clean

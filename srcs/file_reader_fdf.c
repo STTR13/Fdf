@@ -29,7 +29,7 @@ static int		linelen(char *str)
 	counter = 0;
 	while (str[j] != '\0')
 		j++;
-	while (str[i] != '\0' && i < j)
+	while ((str[i] != '\0') && i < j)
 	{
 		if (ft_isdigit(str[i]) == 1)
 		{
@@ -109,6 +109,11 @@ t_input			*file_reader_fdf(int fd)
 		str = ft_strjoinn(str, line);
 		if (lst->lines == 0)
 			lst->linelen = linelen(str);
+		if (linelen(line) != lst->linelen)
+		{
+			free(line);
+			return (NULL);
+		}
 		lst->lines += 1;
 		free(line);
 	}

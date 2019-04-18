@@ -17,7 +17,7 @@ static char **initobjvertfill(char **temp)
 	int nr;
 
 	nr = 0;
-	if (!(temp = ft_memalloc(sizeof(char **) * (3 * 15)))
+	if (!(temp = ft_memalloc(sizeof(char **) * (4 * 15))))
 		return (NULL);
 	while (nr < 3)
 	{
@@ -28,32 +28,31 @@ static char **initobjvertfill(char **temp)
 	return (temp);
 }
 
-vertex *objvertfill(vertex v, char *line, int i)
+vertex *objvertfill(vertex *v, char *line, int i)
 {
 	int		j;
 	int		x;
 	int		nr;
 	char	**temp;
 
-	j = 0;
-	x = 0;
+	j = 2;
 	nr = 0;
 	temp = initobjvertfill(temp);
-	if (line[j] == 'v')
+	if (line[0] == 'v')
 	{
+		printf("%s\n", line);
 		while (line[j] != '\0')
 		{
-			while (!(ft_isdigit(line[j]) || line[j] != '-')
+			x = j;
+			while ((ft_isdigit(line[j]) || line[j] == '-' || line[j] == '.') && line[j] != '\0')
 				j++;
-			while (ft_isdigit(line[j]) || line[j] == '-' ||line[j] == '.')
+			if ((line[j] == ' ' && ft_isdigit(line[j - 1])) || line[j] == '\0')
 			{
-				temp[nr][x] = line[j];
-				j++;
-				x++;
-			}
-			printf("%s\n", temp[nr]);
-			if (line[j] == ' ')
+				temp[nr] = ft_strncpy(temp[nr], &line[j], j - x + 1);
+				printf("res: %s, %i\n", temp[nr], nr);
 				nr++;
+			}
+			j++;
 		}
 	}
 	return (v);
@@ -68,11 +67,13 @@ vertex			*file_reader_obj(int fd)
 
 	if (fd == -1)
 		return (NULL);
-	vertex = NULL;
+	lst = NULL;
 	i = 1;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (!(vertex = objvertfill(lst, line, i)))
+		/*if (!(lst = objvertfill(lst, line, i)))
+			return (NULL);*/
+		lst = objvertfill(lst, line, i);
 		free(line);
 		i++;
 	}
