@@ -16,7 +16,6 @@ static edge		*edgeput_obj(edge *e, vertex *v, char *line)
 {
 	int	i;
 	int	j;
-	int x;
 
 	i = 0;
 	while (!(ft_isdigit(line[i])) && line[i] != '\0')
@@ -24,7 +23,6 @@ static edge		*edgeput_obj(edge *e, vertex *v, char *line)
 	j = i;
 	while (line[i] != '\0')
 	{
-		x = i;
 		if (line[i] != ' ')
 			i++;
 		else
@@ -32,7 +30,7 @@ static edge		*edgeput_obj(edge *e, vertex *v, char *line)
 			i++;
 			if (ft_isdigit(line[i]))
 			{
-				if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[x])),\
+				if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[j])),\
 				find_vertex_pos(v, ft_atoi(&line[i])))))
 					return (NULL);
 			}
