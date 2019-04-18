@@ -12,30 +12,59 @@
 
 #include "../includes/fdf.h"
 
-static edge		*edgeput_obj(edge *e, vertex *v, char *line)
+static edge		*edgefiller_obj(edge *e, vertex *v, int *x)
 {
-	int	i;
-	int	j;
+	int i;
+
+	if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[x])),\
+	find_vertex_pos(v, ft_atoi(&line[i])))))
+		return (NULL);
+}
+
+static int linelen(char *line)
+{
+	int i;
+	int j;
 
 	i = 0;
-	while (!(ft_isdigit(line[i])) && line[i] != '\0')
-		i++;
-	j = i;
+	j = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] != ' ')
-			i++;
-		else
+		if (ft_isdigit(line[i]))
 		{
+			j++;
+			while ((ft_isdigit(line[i]) || line[i] == '/') && line[i] != '\0')
 			i++;
-			if (ft_isdigit(line[i]))
-			{
-				if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[j])),\
-				find_vertex_pos(v, ft_atoi(&line[i])))))
-					return (NULL);
-			}
 		}
+		i++;
 	}
+	return (j);
+}
+
+
+static edge		*edgeput_obj(edge *e, vertex *v, char *line, int i)
+{
+	int	*x;
+	int	j;
+
+	j = linelen(line);
+	if (!(x = ft_memalloc(sizeof(int) * j)))
+		return (NULL);
+	j = 0;
+	while (line[i] != '\0')
+	{
+		if (ft_isdigit(line[i]))
+		{
+			x[j] = ft_atoi(&line[i]);
+			j++;
+			while ((ft_isdigit(line[i]) || line[i] == '/') && line[i] != '\0')
+			i++;
+		}
+		i++;
+	}
+	if (!(e = edgefiller_obj(e, v, x)))
+		return (NULL);
+	ft_memdell(x);
 	return (e);
 }
 
@@ -79,7 +108,7 @@ bool			file_reader_obj(int fd, warehouse *wh)
 		}
 		if (line[0] == 'f' && line[1] == ' ')
 		{
-			if (!(wh->e = edgeput_obj(wh->e, wh->v, line)))
+			if (!(wh->e = edgeput_obj(wh->e, wh->v, line, 0)))
 				return (0);
 		}
 		free(line);
