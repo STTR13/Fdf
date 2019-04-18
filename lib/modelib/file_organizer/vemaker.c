@@ -17,7 +17,7 @@
 ** and y in order to create a new vector
 */
 
-ve					*createv(int z, int x, int y, ve *ret)
+ve					*createv(double z, double x, double y, ve *ret)
 {
 	ret->x = x;
 	ret->y = y;

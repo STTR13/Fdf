@@ -24,7 +24,7 @@
 */
 
 t_input					*file_reader_fdf(int fd);
-vertex					*file_reader_obj(int fd);
+bool					file_reader_obj(int fd, warehouse *wh);
 void					errormessage(int i, warehouse *window);
 int						get_color_grad(double percent, edge *e);
 void					free_all(warehouse *w);

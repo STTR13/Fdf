@@ -12,6 +12,35 @@
 
 #include "../includes/fdf.h"
 
+static edge		*edgeput_obj(edge *e, vertex *v, char *line)
+{
+	int	i;
+	int	j;
+	int x;
+
+	i = 0;
+	while (!(ft_isdigit(line[i])) && line[i] != '\0')
+		i++;
+	j = i;
+	while (line[i] != '\0')
+	{
+		x = i;
+		if (line[i] != ' ')
+			i++;
+		else
+		{
+			i++;
+			if (ft_isdigit(line[i]))
+			{
+				if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[x])),\
+				find_vertex_pos(v, ft_atoi(&line[i])))))
+					return (NULL);
+			}
+		}
+	}
+	return (e);
+}
+
 static vertex	*objvertfill(vertex *v, char *line, int i)
 {
 	int		y;
@@ -35,26 +64,29 @@ static vertex	*objvertfill(vertex *v, char *line, int i)
 	return (v);
 }
 
-vertex			*file_reader_obj(int fd)
+bool			file_reader_obj(int fd, warehouse *wh)
 {
 	char	*line;
-	vertex	*lst;
 	int		i;
 
 	if (fd == -1)
-		return (NULL);
-	lst = NULL;
+		return (0);
 	i = 1;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (line[0] == 'v')
+		if (line[0] == 'v' && line[1] == ' ')
 		{
-			if (!(lst = objvertfill(lst, line, i)))
-				return (NULL);
+			if (!(wh->v = objvertfill(wh->v, line, i)))
+				return (0);
+		}
+		if (line[0] == 'f' && line[1] == ' ')
+		{
+			if (!(wh->e = edgeput_obj(wh->e, wh->v, line)))
+				return (0);
 		}
 		free(line);
 		i++;
 	}
 	close(fd);
-	return (lst);
+	return (1);
 }
