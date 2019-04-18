@@ -61,8 +61,7 @@ typedef struct			s_warehouse
 
 vertex					*veconvertstart(t_input *file);
 edge					*edgefiller(t_input *f, vertex *v);
-ve						*createv(int z, int x, int y, ve *ret);
-edge					*edgefiller_obj(int fd, vertex *v);
+ve						*createv(double z, double x, double y, ve *ret);
 
 /*
 ** --- Vertex ---

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 # include "modeling.h"
-
+#include <stdio.h>
 void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
 						void *param)
 {

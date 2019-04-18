@@ -27,27 +27,38 @@ static int	file_read_select(char *str)
 
 int			main(int argc, char **argv)
 {
-	warehouse	window;
+	warehouse	wh;
 	int			filetype;
 
 	if (argc != 2)
-		errormessage(1, &window);
+		errormessage(1, &wh);
 	if (!(filetype = file_read_select(argv[1])))
-		errormessage(3, &window);
+		errormessage(3, &wh);
 	if (filetype == 1)
 	{
-		if (!(window.file = file_reader_fdf(open(argv[1], O_RDONLY)))\
-		|| !(window.v = veconvertstart(window.file))\
-		|| !(window.e = edgefiller(window.file, window.v)))
-			errormessage(2, &window);
+		if (!(wh.file = file_reader_fdf(open(argv[1], O_RDONLY)))\
+		|| !(wh.v = veconvertstart(wh.file))\
+		|| !(wh.e = edgefiller(wh.file, wh.v)))
+			errormessage(2, &wh);
 	}
 	else
 	{
-		if (!(window.v = file_reader_obj(open(argv[1], O_RDONLY)))\
-		|| !(window.e = edgefiller_obj(open(argv[1], O_RDONLY), window.v)))
-			errormessage(2, &window);
+		if (!(file_reader_obj(open(argv[1], O_RDONLY), &wh)))
+			errormessage(2, &wh);
 	}
-	window_init_load(&window);
-	free_all(&window);
+	printf("%d\n", wh.e->vert1->pos);
+	printf("%f\n", wh.e->vert1->coord.x);
+	printf("%d\n", wh.e->vert2->pos);
+	printf("%f\n", wh.e->vert2->coord.x);
+	printf("%d\n", wh.e->next->vert1->pos);
+	printf("%f\n", wh.e->next->vert1->coord.x);
+	printf("%d\n", wh.e->next->vert2->pos);
+	printf("%f\n", wh.e->next->vert2->coord.x);
+	printf("%d\n", wh.e->next->next->vert1->pos);
+	printf("%f\n", wh.e->next->next->vert1->coord.x);
+	printf("%d\n", wh.e->next->next->vert2->pos);
+	printf("%f\n", wh.e->next->next->vert2->coord.x);
+	window_init_load(&wh);
+	free_all(&wh);
 	return (0);
 }

@@ -32,7 +32,6 @@ EDGE =			apply.o \
 FO_PATH = file_organizer/
 FO =			vemaker.o \
 				vemaker2.o \
-				obj_edgemaker.o \
 
 OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
 		$(addprefix $(EDGE_PATH), $(EDGE)) \
