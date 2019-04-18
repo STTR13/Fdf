@@ -27,9 +27,9 @@ static int		linelen(char *str)
 	i = 0;
 	j = 0;
 	counter = 0;
-	while (str[j] != '\0' || str[j] != '\n')
+	while (str[j] != '\0')
 		j++;
-	while ((str[i] != '\0' || str[i] != '\n') && i < j)
+	while ((str[i] != '\0') && i < j)
 	{
 		if (ft_isdigit(str[i]) == 1)
 		{
