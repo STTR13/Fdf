@@ -47,6 +47,18 @@ int			main(int argc, char **argv)
 		|| !(window.e = edgefiller_obj(open(argv[1], O_RDONLY), window.v)))
 			errormessage(2, &window);
 	}
+	/*printf("%d\n", window.e->vert1->pos);
+	printf("%f\n", window.e->vert1->coord.x);
+	printf("%d\n", window.e->vert2->pos);
+	printf("%f\n", window.e->vert2->coord.x);
+	printf("%d\n", window.e->next->vert1->pos);
+	printf("%f\n", window.e->next->vert1->coord.x);
+	printf("%d\n", window.e->next->vert2->pos);
+	printf("%f\n", window.e->next->vert2->coord.x);
+	printf("%d\n", window.e->next->next->vert1->pos);
+	printf("%f\n", window.e->next->next->vert1->coord.x);
+	printf("%d\n", window.e->next->next->vert2->pos);
+	printf("%f\n", window.e->next->next->vert2->coord.x);*/
 	window_init_load(&window);
 	free_all(&window);
 	return (0);

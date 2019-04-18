@@ -4,24 +4,25 @@ static edge		*edgeput_obj(edge *e, vertex *v, char *line)
 {
 	int	i;
 	int	temp1;
-	int	temp2;
 
 	i = 0;
 	while (line[i] != '\0')
 	{
 		if (ft_isdigit(line[i]))
 		{
-			temp1 = ft_atoi(&line[i]);
-			while (ft_isdigit(line[i]))
+			while (line[i] != ' ')
+			{
+				temp1 = i;
+				while (ft_isdigit(line[i]))
+					i++;
+				if ((line[i] == '/' || line[i] == ' ') && ft_isdigit(line[i + 1]))
+				{
+					if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[temp1])),\
+					find_vertex_pos(v, ft_atoi(&line[i + 1])))))
+					return (NULL);
+				}
 				i++;
-			while (!(ft_isdigit(line[i])))
-				i++;
-			temp2 = ft_atoi(&line[i]);
-			while (ft_isdigit(line[i]))
-				i++;
-			if (!(e = add_edge(e, find_vertex_pos(v, temp1),\
-			find_vertex_pos(v, temp1))))
-				return (NULL);
+			}
 		}
 		if (line[i] != '\0')
 			i++;
