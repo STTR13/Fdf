@@ -30,7 +30,7 @@ HOOK =			key_press.o \
 				mouse_move.o \
 				expose.o \
 				key_release.o \
-				loop_hook.c
+				loop_hook.o
 
 OBJ = 			$(addprefix $(SRC_PATH), $(SRC)) \
 				$(addprefix $(HOOK_PATH), $(HOOK))
