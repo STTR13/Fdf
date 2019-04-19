@@ -12,9 +12,6 @@
 
 #include "geometry.h"
 
-#include <stdio.h> //(t)
-#include "../../libft/includes/libft.h" //(t)
-
 void	set_lm(pl *p, bool toward_origin)
 {
 	ve t[2];

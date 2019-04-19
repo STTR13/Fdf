@@ -14,9 +14,6 @@
 
 int		expose(void *window)
 {
-	//mlx_mouse_get_pos(???mlx_win_list_t *win???,
-	//	((warehouse*)window)->mouse_last_pos[0],
-	//	((warehouse*)window)->mouse_last_pos[1]);
 	refresh_win((warehouse*)window);
 	return (0);
 }

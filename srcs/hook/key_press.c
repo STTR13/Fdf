@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
+#include <ApplicationServices/ApplicationServices.h>
+
+#include <stdio.h> //(t)
 
 static void	key_press_sub1(int key, warehouse *window)
 {
@@ -33,21 +36,23 @@ static void	key_press_sub2(int key, warehouse *window)
 	matrix m;
 
 	if (key == V_KEY)
-		((warehouse*)(window))->mode = !((warehouse*)(window))->mode;
+		window->mode = !window->mode;
 	if (key == M_KEY)
-		((warehouse*)(window))->mouse = !((warehouse*)(window))->mouse;
+		window->mouse = !window->mouse;
 	if (key == E_KEY)
 	{
-		rot(&((warehouse*)(window))->p.n, 0.1, &m);
-		rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
+		rot(&window->p.n, 0.1, &m);
+		rot_p(&m, &window->p.p, &window->p);
 	}
 	if (key == Q_KEY)
 	{
-		rot(&((warehouse*)(window))->p.n, -0.1, &m);
-		rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
+		rot(&window->p.n, -0.1, &m);
+		rot_p(&m, &window->p.p, &window->p);
 	}
 	if (key == ESC_KEY)
 		windowclose(window);
+	if (key == M_KEY)
+		CGDisplayHideCursor(kCGDirectMainDisplay);
 }
 
 int			key_press(int key, void *window)

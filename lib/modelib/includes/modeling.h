@@ -48,7 +48,6 @@ typedef struct			s_warehouse
 	vertex				*v;
 	edge				*e;
 	window 				*w;
-	int					mouse_last_pos[2];
 	pl					p;
 	double				eye; // tjrs pos
 	matrix				sysmat;
