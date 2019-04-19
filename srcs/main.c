@@ -18,9 +18,9 @@ static int	file_read_select(char *str)
 
 	i = ft_strlen(str);
 	i--;
-	if (str[i] == 'f')
+	if (ft_strcmp(ft_strrchr(str, '.'), ".fdf") == 0)
 		return (1);
-	else if (str[i] == 'j')
+	else if (ft_strcmp(ft_strrchr(str, '.'), ".obj") == 0)
 		return (2);
 	return (0);
 }
@@ -46,18 +46,6 @@ int			main(int argc, char **argv)
 		if (!(file_reader_obj(open(argv[1], O_RDONLY), &wh)))
 			errormessage(2, &wh);
 	}
-	/*printf("%d\n", wh.e->vert1->pos);
-	printf("%f\n", wh.e->vert1->coord.x);
-	printf("%d\n", wh.e->vert2->pos);
-	printf("%f\n", wh.e->vert2->coord.x);
-	printf("%d\n", wh.e->next->vert1->pos);
-	printf("%f\n", wh.e->next->vert1->coord.x);
-	printf("%d\n", wh.e->next->vert2->pos);
-	printf("%f\n", wh.e->next->vert2->coord.x);
-	printf("%d\n", wh.e->next->next->vert1->pos);
-	printf("%f\n", wh.e->next->next->vert1->coord.x);
-	printf("%d\n", wh.e->next->next->vert2->pos);
-	printf("%f\n", wh.e->next->next->vert2->coord.x);*/
 	window_init_load(&wh);
 	free_all(&wh);
 	return (0);
