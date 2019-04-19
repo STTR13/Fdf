@@ -110,13 +110,13 @@ bool			file_reader_obj(int fd, warehouse *wh)
 	i = 1;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (line[0] == 'v' && line[1] == ' ')
+		if (ft_strncmp(line, "v ", 2) == 0)//line[0] == 'v' && line[1] == ' ')
 		{
 			if (!(wh->v = objvertfill(wh->v, line, i)))
 				return (0);
 			i++;
 		}
-		else if (line[0] == 'f' && line[1] == ' ')
+		else if (ft_strncmp(line, "f ", 2) == 0)//line[0] == 'f' && line[1] == ' ')
 		{
 			if (!(edgeput_obj(wh, line, 0)))
 				return (0);
