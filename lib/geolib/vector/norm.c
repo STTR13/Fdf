@@ -12,12 +12,12 @@
 
 #include "geometry.h"
 
-double 			norm(ve *v)
+double			norm(t_ve *v)
 {
 	return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
 }
 
-ve				*unit(ve *v, ve *ret)
+t_ve			*unit(t_ve *v, t_ve *ret)
 {
 	double	n;
 

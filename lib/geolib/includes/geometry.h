@@ -10,90 +10,93 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GEO_H
-# define GEO_H
+#ifndef GEOMETRY_H
+# define GEOMETRY_H
 
-#include <math.h>
+# include <math.h>
 
-typedef enum {false=0, true=1} bool;
+typedef enum {
+	false = 0,
+	true = 1
+}				t_bool;
 
 typedef struct	s_matrix
 {
-	double	ai;
-	double	aj;
-	double	ak;
-	double	bi;
-	double	bj;
-	double	bk;
-	double	ci;
-	double	cj;
-	double	ck;
-}				matrix;
+	double		ai;
+	double		aj;
+	double		ak;
+	double		bi;
+	double		bj;
+	double		bk;
+	double		ci;
+	double		cj;
+	double		ck;
+}				t_matrix;
 
 typedef struct	s_ve
 {
-	double	x;
-	double	y;
-	double	z;
-}				ve; //(n)
+	double		x;
+	double		y;
+	double		z;
+}				t_ve;
 
 typedef struct	s_pl
 {
-	ve		p;
-	ve		l;
-	ve		m;
-	ve		n;
-}				pl; //(n)
+	t_ve		p;
+	t_ve		l;
+	t_ve		m;
+	t_ve		n;
+}				t_pl;
 
 /*
 ** --- Matrix ---
 */
 
-matrix			*I(matrix *ret);
-matrix			*rot(ve *rot_axis, double angle, matrix *ret);
+t_matrix		*identity(t_matrix *ret);
+t_matrix		*rot(t_ve *rot_axis, double angle, t_matrix *ret);
 
-matrix			*adj(matrix *m, matrix *ret);
-double			det(matrix *m);
-matrix			*inv(matrix *m, matrix *ret);
+t_matrix		*adj(t_matrix *m, t_matrix *ret);
+double			det(t_matrix *m);
+t_matrix		*inv(t_matrix *m, t_matrix *ret);
 
-ve				*dot_mv(matrix *m, ve v, ve *ret);
-matrix			*scal_m(matrix *m, double s, matrix *ret);
+t_ve			*dot_mv(t_matrix *m, t_ve v, t_ve *ret);
+t_matrix		*scal_m(t_matrix *m, double s, t_matrix *ret);
 
 /*
 ** --- Vector ---
 */
 
-ve				*nullvector(ve *ret);
-ve				*i(ve *ret);
-ve				*j(ve *ret);
-ve				*k(ve *ret);
-ve				*set_ve(double z, double x, double y, ve *ret);
+t_ve			*nullvector(t_ve *ret);
+t_ve			*i(t_ve *ret);
+t_ve			*j(t_ve *ret);
+t_ve			*k(t_ve *ret);
+t_ve			*set_ve(double z, double x, double y, t_ve *ret);
 
-ve				*unit(ve *v, ve *ret);
-double 			norm(ve *v);
+t_ve			*unit(t_ve *v, t_ve *ret);
+double			norm(t_ve *v);
 
-ve				*minus(ve *a, ve *b, ve *ret);
-ve				*plus(ve *a, ve *b, ve *ret);
+t_ve			*minus(t_ve *a, t_ve *b, t_ve *ret);
+t_ve			*plus(t_ve *a, t_ve *b, t_ve *ret);
 
-ve 				*cross(ve *a, ve *b, ve *ret);
-double 			dot_vv(ve *a, ve *b);
-ve				*scal_v(ve *v, double s, ve *ret);
+t_ve			*cross(t_ve *a, t_ve *b, t_ve *ret);
+double			dot_vv(t_ve *a, t_ve *b);
+t_ve			*scal_v(t_ve *v, double s, t_ve *ret);
 
-ve				*rot_v(matrix *rot_matrix, ve *rot_center, ve *coord);
+t_ve			*rot_v(t_matrix *rot_matrix, t_ve *rot_center, t_ve *coord);
 
-bool			isnullvector(ve *v);
-bool			equal_v(ve *a, ve *b);
-bool			equal_x_y(ve *a, ve *b);
+t_bool			isnullvector(t_ve *v);
+t_bool			equal_v(t_ve *a, t_ve *b);
+t_bool			equal_x_y(t_ve *a, t_ve *b);
 
 /*
 ** --- Plan ---
 */
 
-pl				*originsystem(pl *ret);
+t_pl			*originsystem(t_pl *ret);
 
-void			set_lm(pl *p, bool toward_origin);
-matrix			*system_lmn_matrix(pl *plan, matrix *ret);
+void			set_lm(t_pl *p, t_bool toward_origin);
+t_matrix		*system_lmn_matrix(t_pl *plan, t_matrix *ret);
 
-pl				*rot_p(matrix *rot_matrix, ve *rot_center, pl *plan);
+t_pl			*rot_p(t_matrix *rot_matrix, t_ve *rot_center, t_pl *plan);
 
 #endif

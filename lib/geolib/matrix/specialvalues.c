@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-matrix			*I(matrix *ret)
+t_matrix			*identity(t_matrix *ret)
 {
 	ret->ai = 1;
 	ret->aj = 0;
@@ -26,9 +26,9 @@ matrix			*I(matrix *ret)
 	return (ret);
 }
 
-matrix			*rot(ve *rot_axis, double angle, matrix *ret)
+t_matrix			*rot(t_ve *rot_axis, double angle, t_matrix *ret)
 {
-	ve		ura;
+	t_ve	ura;
 
 	unit(rot_axis, &ura);
 	ret->ai = cos(angle) + pow(ura.x, 2) * (1 - cos(angle));

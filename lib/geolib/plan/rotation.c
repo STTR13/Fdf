@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-pl				*rot_p(matrix *rot_matrix, ve *rot_center, pl *plan)
+t_pl		*rot_p(t_matrix *rot_matrix, t_ve *rot_center, t_pl *plan)
 {
 	dot_mv(rot_matrix, plan->l, &plan->l);
 	dot_mv(rot_matrix, plan->m, &plan->m);

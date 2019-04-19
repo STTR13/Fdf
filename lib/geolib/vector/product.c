@@ -15,7 +15,8 @@
 /*
 ** (a != ret && b != ret) need to be true
 */
-ve 				*cross(ve *a, ve *b, ve *ret)
+
+t_ve			*cross(t_ve *a, t_ve *b, t_ve *ret)
 {
 	ret->x = a->y * b->z - a->z * b->y;
 	ret->y = a->z * b->x - a->x * b->z;
@@ -23,7 +24,7 @@ ve 				*cross(ve *a, ve *b, ve *ret)
 	return (ret);
 }
 
-double 			dot_vv(ve *a, ve *b)
+double			dot_vv(t_ve *a, t_ve *b)
 {
 	return (a->x * b->x + a->y * b->y + a->z * b->z);
 }
@@ -31,7 +32,8 @@ double 			dot_vv(ve *a, ve *b)
 /*
 ** (v != ret) need to be true
 */
-ve				*scal_v(ve *v, double s, ve *ret)
+
+t_ve			*scal_v(t_ve *v, double s, t_ve *ret)
 {
 	ret->x = v->y * s;
 	ret->y = v->z * s;

@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-ve				*nullvector(ve *ret)
+t_ve				*nullvector(t_ve *ret)
 {
 	ret->x = 0;
 	ret->y = 0;
@@ -20,7 +20,7 @@ ve				*nullvector(ve *ret)
 	return (ret);
 }
 
-ve				*i(ve *ret)
+t_ve				*i(t_ve *ret)
 {
 	ret->x = 1;
 	ret->y = 0;
@@ -28,7 +28,7 @@ ve				*i(ve *ret)
 	return (ret);
 }
 
-ve				*j(ve *ret)
+t_ve				*j(t_ve *ret)
 {
 	ret->x = 0;
 	ret->y = 1;
@@ -36,7 +36,7 @@ ve				*j(ve *ret)
 	return (ret);
 }
 
-ve				*k(ve *ret)
+t_ve				*k(t_ve *ret)
 {
 	ret->x = 0;
 	ret->y = 0;
@@ -44,7 +44,7 @@ ve				*k(ve *ret)
 	return (ret);
 }
 
-ve				*set_ve(double z, double x, double y, ve *ret)
+t_ve				*set_ve(double z, double x, double y, t_ve *ret)
 {
 	ret->x = x;
 	ret->y = y;

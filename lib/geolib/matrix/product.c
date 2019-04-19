@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-ve				*dot_mv(matrix *m, ve v, ve *ret)
+t_ve			*dot_mv(t_matrix *m, t_ve v, t_ve *ret)
 {
 	ret->x = m->ai * v.x + m->aj * v.y + m->ak * v.z;
 	ret->y = m->bi * v.x + m->bj * v.y + m->bk * v.z;
@@ -20,7 +20,7 @@ ve				*dot_mv(matrix *m, ve v, ve *ret)
 	return (ret);
 }
 
-matrix			*scal_m(matrix *m, double s, matrix *ret)
+t_matrix		*scal_m(t_matrix *m, double s, t_matrix *ret)
 {
 	ret->ai = m->ai * s;
 	ret->aj = m->aj * s;

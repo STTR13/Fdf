@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-pl		*originsystem(pl *ret)
+t_pl		*originsystem(t_pl *ret)
 {
 	i(&ret->l);
 	j(&ret->m);

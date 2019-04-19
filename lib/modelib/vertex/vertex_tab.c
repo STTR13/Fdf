@@ -38,7 +38,7 @@ vertex			**new_vertex_tab(vertex *list_head)
 	return (ret);
 }
 
-void					free_vertex_tab(vertex ***tab)
+void			free_vertex_tab(vertex ***tab)
 {
 	free(*tab);
 	*tab = NULL;

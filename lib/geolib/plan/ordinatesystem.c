@@ -12,9 +12,9 @@
 
 #include "geometry.h"
 
-void	set_lm(pl *p, bool toward_origin)
+void		set_lm(t_pl *p, t_bool toward_origin)
 {
-	ve t[2];
+	t_ve t[2];
 
 	p->m = *unit(
 		cross(
@@ -22,25 +22,20 @@ void	set_lm(pl *p, bool toward_origin)
 			scal_v(
 				k(&t[0]),
 				(toward_origin) ? 1 : -1,
-				&t[1]
-			),
-			&t[0]
-		),
-		&t[1]
-	);
+				&t[1]),
+			&t[0]),
+		&t[1]);
 	p->l = *unit(
 		cross(
 			&(*p).m,
 			&(*p).n,
-			&t[0]
-		),
-		&t[1]
-	);
+			&t[0]),
+		&t[1]);
 }
 
-matrix	*system_lmn_matrix(pl *plan, matrix *ret)
+t_matrix	*system_lmn_matrix(t_pl *plan, t_matrix *ret)
 {
-	matrix m;
+	t_matrix m;
 
 	m.ai = plan->l.x;
 	m.bi = plan->l.y;

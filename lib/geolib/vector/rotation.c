@@ -12,18 +12,16 @@
 
 #include "geometry.h"
 
-ve				*rot_v(matrix *rot_matrix, ve *rot_center, ve *coord)
+t_ve		*rot_v(t_matrix *rot_matrix, t_ve *rot_center, t_ve *coord)
 {
-	ve t[2];
+	t_ve t[2];
 
 	*coord = *plus(
 		rot_center,
 		dot_mv(
 			rot_matrix,
 			*minus(coord, rot_center, &t[0]),
-			&t[1]
-		),
-		&t[0]
-	);
+			&t[1]),
+		&t[0]);
 	return (coord);
 }

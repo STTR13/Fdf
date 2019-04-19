@@ -12,7 +12,7 @@
 
 #include "geometry.h"
 
-ve				*minus(ve *a, ve *b, ve *ret)
+t_ve		*minus(t_ve *a, t_ve *b, t_ve *ret)
 {
 	ret->x = a->x - b->x;
 	ret->y = a->y - b->y;
@@ -20,7 +20,7 @@ ve				*minus(ve *a, ve *b, ve *ret)
 	return (ret);
 }
 
-ve				*plus(ve *a, ve *b, ve *ret)
+t_ve		*plus(t_ve *a, t_ve *b, t_ve *ret)
 {
 	ret->x = a->x + b->x;
 	ret->y = a->y + b->y;
