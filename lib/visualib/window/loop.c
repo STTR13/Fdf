@@ -30,5 +30,7 @@ void			loop(window *w)
 		mlx_hook(w->win_ptr, 12, 0, w->hook.expose, w->hook.param);
 	if (w->hook.close)
 		mlx_hook(w->win_ptr, 17, 0, w->hook.close, w->hook.param);
+	if (w->hook.loop)
+		mlx_loop_hook(w->mlx_ptr, w->hook.loop, w->hook.param);
 	mlx_loop(w->mlx_ptr);
 }

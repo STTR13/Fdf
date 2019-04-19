@@ -13,8 +13,6 @@
 #include "../../includes/fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
-#include <stdio.h> //(t)
-
 static void	key_press_sub1(int key, warehouse *window)
 {
 	if (key == W_KEY)
@@ -59,6 +57,5 @@ int			key_press(int key, void *window)
 {
 	key_press_sub1(key, (warehouse *)window);
 	key_press_sub2(key, (warehouse *)window);
-	refresh_win((warehouse*)(window));
 	return (0);
 }

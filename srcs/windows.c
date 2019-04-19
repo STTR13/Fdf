@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <ApplicationServices/ApplicationServices.h>
 
 void		window_init_load(warehouse *wh)
 {
@@ -21,5 +22,7 @@ void		window_init_load(warehouse *wh)
 	wh->w->hook.mouse_press = &mouse_press;
 	wh->w->hook.close = &windowclose;
 	wh->w->hook.mouse_move = &mouse_move;
+	wh->w->hook.key_release = &key_release;
+	wh->w->hook.loop = &loop_hook;
 	loop(wh->w);
 }

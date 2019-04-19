@@ -29,6 +29,8 @@ HOOK =			key_press.o \
 				close.o \
 				mouse_move.o \
 				expose.o \
+				key_release.o \
+				loop_hook.c
 
 OBJ = 			$(addprefix $(SRC_PATH), $(SRC)) \
 				$(addprefix $(HOOK_PATH), $(HOOK))

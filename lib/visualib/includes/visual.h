@@ -132,6 +132,7 @@ typedef struct	s_event_hook
 	int			(*mouse_move)(int x, int y, void *param);
 	int			(*expose)(void *param);
 	int			(*close)(void *param);
+	int			(*loop)(void *param);
 	void		*param;
 }				event_hook;
 

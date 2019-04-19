@@ -25,7 +25,7 @@ void		init_warehouse(warehouse *wh)
 	set_lm(&wh->p, 1);
 	wh->eye = 200;
 	wh->mode = 0;
-	wh->mouse = 1;
+	wh->mouse = true;
 }
 
 static void	free_i(t_input *file)
