@@ -95,8 +95,9 @@ static vertex	*objvertfill(vertex *v, char *line, int i)
 		z = y + 1;
 		while (line[z] != ' ')
 			z++;
-		v = add_vertex(v, set_ve(ft_atof(&line[z]), ft_atof(&line[x]), \
-		ft_atof(&line[y]), &ret), i);
+		if (!(v = add_vertex(v, set_ve(ft_atof(&line[z]), ft_atof(&line[x]), \
+		ft_atof(&line[y]), &ret), i)))
+			return (NULL);
 	return (v);
 }
 
@@ -110,13 +111,13 @@ bool			file_reader_obj(int fd, warehouse *wh)
 	i = 1;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (ft_strncmp(line, "v ", 2) == 0)//line[0] == 'v' && line[1] == ' ')
+		if (ft_strncmp(line, "v ", 2) == 0)
 		{
 			if (!(wh->v = objvertfill(wh->v, line, i)))
 				return (0);
 			i++;
 		}
-		else if (ft_strncmp(line, "f ", 2) == 0)//line[0] == 'f' && line[1] == ' ')
+		else if (ft_strncmp(line, "f ", 2) == 0)
 		{
 			if (!(edgeput_obj(wh, line, 0)))
 				return (0);
