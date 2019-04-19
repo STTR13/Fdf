@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "modeling.h"
 
 static void		f1(vertex *vert, void *param)
 {
@@ -29,22 +29,28 @@ static void		f1(vertex *vert, void *param)
 	);
 }
 
+static ve		*conic_projection_s(ve *point, warehouse *wh, ve *ret)
+{
+	ret->z = 0;
+	ret->x = (point->x / (point->z + wh->eye)) * wh->eye;
+	ret->y = (point->y / (point->z + wh->eye)) * wh->eye;
+	return (ret);
+}
+
 static void		f2(vertex *vert, void *param)
 {
-	pl tp;
 	ve tv;
 
 	//printf("f2\n");
 	minus(&vert->coord, &((warehouse*)(param))->p.p, &tv);
 	dot_mv(&((warehouse*)(param))->sysmat, tv, &tv);
 	if (tv.z >= 0)
-		conic_projection(
+		conic_projection_s(
 			&tv,
-			originsystem(&tp),
-			&((warehouse*)(param))->eye,
+			(warehouse*)(param),
 			&vert->prime);
 	else
-		vert->prime = ((warehouse*)(param))->eye;
+		vert->prime.z = -1;
 }
 
 void			refresh_win(warehouse *wl)

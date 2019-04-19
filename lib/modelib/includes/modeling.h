@@ -44,24 +44,17 @@ typedef struct			s_input
 
 typedef struct			s_warehouse
 {
-	t_input			*file;
-	vertex			*v;
-	edge			*e;
-	window 			*w;
-	int				mouse_last_pos[2];
-	pl				p;
-	ve				eye;
-	matrix			sysmat;
-	bool			mode;
+	t_input				*file;
+	vertex				*v;
+	edge				*e;
+	window 				*w;
+	int					mouse_last_pos[2];
+	pl					p;
+	double				eye; // tjrs pos
+	matrix				sysmat;
+	bool				mode;
+	bool				mouse;
 }						warehouse;
-
-/*
-** --- File Organizer ---
-*/
-
-vertex					*veconvertstart(t_input *file);
-edge					*edgefiller(t_input *f, vertex *v);
-ve						*createv(double z, double x, double y, ve *ret);
 
 /*
 ** --- Vertex ---
@@ -88,5 +81,21 @@ void			apply_edge(void (*f)(edge *vert, void *param),
 					edge *list, void *param);
 void			draw_edge(window *w, edge *ed);
 void			draw_model(window *w, edge *list);
+
+/*
+** --- File Organizer ---
+*/
+
+vertex			*veconvertstart(t_input *file);
+edge			*edgefiller(t_input *f, vertex *v);
+
+/*
+** --- Warehouse ---
+*/
+
+void			init_warehouse(warehouse *wh);
+void			free_all(warehouse *wh);
+
+void			refresh_win(warehouse *wl);
 
 #endif

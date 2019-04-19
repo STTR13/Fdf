@@ -33,9 +33,14 @@ FO_PATH = file_organizer/
 FO =			vemaker.o \
 				vemaker2.o \
 
+WAREHOUSE_PATH = warehouse/
+WAREHOUSE =		warehouse.o \
+				refresh.o \
+
 OBJ =	$(addprefix $(VERTEX_PATH), $(VERTEX)) \
 		$(addprefix $(EDGE_PATH), $(EDGE)) \
 		$(addprefix $(FO_PATH), $(FO)) \
+		$(addprefix $(WAREHOUSE_PATH), $(WAREHOUSE)) \
 
 
 

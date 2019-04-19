@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find.c                                             :+:      :+:    :+:   */
+/*   expose.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/05 12:44:29 by staeter           #+#    #+#             */
-/*   Updated: 2019/03/05 12:44:30 by staeter          ###   ########.fr       */
+/*   Created: 2019/04/18 17:57:13 by staeter           #+#    #+#             */
+/*   Updated: 2019/04/18 17:57:14 by staeter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "modeling.h"
+#include "../../includes/fdf.h"
 
-vertex			*find_vertex(ve v, vertex *grid)
+int		expose(void *window)
 {
-	short	i;
-	vertex	*t;
-
-	if (!grid || !grid->done)
-		return (NULL);
-	if (equal_v(grid->v, v))
-	{
-		reset_vertex(grid);
-		return (grid);
-	}
-	grid->done = true;
-	i = -1;
-	while (++i < 4)
-		if ((t = find_vertex(v, grid->next[i])))
-			return (t);
-	return (NULL);
+	//mlx_mouse_get_pos(???mlx_win_list_t *win???,
+	//	((warehouse*)window)->mouse_last_pos[0],
+	//	((warehouse*)window)->mouse_last_pos[1]);
+	refresh_win((warehouse*)window);
+	return (0);
 }

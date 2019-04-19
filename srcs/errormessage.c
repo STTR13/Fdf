@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   errormessage.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabbenbr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,27 +15,6 @@
 /*
 ** frees every malloc
 */
-
-static void	free_i(t_input *file)
-{
-	if (file->input)
-		ft_chararrclr(file->input, file->linelen * file->lines);
-	file->lines = 0;
-	file->linelen = 0;
-	free(file);
-}
-
-void		free_all(warehouse *w)
-{
-	if (w->w)
-		free_window(w->w);
-	if (w->e)
-		free_edge(&w->e);
-	if (w->v)
-		free_vertex(&w->v);
-	if (w->file)
-		free_i(w->file);
-}
 
 void		errormessage(int i, warehouse *window)
 {

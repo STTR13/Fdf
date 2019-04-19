@@ -13,19 +13,6 @@
 #include "modeling.h"
 
 /*
-** createv will take the read information together with positions x
-** and y in order to create a new vector
-*/
-
-ve					*createv(double z, double x, double y, ve *ret)
-{
-	ret->x = x;
-	ret->y = y;
-	ret->z = z;
-	return (ret);
-}
-
-/*
 ** veconvertstart and gridfiller work together. veconvertstart
 ** will launch gridfiller in order to make a structured list
 ** with all of the information from file_reader. gridfiller makes
@@ -50,7 +37,7 @@ static vertex		*gridfiller(t_input *file, vertex *vert, int x, int y)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
-			if (!(vert = add_vertex(vert, createv(temp, -x, y, &v), 0)))
+			if (!(vert = add_vertex(vert, set_ve(temp, -x, y, &v), 0)))
 				return (NULL);
 			vert->color = ft_hexaconverter(file->input[pos]);
 			pos++;

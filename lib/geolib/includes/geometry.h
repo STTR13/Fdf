@@ -67,6 +67,7 @@ ve				*nullvector(ve *ret);
 ve				*i(ve *ret);
 ve				*j(ve *ret);
 ve				*k(ve *ret);
+ve				*set_ve(double z, double x, double y, ve *ret);
 
 ve				*unit(ve *v, ve *ret);
 double 			norm(ve *v);
@@ -94,8 +95,5 @@ void			set_lm(pl *p, bool toward_origin);
 matrix			*system_lmn_matrix(pl *plan, matrix *ret);
 
 pl				*rot_p(matrix *rot_matrix, ve *rot_center, pl *plan);
-
-ve				*ortho_projection(ve *point, pl *plan, ve *ret);
-ve				*conic_projection(ve *point, pl *plan, ve *eye, ve *ret);
 
 #endif

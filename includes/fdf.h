@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 /*
-** --- File reader and date organization ---
+** --- File reader and data organization ---
 */
 
 t_input					*file_reader_fdf(int fd);
@@ -34,7 +34,6 @@ void					free_all(warehouse *w);
 */
 
 void					window_init_load(warehouse *window);
-int						windowclose(void *window);
 void					refresh_win(warehouse *wl);
 
 /*
@@ -42,12 +41,16 @@ void					refresh_win(warehouse *wl);
 */
 
 int						deal_key(int key, warehouse *window);
-int						mouse_key(int key,  int x, int y, void *window);
-void					key_move(int key, warehouse *window);
-void					key_zoom(int key, warehouse *window);
-void					change_view(int key, warehouse *window);
-int						key_press_all(int key, void *window);
+
+/*
+** --- Hook ---
+*/
+
+int						expose(void *window);
+int						windowclose(void *window);
+int						mouse_press(int key,  int x, int y, void *window);
+int						key_press(int key, void *window);
 int						mouse_move(int x, int y, void *window);
-void					mouse_draw_line(void *window, int x, int y);
+
 
 #endif

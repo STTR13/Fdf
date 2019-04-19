@@ -18,17 +18,20 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = srcs/
 SRC = 			main.o \
-				mouse_hook.o \
 				file_reader_fdf.o \
-				free.o \
-				keyboard.o \
-				mouse_draw.o \
-				line_grad.o \
-				refresh.o \
-				windows.o \
 				file_reader_obj.o \
+				errormessage.o \
+				windows.o \
 
-OBJ = 			$(addprefix $(SRC_PATH), $(SRC))
+HOOK_PATH = srcs/hook/
+HOOK =			key_press.o \
+				mouse_press.o \
+				close.o \
+				mouse_move.o \
+				expose.o \
+
+OBJ = 			$(addprefix $(SRC_PATH), $(SRC)) \
+				$(addprefix $(HOOK_PATH), $(HOOK))
 
 INCLUDES = 	-I includes/
 
