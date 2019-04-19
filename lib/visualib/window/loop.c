@@ -12,7 +12,7 @@
 
 #include "visual.h"
 
-void			loop(window *w)
+void			loop(t_window *w)
 {
 	if (!w)
 		return ;

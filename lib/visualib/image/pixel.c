@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "visual.h"
-#include <stdio.h> //(t)
 
-bool		set_pxl_img(window *w, int x, int y, int color)
+bool		set_pxl_img(t_window *w, int x, int y, int color)
 {
 	char			*img_ptr;
 	unsigned int	nc;
@@ -52,10 +51,13 @@ static int	get_light(int start, int end, double percentage)
 ** color on A = color[0]
 ** color on B = color[1]
 */
-bool		draw_line_img(window *w, int coord[2][2], int color[2])
+bool		draw_line_img(t_window *w, int coord[2][2], int color[2])
 {
-	int a, runaxis, i, d[2];
-	double pxl[2];
+	int		a;
+	int		runaxis;
+	int		i;
+	int		d[2];
+	double	pxl[2];
 
 	if (!w->img ||
 		((coord[0][0] < 0 || coord[0][1] < 0

@@ -134,48 +134,48 @@ typedef struct	s_event_hook
 	int			(*close)(void *param);
 	int			(*loop)(void *param);
 	void		*param;
-}				event_hook;
+}				t_event_hook;
 
 typedef struct	s_image
 {
-	void 		*img_ptr;
+	void		*img_ptr;
 	char		*data;
 	int			bytes_per_pixel;
 	int			size_line;
-	int			edian; // 0 = litle edian | 1 = big edian
-}				image;
+	int			edian;
+}				t_image;
 
 typedef struct	s_window
 {
-	char		*name;
-	int			width;
-	int			height;
-	void 		*mlx_ptr;
-	void 		*win_ptr;
-	image		*img;
-	event_hook	hook;
-}				window;
+	char			*name;
+	int				width;
+	int				height;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_image			*img;
+	t_event_hook	hook;
+}				t_window;
 
 /*
 ** --- Window ---
 */
 
-window			*new_window(char *name, int width, int height);
-void			free_window(window *w);
+t_window		*new_window(char *name, int width, int height);
+void			free_window(t_window *w);
 
-void			loop(window *w);
+void			loop(t_window *w);
 
 /*
 ** --- Image ---
 */
 
-bool			new_img(window *w);
-void			free_img(window *w);
-bool			re_img(window *w);
-bool			put_img(window *w);
+bool			new_img(t_window *w);
+void			free_img(t_window *w);
+bool			re_img(t_window *w);
+bool			put_img(t_window *w);
 int				line_grad(int c1, int c2, double current);
 
-bool			set_pxl_img(window *w, int x, int y, int color);
-bool			draw_line_img(window *w, int coord[2][2], int color[2]);
+bool			set_pxl_img(t_window *w, int x, int y, int color);
+bool			draw_line_img(t_window *w, int coord[2][2], int color[2]);
 
 #endif

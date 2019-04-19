@@ -12,12 +12,12 @@
 
 #include "visual.h"
 
-window			*new_window(char *name, int width, int height)
+t_window			*new_window(char *name, int width, int height)
 {
-	window *rw;
+	t_window *rw;
 
 	if (!name || width < 0 || height < 0 ||
-		!(rw = (window*)malloc(sizeof(window))))
+		!(rw = (t_window*)malloc(sizeof(t_window))))
 		return (NULL);
 	if (!(rw->mlx_ptr = mlx_init()) ||
 		!(rw->win_ptr = mlx_new_window(rw->mlx_ptr, width, height, name)) ||
@@ -39,7 +39,7 @@ window			*new_window(char *name, int width, int height)
 	return (rw);
 }
 
-void			free_window(window *w)
+void			free_window(t_window *w)
 {
 	//free(w->name);
 	free_img(w);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                              :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: staeter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "visual.h"
 
-bool		new_img(window *w)
+bool		new_img(t_window *w)
 {
-	if (!(w->img = (image*)malloc(sizeof(image))) ||
+	if (!(w->img = (t_image*)malloc(sizeof(t_image))) ||
 		!(w->img->img_ptr = mlx_new_image(w->mlx_ptr, w->width, w->height)))
 		return (0);
 	w->img->data = mlx_get_data_addr(w->img->img_ptr,
@@ -23,21 +23,21 @@ bool		new_img(window *w)
 	return (1);
 }
 
-void		free_img(window *w)
+void		free_img(t_window *w)
 {
 	mlx_destroy_image(w->mlx_ptr, w->img->img_ptr);
 	free(w->img);
 	(w->img) = NULL;
 }
 
-bool		re_img(window *w)
+bool		re_img(t_window *w)
 {
 	if (w->img)
 		free_img(w);
 	return (new_img(w));
 }
 
-bool		put_img(window *w)
+bool		put_img(t_window *w)
 {
 	if (!w->img)
 		return (false);
