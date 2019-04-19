@@ -46,7 +46,7 @@ int			main(int argc, char **argv)
 		if (!(file_reader_obj(open(argv[1], O_RDONLY), &wh)))
 			errormessage(2, &wh);
 	}
-	printf("%d\n", wh.e->vert1->pos);
+	/*printf("%d\n", wh.e->vert1->pos);
 	printf("%f\n", wh.e->vert1->coord.x);
 	printf("%d\n", wh.e->vert2->pos);
 	printf("%f\n", wh.e->vert2->coord.x);
@@ -57,7 +57,7 @@ int			main(int argc, char **argv)
 	printf("%d\n", wh.e->next->next->vert1->pos);
 	printf("%f\n", wh.e->next->next->vert1->coord.x);
 	printf("%d\n", wh.e->next->next->vert2->pos);
-	printf("%f\n", wh.e->next->next->vert2->coord.x);
+	printf("%f\n", wh.e->next->next->vert2->coord.x);*/
 	window_init_load(&wh);
 	free_all(&wh);
 	return (0);

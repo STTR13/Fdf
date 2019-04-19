@@ -12,15 +12,6 @@
 
 #include "../includes/fdf.h"
 
-static edge		*edgefiller_obj(edge *e, vertex *v, int *x)
-{
-	int i;
-
-	if (!(e = add_edge(e, find_vertex_pos(v, ft_atoi(&line[x])),\
-	find_vertex_pos(v, ft_atoi(&line[i])))))
-		return (NULL);
-}
-
 static int linelen(char *line)
 {
 	int i;
@@ -34,22 +25,40 @@ static int linelen(char *line)
 		{
 			j++;
 			while ((ft_isdigit(line[i]) || line[i] == '/') && line[i] != '\0')
-			i++;
+				i++;
 		}
-		i++;
+		else
+			i++;
 	}
 	return (j);
 }
 
+static bool		edgefiller_obj(warehouse *wh, int *x, char *line, int j)
+{
+	int i;
 
-static edge		*edgeput_obj(edge *e, vertex *v, char *line, int i)
+	i = -1;
+	while (++i < j - 1)
+	{
+		if (!(wh->e = add_edge(wh->e, find_vertex_pos(wh->v, x[i]),\
+		find_vertex_pos(wh->v, x[i + 1]))))
+			return (0);
+	}
+	if (i > 1)
+		if (!(wh->e = add_edge(wh->e, find_vertex_pos(wh->v, x[0]),\
+		find_vertex_pos(wh->v, x[i]))))
+			return (0);
+	return (1);
+}
+
+static bool		edgeput_obj(warehouse *wh, char *line, int i)
 {
 	int	*x;
 	int	j;
 
 	j = linelen(line);
-	if (!(x = ft_memalloc(sizeof(int) * j)))
-		return (NULL);
+	if (!(x = ft_memalloc(sizeof(int *) * j)))
+		return (0);
 	j = 0;
 	while (line[i] != '\0')
 	{
@@ -62,10 +71,10 @@ static edge		*edgeput_obj(edge *e, vertex *v, char *line, int i)
 		}
 		i++;
 	}
-	if (!(e = edgefiller_obj(e, v, x)))
-		return (NULL);
+	if (!(edgefiller_obj(wh, x, line, j)))
+		return (0);
 	ft_memdell(x);
-	return (e);
+	return (1);
 }
 
 static vertex	*objvertfill(vertex *v, char *line, int i)
@@ -108,7 +117,7 @@ bool			file_reader_obj(int fd, warehouse *wh)
 		}
 		if (line[0] == 'f' && line[1] == ' ')
 		{
-			if (!(wh->e = edgeput_obj(wh->e, wh->v, line, 0)))
+			if (!(edgeput_obj(wh, line, 0)))
 				return (0);
 		}
 		free(line);
