@@ -23,11 +23,12 @@ INCLUDES = ./includes
 
 VERTEX_PATH = vertex/
 VERTEX =		apply.o \
-				vertex.o
+				vertex.o \
+				vertex_tab.o \
 
 EDGE_PATH = edge/
 EDGE =			apply.o \
-				edge.o
+				edge.o \
 
 FO_PATH = file_organizer/
 FO =			vemaker.o \

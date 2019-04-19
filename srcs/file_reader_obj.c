@@ -105,10 +105,12 @@ bool			file_reader_obj(int fd, warehouse *wh)
 {
 	char	*line;
 	int		i;
+	bool	b;
 
 	if (fd == -1)
 		return (0);
 	i = 1;
+	b = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (ft_strncmp(line, "v ", 2) == 0)
@@ -119,6 +121,11 @@ bool			file_reader_obj(int fd, warehouse *wh)
 		}
 		else if (ft_strncmp(line, "f ", 2) == 0)
 		{
+			if (!b)
+			{
+				b = 1;
+				//
+			}
 			if (!(edgeput_obj(wh, line, 0)))
 				return (0);
 		}

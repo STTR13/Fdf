@@ -69,6 +69,13 @@ vertex			*find_vertex(vertex *list, ve *coord);
 vertex			*find_vertex_pos(vertex *list, int pos);
 
 /*
+** --- Vertex_Tab ---
+*/
+
+vertex			**new_vertex_tab(vertex *list_head);
+void			free_vertex_tab(vertex ***tab);
+
+/*
 ** --- Edge ---
 */
 
