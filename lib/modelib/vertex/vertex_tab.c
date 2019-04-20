@@ -20,25 +20,25 @@
 	listlen_s(list_head, count);
 }*/
 
-vertex			*new_vertex_tab(vertex *list_head, int count)
+vertex			**new_vertex_tab(vertex *list_head, int count)
 {
-	vertex			*ret;
+	vertex			**ret;
 	//unsigned int	count;
 
 	//count = 0;
 	//listlen_s(list_head, &count);
-	if (!count || !(ret = (vertex*)malloc(sizeof(vertex) * (count + 1))))
+	if (!count || !(ret = (vertex**)malloc(sizeof(vertex*) * (count + 1))))
 		return (NULL);
-	//ret[count] = NULL;
-	while(--count)
+	ret[count] = NULL;
+	while(--count >= 0)
 	{
-		ret[count] = *list_head;
+		ret[count] = list_head;
 		list_head = list_head->next;
 	}
 	return (ret);
 }
 
-void			free_vertex_tab(vertex **tab)
+void			free_vertex_tab(vertex ***tab)
 {
 	free(*tab);
 	*tab = NULL;

@@ -40,13 +40,11 @@ static bool		edgefiller_obj(warehouse *wh, int *x, char *line, int j)
 	i = -1;
 	while (++i < j - 1)
 	{
-		if (!(wh->e = add_edge(wh->e, find_vertex_pos(wh->v, x[i]),\
-		find_vertex_pos(wh->v, x[i + 1]))))
+		if (!(wh->e = add_edge(wh->e, wh->tab[x[i]], wh->tab[x[i + 1]])))
 			return (0);
 	}
 	if (i > 1)
-		if (!(wh->e = add_edge(wh->e, find_vertex_pos(wh->v, x[0]),\
-		find_vertex_pos(wh->v, x[i]))))
+		if (!(wh->e = add_edge(wh->e, wh->tab[x[0]], wh->tab[x[i]])))
 			return (0);
 	return (1);
 }
@@ -64,7 +62,7 @@ static bool		edgeput_obj(warehouse *wh, char *line, int i)
 	{
 		if (ft_isdigit(line[i]))
 		{
-			x[j] = ft_atoi(&line[i]);
+			x[j] = ft_atoi(&line[i]) - 1;
 			j++;
 			while ((ft_isdigit(line[i]) || line[i] == '/') && line[i] != '\0')
 			i++;
@@ -105,12 +103,10 @@ bool			file_reader_obj(int fd, warehouse *wh)
 {
 	char	*line;
 	int		i;
-	bool	b;
 
 	if (fd == -1)
 		return (0);
-	i = 1;
-	b = 0;
+	i = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (ft_strncmp(line, "v ", 2) == 0)
@@ -121,10 +117,10 @@ bool			file_reader_obj(int fd, warehouse *wh)
 		}
 		else if (ft_strncmp(line, "f ", 2) == 0)
 		{
-			if (!b)
+			if (i != 0)
 			{
-				b = 1;
-				//
+				wh->tab = new_vertex_tab(wh->v, i);
+				i = 0;
 			}
 			if (!(edgeput_obj(wh, line, 0)))
 				return (0);
