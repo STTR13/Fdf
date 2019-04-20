@@ -12,22 +12,11 @@
 
 #include "modeling.h"
 
-/*static void		listlen_s(vertex *list_head, unsigned int *count)
+t_vertex			**new_vertex_tab(t_vertex *list_head, int count)
 {
-	if (!list_head)
-		return ;
-	(*count)++;
-	listlen_s(list_head, count);
-}*/
+	t_vertex			**ret;
 
-vertex			**new_vertex_tab(vertex *list_head, int count)
-{
-	vertex			**ret;
-	//unsigned int	count;
-
-	//count = 0;
-	//listlen_s(list_head, &count);
-	if (!count || !(ret = (vertex**)malloc(sizeof(vertex*) * (count + 1))))
+	if (!count || !(ret = (t_vertex**)malloc(sizeof(t_vertex*) * (count + 1))))
 		return (NULL);
 	ret[count] = NULL;
 	while(--count >= 0)
@@ -38,7 +27,7 @@ vertex			**new_vertex_tab(vertex *list_head, int count)
 	return (ret);
 }
 
-void			free_vertex_tab(vertex ***tab)
+void			free_vertex_tab(t_vertex ***tab)
 {
 	free(*tab);
 	*tab = NULL;

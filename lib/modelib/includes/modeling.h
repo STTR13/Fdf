@@ -22,18 +22,18 @@
 typedef struct	s_vertex
 {
 	int					pos;
-	ve					coord;
-	ve					prime;
+	t_ve					coord;
+	t_ve					prime;
 	struct s_vertex		*next;
 	int					color;
-}				vertex; //(n)
+}				t_vertex; //(n)
 
 typedef struct	s_edge
 {
-	vertex				*vert1;
-	vertex				*vert2;
+	t_vertex				*vert1;
+	t_vertex				*vert2;
 	struct s_edge		*next;
-}				edge;
+}				t_edge;
 
 typedef struct			s_input
 {
@@ -45,64 +45,64 @@ typedef struct			s_input
 typedef struct			s_warehouse
 {
 	t_input				*file;
-	vertex				*v;
-	vertex				**tab;
-	edge				*e;
-	window 				*w;
-	pl					p;
+	t_vertex				*v;
+	t_vertex				**tab;
+	t_edge				*e;
+	t_window 				*w;
+	t_pl					p;
 	double				eye; // tjrs pos
-	matrix				sysmat;
-	bool				mode;
-	bool				mouse;
-}						warehouse;
+	t_matrix				sysmat;
+	t_bool				mode;
+	t_bool				mouse;
+}						t_warehouse;
 
 /*
 ** --- Vertex ---
 */
 
-vertex			*new_vertex(ve *coord, int i);
-vertex			*add_vertex(vertex *list, ve *coord, int i);
-void			free_vertex(vertex **list);
+t_vertex			*new_vertex(t_ve *coord, int i);
+t_vertex			*add_vertex(t_vertex *list, t_ve *coord, int i);
+void			free_vertex(t_vertex **list);
 
-void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
+void			apply_vertex(void (*f)(t_vertex *vert, void *param), t_vertex *list,
 					void *param);
-vertex			*find_vertex(vertex *list, ve *coord);
-vertex			*find_vertex_pos(vertex *list, int pos);
+t_vertex			*find_vertex(t_vertex *list, t_ve *coord);
+t_vertex			*find_vertex_pos(t_vertex *list, int pos);
 
 /*
 ** --- Vertex_Tab ---
 */
 
-vertex			**new_vertex_tab(vertex *list_head, int count);
-void			free_vertex_tab(vertex ***tab);
+t_vertex			**new_vertex_tab(t_vertex *list_head, int count);
+void			free_vertex_tab(t_vertex ***tab);
 
 /*
 ** --- Edge ---
 */
 
-edge			*new_edge(vertex *vert1, vertex *vert2);
-edge			*add_edge(edge *list, vertex *vert1, vertex *vert2);
-void			free_edge(edge **list);
+t_edge			*new_edge(t_vertex *vert1, t_vertex *vert2);
+t_edge			*add_edge(t_edge *list, t_vertex *vert1, t_vertex *vert2);
+void			free_edge(t_edge **list);
 
-void			apply_edge(void (*f)(edge *vert, void *param),
-					edge *list, void *param);
-void			draw_edge(window *w, edge *ed);
-void			draw_model(window *w, edge *list);
+void			apply_edge(void (*f)(t_edge *vert, void *param),
+					t_edge *list, void *param);
+void			draw_edge(t_window *w, t_edge *ed);
+void			draw_model(t_window *w, t_edge *list);
 
 /*
 ** --- File Organizer ---
 */
 
-vertex			*veconvertstart(t_input *file);
-edge			*edgefiller(t_input *f, vertex **vt);
+t_vertex			*veconvertstart(t_input *file);
+t_edge			*edgefiller(t_input *f, t_vertex **vt);
 
 /*
 ** --- Warehouse ---
 */
 
-void			init_warehouse(warehouse *wh);
-void			free_all(warehouse *wh);
+void			init_warehouse(t_warehouse *wh);
+void			free_all(t_warehouse *wh);
 
-void			refresh_win(warehouse *wl);
+void			refresh_win(t_warehouse *wl);
 
 #endif

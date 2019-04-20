@@ -12,11 +12,11 @@
 
 # include "modeling.h"
 
-edge			*new_edge(vertex *vert1, vertex *vert2)
+t_edge			*new_edge(t_vertex *vert1, t_vertex *vert2)
 {
-	edge *r;
+	t_edge *r;
 
-	if (!(r = (edge*)malloc(sizeof(edge))))
+	if (!(r = (t_edge*)malloc(sizeof(t_edge))))
 		return (NULL);
 	r->vert1 = vert1;
 	r->vert2 = vert2;
@@ -24,9 +24,9 @@ edge			*new_edge(vertex *vert1, vertex *vert2)
 	return (r);
 }
 
-edge			*add_edge(edge *list, vertex *vert1, vertex *vert2)
+t_edge			*add_edge(t_edge *list, t_vertex *vert1, t_vertex *vert2)
 {
-	edge *r;
+	t_edge *r;
 
 	if (!(r = new_edge(vert1, vert2)))
 	{
@@ -37,9 +37,9 @@ edge			*add_edge(edge *list, vertex *vert1, vertex *vert2)
 	return (r);
 }
 
-void			free_edge(edge **list)
+void			free_edge(t_edge **list)
 {
-	edge *run;
+	t_edge *run;
 
 	if (!list || !*list)
 		return ;
