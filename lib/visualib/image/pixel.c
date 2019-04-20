@@ -12,7 +12,7 @@
 
 #include "visual.h"
 
-bool		set_pxl_img(t_window *w, int x, int y, int color)
+t_bool		set_pxl_img(t_window *w, int x, int y, int color)
 {
 	char			*img_ptr;
 	unsigned int	nc;
@@ -38,54 +38,53 @@ static int	abs_s(int nb)
 	return (nb);
 }
 
-static int	get_light(int start, int end, double percentage)
+static int	get_light(int color[2], int i, int start, int end)
 {
-	return ((1 - percentage) * start + percentage * end);
+	double percentage;
+
+	percentage = (double)(i - start) / (end - start);
+	return ((1 - percentage) * color[0] + percentage * color[1]);
 }
 
 /*
-** coord x of A = coord[0][0]
-** coord y of A = coord[0][1]
-** coord x of B = coord[1][0]
-** coord y of B = coord[1][1]
+** cor x of A = cor[0][0]
+** cor y of A = cor[0][1]
+** cor x of B = cor[1][0]
+** cor y of B = cor[1][1]
 ** color on A = color[0]
 ** color on B = color[1]
+**
+** norm clarity:
+** v[0] = a
+** v[1] = runaxis
+** v[2] = i
 */
-bool		draw_line_img(t_window *w, int coord[2][2], int color[2])
+
+t_bool		draw_line_img(t_window *w, int cor[2][2], int color[2])
 {
-	int		a;
-	int		runaxis;
-	int		i;
+	int		v[3];
 	int		d[2];
 	double	pxl[2];
 
-	if (!w->img ||
-		((coord[0][0] < 0 || coord[0][1] < 0
-			|| coord[0][0] > w->width || coord[0][1] > w->height)
-		&&
-		(coord[1][0] < 0 || coord[1][1] < 0
-			|| coord[1][0] > w->width || coord[1][1] > w->height)))
+	if (!w->img || ((cor[0][0] < 0 || cor[0][1] < 0 || cor[0][0] > w->width ||
+		cor[0][1] > w->height) && (cor[1][0] < 0 || cor[1][1] < 0 ||
+		cor[1][0] > w->width || cor[1][1] > w->height)))
 		return (false);
-	d[0] = abs_s(coord[0][0] - coord[1][0]);
-	d[1] = abs_s(coord[0][1] - coord[1][1]);
-	if (d[0] >= d[1])
-		runaxis = 0;
-	else
-		runaxis = 1;
-	a = coord[0][runaxis] > coord[1][runaxis];
-	d[0] = coord[!a][0] - coord[a][0];
-	d[1] = coord[!a][1] - coord[a][1];
-	i = 0;
-	while (i <= d[runaxis])
+	d[0] = abs_s(cor[0][0] - cor[1][0]);
+	d[1] = abs_s(cor[0][1] - cor[1][1]);
+	v[1] = (d[0] >= d[1]) ? 0 : 1;
+	v[0] = cor[0][v[1]] > cor[1][v[1]];
+	d[0] = cor[!v[0]][0] - cor[v[0]][0];
+	d[1] = cor[!v[0]][1] - cor[v[0]][1];
+	v[2] = 0;
+	while (v[2] <= d[v[1]])
 	{
-		pxl[0] = i + coord[a][runaxis];
-		pxl[1] = (d[runaxis] ? ((double)(d[!runaxis]) / d[runaxis]) : 0) * i
-						+ (double)coord[a][!runaxis];
-		set_pxl_img(w, (int)pxl[runaxis], (int)pxl[!runaxis],
-			get_light(color[a], color[!a],
-				(double)(i - coord[a][runaxis]) /
-				(coord[!a][runaxis] - coord[a][runaxis])));
-		i++;
+		pxl[0] = v[2] + cor[v[0]][v[1]];
+		pxl[1] = (d[v[1]] ? ((double)(d[!v[1]]) / d[v[1]]) : 0) * v[2]
+						+ (double)cor[v[0]][!v[1]];
+		set_pxl_img(w, (int)pxl[v[1]], (int)pxl[!v[1]],
+			get_light(color, v[2], cor[v[0]][v[1]], cor[!v[0]][v[1]]));
+		v[2]++;
 	}
 	return (true);
 }

@@ -12,7 +12,7 @@
 
 #include "visual.h"
 
-t_window			*new_window(char *name, int width, int height)
+t_window		*new_window(char *name, int width, int height)
 {
 	t_window *rw;
 

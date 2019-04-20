@@ -12,7 +12,7 @@
 
 #include "visual.h"
 
-bool		new_img(t_window *w)
+t_bool		new_img(t_window *w)
 {
 	if (!(w->img = (t_image*)malloc(sizeof(t_image))) ||
 		!(w->img->img_ptr = mlx_new_image(w->mlx_ptr, w->width, w->height)))
@@ -30,14 +30,14 @@ void		free_img(t_window *w)
 	(w->img) = NULL;
 }
 
-bool		re_img(t_window *w)
+t_bool		re_img(t_window *w)
 {
 	if (w->img)
 		free_img(w);
 	return (new_img(w));
 }
 
-bool		put_img(t_window *w)
+t_bool		put_img(t_window *w)
 {
 	if (!w->img)
 		return (false);
