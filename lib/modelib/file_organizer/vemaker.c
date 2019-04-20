@@ -23,7 +23,7 @@
 ** 255 will be given, which is the color blue.
 */
 
-static vertex		*gridfiller(t_input *file, vertex *vert, int x, int y)
+static t_vertex		*gridfiller(t_input *file, t_vertex *vert, int x, int y)
 {
 	int pos;
 	int temp;
@@ -48,9 +48,9 @@ static vertex		*gridfiller(t_input *file, vertex *vert, int x, int y)
 	return (vert);
 }
 
-vertex				*veconvertstart(t_input *file)
+t_vertex				*veconvertstart(t_input *file)
 {
-	vertex	*vert;
+	t_vertex	*vert;
 	int		x;
 	int		y;
 

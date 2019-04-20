@@ -12,7 +12,7 @@
 
 # include "modeling.h"
 #include <stdio.h>
-void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
+void			apply_vertex(void (*f)(t_vertex *vert, void *param), t_vertex *list,
 						void *param)
 {
 	if (!list)
@@ -21,7 +21,7 @@ void			apply_vertex(void (*f)(vertex *vert, void *param), vertex *list,
 	apply_vertex(f, list->next, param);
 }
 
-vertex			*find_vertex(vertex *list, ve *coord)
+t_vertex			*find_vertex(t_vertex *list, t_ve *coord)
 {
 	if (!list)
 		return (NULL);
@@ -30,7 +30,7 @@ vertex			*find_vertex(vertex *list, ve *coord)
 	return (find_vertex(list->next, coord));
 }
 
-vertex			*find_vertex_pos(vertex *list, int pos)
+t_vertex			*find_vertex_pos(t_vertex *list, int pos)
 {
 	if (!list)
 		return (NULL);

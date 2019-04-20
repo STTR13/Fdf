@@ -12,9 +12,9 @@
 
 #include "modeling.h"
 
-static void		f1(vertex *vert, void *param)
+static void		f1(t_vertex *vert, void *param)
 {
-	ve t;
+	t_ve t;
 
 	//printf("f1\n");
 	minus(
@@ -29,7 +29,7 @@ static void		f1(vertex *vert, void *param)
 	);
 }
 
-static ve		*conic_projection_s(ve *point, warehouse *wh, ve *ret)
+static ve		*conic_projection_s(t_ve *point, warehouse *wh, t_ve *ret)
 {
 	ret->z = 0;
 	ret->x = (point->x / (point->z + wh->eye)) * wh->eye;
@@ -37,9 +37,9 @@ static ve		*conic_projection_s(ve *point, warehouse *wh, ve *ret)
 	return (ret);
 }
 
-static void		f2(vertex *vert, void *param)
+static void		f2(t_vertex *vert, void *param)
 {
-	ve tv;
+	t_ve tv;
 
 	//printf("f2\n");
 	minus(&vert->coord, &((warehouse*)(param))->p.p, &tv);

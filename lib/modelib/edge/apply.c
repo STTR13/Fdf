@@ -12,7 +12,7 @@
 
 # include "modeling.h"
 
-void		apply_edge(void (*f)(edge *vert, void *param), edge *list, void *param)
+void		apply_edge(void (*f)(t_edge *vert, void *param), t_edge *list, void *param)
 {
 	if (!list)
 		return ;
@@ -20,7 +20,7 @@ void		apply_edge(void (*f)(edge *vert, void *param), edge *list, void *param)
 	apply_edge(f, list->next, param);
 }
 
-void		draw_edge(window *w, edge *ed)
+void		draw_edge(t_window *w, t_edge *ed)
 {
 	int coord[2][2];
 	int color[2];
@@ -36,12 +36,12 @@ void		draw_edge(window *w, edge *ed)
 	draw_line_img(w, coord, color);
 }
 
-static void	draw_edge_s(edge *ed, void *param)
+static void	draw_edge_s(t_edge *ed, void *param)
 {
-	draw_edge((window*)param, ed);
+	draw_edge((t_window*)param, ed);
 }
 
-void		draw_model(window *w, edge *list)
+void		draw_model(t_window *w, t_edge *list)
 {
 	apply_edge(&draw_edge_s, list, (void*)w);
 }
