@@ -14,6 +14,6 @@
 
 int		loop_hook(void *param)
 {
-	refresh_win((warehouse*)(param));
+	refresh_win((t_warehouse*)(param));
 	return (0);
 }

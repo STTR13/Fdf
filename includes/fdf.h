@@ -24,23 +24,23 @@
 */
 
 t_input					*file_reader_fdf(int fd);
-bool					file_reader_obj(int fd, warehouse *wh);
-void					errormessage(int i, warehouse *window);
-int						get_color_grad(double percent, edge *e);
-void					free_all(warehouse *w);
+t_bool					file_reader_obj(int fd, t_warehouse *wh);
+void					errormessage(int i, t_warehouse *window);
+int						get_color_grad(double percent, t_edge *e);
+void					free_all(t_warehouse *w);
 
 /*
 ** --- Window ---
 */
 
-void					window_init_load(warehouse *window);
-void					refresh_win(warehouse *wl);
+void					window_init_load(t_warehouse *window);
+void					refresh_win(t_warehouse *wl);
 
 /*
 ** --- Keys and Mouse ---
 */
 
-int						deal_key(int key, warehouse *window);
+int						deal_key(int key, t_warehouse *window);
 
 /*
 ** --- Hook ---

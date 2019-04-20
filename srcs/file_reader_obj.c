@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static int linelen(char *line)
+static int		linelen(char *line)
 {
 	int i;
 	int j;
@@ -33,7 +33,7 @@ static int linelen(char *line)
 	return (j);
 }
 
-static bool		edgefiller_obj(warehouse *wh, int *x, char *line, int j)
+static t_bool	edgefiller_obj(t_warehouse *wh, int *x, char *line, int j)
 {
 	int i;
 
@@ -49,7 +49,7 @@ static bool		edgefiller_obj(warehouse *wh, int *x, char *line, int j)
 	return (1);
 }
 
-static bool		edgeput_obj(warehouse *wh, char *line, int i)
+static t_bool	edgeput_obj(t_warehouse *wh, char *line, int i)
 {
 	int	*x;
 	int	j;
@@ -75,12 +75,12 @@ static bool		edgeput_obj(warehouse *wh, char *line, int i)
 	return (1);
 }
 
-static vertex	*objvertfill(vertex *v, char *line, int i)
+static t_vertex	*objvertfill(t_vertex *v, char *line, int i)
 {
 	int		y;
 	int		x;
 	int		z;
-	ve		ret;
+	t_ve	ret;
 
 	x = -1;
 
@@ -99,7 +99,7 @@ static vertex	*objvertfill(vertex *v, char *line, int i)
 	return (v);
 }
 
-bool			file_reader_obj(int fd, warehouse *wh)
+t_bool			file_reader_obj(int fd, t_warehouse *wh)
 {
 	char	*line;
 	int		i;

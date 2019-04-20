@@ -19,17 +19,17 @@ static void		f1(t_vertex *vert, void *param)
 	//printf("f1\n");
 	minus(
 		&vert->coord,
-		&((warehouse*)(param))->p.p,
+		&((t_warehouse*)(param))->p.p,
 		&t
 	);
 	dot_mv(
-		&((warehouse*)(param))->sysmat,
+		&((t_warehouse*)(param))->sysmat,
 		t,
 		&vert->prime
 	);
 }
 
-static ve		*conic_projection_s(t_ve *point, warehouse *wh, t_ve *ret)
+static t_ve		*conic_projection_s(t_ve *point, t_warehouse *wh, t_ve *ret)
 {
 	ret->z = 0;
 	ret->x = (point->x / (point->z + wh->eye)) * wh->eye;
@@ -42,18 +42,18 @@ static void		f2(t_vertex *vert, void *param)
 	t_ve tv;
 
 	//printf("f2\n");
-	minus(&vert->coord, &((warehouse*)(param))->p.p, &tv);
-	dot_mv(&((warehouse*)(param))->sysmat, tv, &tv);
+	minus(&vert->coord, &((t_warehouse*)(param))->p.p, &tv);
+	dot_mv(&((t_warehouse*)(param))->sysmat, tv, &tv);
 	if (tv.z >= 0)
 		conic_projection_s(
 			&tv,
-			(warehouse*)(param),
+			(t_warehouse*)(param),
 			&vert->prime);
 	else
 		vert->prime.z = -1;
 }
 
-void			refresh_win(warehouse *wl)
+void			refresh_win(t_warehouse *wl)
 {
 	if (!re_img(wl->w))
 		return ;

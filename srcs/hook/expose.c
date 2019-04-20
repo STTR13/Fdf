@@ -12,8 +12,8 @@
 
 #include "../../includes/fdf.h"
 
-int		expose(void *window)
+int		expose(void *wh)
 {
-	refresh_win((warehouse*)window);
+	refresh_win((t_warehouse*)wh);
 	return (0);
 }

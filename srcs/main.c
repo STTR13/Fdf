@@ -27,7 +27,7 @@ static int	file_read_select(char *str)
 
 int			main(int argc, char **argv)
 {
-	warehouse	wh;
+	t_warehouse	wh;
 	int			filetype;
 
 	if (argc != 2)

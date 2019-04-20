@@ -25,9 +25,9 @@
 
 static t_vertex		*gridfiller(t_input *file, t_vertex *vert, int x, int y)
 {
-	int pos;
-	int temp;
-	ve	v;
+	int		pos;
+	int		temp;
+	t_ve	v;
 
 	pos = 0;
 	y = 0;

@@ -12,9 +12,9 @@
 
 #include "../../includes/fdf.h"
 
-int			windowclose(void *window)
+int			windowclose(void *wh)
 {
-	free_all(window);
+	free_all((t_warehouse*)wh);
 	exit(0);
 	return (0);
 }

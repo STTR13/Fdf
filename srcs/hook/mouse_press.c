@@ -12,9 +12,9 @@
 
 #include "../../includes/fdf.h"
 
-int				mouse_press(int key, int x, int y, void *window)
+int				mouse_press(int key, int x, int y, void *wh)
 {
-	(void)window;
+	(void)wh;
 	(void)x;
 	(void)y;
 	if (key == BUT1_KEY)

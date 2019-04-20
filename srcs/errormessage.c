@@ -16,7 +16,7 @@
 ** frees every malloc
 */
 
-void		errormessage(int i, warehouse *window)
+void		errormessage(int i, t_warehouse *wh)
 {
 	if (i == 1)
 	{
@@ -25,13 +25,13 @@ void		errormessage(int i, warehouse *window)
 	}
 	else if (i == 2)
 	{
-		free_all(window);
+		free_all(wh);
 		ft_putendl("error");
 		exit(0);
 	}
 	else if (i == 3)
 	{
-		free_all(window);
+		free_all(wh);
 		ft_putendl("wrong file type");
 		exit(0);
 	}

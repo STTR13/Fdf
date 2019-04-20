@@ -13,8 +13,7 @@
 #include "../../includes/fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
-int			key_release(int key, void *window)
+int			key_release(int key, void *wh)
 {
-	//refresh_win((warehouse*)(window));
 	return (0);
 }

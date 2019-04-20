@@ -12,7 +12,7 @@
 
 #include "modeling.h"
 
-void		init_warehouse(warehouse *wh)
+void		init_warehouse(t_warehouse *wh)
 {
 	wh->w = new_window("FDF", 5120 / 2, 2880 / 2);
 	wh->p.n.x = 1;
@@ -37,7 +37,7 @@ static void	free_i(t_input *file)
 	free(file);
 }
 
-void		free_all(warehouse *wh)
+void		free_all(t_warehouse *wh)
 {
 	if (wh->w)
 		free_window(wh->w);

@@ -13,14 +13,14 @@
 #include "../../includes/fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
-int				mouse_move(int x, int y, void *window)
+int				mouse_move(int x, int y, void *wh)
 {
-	matrix	m;
+	t_matrix	m;
 
 	CGGetLastMouseDelta(&x, &y);
-	rot(&((warehouse*)(window))->p.l, x / 700.00, &m);
-	rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
-	rot(&((warehouse*)(window))->p.m, y / 700.00, &m);
-	rot_p(&m, &((warehouse*)(window))->p.p, &((warehouse*)(window))->p);
+	rot(&((t_warehouse*)(wh))->p.l, x / 700.00, &m);
+	rot_p(&m, &((t_warehouse*)(wh))->p.p, &((t_warehouse*)(wh))->p);
+	rot(&((t_warehouse*)(wh))->p.m, y / 700.00, &m);
+	rot_p(&m, &((t_warehouse*)(wh))->p.p, &((t_warehouse*)(wh))->p);
 	return (0);
 }

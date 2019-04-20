@@ -13,7 +13,7 @@
 #include "../includes/fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
-void		window_init_load(warehouse *wh)
+void		window_init_load(t_warehouse *wh)
 {
 	init_warehouse(wh);
 	wh->w->hook.param = (void *)wh;

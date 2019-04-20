@@ -13,49 +13,49 @@
 #include "../../includes/fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
-static void	key_press_sub1(int key, warehouse *window)
+static void	key_press_sub1(int key, t_warehouse *wh)
 {
 	if (key == W_KEY)
-		plus(&window->p.p, &window->p.n, &window->p.p);
+		plus(&wh->p.p, &wh->p.n, &wh->p.p);
 	if (key == S_KEY)
-		minus(&window->p.p, &window->p.n, &window->p.p);
+		minus(&wh->p.p, &wh->p.n, &wh->p.p);
 	if (key == A_KEY)
-		minus(&window->p.p, &window->p.m, &window->p.p);
+		minus(&wh->p.p, &wh->p.m, &wh->p.p);
 	if (key == D_KEY)
-		plus(&window->p.p, &window->p.m, &window->p.p);
+		plus(&wh->p.p, &wh->p.m, &wh->p.p);
 	if (key == R_KEY)
-		plus(&window->p.p, &window->p.l, &window->p.p);
+		plus(&wh->p.p, &wh->p.l, &wh->p.p);
 	if (key == F_KEY)
-		minus(&window->p.p, &window->p.l, &window->p.p);
+		minus(&wh->p.p, &wh->p.l, &wh->p.p);
 }
 
-static void	key_press_sub2(int key, warehouse *window)
+static void	key_press_sub2(int key, t_warehouse *wh)
 {
-	matrix m;
+	t_matrix m;
 
 	if (key == V_KEY)
-		window->mode = !window->mode;
+		wh->mode = !wh->mode;
 	if (key == M_KEY)
-		window->mouse = !window->mouse;
+		wh->mouse = !wh->mouse;
 	if (key == E_KEY)
 	{
-		rot(&window->p.n, 0.1, &m);
-		rot_p(&m, &window->p.p, &window->p);
+		rot(&wh->p.n, 0.1, &m);
+		rot_p(&m, &wh->p.p, &wh->p);
 	}
 	if (key == Q_KEY)
 	{
-		rot(&window->p.n, -0.1, &m);
-		rot_p(&m, &window->p.p, &window->p);
+		rot(&wh->p.n, -0.1, &m);
+		rot_p(&m, &wh->p.p, &wh->p);
 	}
 	if (key == ESC_KEY)
-		windowclose(window);
+		windowclose(wh);
 	if (key == M_KEY)
 		CGDisplayHideCursor(kCGDirectMainDisplay);
 }
 
-int			key_press(int key, void *window)
+int			key_press(int key, void *wh)
 {
-	key_press_sub1(key, (warehouse *)window);
-	key_press_sub2(key, (warehouse *)window);
+	key_press_sub1(key, (t_warehouse *)wh);
+	key_press_sub2(key, (t_warehouse *)wh);
 	return (0);
 }
