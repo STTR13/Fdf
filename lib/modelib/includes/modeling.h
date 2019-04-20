@@ -46,6 +46,7 @@ typedef struct			s_warehouse
 {
 	t_input				*file;
 	vertex				*v;
+	vertex				*temp;
 	edge				*e;
 	window 				*w;
 	pl					p;
