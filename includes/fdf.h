@@ -23,6 +23,9 @@
 ** --- File reader and data organization ---
 */
 
+int						get_next_line_opti(int fd, char **line);
+char					*reader(int filedesc);
+
 t_input					*file_reader_fdf(int fd);
 t_bool					file_reader_obj(int fd, t_warehouse *wh);
 void					errormessage(int i, t_warehouse *window);

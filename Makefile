@@ -22,6 +22,8 @@ SRC = 			main.o \
 				file_reader_obj.o \
 				errormessage.o \
 				windows.o \
+				reader.o \
+				opti_gnl.o
 
 HOOK_PATH = srcs/hook/
 HOOK =			key_press.o \
