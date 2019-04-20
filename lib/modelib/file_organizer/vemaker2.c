@@ -20,56 +20,61 @@
 ** the same for the vertical connections.
 */
 
-static bool	edgefiller_hor(t_input *f, vertex *v, edge **e)
+
+
+/*static bool	edgefiller_hor(t_input *f, vertex **vt)
 {
+	edge *e;
 	int	x;
 	int	y;
-	ve	tv;
 
 	y = 0;
 	while (y < f->lines)
 	{
 		x = 0;
-		while (x < f->linelen - 1)
+		while (x < f->linelen)
 		{
-			if(!(*e = add_edge(*e, find_vertex(v, set_ve(0, -x, y, &tv)),\
-			find_vertex(v, set_ve(0, (-x) - 1, y, &tv)))))
-				return (0);
+			if (x != f->linelen - 1)
+				if (!(*e = add_edge(*e, vt[y * f->linelen + x], vt[y * f->linelen + x + 1])))
+					return (0);
+			if (y < f->lines - 1)
+				if (!(*e = add_edge(*e, vt[y * f->linelen + x], vt[(y + 1) * f->linelen + x])))
+					return (0);
 			x++;
 		}
 		y++;
 	}
 	return (1);
-}
+}*/
 
-static bool	edgefiller_ver(t_input *f, vertex *v, edge **e)
+static edge *edgefiller_quit(edge *e)
 {
-	int	x;
-	int	y;
-	ve	tv;
-
-	x = 0;
-	while (x < f->linelen)
-	{
-		y = 0;
-		while (y < f->lines - 1)
-		{
-			if (!(*e = add_edge(*e, find_vertex(v, set_ve(0, -x, y, &tv)),\
-			find_vertex(v, set_ve(0, -x, y + 1, &tv)))))
-				return (0);
-			y++;
-		}
-		x++;
-	}
-	return (1);
+	free_edge(&e);
+	return (NULL);
 }
 
-edge		*edgefiller(t_input *f, vertex *v)
+edge		*edgefiller(t_input *f, vertex **vt)
 {
 	edge *e;
+	int	x;
+	int	y;
 
 	e = NULL;
-	edgefiller_hor(f, v, &e);
-	edgefiller_ver(f, v, &e);
+	y = 0;
+	while (y < f->lines)
+	{
+		x = 0;
+		while (x < f->linelen)
+		{
+			if (x != f->linelen - 1)
+				if (!(e = add_edge(e, vt[y * f->linelen + x], vt[y * f->linelen + x + 1])))
+					return (edgefiller_quit(e));
+			if (y < f->lines - 1)
+				if (!(e = add_edge(e, vt[y * f->linelen + x], vt[(y + 1) * f->linelen + x])))
+					return (edgefiller_quit(e));
+			x++;
+		}
+		y++;
+	}
 	return (e);
 }

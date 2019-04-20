@@ -12,25 +12,25 @@
 
 #include "modeling.h"
 
-static void		listlen_s(vertex *list_head, unsigned int *count)
+/*static void		listlen_s(vertex *list_head, unsigned int *count)
 {
 	if (!list_head)
 		return ;
 	(*count)++;
 	listlen_s(list_head, count);
-}
+}*/
 
-vertex			**new_vertex_tab(vertex *list_head)
+vertex			**new_vertex_tab(vertex *list_head, int count)
 {
 	vertex			**ret;
-	unsigned int	count;
+	//unsigned int	count;
 
-	count = 0;
-	listlen_s(list_head, &count);
-	if (!count || !(ret = (vertex**)malloc((count + 1) * sizeof(vertex*))))
+	//count = 0;
+	//listlen_s(list_head, &count);
+	if (!count || !(ret = (vertex**)malloc(sizeof(vertex*) * (count + 1))))
 		return (NULL);
 	ret[count] = NULL;
-	while(--count)
+	while(--count >= 0)
 	{
 		ret[count] = list_head;
 		list_head = list_head->next;

@@ -46,6 +46,7 @@ typedef struct			s_warehouse
 {
 	t_input				*file;
 	vertex				*v;
+	vertex				**tab;
 	edge				*e;
 	window 				*w;
 	pl					p;
@@ -72,7 +73,7 @@ vertex			*find_vertex_pos(vertex *list, int pos);
 ** --- Vertex_Tab ---
 */
 
-vertex			**new_vertex_tab(vertex *list_head);
+vertex			**new_vertex_tab(vertex *list_head, int count);
 void			free_vertex_tab(vertex ***tab);
 
 /*
@@ -93,7 +94,7 @@ void			draw_model(window *w, edge *list);
 */
 
 vertex			*veconvertstart(t_input *file);
-edge			*edgefiller(t_input *f, vertex *v);
+edge			*edgefiller(t_input *f, vertex **vt);
 
 /*
 ** --- Warehouse ---

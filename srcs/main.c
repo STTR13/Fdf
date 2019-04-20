@@ -38,7 +38,8 @@ int			main(int argc, char **argv)
 	{
 		if (!(wh.file = file_reader_fdf(open(argv[1], O_RDONLY)))\
 		|| !(wh.v = veconvertstart(wh.file))\
-		|| !(wh.e = edgefiller(wh.file, wh.v)))
+		|| !(wh.tab = new_vertex_tab(wh.v, wh.file->lines * wh.file->linelen))\
+		|| !(wh.e = edgefiller(wh.file, wh.tab)))
 			errormessage(2, &wh);
 	}
 	else
