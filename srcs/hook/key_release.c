@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
 int			key_release(int key, void *wh)

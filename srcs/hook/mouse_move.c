@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
 int				mouse_move(int x, int y, void *wh)

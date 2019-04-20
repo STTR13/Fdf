@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 #include <ApplicationServices/ApplicationServices.h>
 
 void		window_init_load(t_warehouse *wh)

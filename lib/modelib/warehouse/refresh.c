@@ -16,7 +16,6 @@ static void		f1(t_vertex *vert, void *param)
 {
 	t_ve t;
 
-	//printf("f1\n");
 	minus(
 		&vert->coord,
 		&((t_warehouse*)(param))->p.p,
@@ -41,7 +40,6 @@ static void		f2(t_vertex *vert, void *param)
 {
 	t_ve tv;
 
-	//printf("f2\n");
 	minus(&vert->coord, &((t_warehouse*)(param))->p.p, &tv);
 	dot_mv(&((t_warehouse*)(param))->sysmat, tv, &tv);
 	if (tv.z >= 0)
