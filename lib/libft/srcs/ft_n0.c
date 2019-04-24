@@ -15,6 +15,6 @@
 int	ft_n0(char c)
 {
 	if (c != ' ' && c != '\n' && c != '\0')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
