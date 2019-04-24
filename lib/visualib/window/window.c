@@ -21,8 +21,8 @@ t_window		*new_window(char *name, int width, int height)
 		return (NULL);
 	if (!(rw->mlx_ptr = mlx_init()) ||
 		!(rw->win_ptr = mlx_new_window(rw->mlx_ptr, width, height, name)) ||
-		!(rw->width = width) || !(rw->height = height) ||
-		!new_img(rw))
+		!(rw->width = width) ||
+		!(rw->height = height) || !new_img(rw))
 	{
 		free_window(rw);
 		return (NULL);
@@ -41,7 +41,6 @@ t_window		*new_window(char *name, int width, int height)
 
 void			free_window(t_window *w)
 {
-	//free(w->name);
 	free_img(w);
 	mlx_destroy_window(w->mlx_ptr, w->win_ptr);
 	free(w);
