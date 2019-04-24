@@ -120,11 +120,8 @@ t_bool			file_reader_obj(int fd, t_warehouse *wh)
 		return (0);
 	i = 0;
 	while (get_next_line_opti(fd, &line) == 1)
-	{
 		if (!(code_selector(wh, line, &i)))
 			return (0);
-		//free(line);
-	}
 	close(fd);
 	get_next_line_opti(-7919, &line);
 	if (!(wh->e))

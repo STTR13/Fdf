@@ -18,14 +18,12 @@
 ** t_input, which mallocs a char**.
 */
 
-static t_bool	is_valid_linelen(char *str, int *line_len, int *line_count)
+static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 {
-	int i;
 	int counter;
 	int j;
 
-	*line_count += 1;
-	i = 0;
+	*line_c += 1;
 	j = 0;
 	counter = 0;
 	while (str[j] != '\n' && str[j] != '\0')
@@ -34,19 +32,19 @@ static t_bool	is_valid_linelen(char *str, int *line_len, int *line_count)
 	{
 		if (ft_isdigit(str[i]) == 1)
 		{
-			while ((ft_isalnum(str[i]) == 1 || str[i] == ',') && str[i] != ' ' && str[i] != '\n' && str[i] != '\0')
+			while ((ft_isalnum(str[i]) == 1 || str[i] == ',') && ft_n0(str[i]))
 				i++;
 			counter++;
 		}
 		i++;
 	}
-	if (*line_len == -1)
-		*line_len = counter;
+	if (*line_l == -1)
+		*line_l = counter;
 	if (str[i] == '\0')
 		return (true);
-	if (counter != *line_len)
+	if (counter != *line_l)
 		return (false);
-	return (is_valid_linelen(&str[i], line_len, line_count));
+	return (is_valid_linelen(&str[i], line_l, line_c, 0));
 }
 
 static char		*strfiller(char *str, int i)
@@ -105,32 +103,18 @@ t_input			*file_reader_fdf(int fd)
 	char	*line;
 	t_input	*lst;
 
-	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input))))) /* ||\
-	(!(lst->str = ft_strnew(OPEN_MAX))))*/
+	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))))
 		return (NULL);
 	lst->linelen = -1;
 	lst->lines = 0;
 	if (!(lst->str = reader(fd)))
 		return (NULL);
 	close(fd);
-	if (!is_valid_linelen(lst->str, &lst->linelen, &lst->lines))
+	if (!is_valid_linelen(lst->str, &lst->linelen, &lst->lines, 0))
 	{
 		ft_strdel(&lst->str);
 		return (NULL);
 	}
-	/*while (get_next_line(fd, &line) == 1)
-	{
-		lst->str = ft_strjoinn(lst->str, line);
-		if (lst->lines == 0)
-			lst->linelen = linelen(lst->str);
-		if (linelen(line) != lst->linelen)
-		{
-			free(line);
-			return (NULL);
-		}
-		lst->lines += 1;
-		free(line);
-	}*/
 	if (!(lst->input = filecreator(lst->str, lst)))
 		return (NULL);
 	ft_strdel(&lst->str);

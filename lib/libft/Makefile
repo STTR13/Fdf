@@ -90,6 +90,7 @@ SRC = ft_atoi.o \
 		ft_strjoinspace.o \
 		ft_iswhitespace.o \
 		ft_atof.o \
+		ft_n0.o \
 
 
 OBJ = $(addprefix $(SRC_PATH), $(SRC))
