@@ -18,7 +18,7 @@
 typedef enum {
 	false = 0,
 	true = 1
-}				t_bool;
+}	t_bool;
 
 typedef struct	s_matrix
 {
