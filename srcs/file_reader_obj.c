@@ -93,7 +93,10 @@ static t_bool	code_selector(t_warehouse *wh, char *line, int *i)
 	if (ft_strncmp(line, "v ", 2) == 0)
 	{
 		if (!(wh->v = objvertfill(wh->v, line, *i)))
+		{
+			printf("fout objvert\n");
 			return (0);
+		}
 		*i += 1;
 	}
 	else if (ft_strncmp(line, "f ", 2) == 0)
@@ -104,7 +107,10 @@ static t_bool	code_selector(t_warehouse *wh, char *line, int *i)
 			*i = 0;
 		}
 		if (!(edgeput_obj(wh, line, 0)))
+		{
+			printf("fout edgeput\n");
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -117,13 +123,14 @@ t_bool			file_reader_obj(int fd, t_warehouse *wh)
 	if (fd == -1)
 		return (0);
 	i = 0;
-	while (get_next_line(fd, &line) == 1)
+	while (get_next_line_opti(fd, &line) == 1)
 	{
 		if (!(code_selector(wh, line, &i)))
 			return (0);
-		free(line);
+		//free(line);
 	}
 	close(fd);
+	get_next_line_opti(-7919, &line);
 	if (!(wh->e))
 		return (0);
 	return (1);
