@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "modeling.h"
+#include "modeling.h"
 
-t_vertex			*new_vertex(t_ve *coord, int i)
+t_vertex	*new_vertex(t_ve *coord, int i)
 {
-	t_vertex *r;
+	t_vertex	*r;
 
 	if (!(r = (t_vertex*)malloc(sizeof(t_vertex))))
 		return (NULL);
@@ -26,9 +26,9 @@ t_vertex			*new_vertex(t_ve *coord, int i)
 	return (r);
 }
 
-t_vertex			*add_vertex(t_vertex *list, t_ve *coord, int i)
+t_vertex	*add_vertex(t_vertex *list, t_ve *coord, int i)
 {
-	t_vertex *r;
+	t_vertex	*r;
 
 	if (!(r = new_vertex(coord, i)))
 	{
@@ -39,9 +39,9 @@ t_vertex			*add_vertex(t_vertex *list, t_ve *coord, int i)
 	return (r);
 }
 
-void			free_vertex(t_vertex **list)
+void		free_vertex(t_vertex **list)
 {
-	t_vertex *run;
+	t_vertex	*run;
 
 	if (!list || !*list)
 		return ;

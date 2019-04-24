@@ -20,13 +20,13 @@
 ** the same for the vertical connections.
 */
 
-static t_edge *edgefiller_quit(t_edge *e)
+static t_edge	*edgefiller_quit(t_edge *e)
 {
 	free_edge(&e);
 	return (NULL);
 }
 
-t_edge	*edgefiller_obj(t_warehouse *wh, int *x, int j)
+t_edge			*edgefiller_obj(t_warehouse *wh, int *x, int j)
 {
 	int i;
 
@@ -42,11 +42,11 @@ t_edge	*edgefiller_obj(t_warehouse *wh, int *x, int j)
 	return (wh->e);
 }
 
-t_edge		*edgefiller(t_input *f, t_vertex **vt)
+t_edge			*edgefiller(t_input *f, t_vertex **vt)
 {
-	t_edge *e;
-	int	x;
-	int	y;
+	t_edge	*e;
+	int		x;
+	int		y;
 
 	e = NULL;
 	y = 0;

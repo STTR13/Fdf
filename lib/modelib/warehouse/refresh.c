@@ -19,13 +19,11 @@ static void		f1(t_vertex *vert, void *param)
 	minus(
 		&vert->coord,
 		&((t_warehouse*)(param))->p.p,
-		&t
-	);
+		&t);
 	dot_mv(
 		&((t_warehouse*)(param))->sysmat,
 		t,
-		&vert->prime
-	);
+		&vert->prime);
 }
 
 static t_ve		*conic_projection_s(t_ve *point, t_warehouse *wh, t_ve *ret)

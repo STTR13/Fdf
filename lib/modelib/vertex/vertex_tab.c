@@ -12,14 +12,14 @@
 
 #include "modeling.h"
 
-t_vertex			**new_vertex_tab(t_vertex *list_head, int count)
+t_vertex	**new_vertex_tab(t_vertex *list_head, int count)
 {
-	t_vertex			**ret;
+	t_vertex	**ret;
 
 	if (!count || !(ret = (t_vertex**)malloc(sizeof(t_vertex*) * (count + 1))))
 		return (NULL);
 	ret[count] = NULL;
-	while(--count >= 0)
+	while (--count >= 0)
 	{
 		ret[count] = list_head;
 		list_head = list_head->next;
@@ -27,7 +27,7 @@ t_vertex			**new_vertex_tab(t_vertex *list_head, int count)
 	return (ret);
 }
 
-void			free_vertex_tab(t_vertex ***tab)
+void		free_vertex_tab(t_vertex ***tab)
 {
 	free(*tab);
 	*tab = NULL;

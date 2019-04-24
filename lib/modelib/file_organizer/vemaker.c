@@ -48,11 +48,11 @@ static t_vertex		*gridfiller(t_input *file, t_vertex *vert, int x, int y)
 	return (vert);
 }
 
-t_vertex				*veconvertstart(t_input *file)
+t_vertex			*veconvertstart(t_input *file)
 {
 	t_vertex	*vert;
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 
 	x = 0;
 	y = 0;

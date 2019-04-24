@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "modeling.h"
+#include "modeling.h"
 
 t_edge			*new_edge(t_vertex *vert1, t_vertex *vert2)
 {

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "modeling.h"
+#include "modeling.h"
 
-void		apply_edge(void (*f)(t_edge *vert, void *param), t_edge *list, void *param)
+void		apply_edge(void (*f)(t_edge *vert, void *param),
+			t_edge *list, void *param)
 {
 	if (!list)
 		return ;
