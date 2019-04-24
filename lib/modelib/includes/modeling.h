@@ -95,6 +95,7 @@ void			draw_model(t_window *w, t_edge *list);
 
 t_vertex			*veconvertstart(t_input *file);
 t_edge			*edgefiller(t_input *f, t_vertex **vt);
+t_edge	*edgefiller_obj(t_warehouse *wh, int *x, int j);
 
 /*
 ** --- Warehouse ---

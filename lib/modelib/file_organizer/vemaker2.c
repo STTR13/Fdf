@@ -26,6 +26,22 @@ static t_edge *edgefiller_quit(t_edge *e)
 	return (NULL);
 }
 
+t_edge	*edgefiller_obj(t_warehouse *wh, int *x, int j)
+{
+	int i;
+
+	i = -1;
+	while (++i < j - 1)
+	{
+		if (!(wh->e = add_edge(wh->e, wh->tab[x[i]], wh->tab[x[i + 1]])))
+			return (edgefiller_quit(wh->e));
+	}
+	if (i > 1)
+		if (!(wh->e = add_edge(wh->e, wh->tab[x[0]], wh->tab[x[i]])))
+			return (edgefiller_quit(wh->e));
+	return (wh->e);
+}
+
 t_edge		*edgefiller(t_input *f, t_vertex **vt)
 {
 	t_edge *e;

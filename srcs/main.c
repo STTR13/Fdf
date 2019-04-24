@@ -14,10 +14,6 @@
 
 static int	file_read_select(char *str)
 {
-	int i;
-
-	i = ft_strlen(str);
-	i--;
 	if (ft_strcmp(ft_strrchr(str, '.'), ".fdf") == 0)
 		return (1);
 	else if (ft_strcmp(ft_strrchr(str, '.'), ".obj") == 0)

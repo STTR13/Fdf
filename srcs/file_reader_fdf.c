@@ -89,7 +89,6 @@ static char		**filecreator(char *temp, t_input *lst)
 	if (!(input = ft_memalloc(sizeof(char **) * \
 	(lst->lines * lst->linelen + 1))))
 		return (NULL);
-	i = 0;
 	input = filefiller(input, temp, i);
 	return (input);
 }
@@ -100,8 +99,8 @@ t_input			*file_reader_fdf(int fd)
 	char	*str;
 	t_input	*lst;
 
-	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))) || \
-	(!(str = ft_strnew(0))))
+	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))) ||\
+	(!(str = ft_strnew(1))))
 		return (NULL);
 	lst->lines = 0;
 	while (get_next_line(fd, &line) == 1)
