@@ -13,7 +13,10 @@
 #include "fdf.h"
 
 /*
-** frees every malloc
+** frees every malloc and displays the correct
+** errormessage depening on the number in i.
+** if i == 1, no free has to be done since nothing has
+** been malloced yet.
 */
 
 void		errormessage(int i, t_warehouse *wh)

@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+/*
+** file_read_select will read the name of the file that has
+** been sent with the executable and check if it has the correct
+** file type.
+*/
+
 static int	file_read_select(char *str)
 {
 	if (ft_strcmp(ft_strrchr(str, '.'), ".fdf") == 0)

@@ -12,6 +12,10 @@
 
 #include "modeling.h"
 
+/*
+** mallocs and adds read information to the structured list
+*/
+
 t_vertex	*new_vertex(t_ve *coord, int i)
 {
 	t_vertex	*r;

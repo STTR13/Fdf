@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+/*
+** These functions will read the file that has been sent with the
+** executable. The information will be stored in all of the
+** necessary structures.
+*/
+
 static int		linelen(char *line)
 {
 	int i;

@@ -37,6 +37,7 @@ typedef struct		s_edge
 
 typedef struct		s_input
 {
+	char			*str;
 	char			**input;
 	int				lines;
 	int				linelen;

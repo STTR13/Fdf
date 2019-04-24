@@ -12,6 +12,11 @@
 
 #include "modeling.h"
 
+/*
+** creates a tab with pointers to the structured list
+** in order to speed up the program.
+*/
+
 t_vertex	**new_vertex_tab(t_vertex *list_head, int count)
 {
 	t_vertex	**ret;

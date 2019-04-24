@@ -61,14 +61,14 @@ static char		**filefiller(char **input, char *str, int x)
 	while (str[x] != '\0')
 	{
 		i = 0;
-		while (str[x] == ' ')
+		while (str[x] == ' ' && str[x] != '\0')
 			x++;
 		while ((ft_isalnum(str[x]) == 1 || str[x] == ',') && str[x] != '\0')
 		{
 			i++;
 			x++;
 		}
-		if ((str[x] == ' ' || str[x] == '\n') && str[x] != '\0')
+		if (str[x] == ' ' || str[x] == '\n')
 		{
 			if (!(input[pos] = strfiller(&str[x - i], i)))
 				return (NULL);
@@ -96,18 +96,17 @@ static char		**filecreator(char *temp, t_input *lst)
 t_input			*file_reader_fdf(int fd)
 {
 	char	*line;
-	char	*str;
 	t_input	*lst;
 
 	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))) ||\
-	(!(str = ft_strnew(1))))
+	(!(lst->str = ft_strnew(OPEN_MAX))))
 		return (NULL);
 	lst->lines = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
-		str = ft_strjoinn(str, line);
+		lst->str = ft_strjoinn(lst->str, line);
 		if (lst->lines == 0)
-			lst->linelen = linelen(str);
+			lst->linelen = linelen(lst->str);
 		if (linelen(line) != lst->linelen)
 		{
 			free(line);
@@ -117,8 +116,8 @@ t_input			*file_reader_fdf(int fd)
 		free(line);
 	}
 	close(fd);
-	if (!(lst->input = filecreator(str, lst)))
+	if (!(lst->input = filecreator(lst->str, lst)))
 		return (NULL);
-	ft_strdel(&str);
+	ft_strdel(&lst->str);
 	return (lst);
 }
