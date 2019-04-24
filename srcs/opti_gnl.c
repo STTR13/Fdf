@@ -24,7 +24,8 @@ int		get_next_line_opti(int fd, char **line)
 		return (2);
 	}
 	if (!ptr[0])
-	 	if (!(ptr[0] = reader(fd)) || !(ptr[1] = ptr[0]))
+		if (!(ptr[0] = reader(fd))\
+		|| !(ptr[1] = ptr[0]))
 			return (-1);
 	*line = ptr[1];
 	while (*ptr[1] != '\n' && *ptr[1] != '\0')
