@@ -108,8 +108,8 @@ UNDERLINE_E = \033[4m
 
 $(NAME): $(OBJ)
 		@ar -rcs $@ $^
-		@echo "$(GREEN_E)$(NAME)\tCompiled$(END_E)"
-		ranlib $(NAME)
+		@echo "$(GREEN_E)$(NAME)\t\tcompile$(END_E)"
+		@ranlib $(NAME)
 
 all: $(NAME)
 
@@ -118,11 +118,11 @@ all: $(NAME)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
+	@echo "$(YELLOW_E)$(NAME)\t\tclean$(END_E)"
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "$(RED_E)$(NAME)\tfclean$(END_E)"
+fclean:
+	@rm -f $(OBJ) $(NAME)
+	@echo "$(RED_E)$(NAME)\t\tfclean$(END_E)"
 
 re: fclean all
 

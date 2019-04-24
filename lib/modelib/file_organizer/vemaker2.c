@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "modeling.h"
+#include <stdio.h> //(t)
 
 /*
 ** edgefiller will create links between certain vectors.
@@ -34,11 +35,17 @@ t_edge			*edgefiller_obj(t_warehouse *wh, int *x, int j)
 	while (++i < j - 1)
 	{
 		if (!(wh->e = add_edge(wh->e, wh->tab[x[i]], wh->tab[x[i + 1]])))
+		{
+			printf("ae1\n");
 			return (edgefiller_quit(wh->e));
+		}
 	}
 	if (i > 1)
 		if (!(wh->e = add_edge(wh->e, wh->tab[x[0]], wh->tab[x[i]])))
+		{
+			printf("ae2\n");
 			return (edgefiller_quit(wh->e));
+		}
 	return (wh->e);
 }
 

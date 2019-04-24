@@ -12,9 +12,14 @@
 
 NAME = fdf
 
-CC = gcc
 
+
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
+INCLUDES = 	includes/
+FRAMEW = -framework OpenGL -framework AppKit
+
+
 
 SRC_PATH = srcs/
 SRC = 			main.o \
@@ -37,15 +42,35 @@ HOOK =			key_press.o \
 OBJ = 			$(addprefix $(SRC_PATH), $(SRC)) \
 				$(addprefix $(HOOK_PATH), $(HOOK))
 
-INCLUDES = 	-I includes/
 
-FRAMEW = -framework OpenGL -framework AppKit
 
-LIB = 	lib/minilibx_macos/libmlx.a \
-		lib/libft/libft.a \
-		lib/geolib/geolib.a \
-		lib/modelib/modelib.a \
-		lib/visualib/visualib.a \
+MLX_PATH = 	lib/minilibx_macos/
+MLX =			libmlx.a
+
+LFT_PATH = 	lib/libft/
+LFT =			libft.a
+
+GEO_PATH = 	lib/geolib/
+GEO =			geolib.a
+
+MOD_PATH = 	lib/modelib/
+MOD =			modelib.a
+
+VIS_PATH = 	lib/visualib/
+VIS =			visualib.a
+
+ALL_LIB_PATH =	$(MLX_PATH) \
+				$(LFT_PATH) \
+				$(GEO_PATH) \
+				$(MOD_PATH) \
+				$(VIS_PATH)
+LIB =			$(addprefix $(MLX_PATH), $(MLX)) \
+				$(addprefix $(LFT_PATH), $(LFT)) \
+				$(addprefix $(GEO_PATH), $(GEO)) \
+				$(addprefix $(MOD_PATH), $(MOD)) \
+				$(addprefix $(VIS_PATH), $(VIS))
+
+
 
 END_E       = \033[00m
 RED_E       = \033[01;31m
@@ -57,44 +82,38 @@ WHITE_E     = \033[01;37m
 BOLD_E      = \033[1m
 UNDERLINE_E = \033[4m
 
-$(NAME): $(OBJ)
-	@echo "$(PURPLE_E)$(NAME)\tCompiling libft$(END_E)"
-	@$(MAKE) -C lib/libft/
-	@echo "$(PURPLE_E)$(NAME)\tCompiling geolib$(END_E)"
-	@$(MAKE) -C lib/geolib/
-	@echo "$(PURPLE_E)$(NAME)\tCompiling minilibx$(END_E)"
-	@$(MAKE) -C lib/minilibx_macos/
-	@echo "$(PURPLE_E)$(NAME)\tCompiling modelib$(END_E)"
-	@$(MAKE) -C lib/modelib/
-	@echo "$(PURPLE_E)$(NAME)\tCompiling visualib$(END_E)"
-	@$(MAKE) -C lib/visualib/
-	@echo "$(PURPLE_E)$(NAME)\tcompiling$(END_E)"
-	$(CC) -o $@ $^ $(LIB) $(FRAMEW)
-	@echo "$(PURPLE_E)$(NAME)\tExecutable compiled$(END_E)"
+
+
+$(NAME): $(OBJ) $(LIB)
+	@$(CC) -o $@ $^ $(FRAMEW) -I $(INCLUDES) $(CFLAGS)
+	@echo "$(PURPLE_E)$(NAME)\t\tcompile$(END_E)"
 
 all: $(NAME)
 
+%.a:
+	@$(MAKE) -C $(@D)/
+
 %.o:        %.c
-	@$(CC) -c -o $@ $< $(INCLUDES) $(CFLAGS)
+	@$(CC) -c -o $@ $< -I $(INCLUDES) $(CFLAGS)
 
 clean:
-	@$(MAKE) -C lib/libft/ clean
-	@$(MAKE) -C lib/minilibx_macos/ clean
-	@$(MAKE) -C lib/geolib/ clean
-	@$(MAKE) -C lib/modelib/ clean
-	@$(MAKE) -C lib/visualib/ clean
+	@$(MAKE) clean -C lib/libft/
+	@$(MAKE) clean -C lib/minilibx_macos/
+	@$(MAKE) clean -C lib/geolib/
+	@$(MAKE) clean -C lib/modelib/
+	@$(MAKE) clean -C lib/visualib/
 	@rm -f $(OBJ)
-	@echo "$(YELLOW_E)$(NAME)\tclean$(END_E)"
+	@echo "$(PURPLE_E)$(NAME)\t\tclean$(END_E)"
 
-fclean: clean
-	@$(MAKE) -C lib/libft/ fclean
-	@$(MAKE) -C lib/geolib/ fclean
-	@$(MAKE) -C lib/modelib/ fclean
-	@$(MAKE) -C lib/minilibx_macos/ fclean
-	@$(MAKE) -C lib/visualib/ fclean
-	@echo "$(RED_E)$(NAME)\tfclean$(END_E)"
-	@rm -f $(NAME)
+fclean:
+	@$(MAKE) fclean -C lib/libft/
+	@$(MAKE) fclean -C lib/geolib/
+	@$(MAKE) fclean -C lib/modelib/
+	@$(MAKE) fclean -C lib/minilibx_macos/
+	@$(MAKE) fclean -C lib/visualib/
+	@echo "$(PURPLE_E)$(NAME)\t\tfclean$(END_E)"
+	@rm -f $(OBJ) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re lib
