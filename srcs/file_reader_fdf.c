@@ -26,9 +26,7 @@ static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 	*line_c += 1;
 	j = 0;
 	counter = 0;
-	while (str[j] != '\n' && str[j] != '\0')
-		j++;
-	while ((str[i] != '\n' && str[i] != '\0') && i < j)
+	while (str[i] != '\n' && str[i] != '\0')
 	{
 		if (ft_isdigit(str[i]) == 1 || str[i] == '-')
 		{
@@ -36,16 +34,21 @@ static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 				i++;
 			counter++;
 		}
-		i++;
+		if (str[i] != '\n' && str[i] != '\0')
+			i++;
 	}
+	//printf("counter: %i, linelen: %i, linecount: %i\n", counter, *line_l, *line_c);
 	if (*line_l == -1)
 		*line_l = counter;
-	if (str[i] == '\0')
+	if (str[i] == '\n')
+		i++;
+	else
 		return (true);
 	if (counter != *line_l)
 		return (false);
 	return (is_valid_linelen(&str[i], line_l, line_c, 0));
 }
+
 
 static char		*strfiller(char *str, int i)
 {
@@ -106,7 +109,7 @@ t_input			*file_reader_fdf(int fd)
 	if (fd == -1 || (!(lst = ft_memalloc(sizeof(t_input)))))
 		return (NULL);
 	lst->linelen = -1;
-	lst->lines = 0;
+	lst->lines = -1;
 	if (!(lst->str = reader(fd)))
 		return (NULL);
 	close(fd);

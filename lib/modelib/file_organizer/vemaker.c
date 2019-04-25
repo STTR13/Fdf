@@ -41,8 +41,8 @@ static t_vertex		*gridfiller(t_input *file, t_vertex *vert, int x, int y)
 			if (!(vert = add_vertex(vert, set_ve(temp, -x, y, &v), 0)))
 				return (NULL);
 			vert->color = ft_hexaconverter(file->input[pos]);
-			printf("atoi: %i, pos x: %i, pos y: %i\n", temp, x, y);
-			printf("color: %i\n", vert->color);
+			/*printf("atoi: %i, pos x: %i, pos y: %i\n", temp, x, y);
+			printf("color: %i\n", vert->color);*/
 			pos++;
 			x++;
 		}
