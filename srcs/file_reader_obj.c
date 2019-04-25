@@ -103,7 +103,8 @@ static t_bool	code_selector(t_warehouse *wh, char *line, int *i, int *b)
 		if (*b == 1)
 		{
 			free_vertex_tab(&wh->tab);
-			wh->tab = new_vertex_tab(wh->v, *i); //(ni)
+			if (!(wh->tab = new_vertex_tab(wh->v, *i)))
+				return (0);
 			*b = 0;
 		}
 		if (!(edgeput_obj(wh, line, 0)))

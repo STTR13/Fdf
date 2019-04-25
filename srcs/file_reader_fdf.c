@@ -21,10 +21,8 @@
 static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 {
 	int counter;
-	int j;
 
 	*line_c += 1;
-	j = 0;
 	counter = 0;
 	while (str[i] != '\n' && str[i] != '\0')
 	{
@@ -37,7 +35,6 @@ static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 		if (str[i] != '\n' && str[i] != '\0')
 			i++;
 	}
-	//printf("counter: %i, linelen: %i, linecount: %i\n", counter, *line_l, *line_c);
 	if (*line_l == -1)
 		*line_l = counter;
 	if (str[i] == '\n')
@@ -48,7 +45,6 @@ static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 		return (false);
 	return (is_valid_linelen(&str[i], line_l, line_c, 0));
 }
-
 
 static char		*strfiller(char *str, int i)
 {

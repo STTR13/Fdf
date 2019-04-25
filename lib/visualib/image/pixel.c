@@ -43,7 +43,7 @@ static int	get_light(int color[2], int i, int end, int start)
 	double percentage;
 
 	percentage = (double)(i - start) / (double)(end - start);
-	return ((double)((1 - percentage) * color[0]) + (double)(percentage * color[1]));
+	return ((int)((1 - percentage) * color[0]) + (int)(percentage * color[1]));
 }
 
 /*
