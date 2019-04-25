@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "modeling.h"
-#include <stdio.h> //(t)
 
 /*
 ** edgefiller will create links between certain vectors.

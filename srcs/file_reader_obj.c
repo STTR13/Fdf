@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
+
 /*
 ** These functions will read the file that has been sent with the
 ** executable. The information will be stored in all of the
