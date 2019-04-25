@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+#include <stdio.h>
 /*
 ** These functions will read the file that has been sent with the
 ** executable. The information will be stored in all of the
@@ -56,10 +56,9 @@ static t_bool	edgeput_obj(t_warehouse *wh, char *line, int i)
 			j++;
 			while ((ft_isdigit(line[i]) || line[i] == '/') && line[i] != '\0')
 				i++;
-			if (line[i] != '\0')
-				break ;
 		}
-		i++;
+		else
+			i++;
 	}
 	if (!(wh->e = edgefiller_obj(wh, x, j)))
 		return (0);

@@ -14,7 +14,8 @@
 
 int	ft_n0(char c)
 {
-	if (c != ' ' && c != '\n' && c != '\0')
-		return (0);
-	return (1);
+	if ((ft_isalnum(c) == 1 || c == ',' || c == '-')\
+	&& c != ' ' && c != '\n' && c != '\0')
+		return (1);
+	return (0);
 }

@@ -30,9 +30,9 @@ static t_bool	is_valid_linelen(char *str, int *line_l, int *line_c, int i)
 		j++;
 	while ((str[i] != '\n' && str[i] != '\0') && i < j)
 	{
-		if (ft_isdigit(str[i]) == 1)
+		if (ft_isdigit(str[i]) == 1 || str[i] == '-')
 		{
-			while ((ft_isalnum(str[i]) == 1 || str[i] == ',') && ft_n0(str[i]))
+			while (ft_n0(str[i]))
 				i++;
 			counter++;
 		}
@@ -112,9 +112,11 @@ t_input			*file_reader_fdf(int fd)
 	close(fd);
 	if (!is_valid_linelen(lst->str, &lst->linelen, &lst->lines, 0))
 	{
+		printf("lines: %i\n", lst->lines);
 		ft_strdel(&lst->str);
 		return (NULL);
 	}
+	printf("lines: %i\n", lst->lines);
 	if (!(lst->input = filecreator(lst->str, lst)))
 		return (NULL);
 	ft_strdel(&lst->str);
