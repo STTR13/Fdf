@@ -112,11 +112,9 @@ t_input			*file_reader_fdf(int fd)
 	close(fd);
 	if (!is_valid_linelen(lst->str, &lst->linelen, &lst->lines, 0))
 	{
-		printf("lines: %i\n", lst->lines);
 		ft_strdel(&lst->str);
 		return (NULL);
 	}
-	printf("lines: %i\n", lst->lines);
 	if (!(lst->input = filecreator(lst->str, lst)))
 		return (NULL);
 	ft_strdel(&lst->str);
