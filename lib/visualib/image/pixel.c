@@ -38,12 +38,12 @@ static int	abs_s(int nb)
 	return (nb);
 }
 
-static int	get_light(int color[2], int i, int start, int end)
+static int	get_light(int color[2], int i, int end, int start)
 {
 	double percentage;
 
 	percentage = (double)(i - start) / (double)(end - start);
-	return ((int)((1 - percentage) * color[0]) + (int)(percentage * color[1]));
+	return ((double)((1 - percentage) * color[0]) + (double)(percentage * color[1]));
 }
 
 /*
