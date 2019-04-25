@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "modeling.h"
-
+#include <stdio.h>
 /*
 ** veconvertstart and gridfiller work together. veconvertstart
 ** will launch gridfiller in order to make a structured list
@@ -37,9 +37,12 @@ static t_vertex		*gridfiller(t_input *file, t_vertex *vert, int x, int y)
 		while (x < file->linelen)
 		{
 			temp = ft_atoi(file->input[pos]);
+
 			if (!(vert = add_vertex(vert, set_ve(temp, -x, y, &v), 0)))
 				return (NULL);
 			vert->color = ft_hexaconverter(file->input[pos]);
+			printf("atoi: %i, pos x: %i, pos y: %i\n", temp, x, y);
+			printf("color: %i\n", vert->color);
 			pos++;
 			x++;
 		}
