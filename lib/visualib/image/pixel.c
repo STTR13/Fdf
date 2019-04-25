@@ -38,7 +38,7 @@ static int	abs_s(int nb)
 	return (nb);
 }
 
-static int	get_light(int color[2], int i, int end, int start)
+static int	get_light(int color[2], int i, int start, int end)
 {
 	double percentage;
 
