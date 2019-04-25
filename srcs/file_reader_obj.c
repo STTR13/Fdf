@@ -89,20 +89,22 @@ static t_vertex	*objvertfill(t_vertex *v, char *line, int i)
 	return (v);
 }
 
-static t_bool	code_selector(t_warehouse *wh, char *line, int *i)
+static t_bool	code_selector(t_warehouse *wh, char *line, int *i, int *b)
 {
 	if (ft_strncmp(line, "v ", 2) == 0)
 	{
+		*b = 1;
 		if (!(wh->v = objvertfill(wh->v, line, *i)))
 			return (0);
 		*i += 1;
 	}
 	else if (ft_strncmp(line, "f ", 2) == 0)
 	{
-		if (*i != 0)
+		if (*b == 1)
 		{
-			wh->tab = new_vertex_tab(wh->v, *i);
-			*i = 0;
+			free_vertex_tab(&wh->tab);
+			wh->tab = new_vertex_tab(wh->v, *i); //(ni)
+			*b = 0;
 		}
 		if (!(edgeput_obj(wh, line, 0)))
 			return (0);
@@ -114,12 +116,15 @@ t_bool			file_reader_obj(int fd, t_warehouse *wh)
 {
 	char	*line;
 	int		i;
+	int		b;
 
 	if (fd == -1)
 		return (0);
 	i = 0;
+	b = 1;
+	wh->tab = NULL;
 	while (get_next_line_opti(fd, &line) == 1)
-		if (!(code_selector(wh, line, &i)))
+		if (!(code_selector(wh, line, &i, &b)))
 			return (0);
 	close(fd);
 	get_next_line_opti(-7919, &line);

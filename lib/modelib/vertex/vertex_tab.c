@@ -34,6 +34,8 @@ t_vertex	**new_vertex_tab(t_vertex *list_head, int count)
 
 void		free_vertex_tab(t_vertex ***tab)
 {
+	if (!tab || !*tab)
+		return ;
 	free(*tab);
 	*tab = NULL;
 }
