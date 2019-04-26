@@ -51,11 +51,10 @@ int						deal_key(int key, t_warehouse *window);
 
 int						expose(void *window);
 int						windowclose(void *window);
-int						mouse_press(int key,  int x, int y, void *window);
+int						mouse_press(int key, int x, int y, void *window);
 int						key_press(int key, void *window);
 int						mouse_move(int x, int y, void *window);
 int						key_release(int key, void *window);
 int						loop_hook(void *param);
-
 
 #endif
