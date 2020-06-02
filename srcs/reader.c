@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-
-#define BUFF_SIZE 4096
+#include "fdf.h"
 
 /*
 ** free *s1 allocate a memory containing the cast
@@ -75,22 +71,4 @@ char			*reader(int filedesc)
 	free(buf);
 	acc[a] = 0;
 	return (acc);
-}
-
-char			*standi_reader(void)
-{
-	return (reader(0));
-}
-
-char			*file_reader(const char *filename)
-{
-	int		filedesc;
-	char	*r;
-
-	filedesc = open(filename, O_RDONLY);
-	if (filedesc == -1)
-		return (NULL);
-	r = reader(filedesc);
-	close(filedesc);
-	return (r);
 }

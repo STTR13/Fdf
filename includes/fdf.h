@@ -25,11 +25,9 @@
 
 int						get_next_line_opti(int fd, char **line);
 char					*reader(int filedesc);
-
 t_input					*file_reader_fdf(int fd);
 t_bool					file_reader_obj(int fd, t_warehouse *wh);
 void					errormessage(int i, t_warehouse *window);
-int						get_color_grad(double percent, t_edge *e);
 void					free_all(t_warehouse *w);
 
 /*
@@ -40,21 +38,15 @@ void					window_init_load(t_warehouse *window);
 void					refresh_win(t_warehouse *wl);
 
 /*
-** --- Keys and Mouse ---
-*/
-
-int						deal_key(int key, t_warehouse *window);
-
-/*
 ** --- Hook ---
 */
 
-int						expose(void *window);
-int						windowclose(void *window);
-int						mouse_press(int key, int x, int y, void *window);
-int						key_press(int key, void *window);
-int						mouse_move(int x, int y, void *window);
-int						key_release(int key, void *window);
+int						expose(void *wh);
+int						windowclose(void *wh);
+int						mouse_press(int key, int x, int y, void *wh);
+int						key_press(int key, void *wh);
+int						mouse_move(int x, int y, void *wh);
+int						key_release(int key, void *wh);
 int						loop_hook(void *param);
 
 #endif

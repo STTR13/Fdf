@@ -18,7 +18,7 @@
 ** file type.
 */
 
-static int	file_read_select(char *str)
+static int	file_reader_select(char *str)
 {
 	if (ft_strcmp(ft_strrchr(str, '.'), ".fdf") == 0)
 		return (1);
@@ -34,7 +34,7 @@ int			main(int argc, char **argv)
 
 	if (argc != 2)
 		errormessage(1, &wh);
-	if (!(filetype = file_read_select(argv[1])))
+	if (!(filetype = file_reader_select(argv[1])))
 		errormessage(3, &wh);
 	if (filetype == 1)
 	{
@@ -50,6 +50,5 @@ int			main(int argc, char **argv)
 			errormessage(2, &wh);
 	}
 	window_init_load(&wh);
-	free_all(&wh);
 	return (0);
 }

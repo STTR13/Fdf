@@ -57,6 +57,7 @@ t_vertex			*veconvertstart(t_input *file)
 	x = 0;
 	y = 0;
 	vert = NULL;
-	vert = gridfiller(file, vert, x, y);
+	if (!(vert = gridfiller(file, vert, x, y)))
+		return (NULL);
 	return (vert);
 }
